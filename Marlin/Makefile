@@ -41,7 +41,7 @@ HARDWARE_MOTHERBOARD ?= 33
 
 # Arduino source install directory, and version number
 ARDUINO_INSTALL_DIR  ?= /usr/share/arduino
-ARDUINO_VERSION      ?= 21
+ARDUINO_VERSION      ?= 101
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
 AVR_TOOLS_PATH ?=
@@ -320,7 +320,7 @@ AVRDUDE_CONF = $(ARDUINO_INSTALL_DIR)/hardware/tools/avrdude.conf
 else
 AVRDUDE_CONF = $(ARDUINO_INSTALL_DIR)/hardware/tools/avr/etc/avrdude.conf
 endif
-AVRDUDE_CONF = ../ArduinoAddons/Arduino_0.xx/hardware/tools/avr/etc/avrdude.conf
+#AVRDUDE_CONF = ../ArduinoAddons/Arduino_0.xx/hardware/tools/avr/etc/avrdude.conf
 AVRDUDE_FLAGS = -D -C $(AVRDUDE_CONF) \
 	-p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER) \
 	-b $(UPLOAD_RATE)
