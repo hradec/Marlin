@@ -328,9 +328,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #ifdef ENABLE_AUTO_BED_LEVELING
 
   // these are the positions on the bed to do the probing
-  #define LEFT_PROBE_BED_POSITION 50
-  #define RIGHT_PROBE_BED_POSITION 250
-  #define BACK_PROBE_BED_POSITION 280
+  #define LEFT_PROBE_BED_POSITION 150
+  #define RIGHT_PROBE_BED_POSITION 200
+  #define BACK_PROBE_BED_POSITION 150
   #define FRONT_PROBE_BED_POSITION 100
 
   // these are the offsets to the prob relative to the extruder tip (Hotend - Probe)
@@ -351,7 +351,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   //The value is the delay to turn the servo off after powered on - depends on the servo speed; 300ms is good value, but you can try lower it.
   // You MUST HAVE the SERVO_ENDSTOPS defined to use here a value higher than zero otherwise your code will not compile.
 
-  #define PROBE_SERVO_DEACTIVATION_DELAY 400
+  #define PROBE_SERVO_DEACTIVATION_DELAY 480
 
 
 //If you have enabled the Bed Auto Levelling and are using the same Z Probe for Z Homing,
