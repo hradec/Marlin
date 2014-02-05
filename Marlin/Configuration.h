@@ -122,7 +122,7 @@
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan & J-Head) (1k pullup)
 
 #define TEMP_SENSOR_0 7
-#define TEMP_SENSOR_1 0
+#define TEMP_SENSOR_1 -1
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 1
 
@@ -156,6 +156,10 @@
 // HEATER_BED_DUTY_CYCLE_DIVIDER intervals.
 //#define HEATER_BED_DUTY_CYCLE_DIVIDER 4
 
+// If you want the M105 heater power reported in watts, define the BED_WATTS, and (shared for all extruders) EXTRUDER_WATTS 
+//#define EXTRUDER_WATTS (12.0*12.0/6.7) //  P=I^2/R 
+//#define BED_WATTS (12.0*12.0/1.1)      // P=I^2/R
+
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
@@ -168,7 +172,7 @@
                                   // is more then PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
   #define PID_INTEGRAL_DRIVE_MAX 255  //limit for the integral term
   #define K1 0.95 //smoothing factor within the PID
-  #define PID_dT ((16.0 * 8.0)/(F_CPU / 64.0 / 256.0)) //sampling period of the temperature routine
+  #define PID_dT ((OVERSAMPLENR * 8.0)/(F_CPU / 64.0 / 256.0)) //sampling period of the temperature routine
 
 // If you are using a preconfigured hotend then you can use one of the value sets by uncommenting it
 // Ultimaker
@@ -336,8 +340,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #ifdef ENABLE_AUTO_BED_LEVELING
 
   // these are the positions on the bed to do the probing
-  #define LEFT_PROBE_BED_POSITION 200
-  #define RIGHT_PROBE_BED_POSITION 250
+  #define LEFT_PROBE_BED_POSITION 150
+  #define RIGHT_PROBE_BED_POSITION 200
   #define BACK_PROBE_BED_POSITION 150
   #define FRONT_PROBE_BED_POSITION 100
 
@@ -359,7 +363,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   //The value is the delay to turn the servo off after powered on - depends on the servo speed; 300ms is good value, but you can try lower it.
   // You MUST HAVE the SERVO_ENDSTOPS defined to use here a value higher than zero otherwise your code will not compile.
 
-  #define PROBE_SERVO_DEACTIVATION_DELAY 400
+  #define PROBE_SERVO_DEACTIVATION_DELAY 480
 
 
 //If you have enabled the Bed Auto Levelling and are using the same Z Probe for Z Homing,
@@ -379,6 +383,15 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
   #endif
 
+  // with accurate bed leveling, the bed is sampled in a ACCURATE_BED_LEVELING_POINTSxACCURATE_BED_LEVELING_POINTS grid and least squares solution is calculated
+  // Note: this feature occupies 10'206 byte
+  #define ACCURATE_BED_LEVELING
+  
+  #ifdef ACCURATE_BED_LEVELING
+     // I wouldn't see a reason to go above 3 (=9 probing points on the bed)
+    #define ACCURATE_BED_LEVELING_POINTS 2
+  #endif
+  
 #endif
 
 
@@ -450,6 +463,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //#define ENCODER_STEPS_PER_MENU_ITEM 5 // Set according to ENCODER_PULSES_PER_STEP or your liking
 //#define ULTIMAKERCONTROLLER //as available from the ultimaker online store.
 //#define ULTIPANEL  //the ultipanel as on thingiverse
+//#define LCD_FEEDBACK_FREQUENCY_HZ 1000	// this is the tone frequency the buzzer plays when on UI feedback. ie Screen Click
+//#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100 // the duration the buzzer plays the UI feedback sound. ie Screen Click
 
 // The MaKr3d Makr-Panel with graphic controller and SD support
 // http://reprap.org/wiki/MaKr3d_MaKrPanel
@@ -535,6 +550,21 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   #define LCD_USE_I2C_BUZZER //comment out to disable buzzer on LCD
   #define NEWPANEL
   #define ULTIPANEL
+  
+  #ifndef ENCODER_PULSES_PER_STEP
+	#define ENCODER_PULSES_PER_STEP 4
+  #endif 
+
+  #ifndef ENCODER_STEPS_PER_MENU_ITEM
+	#define ENCODER_STEPS_PER_MENU_ITEM 1
+  #endif 
+  
+  
+  #ifdef LCD_USE_I2C_BUZZER
+	#define LCD_FEEDBACK_FREQUENCY_HZ 1000
+	#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100
+  #endif
+  
 #endif
 
 // Panucatt VIKI LCD with status LEDs, integrated click & L/R/U/P buttons, separate encoder inputs
