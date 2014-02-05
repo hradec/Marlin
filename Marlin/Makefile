@@ -41,11 +41,7 @@ HARDWARE_MOTHERBOARD ?= 33
 
 # Arduino source install directory, and version number
 ARDUINO_INSTALL_DIR  ?= /usr/share/arduino
-<<<<<<< HEAD
 ARDUINO_VERSION      ?= 101
-=======
-ARDUINO_VERSION      ?= 100
->>>>>>> master
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
 AVR_TOOLS_PATH ?=

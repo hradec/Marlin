@@ -340,9 +340,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #ifdef ENABLE_AUTO_BED_LEVELING
 
   // these are the positions on the bed to do the probing
-  #define LEFT_PROBE_BED_POSITION 150
-  #define RIGHT_PROBE_BED_POSITION 200
-  #define BACK_PROBE_BED_POSITION 150
+  #define LEFT_PROBE_BED_POSITION 50
+  #define RIGHT_PROBE_BED_POSITION 250
+  #define BACK_PROBE_BED_POSITION 250
   #define FRONT_PROBE_BED_POSITION 100
 
   // these are the offsets to the prob relative to the extruder tip (Hotend - Probe)
@@ -389,7 +389,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   
   #ifdef ACCURATE_BED_LEVELING
      // I wouldn't see a reason to go above 3 (=9 probing points on the bed)
-    #define ACCURATE_BED_LEVELING_POINTS 2
+    #define ACCURATE_BED_LEVELING_POINTS 3
   #endif
   
 #endif
