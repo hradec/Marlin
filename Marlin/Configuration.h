@@ -340,9 +340,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #ifdef ENABLE_AUTO_BED_LEVELING
 
   // these are the positions on the bed to do the probing
-  #define LEFT_PROBE_BED_POSITION 60
-  #define RIGHT_PROBE_BED_POSITION 100
-  #define BACK_PROBE_BED_POSITION 240
+  #define LEFT_PROBE_BED_POSITION 100
+  #define RIGHT_PROBE_BED_POSITION 150
+  #define BACK_PROBE_BED_POSITION 220
   #define FRONT_PROBE_BED_POSITION 200
 
   // these are the offsets to the prob relative to the extruder tip (Hotend - Probe)
