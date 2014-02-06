@@ -207,7 +207,7 @@
 // If your configuration is significantly different than this and you don't understand the issues involved, you probably
 // shouldn't use bed PID until someone else verifies your hardware works.
 // If this is enabled, find your own PID constants below.
-//#define PIDTEMPBED
+#define PIDTEMPBED
 //
 //#define BED_LIMIT_SWITCHING
 
@@ -225,9 +225,9 @@
 /*    #define  DEFAULT_bedKd 305.4*/
 
 
-    #define  DEFAULT_bedKp 26.84
-    #define  DEFAULT_bedKi 4.22
-    #define  DEFAULT_bedKd 42.65
+    #define  DEFAULT_bedKp 74.41
+    #define  DEFAULT_bedKi 9.54
+    #define  DEFAULT_bedKd 145.07
 
 
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
@@ -340,10 +340,10 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #ifdef ENABLE_AUTO_BED_LEVELING
 
   // these are the positions on the bed to do the probing
-  #define LEFT_PROBE_BED_POSITION 50
-  #define RIGHT_PROBE_BED_POSITION 250
-  #define BACK_PROBE_BED_POSITION 250
-  #define FRONT_PROBE_BED_POSITION 100
+  #define LEFT_PROBE_BED_POSITION 60
+  #define RIGHT_PROBE_BED_POSITION 100
+  #define BACK_PROBE_BED_POSITION 240
+  #define FRONT_PROBE_BED_POSITION 200
 
   // these are the offsets to the prob relative to the extruder tip (Hotend - Probe)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -10
@@ -353,10 +353,10 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   #define Z_RAISE_BEFORE_HOMING 30       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
 
-  #define XY_TRAVEL_SPEED 8000         // X and Y axis travel speed between probes, in mm/min
+  #define XY_TRAVEL_SPEED 3000         // X and Y axis travel speed between probes, in mm/min
 
   #define Z_RAISE_BEFORE_PROBING 30    //How much the extruder will be raised before traveling to the first probing point.
-  #define Z_RAISE_BETWEEN_PROBINGS 10  //How much the extruder will be raised when traveling from between next probing points
+  #define Z_RAISE_BETWEEN_PROBINGS 5  //How much the extruder will be raised when traveling from between next probing points
 
 
   //If defined, the Probe servo will be turned on only during movement and then turned off to avoid jerk
