@@ -180,9 +180,9 @@
 //    #define  DEFAULT_Ki 1.08
 //    #define  DEFAULT_Kd 114
 
- #define  DEFAULT_Kp 43.35
- #define  DEFAULT_Ki 1.99  
- #define  DEFAULT_Kd 235.78  
+ #define  DEFAULT_Kp 10.18
+ #define  DEFAULT_Ki 0.22 
+ #define  DEFAULT_Kd 116.21  
 
 // Makergear
 //    #define  DEFAULT_Kp 7.0
