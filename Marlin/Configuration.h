@@ -154,7 +154,7 @@
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
 // average current. The value should be an integer and the heat bed will be turned on for 1 interval of
 // HEATER_BED_DUTY_CYCLE_DIVIDER intervals.
-#define HEATER_BED_DUTY_CYCLE_DIVIDER 4
+//#define HEATER_BED_DUTY_CYCLE_DIVIDER 4
 
 // If you want the M105 heater power reported in watts, define the BED_WATTS, and (shared for all extruders) EXTRUDER_WATTS 
 //#define EXTRUDER_WATTS (12.0*12.0/6.7) //  P=I^2/R 
@@ -163,8 +163,8 @@
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
-#define BANG_MAX 192 // limits current to nozzle while in bang-bang mode; 255=full current
-#define PID_MAX 192 // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
+#define BANG_MAX 250 // limits current to nozzle while in bang-bang mode; 255=full current
+#define PID_MAX BANG_MAX // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #ifdef PIDTEMP
   //#define PID_DEBUG // Sends debug data to the serial port.
   //#define PID_OPENLOOP 1 // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
@@ -180,9 +180,9 @@
 //    #define  DEFAULT_Ki 1.08
 //    #define  DEFAULT_Kd 114
 
- #define  DEFAULT_Kp 10.18
- #define  DEFAULT_Ki 0.22 
- #define  DEFAULT_Kd 116.21  
+ #define  DEFAULT_Kp  25.63
+ #define  DEFAULT_Ki 0.75 
+ #define  DEFAULT_Kd 217.90  
 
 // Makergear
 //    #define  DEFAULT_Kp 7.0
@@ -213,7 +213,7 @@
 // all forms of bed control obey this (PID, bang-bang, bang-bang with hysteresis)
 // setting this to anything other than 255 enables a form of PWM to the bed just like HEATER_BED_DUTY_CYCLE_DIVIDER did,
 // so you shouldn't use it unless you are OK with PWM on your bed.  (see the comment on enabling PIDTEMPBED)
-#define MAX_BED_POWER 255 // limits duty cycle to bed; 255=full current
+#define MAX_BED_POWER 160 // limits duty cycle to bed; 255=full current
 
 #ifdef PIDTEMPBED
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
