@@ -122,13 +122,13 @@
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan & J-Head) (1k pullup)
 
 #define TEMP_SENSOR_0 7
-#define TEMP_SENSOR_1 -1
+#define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_BED 1
+#define TEMP_SENSOR_BED 6
 
 // This makes temp sensor 1 a redundant sensor for sensor 0. If the temperatures difference between these sensors is to high the print will be aborted.
 //#define TEMP_SENSOR_1_AS_REDUNDANT
-#define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
+//#define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
 // Actual temperature must be close to target for this long before M109 returns success
 #define TEMP_RESIDENCY_TIME 10  // (seconds)
@@ -163,8 +163,8 @@
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
-#define BANG_MAX 255 // limits current to nozzle while in bang-bang mode; 255=full current
-#define PID_MAX 255 // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
+#define BANG_MAX 250 // limits current to nozzle while in bang-bang mode; 255=full current
+#define PID_MAX 250 // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #ifdef PIDTEMP
   //#define PID_DEBUG // Sends debug data to the serial port.
   //#define PID_OPENLOOP 1 // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
