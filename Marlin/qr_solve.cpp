@@ -4,11 +4,7 @@
 
 #include <stdlib.h>
 #include <math.h>
-<<<<<<< HEAD
 //#include <Time.h>
-
-=======
->>>>>>> upstream/Marlin_v1
 
 //# include "r8lib.h"
 
