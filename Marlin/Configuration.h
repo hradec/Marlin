@@ -435,20 +435,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
   #endif
 
-<<<<<<< HEAD
-  // with accurate bed leveling, the bed is sampled in a ACCURATE_BED_LEVELING_POINTSxACCURATE_BED_LEVELING_POINTS grid and least squares solution is calculated
-  // Note: this feature occupies 10'206 byte
-//  #define ACCURATE_BED_LEVELING
-  
-  #ifdef ACCURATE_BED_LEVELING
-     // I wouldn't see a reason to go above 3 (=9 probing points on the bed)
-    #define ACCURATE_BED_LEVELING_POINTS 3
-  #endif
-  
-#endif
-=======
 #endif // ENABLE_AUTO_BED_LEVELING
->>>>>>> upstream/Marlin_v1
 
 
 // The position of the homing switches
@@ -495,13 +482,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // M500 - stores parameters in EEPROM
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
-<<<<<<< HEAD
 //define this to enable eeprom support
 #define EEPROM_SETTINGS
-=======
-//define this to enable EEPROM support
-//#define EEPROM_SETTINGS
->>>>>>> upstream/Marlin_v1
 //to disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
 // please keep turned on if you can.
 #define EEPROM_CHITCHAT
