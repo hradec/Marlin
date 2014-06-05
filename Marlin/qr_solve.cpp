@@ -4,8 +4,17 @@
 
 #include <stdlib.h>
 #include <math.h>
+<<<<<<< HEAD
 //#include <Time.h>
 
+=======
+<<<<<<< HEAD
+//#include <Time.h>
+
+=======
+>>>>>>> upstream/Marlin_v1
+
+>>>>>>> master
 //# include "r8lib.h"
 
 int i4_min ( int i1, int i2 )
