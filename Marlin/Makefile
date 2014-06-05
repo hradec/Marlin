@@ -257,24 +257,9 @@ ifeq ($(HARDWARE_VARIANT), Teensy)
 SRC = wiring.c
 VPATH += $(ARDUINO_INSTALL_DIR)/hardware/teensy/cores/teensy
 endif
-<<<<<<< HEAD
 CXXSRC = WMath.cpp WString.cpp Print.cpp \
          $(shell ls *.cpp)
 
-=======
-<<<<<<< HEAD
-CXXSRC = WMath.cpp WString.cpp Print.cpp \
-         $(shell ls *.cpp)
-
-=======
-CXXSRC = WMath.cpp WString.cpp Print.cpp Marlin_main.cpp	\
-	MarlinSerial.cpp Sd2Card.cpp SdBaseFile.cpp SdFatUtil.cpp	\
-	SdFile.cpp SdVolume.cpp motion_control.cpp planner.cpp		\
-	stepper.cpp temperature.cpp cardreader.cpp ConfigurationStore.cpp \
-	watchdog.cpp SPI.cpp Servo.cpp Tone.cpp ultralcd.cpp digipot_mcp4451.cpp \
-	vector_3.cpp qr_solve.cpp
->>>>>>> upstream/Marlin_v1
->>>>>>> master
 ifeq ($(LIQUID_TWI2), 0)
 CXXSRC += LiquidCrystal.cpp
 else
