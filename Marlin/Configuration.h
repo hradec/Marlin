@@ -376,7 +376,6 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //    #define BACK_PROBE_BED_POSITION 180
 //   #define FRONT_PROBE_BED_POSITION 20
 
-
     #define LEFT_PROBE_BED_POSITION 30
     #define RIGHT_PROBE_BED_POSITION 180
     #define BACK_PROBE_BED_POSITION 170
@@ -403,9 +402,12 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   // these are the offsets to the probe relative to the extruder tip (Hotend - Probe)
 //  #define X_PROBE_OFFSET_FROM_EXTRUDER 27
 //  #define Y_PROBE_OFFSET_FROM_EXTRUDER 9
-  #define X_PROBE_OFFSET_FROM_EXTRUDER 14.2
-  #define Y_PROBE_OFFSET_FROM_EXTRUDER -36.7
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER -3.1
+
+//X:14.10 Y:20.00 Z:1.90
+
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 14.1
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER 20
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER -2
 
   #define Z_RAISE_BEFORE_HOMING 50       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
@@ -456,7 +458,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {100*60, 100*60, 20*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {100*60, 100*60, 700, 0}  // set the homing speeds (mm/min)
 
 // default settings
 
@@ -732,7 +734,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Use M206 command to correct for switch height offset to actual nozzle height. Store that setting with M500.
 //
 #define SERVO_ENDSTOPS {-1, -1, 2} // Servo index for X, Y, Z. Disable with -1
-#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 155,15} // X,Y,Z Axis Extend and Retract angles
+#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 175,0} // X,Y,Z Axis Extend and Retract angles
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
