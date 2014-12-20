@@ -133,7 +133,7 @@
 // 147 is Pt100 with 4k7 pullup
 // 110 is Pt100 with 1k pullup (non standard)
 
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 71
 #define TEMP_SENSOR_1 -1
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 1
@@ -405,7 +405,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 //X:14.10 Y:20.00 Z:1.90
 
-  #define X_PROBE_OFFSET_FROM_EXTRUDER 14.1
+  #define X_PROBE_OFFSET_FROM_EXTRUDER -14.1
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -20
   #define Z_PROBE_OFFSET_FROM_EXTRUDER -2
 
