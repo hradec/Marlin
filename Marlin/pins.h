@@ -485,7 +485,7 @@
     #define X_STEP_PIN         54
     #define X_DIR_PIN          55
     #define X_ENABLE_PIN       38
-    #define X_MIN_PIN           15 //3
+    #define X_MIN_PIN           18 //15 //3
     #define X_MAX_PIN           2 //Max endstops default to disabled "-1", set to commented value to enable.
 
     #define Y_STEP_PIN         60
@@ -497,7 +497,7 @@
     #define Z_STEP_PIN         46
     #define Z_DIR_PIN          48
     #define Z_ENABLE_PIN       63
-    #define Z_MIN_PIN          18
+    #define Z_MIN_PIN          15 //18
     #define Z_MAX_PIN          -1
 
     #define Y2_STEP_PIN        36
@@ -527,7 +527,7 @@
     #define X_STEP_PIN         54
     #define X_DIR_PIN          55
     #define X_ENABLE_PIN       38
-    #define X_MIN_PIN           15 //2
+    #define X_MIN_PIN           18 //15 //2
     #define X_MAX_PIN           3
 
     #define Y_STEP_PIN         60
@@ -539,7 +539,7 @@
     #define Z_STEP_PIN         46
     #define Z_DIR_PIN          48
     #define Z_ENABLE_PIN       62
-    #define Z_MIN_PIN          18
+    #define Z_MIN_PIN          15 //18
     #define Z_MAX_PIN          19
 
     #define Y2_STEP_PIN        36
@@ -602,7 +602,7 @@
   #if MOTHERBOARD == 35
     #define HEATER_0_PIN       8
   #else
-    #define HEATER_0_PIN       10   // EXTRUDER 1
+    #define HEATER_0_PIN       4   // EXTRUDER 1
   #endif
 
   #if MOTHERBOARD == 33 || MOTHERBOARD == 67
@@ -645,7 +645,7 @@
     #if MOTHERBOARD == 77
       #define HEATER_BED_PIN     9    // BED
     #else
-      #define HEATER_BED_PIN     8    // BED
+      #define HEATER_BED_PIN     7 //8    // BED
     #endif
   #endif
 
@@ -663,7 +663,7 @@
     #endif
 
     #if NUM_SERVOS > 3
-      #define SERVO3_PIN         4
+      #define SERVO3_PIN         -1 //4
     #endif
   #endif
 

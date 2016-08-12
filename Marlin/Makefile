@@ -48,7 +48,8 @@ AVR_TOOLS_PATH ?=
 
 #Programmer configuration
 UPLOAD_RATE        ?= 115200
-AVRDUDE_PROGRAMMER ?= stk500v2
+#AVRDUDE_PROGRAMMER ?= stk500v2
+AVRDUDE_PROGRAMMER ?= wiring
 UPLOAD_PORT        ?= /dev/ttyACM0
 
 #Directory used to build files in, contains all the build files, from object files to the final hex file.
@@ -205,7 +206,7 @@ else
 HARDWARE_DIR = ../ArduinoAddons/Arduino_0.xx
 endif
 endif
-HARDWARE_SRC = $(HARDWARE_DIR)/$(HARDWARE_VARIANT)/cores/arduino
+HARDWARE_SRC = $(HARDWARE_DIR)/$(HARDWARE_VARIANT)/avr/cores/arduino
 
 TARGET = $(notdir $(CURDIR))
 
@@ -213,11 +214,13 @@ TARGET = $(notdir $(CURDIR))
 # there is no need to specify explicit pathnames as long as the
 # directory is added here
 
+
 VPATH = .
 VPATH += $(BUILD_DIR)
+VPATH += $(ARDUINO_INSTALL_DIR)/hardware/tools/avr/avr/include/
 VPATH += $(HARDWARE_SRC)
 ifeq ($(HARDWARE_VARIANT), arduino)
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/LiquidCrystal
+VPATH += $(ARDUINO_INSTALL_DIR)/libraries/LiquidCrystal/src/
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/SPI
 ifeq ($(LIQUID_TWI2), 1)
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/Wire
@@ -229,7 +232,7 @@ VPATH += $(ARDUINO_INSTALL_DIR)/libraries/Wire
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/Wire/utility
 endif
 else
-VPATH += $(HARDWARE_DIR)/libraries/LiquidCrystal
+VPATH += $(HARDWARE_DIR)/libraries/LiquidCrystal/src/
 VPATH += $(HARDWARE_DIR)/libraries/SPI
 ifeq ($(LIQUID_TWI2), 1)
 VPATH += $(HARDWARE_DIR)/libraries/Wire
@@ -248,14 +251,14 @@ else
 HARDWARE_SUB_VARIANT ?= standard
 VPATH += $(HARDWARE_DIR)/$(HARDWARE_VARIANT)/variants/$(HARDWARE_SUB_VARIANT)
 endif
-SRC = wiring.c \
+SRC = wiring.c  hooks.c\
 	wiring_analog.c wiring_digital.c \
 	wiring_pulse.c \
 	wiring_shift.c WInterrupts.c
 
 ifeq ($(HARDWARE_VARIANT), Teensy)
 SRC = wiring.c
-VPATH += $(ARDUINO_INSTALL_DIR)/hardware/teensy/cores/teensy
+VPATH += $(ARDUINO_INSTALL_DIR)/hardware/teensy/avr/cores/teensy
 endif
 CXXSRC = WMath.cpp WString.cpp Print.cpp \
          $(shell ls *.cpp)
@@ -339,15 +342,14 @@ CEXTRA = -fno-use-cxa-atexit
 CFLAGS := $(CDEBUG) $(CDEFS) $(CINCS) -O$(OPT) $(CWARN) $(CEXTRA) $(CTUNING)
 CXXFLAGS :=         $(CDEFS) $(CINCS) -O$(OPT) -Wall    $(CEXTRA) $(CTUNING)
 #ASFLAGS = -Wa,-adhlns=$(<:.S=.lst),-gstabs
-LDFLAGS = -lm
-
+LDFLAGS = -L/usr/share/arduino/hardware/tools/avr/avr/lib/avr6/ -lm
 
 # Programming support using avrdude. Settings and variables.
 AVRDUDE_PORT = $(UPLOAD_PORT)
 AVRDUDE_WRITE_FLASH = -U flash:w:$(BUILD_DIR)/$(TARGET).hex:i
 ifeq ($(shell uname -s), Linux)
-AVRDUDE_CONF = $(ARDUINO_INSTALL_DIR)/hardware/tools/avrdude.conf
-else
+#AVRDUDE_CONF = $(ARDUINO_INSTALL_DIR)/hardware/tools/avrdude.conf
+#else
 AVRDUDE_CONF = $(ARDUINO_INSTALL_DIR)/hardware/tools/avr/etc/avrdude.conf
 endif
 #AVRDUDE_CONF = ../ArduinoAddons/Arduino_0.xx/hardware/tools/avr/etc/avrdude.conf
@@ -386,7 +388,8 @@ build: $(BUILD_DIR) elf hex
 # Creates the object directory
 $(BUILD_DIR):
 	$P mkdir -p $(BUILD_DIR)
-	$P cp $(ARDUINO_INSTALL_DIR)/hardware/arduino/cores/arduino/WProgram.h $(BUILD_DIR)/../Arduino.h
+	$P #cp $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/cores/arduino/WProgram.h $(BUILD_DIR)/../Arduino.h
+	$P cp $(ARDUINO_INSTALL_DIR)/hardware/tools/avr/avr/lib/avr6/crtatmega2560.o  $(BUILD_DIR)/../
 
 elf: $(BUILD_DIR)/$(TARGET).elf
 hex: $(BUILD_DIR)/$(TARGET).hex
@@ -454,6 +457,7 @@ extcoff: $(TARGET).elf
 	# Link: create ELF output file from library.
 $(BUILD_DIR)/$(TARGET).elf: $(OBJ) Configuration.h
 	$(Pecho) "  CXX   $@"
+	echo $P $(CC) $(ALL_CXXFLAGS) -Wl,--gc-sections -o $@ -L. $(OBJ) $(LDFLAGS)
 	$P $(CC) $(ALL_CXXFLAGS) -Wl,--gc-sections -o $@ -L. $(OBJ) $(LDFLAGS)
 
 $(BUILD_DIR)/%.o: %.c Configuration.h Configuration_adv.h $(MAKEFILE)
