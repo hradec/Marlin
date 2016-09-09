@@ -377,13 +377,13 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //   #define FRONT_PROBE_BED_POSITION 20
 
     #define LEFT_PROBE_BED_POSITION 10
-    #define RIGHT_PROBE_BED_POSITION 190
-    #define BACK_PROBE_BED_POSITION 380
-    #define FRONT_PROBE_BED_POSITION 20
+    #define RIGHT_PROBE_BED_POSITION 180
+    #define BACK_PROBE_BED_POSITION 350
+    #define FRONT_PROBE_BED_POSITION 50
 
      // set the number of grid points per dimension
      // I wouldn't see a reason to go above 3 (=9 probing points on the bed)
-    #define AUTO_BED_LEVELING_GRID_POINTS 2
+    #define AUTO_BED_LEVELING_GRID_POINTS 3
 
 
   #else  // not AUTO_BED_LEVELING_GRID
@@ -393,8 +393,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
       #define ABL_PROBE_PT_1_X 10
       #define ABL_PROBE_PT_1_Y 380
       #define ABL_PROBE_PT_2_X 10
-      #define ABL_PROBE_PT_2_Y 30
-      #define ABL_PROBE_PT_3_X 380
+      #define ABL_PROBE_PT_2_Y 50
+      #define ABL_PROBE_PT_3_X 300
       #define ABL_PROBE_PT_3_Y 30
 
   #endif // AUTO_BED_LEVELING_GRID
@@ -406,24 +406,28 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //X:14.10 Y:20.00 Z:1.90
 //X:-3  Y:-20 Z:+20
 
-  #define X_PROBE_OFFSET_FROM_EXTRUDER 3
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 8
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 20
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER 20
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER -22.5
+
+//  #define X_PROBE_OFFSET_FROM_EXTRUDER 0
+//  #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
+//  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0
 
   #define Z_RAISE_BEFORE_HOMING 50       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
 
   #define XY_TRAVEL_SPEED 100*60         // X and Y axis travel speed between probes, in mm/min
 
-  #define Z_RAISE_BEFORE_PROBING 50    //How much the extruder will be raised before traveling to the first probing point.
-  #define Z_RAISE_BETWEEN_PROBINGS 30  //How much the extruder will be raised when traveling from between next probing points
+  #define Z_RAISE_BEFORE_PROBING 30    //How much the extruder will be raised before traveling to the first probing point.
+  #define Z_RAISE_BETWEEN_PROBINGS 5  //How much the extruder will be raised when traveling from between next probing points
 
 
   //If defined, the Probe servo will be turned on only during movement and then turned off to avoid jerk
   //The value is the delay to turn the servo off after powered on - depends on the servo speed; 300ms is good value, but you can try lower it.
   // You MUST HAVE the SERVO_ENDSTOPS defined to use here a value higher than zero otherwise your code will not compile.
 
-  #define PROBE_SERVO_DEACTIVATION_DELAY 480
+  #define PROBE_SERVO_DEACTIVATION_DELAY 290
 
 
 //If you have enabled the Bed Auto Leveling and are using the same Z Probe for Z Homing,
@@ -735,7 +739,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Use M206 command to correct for switch height offset to actual nozzle height. Store that setting with M500.
 //
 #define SERVO_ENDSTOPS {-1, -1, 2} // Servo index for X, Y, Z. Disable with -1
-#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 0,90} // X,Y,Z Axis Extend and Retract angles
+#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 20,110} // X,Y,Z Axis Extend and Retract angles
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
