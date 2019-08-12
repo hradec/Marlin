@@ -406,7 +406,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //X:14.10 Y:20.00 Z:1.90
 //X:-3  Y:-20 Z:+20
 
-  #define X_PROBE_OFFSET_FROM_EXTRUDER 8
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 10
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 20
   #define Z_PROBE_OFFSET_FROM_EXTRUDER -22.5
 
@@ -739,7 +739,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Use M206 command to correct for switch height offset to actual nozzle height. Store that setting with M500.
 //
 #define SERVO_ENDSTOPS {-1, -1, 2} // Servo index for X, Y, Z. Disable with -1
-#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 20,110} // X,Y,Z Axis Extend and Retract angles
+#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 35,110} // X,Y,Z Axis Extend and Retract angles
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
