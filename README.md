@@ -2,10 +2,8 @@
 HBot Marlin firmware and Octoprint Setup
 ----------------------------------------
 
-Create a symlink of .octoprint to ~/.octoprint: `ln -s ~/Marlin/.octoprint ~/`
+Clone this depot in your home folder as `~/Marlin`.
 
-Install restartd, and copy `restartd.conf` to `/etc/`.
+Just run `cd ~/Marlin ; make install` and everything will be installed for you. 
 
-Add `restard` to `/etc/rc.local`, so restartd can start everything (and keep monitoring).
-
-To install the firmware, just go in Marlin/Marlin, and run `make upload`.
+To install the firmware in the arduino mega, just run `cd ~/Marlin/Marlin ; make upload`.
