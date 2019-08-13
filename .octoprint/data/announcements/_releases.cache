@@ -1,162 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <description></description>
-    <link>/</link>
-    <atom:link href="http://octoprint.org/feeds/releases.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 04 Sep 2016 13:20:43 +0000</pubDate>
-    <lastBuildDate>Sun, 04 Sep 2016 13:20:43 +0000</lastBuildDate>
-    <generator>Jekyll v3.2.1</generator>
+    <title>OctoPrint Release Announcements</title>
+    
+    <link>https://octoprint.org/blog/</link>
+    <atom:link href="https://octoprint.org/feeds/releases.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 07 Aug 2019 10:01:31 +0000</pubDate>
+    <lastBuildDate>Wed, 07 Aug 2019 10:01:31 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>New release: 1.2.15</title>
+        <title>New release: 1.3.11</title>
         <description>
           <![CDATA[
-            <p>Late on the 28th it sadly came to my attention that some users were
-experiencing severe problems with their printer communication after
-upgrading to the 1.2.14 release just published earlier that day. I immediately 
-stopped the roll out of 1.2.14 and went to investigate.</p>
-
-
+            After three months of development and another two of testing by the community, I'm happy to present you OctoPrint 1.3.11. While this is a maintenance release, it not only packs a bunch of bug fixes but also a whole lot of improvements.
           ]]>
         </description>
-        <pubDate>Sat, 30 Jul 2016 07:00:00 +0000</pubDate>
-        <link>http://octoprint.org/blog/2016/07/30/new-release-1.2.15/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2016/07/30/new-release-1.2.15/</guid>
+        <pubDate>Tue, 14 May 2019 09:00:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2019/05/14/new-release-1.3.11/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2019/05/14/new-release-1.3.11/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.14</title>
+        <title>New release candidate: 1.3.11rc3</title>
         <description>
           <![CDATA[
-            A big load of improvements and of course the usual share of fixes of bugs and minor annoyances awaits you in this release fresh off the presses.
+            The third release candidate for the upcoming 1.3.11 stable release.
           ]]>
         </description>
-        <pubDate>Thu, 28 Jul 2016 12:20:00 +0000</pubDate>
-        <link>http://octoprint.org/blog/2016/07/28/new-release-1-2-14/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2016/07/28/new-release-1-2-14/</guid>
+        <pubDate>Thu, 11 Apr 2019 12:25:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2019/04/11/new-release-candidate-1.3.11rc3/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2019/04/11/new-release-candidate-1.3.11rc3/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.13</title>
+        <title>New release candidate: 1.3.11rc2</title>
         <description>
           <![CDATA[
-            <p>What’s this, another release just one week after the last one? Yep, and
-it’s just to make your OctoPrint experience as smooth as possible :)</p>
-
-
+            The second release candidate for the upcoming 1.3.11 stable release.
           ]]>
         </description>
-        <pubDate>Thu, 16 Jun 2016 10:30:00 +0000</pubDate>
-        <link>http://octoprint.org/blog/2016/06/16/new-release-1-2-13/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2016/06/16/new-release-1-2-13/</guid>
+        <pubDate>Thu, 04 Apr 2019 15:00:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2019/04/04/new-release-candidate-1.3.11rc2/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2019/04/04/new-release-candidate-1.3.11rc2/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.12</title>
+        <title>New release candidate: 1.3.11rc1</title>
         <description>
           <![CDATA[
-            <p>A fresh release with lots of bug fixes (especially some for some quite
-annoying issues) and improvements. A true maintenance release for once ;)</p>
-
-
+            The first release candidate for the upcoming 1.3.11 stable release.
           ]]>
         </description>
-        <pubDate>Thu, 09 Jun 2016 08:00:00 +0000</pubDate>
-        <link>http://octoprint.org/blog/2016/06/09/new-release-1-2-12/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2016/06/09/new-release-1-2-12/</guid>
+        <pubDate>Thu, 28 Mar 2019 11:15:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2019/03/28/new-release-candidate-1.3.11rc1/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2019/03/28/new-release-candidate-1.3.11rc1/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.11</title>
+        <title>New release: 1.3.10</title>
         <description>
           <![CDATA[
-            <p>This shiny new release contains two new pieces
-of functionality on top of the usual fixes of bugs and little annoyances,
-the “About” dialog and the Announcement Plugin.</p>
-
-
+            After four weeks of testing by the community and just in time for the holidays, I'm happy to present you OctoPrint 1.3.10. While this is a maintenance release, it not only packs a bunch of bug fixes but also a whole lot of improvements, including the new Backup & Restore plugin and Application Keys plugin.
           ]]>
         </description>
-        <pubDate>Wed, 04 May 2016 14:00:00 +0000</pubDate>
-        <link>http://octoprint.org/blog/2016/05/04/new-release-1-2-11/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2016/05/04/new-release-1-2-11/</guid>
+        <pubDate>Mon, 10 Dec 2018 13:50:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2018/12/10/new-release-1.3.10/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2018/12/10/new-release-1.3.10/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.10</title>
+        <title>New release candidate: 1.3.10rc4</title>
         <description>
           <![CDATA[
-            This should have been released way faster after 1.2.9, since it fixes two bugs introduced by this release, but a nasty flu that&#39;s making the rounds in Germany got in the way of this. While this time we have mostly fixes of bugs and little annoyances, at least a hand full of minor improvements also made it into this release:<br />
-
-
-
+            The fourth release candidate of the 1.3.10 release, with fixes and improvements for the newly introduced backup & restore plugin.
           ]]>
         </description>
-        <pubDate>Wed, 16 Mar 2016 09:39:36 +0000</pubDate>
-        <link>http://octoprint.org/blog/2016/03/16/new-release-1-2-10/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2016/03/16/new-release-1-2-10/</guid>
+        <pubDate>Mon, 03 Dec 2018 13:00:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2018/12/03/new-release-candidate-1.3.10rc4/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2018/12/03/new-release-candidate-1.3.10rc4/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.9</title>
+        <title>New release candidate: 1.3.10rc3</title>
         <description>
           <![CDATA[
-            The first release of 2016 brings you a whole basket full of fixes of bugs and little annoyances and of course also a couple of improvements of existing functionality, for example:<br />
-
-
-
+            The third release candidate of the 1.3.10 release, with fixes for regressions discovered in 1.3.10rc2 and also a small number of improvements of the newly added functionality.
           ]]>
         </description>
-        <pubDate>Wed, 10 Feb 2016 14:29:58 +0000</pubDate>
-        <link>http://octoprint.org/blog/2016/02/10/new-release-1-2-9/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2016/02/10/new-release-1-2-9/</guid>
+        <pubDate>Wed, 28 Nov 2018 13:40:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2018/11/28/new-release-candidate-1.3.10rc3/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2018/11/28/new-release-candidate-1.3.10rc3/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.8</title>
+        <title>New release candidate: 1.3.10rc2</title>
         <description>
           <![CDATA[
-            The most important thing right at the beginning: <b>If you are currently running version 1.2.7 you&#39;ll need to install the &quot;Updatefix 1.2.7&quot; plugin from the plugin repository before you can update your OctoPrint installation.</b><br />
-
-
-
+            The second release candidate of the 1.3.10 release, with fixes for regressions discovered in 1.3.10rc1 and also a small number of improvements of the newly added functionality.
           ]]>
         </description>
-        <pubDate>Mon, 07 Dec 2015 13:46:20 +0000</pubDate>
-        <link>http://octoprint.org/blog/2015/12/07/new-release-1-2-8/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2015/12/07/new-release-1-2-8/</guid>
+        <pubDate>Tue, 13 Nov 2018 13:20:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2018/11/13/new-release-candidate-1.3.10rc2/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2018/11/13/new-release-candidate-1.3.10rc2/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.7</title>
+        <title>New release candidate: 1.3.10rc1</title>
         <description>
           <![CDATA[
-            Mostly fixes of minor bugs and annoyances but also a couple of improvements:<br />
-
-
-
+            The first release candidate of the 1.3.10 release, with various improvements and bug fixes.
           ]]>
         </description>
-        <pubDate>Tue, 20 Oct 2015 12:50:03 +0000</pubDate>
-        <link>http://octoprint.org/blog/2015/10/20/new-release-1-2-7/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2015/10/20/new-release-1-2-7/</guid>
+        <pubDate>Tue, 06 Nov 2018 11:10:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2018/11/06/new-release-candidate-1.3.10rc1/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2018/11/06/new-release-candidate-1.3.10rc1/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
       <item>
-        <title>New release: 1.2.6</title>
+        <title>New release: 1.3.9</title>
         <description>
           <![CDATA[
-            <i>Whoa, another one?</i> Yup. I forgot to pin the version of a library OctoPrint now depends on since 1.2.5. A new version of that library was released today which apparently has a bug that causes the <i>install</i> of OctoPrint to crash when it tries to pull in that new library version (&quot;pip install .&quot; works, &quot;python setup.py install&quot; does not). If you tried to update today and ran into errors, read further below on how to solve this manually.<br />
-
-
-
+            Despite the current heat wave pressing down on Germany making development harder than usual, I'm happy to present you OctoPrint 1.3.9. This is a true maintenance release again, consisting of various improvements and fixes.
           ]]>
         </description>
-        <pubDate>Wed, 02 Sep 2015 18:16:24 +0000</pubDate>
-        <link>http://octoprint.org/blog/2015/09/02/new-release-1-2-6/</link>
-        <guid isPermaLink="true">http://octoprint.org/blog/2015/09/02/new-release-1-2-6/</guid>
+        <pubDate>Wed, 25 Jul 2018 14:00:00 +0000</pubDate>
+        <link>https://octoprint.org/blog/2018/07/25/new-release-1.3.9/?utm_source=rss&amp;utm_medium=releases</link>
+        <guid isPermaLink="true">https://octoprint.org/blog/2018/07/25/new-release-1.3.9/</guid>
+        <category>OctoPrint Release Announcements</category>
       </item>
     
   </channel>

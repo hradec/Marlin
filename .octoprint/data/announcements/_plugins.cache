@@ -4,218 +4,249 @@
     <title>OctoPrint Plugin Repository</title>
     <description>The official OctoPrint Plugin Repository</description>
     <link>http://plugins.octoprint.org/</link>
-    <atom:link href="http://plugins.octoprint.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 04 Sep 2016 06:28:37 +0000</pubDate>
-    <lastBuildDate>Sun, 04 Sep 2016 06:28:37 +0000</lastBuildDate>
-    <generator>Jekyll v3.2.1</generator>
+    <atom:link href="https://plugins.octoprint.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 01 Aug 2019 15:07:35 +0000</pubDate>
+    <lastBuildDate>Thu, 01 Aug 2019 15:07:35 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
     
       <item>
-        <title>Detailed Progress</title>
+        <title>PauseForUser Event</title>
         <description>
           <![CDATA[
-            Displays detailed progress on the LCD screen
-            <p><img src="http://plugins.octoprint.org/assets/img/plugins/detailedprogress/example-eta.jpg"></p>
+            Adds a new event 'paused_for_user' when the printer needs manual intervention
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
           ]]>
         </description>
         <pubDate>
-Fri, 02 Sep 2016 00:00:00 +0000
+Tue, 11 Jun 2019 00:00:00 +0000
 </pubDate>
-        <link>http://plugins.octoprint.org/plugins/detailedprogress/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/detailedprogress/</guid>
+        <link>http://plugins.octoprint.org/plugins/PauseForUserEvent/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/PauseForUserEvent/</guid>
         
-        <category>display</category>
+        <category>paused for user</category>
         
-        <category>lcd</category>
+        <category>Prusa MMU2</category>
+        
+        <category>notification</category>
+        
+        <category>event</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-PrinterAlerts</title>
+        <description>
+          <![CDATA[
+            Alert the user when their printer is waiting for interaction.
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/PrinterAlerts/screenshot.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Sat, 08 Jun 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/PrinterAlerts/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/PrinterAlerts/</guid>
         
         <category>printer</category>
         
-        <category>progress</category>
+        <category>alert</category>
+        
+        <category>waiting</category>
+        
+        <category>notification</category>
+        
+        <category>multimaterial</category>
         
       </item>
     
       <item>
-        <title>GCodeBar</title>
+        <title>Filament Sensor Encore</title>
         <description>
           <![CDATA[
-            Send GCode from the sidebar
-            <p><img src="http://plugins.octoprint.org/assets/img/plugins/gcodebar/gcodebar.png"></p>
+            OctoPrint plug-in that detects when printer is out of filament
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
           ]]>
         </description>
         <pubDate>
-Thu, 01 Sep 2016 00:00:00 +0000
+Mon, 03 Jun 2019 00:00:00 +0000
 </pubDate>
-        <link>http://plugins.octoprint.org/plugins/gcodebar/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/gcodebar/</guid>
-        
-        <category>gcode</category>
-        
-        <category>control</category>
-        
-        <category>sidebar</category>
-        
-      </item>
-    
-      <item>
-        <title>Multi Colors</title>
-        <description>
-          <![CDATA[
-            Inject GCODE at specified layers to allow multi color printing
-          ]]>
-        </description>
-        <pubDate>
-Wed, 29 Jun 2016 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/multi_colors/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/multi_colors/</guid>
-        
-        <category>color</category>
-        
-        <category>filament change</category>
-        
-      </item>
-    
-      <item>
-        <title>Filament Sensor</title>
-        <description>
-          <![CDATA[
-            Use a filament sensor to pause printing when filament runs out.
-          ]]>
-        </description>
-        <pubDate>
-Wed, 29 Jun 2016 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/filament_sensor/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/filament_sensor/</guid>
+        <link>http://plugins.octoprint.org/plugins/filamentencore/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/filamentencore/</guid>
         
         <category>filament</category>
         
         <category>sensor</category>
         
-        <category>api</category>
+      </item>
+    
+      <item>
+        <title>OctoPrint-OctoFlat</title>
+        <description>
+          <![CDATA[
+            A flat theme for OctoPrint.
+            <p><img src="https://raw.githubusercontent.com/juniorRubyist/OctoPrint-OctoFlat/master/assets/octoprint_1.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Mon, 03 Jun 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/OctoFlat/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/OctoFlat/</guid>
+        
+        <category>theme</category>
+        
+        <category>ui</category>
+        
+        <category>tweak</category>
         
       </item>
     
       <item>
-        <title>Autoscroll</title>
+        <title>Change_Filament</title>
         <description>
           <![CDATA[
-            Turn on/off terminal autoscroll when scrolling up/down
+            Facilitates changing filament (backs out old, loads new)
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/Change_Filament/cf_buttons.png"></p>
           ]]>
         </description>
         <pubDate>
-Mon, 27 Jun 2016 00:00:00 +0000
+Wed, 29 May 2019 00:00:00 +0000
 </pubDate>
-        <link>http://plugins.octoprint.org/plugins/autoscroll/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/autoscroll/</guid>
+        <link>http://plugins.octoprint.org/plugins/Change_Filament/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/Change_Filament/</guid>
         
-        <category>terminal</category>
-        
-        <category>autoscroll</category>
+        <category>filament</category>
         
       </item>
     
       <item>
-        <title>Cost estimator</title>
+        <title>Upload Anything</title>
         <description>
           <![CDATA[
-            When a file is loaded to be printed, it will display the estimated cost of printing.
+            Allows custom file types to be uploaded via the web interface
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/uploadanything/settings.png"></p>
           ]]>
         </description>
         <pubDate>
-Sat, 11 Jun 2016 00:00:00 +0000
+Tue, 28 May 2019 00:00:00 +0000
 </pubDate>
-        <link>http://plugins.octoprint.org/plugins/cost/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/cost/</guid>
+        <link>http://plugins.octoprint.org/plugins/uploadanything/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/uploadanything/</guid>
         
-        <category>helper</category>
+        <category>file upload</category>
         
-        <category>cost</category>
+        <category>upload</category>
         
       </item>
     
       <item>
-        <title>OctoPrint Redeem</title>
+        <title>OctoPrint-OctoPod</title>
         <description>
           <![CDATA[
-            Control Redeems configuration
-            <p><img src="http://www.thing-printer.com/wp-content/uploads/2016/04/octoprint-redeem.png"></p>
+            OctoPrint plugin for OctoPod
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/octopod/print_finished.jpg"></p>
           ]]>
         </description>
         <pubDate>
-Tue, 26 Apr 2016 00:00:00 +0000
+Tue, 28 May 2019 00:00:00 +0000
 </pubDate>
-        <link>http://plugins.octoprint.org/plugins/redeem/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/redeem/</guid>
+        <link>http://plugins.octoprint.org/plugins/octopod/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/octopod/</guid>
         
-        <category>redeem</category>
+        <category>octopod</category>
         
-        <category>replicape</category>
+        <category>bed temperature</category>
         
-        <category>firmware</category>
+        <category>print finished</category>
         
-        <category>control</category>
+        <category>iOS</category>
+        
+        <category>notifications</category>
+        
+        <category>mmu</category>
         
       </item>
     
       <item>
-        <title>Pushover</title>
+        <title>OctoPrint-PrePrintService</title>
         <description>
           <![CDATA[
-            A plugin that send a notification with Pushover when the job is done
-            <p><img src="http://plugins.octoprint.org/assets/img/plugins/pushover/pushover.png"></p>
+            This service supports your 3D printing workflow by providing auto-rotation and slicing functionality.
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/preprintservice/workflow.png"></p>
           ]]>
         </description>
         <pubDate>
-Wed, 13 Apr 2016 00:00:00 +0000
+Sun, 12 May 2019 00:00:00 +0000
 </pubDate>
-        <link>http://plugins.octoprint.org/plugins/pushover/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/pushover/</guid>
+        <link>http://plugins.octoprint.org/plugins/preprintservice/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/preprintservice/</guid>
         
-        <category>notification</category>
+        <category>slic3r</category>
+        
+        <category>gcode</category>
+        
+        <category>stl</category>
+        
+        <category>tweak</category>
+        
+        <category>auto-rotate</category>
         
       </item>
     
       <item>
-        <title>OctoPrint-Telegram</title>
+        <title>PCA9685 LED Strip Control</title>
         <description>
           <![CDATA[
-            A plugin to send and react on messages before, during and after a print via Telegram Messenger.
-            <p><img src="http://plugins.octoprint.org/assets/img/plugins/telegram/features3.png"></p>
+            OctoPrint plugin for controling RGB LED Strips via PCA9685 over I2C
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/PCA9685LEDStripControl/PCA9685_dev_board.jpg"></p>
           ]]>
         </description>
         <pubDate>
-Thu, 25 Feb 2016 00:00:00 +0000
+Tue, 07 May 2019 00:00:00 +0000
 </pubDate>
-        <link>http://plugins.octoprint.org/plugins/telegram/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/telegram/</guid>
+        <link>http://plugins.octoprint.org/plugins/PCA9685LEDStripControl/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/PCA9685LEDStripControl/</guid>
         
-        <category>notification</category>
+        <category>pca9685</category>
         
-        <category>mobile</category>
+        <category>i2c</category>
+        
+        <category>hardware pwm</category>
+        
+        <category>pwm</category>
+        
+        <category>raspberry pi</category>
+        
+        <category>led</category>
+        
+        <category>rgb</category>
+        
+        <category>gcode</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-Complicated</title>
+        <description>
+          <![CDATA[
+            Display Print Progress on your Apple Watch using the Complicated iOS App
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/octoprint_complicated/demo.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Tue, 23 Apr 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/octoprint_complicated/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/octoprint_complicated/</guid>
+        
+        <category>apple watch</category>
+        
+        <category>ios</category>
         
         <category>progress</category>
-        
-        <category>control</category>
-        
-      </item>
-    
-      <item>
-        <title>Title Status</title>
-        <description>
-          <![CDATA[
-            Show printers status in window title
-          ]]>
-        </description>
-        <pubDate>
-Mon, 18 Jan 2016 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/title_status/</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/title_status/</guid>
-        
-        <category>title</category>
-        
-        <category>status</category>
         
       </item>
     

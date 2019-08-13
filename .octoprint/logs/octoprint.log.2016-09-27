@@ -1,6 +1,0 @@
-2016-09-27 09:11:14,860 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
-2016-09-27 09:11:17,006 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
-2016-09-27 09:11:19,126 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.26s
-2016-09-27 16:56:41,801 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0027.print_VATA2.gcode
-2016-09-27 18:52:12,432 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0027.print_VATA2.gcode
-2016-09-28 00:17:18,753 - tornado.general - INFO - Malformed HTTP message from 94.102.49.102: Malformed HTTP request line

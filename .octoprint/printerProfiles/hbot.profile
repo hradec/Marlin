@@ -18,11 +18,14 @@ extruder:
   offsets:
   - - 0.0
     - 0.0
+  sharedNozzle: false
 heatedBed: true
+heatedChamber: false
 id: hbot
 model: ''
 name: HBOT
 volume:
+  custom_box: false
   depth: 400.0
   formFactor: rectangular
   height: 200.0

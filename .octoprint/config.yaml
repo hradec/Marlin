@@ -38,38 +38,50 @@ plugins:
   _disabled:
   - cura
   announcements:
+    _config_version: 1
     channels:
       _important:
         read_until: 1521111600
-      _news:
-        read_until: 1472994000
       _octopi:
         read_until: 1462200600
       _plugins:
         read_until: 1472774400
       _releases:
         read_until: 1469862000
-      _spotlight:
-        read_until: 1447953971
   cost:
     cost_per_hour: '0'
     cost_per_meter: '0.5'
     currency: CAD
   discovery:
     upnpUuid: 80e0f0c7-62b9-4057-ac1e-933173a07e16
+  errortracking:
+    unique_id: 386838c0-b3ca-4334-b363-83e12290613d
   pluginmanager:
     pip: sudo /bin/pip2
   softwareupdate:
-    _config_version: 4
+    _config_version: 6
+    check_providers:
+      active_filters: active_filters
+      bqappcompanion: bqappcompanion
+      cost: cost
+      customcontrol: customControl
+      portlister: portlister
+      requestspinner: requestspinner
+      systemcommandeditor: systemcommandeditor
+      touchui: touchui
+      yamlpatcher: yamlpatcher
     checks:
       octoprint:
         checkout_folder: /home/rhradec/tmp/
+        method: update_script
         type: git_commit
   touchui:
     hasCustom: false
     refreshCSS: false
     requireNewCSS: false
     whatsNew: false
+  tracking:
+    unique_id: 8ff6ccb0-9449-49c4-a0cd-14490d306a71
 printerParameters: {}
 printerProfiles:
   default: hbot
@@ -81,19 +93,13 @@ serial:
   port: /dev/ttyACM0
   timeout: {}
 server:
-  commands: {}
+  commands:
+    systemRestartCommand: /home/rhradec/reboot
+    systemShutdownCommand: /home/rhradec/halt
   firstRun: false
   secretKey: TqvOHtTtA8ySBpXYdOaJNregUk5wHJNg
 system:
   actions:
-  - action: reboot
-    command: /home/rhradec/reboot
-    confirm: ''
-    name: Reboot
-  - action: shutdown
-    command: /home/rhradec/halt
-    confirm: It's safe to turn off power after lights stop blinking!!
-    name: Shutdown
   - action: divider
   - action: restartOctoprint
     command: /home/rhradec/restartOctoprint
@@ -108,20 +114,20 @@ temperature:
   - bed: 60
     extruder: 180
     name: '180'
-  - bed: '60'
-    extruder: '190'
+  - bed: 60
+    extruder: 190
     name: '190'
-  - bed: '60'
-    extruder: '200'
+  - bed: 60
+    extruder: 200
     name: '200'
-  - bed: '60'
-    extruder: '220'
+  - bed: 60
+    extruder: 220
     name: '220'
-  - bed: '60'
-    extruder: '230'
+  - bed: 60
+    extruder: 230
     name: '230'
-  - bed: '60'
-    extruder: '240'
+  - bed: 60
+    extruder: 240
     name: '240'
 terminalFilters:
 - name: Suppress M105 requests/responses

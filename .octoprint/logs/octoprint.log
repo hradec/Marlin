@@ -2244,3 +2244,370 @@ ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known
 2019-08-12 22:07:40,278 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
 2019-08-12 22:07:41,505 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
 2019-08-12 22:13:52,632 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2019-08-12 23:04:15,334 - octoprint.startup - INFO - ******************************************************************************
+2019-08-12 23:04:15,338 - octoprint.startup - INFO - Starting OctoPrint 1.3.11
+2019-08-12 23:04:15,339 - octoprint.startup - INFO - --- Logged during platform initialization: -----------------------------------
+2019-08-12 23:04:14,248 - octoprint.settings - INFO - Migrated reboot action to server.commands.systemRestartCommand
+2019-08-12 23:04:14,249 - octoprint.settings - INFO - Deleting reboot action from configured system commands, superseeded by server.commands.systemRestartCommand
+2019-08-12 23:04:14,250 - octoprint.settings - INFO - Migrated shutdown action to server.commands.systemShutdownCommand
+2019-08-12 23:04:14,251 - octoprint.settings - INFO - Deleting shutdown action from configured system commands, superseeded by server.commands.systemShutdownCommand
+2019-08-12 23:04:14,253 - octoprint.settings - INFO - Made a copy of the current config at /home/rhradec/.octoprint/config.system_command_migration.yaml to allow recovery of manual system command configuration
+2019-08-12 23:04:15,357 - octoprint.startup - INFO - ------------------------------------------------------------------------------
+2019-08-12 23:04:15,360 - octoprint.startup - INFO - ******************************************************************************
+2019-08-12 23:04:15,460 - octoprint.plugin.core - INFO - Loading plugins from /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins, /home/rhradec/.octoprint/plugins and installed plugin packages...
+2019-08-12 23:04:20,098 - octoprint.plugins.octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2019-08-12 23:04:20,892 - octoprint.plugin.core - INFO - Found 26 plugin(s) providing 26 mixin implementations, 35 hook handlers
+2019-08-12 23:04:21,718 - octoprint.server.heartbeat - INFO - Starting server heartbeat, 900.0s interval
+2019-08-12 23:04:21,754 - octoprint.server - INFO - Intermediary server started
+2019-08-12 23:04:21,755 - octoprint.plugin.core - INFO - Loading plugins from /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins, /home/rhradec/.octoprint/plugins and installed plugin packages...
+2019-08-12 23:04:22,767 - octoprint.plugin.core - INFO - Found 26 plugin(s) providing 26 mixin implementations, 35 hook handlers
+2019-08-12 23:04:22,911 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/Marlin/.octoprint/uploads...
+2019-08-12 23:04:24,446 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/Marlin/.octoprint/uploads initialized successfully.
+2019-08-12 23:04:24,716 - octoprint.plugins.softwareupdate - INFO - Version cache was created for another version of OctoPrint, not using it
+2019-08-12 23:04:30,116 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:04:34,827 - octoprint.util.pip - INFO - Version of pip is 19.2.2
+2019-08-12 23:04:34,831 - octoprint.util.pip - INFO - pip installs to /usr/lib/octoprint/lib/python2.7/site-packages (writable -> no), --user flag needed -> no, virtual env -> yes
+2019-08-12 23:04:34,832 - octoprint.util.pip - INFO - ==> pip ok -> NO!
+2019-08-12 23:04:34,833 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages.
+2019-08-12 23:04:34,844 - octoprint.plugin.core - INFO - Initialized 26 plugin implementation(s)
+2019-08-12 23:04:36,279 - octoprint.plugin.core - INFO - 26 plugin(s) registered with the system:
+|  Action Command Prompt Support (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/action_command_prompt
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  Anonymous Usage Tracking (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/tracking
+|  Application Keys Plugin (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/appkeys
+|  Backup & Restore (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/backup
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Core Wizard (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/corewizard
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Error Tracking (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/errortracking
+|  Force Login (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/forcelogin
+|  Logging (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/logging
+|  Pi Support Plugin (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pi_support
+|  Plugin Manager (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  Printer Safety Check (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/printer_safety_check
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2019-08-12 23:04:36,319 - octoprint.environment - INFO - Detected environment is Python 2.7.12 under Linux (linux2). Details:
+|  hardware:
+|    cores: 4
+|    freq: 900.0
+|    ram: 967061504
+|  os:
+|    id: linux
+|    platform: linux2
+|  plugins:
+|    pi_support:
+|      model: Raspberry Pi 2 Model B Rev 1.1
+|  python:
+|    pip: 8.1.2
+|    version: 2.7.12
+|    virtualenv: /usr/lib/octoprint
+2019-08-12 23:04:36,343 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2019-08-12 23:04:36,369 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2019-08-12 23:04:39,074 - octoprint.server - INFO - Shutting down intermediary server...
+2019-08-12 23:04:39,516 - octoprint.server - INFO - Intermediary server shut down
+2019-08-12 23:04:39,523 - octoprint.events - INFO - Processing startup event, this is our first event
+2019-08-12 23:04:39,526 - octoprint.events - INFO - Adding 0 events to queue that were held back before startup event
+2019-08-12 23:04:39,533 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2019-08-12 23:04:39,542 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2019-08-12 23:04:39,837 - octoprint.server.util.watchdog - INFO - Running initial scan on watched folder...
+2019-08-12 23:04:39,844 - octoprint.server.util.watchdog - INFO - ... initial scan done.
+2019-08-12 23:04:39,862 - octoprint.util.comm - INFO - Changing monitoring state from "Offline" to "Opening serial port"
+2019-08-12 23:04:39,897 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2019-08-12 23:04:39,925 - octoprint.plugins.pi_support - ERROR - Got an error while trying to fetch the current throttle state via "/usr/bin/vcgencmd get_throttled"
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pi_support/__init__.py", line 263, in _check_throttled_state
+    state = get_vcgencmd_throttled_state(command)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pi_support/__init__.py", line 137, in get_vcgencmd_throttled_state
+    output = sarge.get_stdout(command)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1503, in get_stdout
+    p = capture_stdout(cmd, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1473, in capture_stdout
+    return run(cmd, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1462, in run
+    p.run(input=input, async_=async_)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1071, in run
+    self.run_node(node, input=input, async_=False)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1187, in run_node
+    result = getattr(self, method)(node, input, async_)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1333, in run_command_node
+    node.cmd.run(input=input, async_=async_)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 658, in run
+    raise ValueError('Command not found: %s' % self.args[0])
+ValueError: Command not found: /usr/bin/vcgencmd
+2019-08-12 23:04:39,935 - octoprint.util.comm - INFO - Changing monitoring state from "Opening serial port" to "Connecting"
+2019-08-12 23:04:39,961 - octoprint.server - INFO - Listening on http://0.0.0.0:5000 and http://[::]:5000
+2019-08-12 23:04:39,970 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:04:40,093 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2019-08-12 23:04:41,488 - tornado.access - WARNING - 404 GET /intermediary.gif?_=1565676280009 (192.168.10.10) 36.94ms
+2019-08-12 23:04:42,045 - octoprint.plugins.pluginmanager - INFO - Loaded plugin notices data from https://plugins.octoprint.org/notices.json
+2019-08-12 23:04:42,192 - octoprint.plugins.announcements - INFO - Loaded channel _releases from https://octoprint.org/feeds/releases.xml in 0.93s
+2019-08-12 23:04:42,526 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:42,578 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676282472 (192.168.10.10) 99.56ms
+2019-08-12 23:04:42,729 - tornado.access - WARNING - 404 GET /intermediary.gif?_=1565676282682 (192.168.10.10) 31.63ms
+2019-08-12 23:04:43,295 - octoprint.plugins.announcements - INFO - Loaded channel _blog from https://octoprint.org/feeds/octoblog.xml in 0.85s
+2019-08-12 23:04:43,728 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:43,777 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676283682 (192.168.10.10) 78.57ms
+2019-08-12 23:04:44,353 - octoprint.plugins.announcements - INFO - Loaded channel _plugins from https://plugins.octoprint.org/feed.xml in 0.84s
+2019-08-12 23:04:44,825 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:44,873 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676284782 (192.168.10.10) 83.82ms
+2019-08-12 23:04:45,484 - octoprint.plugins.announcements - INFO - Loaded channel _octopi from https://octoprint.org/feeds/octopi.xml in 0.83s
+2019-08-12 23:04:45,739 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:04:45,744 - octoprint.util.pip - INFO - pip installs to /usr/lib/octoprint/lib/python2.7/site-packages (writable -> no), --user flag needed -> no, virtual env -> yes
+2019-08-12 23:04:45,745 - octoprint.util.pip - INFO - ==> pip ok -> NO!
+2019-08-12 23:04:45,746 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages.
+2019-08-12 23:04:45,757 - octoprint.plugin - ERROR - Error while calling plugin softwareupdate
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugin/__init__.py", line 219, in call_plugin
+    result = getattr(plugin, method)(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 102, in on_after_startup
+    self._check_environment()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 189, in _check_environment
+    and get_comparable_version(versions["pip"]) >= get_comparable_version(MINIMUM_PIP)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/version.py", line 148, in get_comparable_version
+    if "-" in version_string:
+TypeError: argument of type 'NoneType' is not iterable
+2019-08-12 23:04:45,759 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2019-08-12 23:04:45,921 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:46,007 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676285876 (192.168.10.10) 117.23ms
+2019-08-12 23:04:46,628 - octoprint.server.preemptive_cache - INFO - Preemptively caching / (ui _default) for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2019-08-12 23:04:47,050 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:47,099 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676287006 (192.168.10.10) 78.35ms
+2019-08-12 23:04:47,544 - octoprint.plugins.softwareupdate - WARNING - Software update hook systemcommandeditor provides check for itself but that was already registered by eeprom_marlin - overwriting that third party registration now!
+2019-08-12 23:04:48,331 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:48,377 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676288113 (192.168.10.10) 109.42ms
+2019-08-12 23:04:48,987 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:04:49,522 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:49,566 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676289381 (192.168.10.10) 73.09ms
+2019-08-12 23:04:51,434 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:04:51,765 - tornado.access - WARNING - 404 GET /cached.gif?_=1565676290570 (192.168.10.10) 411.58ms
+2019-08-12 23:04:51,782 - octoprint.util.comm - INFO - Changing monitoring state from "Connecting" to "Operational"
+2019-08-12 23:04:51,843 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:04:51,939 - octoprint.util.comm - INFO - Printer reports firmware name "Marlin V1; Sprinter/grbl mashup for gen6"
+2019-08-12 23:05:02,423 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:05:40,881 - octoprint.server.preemptive_cache - INFO - ... done in 54.25s
+2019-08-12 23:05:40,939 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:05:40,971 - octoprint.server.views - INFO - Path / was bypassed from cache (key: ui:_default:http://hbot.local:5000/:en), signaling as cached
+2019-08-12 23:05:41,018 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:05:41,050 - octoprint.server.views - INFO - Path / was bypassed from cache (key: ui:_default:http://hbot.local:5000/:en), signaling as cached
+2019-08-12 23:05:42,468 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:05:57,324 - tornado.application - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/http1connection.py", line 185, in _read_message
+    header_future = delegate.headers_received(start_line, headers)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/httpserver.py", line 308, in headers_received
+    return self.delegate.headers_received(start_line, headers)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/routing.py", line 245, in headers_received
+    return self.delegate.headers_received(start_line, headers)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/web.py", line 2083, in headers_received
+    return self.execute()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/web.py", line 2130, in execute
+    **self.path_kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/gen.py", line 307, in wrapper
+    yielded = next(result)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/web.py", line 1489, in _execute
+    result = self.prepare()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/tornado.py", line 254, in prepare
+    self._fallback(self.request, b"")
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/tornado.py", line 609, in __call__
+    WsgiInputContainer.environ(request, body), start_response)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 422, in index
+    response = default_view()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 390, in default_view
+    return preemptively_cached()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 984, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 1047, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 1055, in decorated_function
+    r = f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 747, in decorated_function
+    rv = f_with_duration(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 716, in f_with_duration
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 993, in decorated_function
+    rv = f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 1012, in decorated_function
+    rv = f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 377, in make_default_ui
+    r = make_response(render_template("index.jinja2", **render_kwargs))
+  File "/usr/lib/python2.7/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/usr/lib/python2.7/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 986, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/templates/index.jinja2", line 379, in root
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/templates/javascripts.jinja2", line 55, in root
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/runtime.py", line 196, in call
+    return __obj(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/webassets/ext/jinja2.py", line 186, in _render_assets
+    urls = bundle.urls()
+  File "/usr/lib/python2.7/site-packages/webassets/bundle.py", line 787, in urls
+    urls.extend(bundle._urls(new_ctx, extra_filters, *args, **kwargs))
+  File "/usr/lib/python2.7/site-packages/webassets/bundle.py", line 746, in _urls
+    *args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/webassets/bundle.py", line 590, in _build
+    if ctx.updater else True
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 1413, in needs_rebuild
+    return self._delegate.needs_rebuild(bundle, ctx) or self.changed_settings(ctx)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 1422, in changed_settings
+    current_hash = webassets.utils.hash_func(json.dumps(settings().effective_yaml))
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/settings.py", line 828, in effective_yaml
+    return yaml.safe_dump(self.effective)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/__init__.py", line 309, in safe_dump
+    return dump_all([data], stream, Dumper=SafeDumper, **kwds)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/__init__.py", line 281, in dump_all
+    dumper.represent(data)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/representer.py", line 30, in represent
+    self.serialize(node)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/serializer.py", line 54, in serialize
+    self.serialize_node(node, None, None)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/serializer.py", line 108, in serialize_node
+    self.serialize_node(value, node, key)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/serializer.py", line 107, in serialize_node
+    self.serialize_node(key, node, None)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/serializer.py", line 90, in serialize_node
+    style=node.style))
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/emitter.py", line 119, in emit
+    self.state()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/emitter.py", line 398, in expect_first_block_mapping_key
+    return self.expect_block_mapping_key(first=True)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/emitter.py", line 406, in expect_block_mapping_key
+    if self.check_simple_key():
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/emitter.py", line 455, in check_simple_key
+    self.analysis = self.analyze_scalar(self.event.value)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/yaml/emitter.py", line 695, in analyze_scalar
+    if ch == u':':
+KeyboardInterrupt
+2019-08-12 23:05:57,366 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:05:57,399 - octoprint.server.views - INFO - Path / was bypassed from cache (key: ui:_default:http://hbot.local:5000/:en), signaling as cached
+2019-08-12 23:05:58,266 - octoprint.server.views - ERROR - Error in template softwareupdate_navbar.jinja2, not going to include it
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 813, in _process_template_configs
+    app.jinja_env.get_or_select_template(data["template"])
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/usr/lib/python2.7/site-packages/flask/templating.py", line 58, in get_source
+    for loader, local_name in self._iter_loaders(template):
+  File "/usr/lib/python2.7/site-packages/flask/templating.py", line 83, in _iter_loaders
+    for blueprint in itervalues(self.app.blueprints):
+KeyboardInterrupt
+2019-08-12 23:05:58,498 - octoprint.server.views - ERROR - Error in template cost_tab.jinja2, not going to include it
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 813, in _process_template_configs
+    app.jinja_env.get_or_select_template(data["template"])
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/usr/lib/python2.7/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/loaders.py", line 396, in get_source
+    return loader.get_source(environment, template)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/jinja.py", line 45, in get_source
+    if not self._combined_filter(os.path.join(*pieces)):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/jinja.py", line 60, in _combined_filter
+    self.searchpath)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/jinja.py", line 59, in <lambda>
+    filter_results = map(lambda x: not os.path.exists(os.path.join(x, path)) or self.path_filter(os.path.join(x, path)),
+  File "/usr/lib/octoprint/lib/python2.7/genericpath.py", line 26, in exists
+    os.stat(path)
+KeyboardInterrupt
+2019-08-12 23:05:58,682 - octoprint.server.views - ERROR - Error in template requestspinner_tab.jinja2, not going to include it
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 813, in _process_template_configs
+    app.jinja_env.get_or_select_template(data["template"])
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/usr/lib/python2.7/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/jinja2/loaders.py", line 396, in get_source
+    return loader.get_source(environment, template)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/jinja.py", line 45, in get_source
+    if not self._combined_filter(os.path.join(*pieces)):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/jinja.py", line 60, in _combined_filter
+    self.searchpath)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/jinja.py", line 59, in <lambda>
+    filter_results = map(lambda x: not os.path.exists(os.path.join(x, path)) or self.path_filter(os.path.join(x, path)),
+  File "/usr/lib/octoprint/lib/python2.7/posixpath.py", line 73, in join
+    path += '/' + b
+KeyboardInterrupt
+2019-08-12 23:05:58,890 - tornado.application - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/http1connection.py", line 185, in _read_message
+    header_future = delegate.headers_received(start_line, headers)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/httpserver.py", line 308, in headers_received
+    return self.delegate.headers_received(start_line, headers)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/routing.py", line 245, in headers_received
+    return self.delegate.headers_received(start_line, headers)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/web.py", line 2083, in headers_received
+    return self.execute()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/web.py", line 2130, in execute
+    **self.path_kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/gen.py", line 307, in wrapper
+    yielded = next(result)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/tornado/web.py", line 1489, in _execute
+    result = self.prepare()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/tornado.py", line 254, in prepare
+    self._fallback(self.request, b"")
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/util/tornado.py", line 609, in __call__
+    WsgiInputContainer.environ(request, body), start_response)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 180, in index
+    fetch_template_data(refresh=force_refresh)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/server/views.py", line 699, in fetch_template_data
+    configured_order = settings().get(["appearance", "components", "order", t], merged=True) or []
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/settings.py", line 1497, in get
+    result = process()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/settings.py", line 1491, in process
+    return self._get_value(path, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/settings.py", line 1435, in _get_value
+    value = chain.get_by_path(parent_path + [key], only_local=not incl_defaults)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/settings.py", line 512, in get_by_path
+    return current[path[-1]]
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/chainmap/chainmap.py", line 68, in __getitem__
+    return mapping[key]             # can't use 'key in mapping' with defaultdict
+KeyboardInterrupt
+2019-08-12 23:05:59,141 - octoprint.server - INFO - Shutting down...

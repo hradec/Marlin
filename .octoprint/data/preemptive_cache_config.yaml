@@ -1,6 +1,6 @@
 /:
-- _count: 46
-  _timestamp: 1565672860.158695
+- _count: 48
+  _timestamp: 1565676342.511463
   base_url: http://hbot.local:5000/
   path: /
   query_string: l10n=en
