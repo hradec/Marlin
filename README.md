@@ -1,7 +1,6 @@
-=======================================
+---
 HBot Marlin firmware and Octoprint Setup
-========================================
-
+---
 
 Create a symlink of .octoprint to ~/.octoprint: `ln -s ~/Marlin/.octoprint ~/`
 
