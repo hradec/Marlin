@@ -2139,3 +2139,42 @@ ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known
 2019-08-12 21:17:41,343 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
   if value_source != value_target:
 
+2019-08-12 21:36:09,182 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2019-08-12 21:36:09,266 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2019-08-12 21:36:11,593 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2019-08-12 21:36:11,595 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2019-08-12 21:36:11,607 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/Marlin/.octoprint/uploads...
+2019-08-12 21:36:11,757 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/Marlin/.octoprint/uploads initialized successfully.
+2019-08-12 21:36:15,361 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2019-08-12 21:36:15,541 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2019-08-12 21:36:15,551 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2019-08-12 21:36:15,565 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2019-08-12 21:36:15,567 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2019-08-12 21:36:15,582 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2019-08-12 21:36:15,588 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2019-08-12 21:36:15,610 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2019-08-12 21:36:16,708 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2019-08-12 21:36:18,501 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from http://plugins.octoprint.org/plugins.json
+2019-08-12 21:36:19,371 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2019-08-12 21:36:19,374 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2019-08-12 21:36:20,907 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 1.5s
+2019-08-12 21:36:21,420 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2019-08-12 21:36:22,642 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2019-08-12 21:41:47,991 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10

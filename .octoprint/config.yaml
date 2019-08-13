@@ -35,8 +35,7 @@ controls:
 feature: {}
 gcodeViewer: {}
 plugins:
-  ScreenSquish:
-    octoprint_max_version: ''
+  ScreenSquish: {}
   _disabled:
   - cura
   announcements:
