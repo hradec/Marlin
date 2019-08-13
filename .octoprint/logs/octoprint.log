@@ -2243,3 +2243,4 @@ ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known
 2019-08-12 22:06:12,919 - octoprint.plugins.portlister - INFO - Attempting to connect to /dev/ttyACM0 at 115200 with profile 'hbot'
 2019-08-12 22:07:40,278 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
 2019-08-12 22:07:41,505 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2019-08-12 22:13:52,632 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
