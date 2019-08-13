@@ -13,6 +13,7 @@ install:
 	echo -e "${HOME}/Marlin/restartd > /tmp/restartd.log 2>&1 &\nexit 0" | sudo tee -a /etc/rc.local
 	sudo chmod a+x /etc/rc.local
 	chmod a+x ~/*
+	sudo cp ~/Marlin/mjpg_streamer /bin/
 	sudo cp ~/Marlin/crontab /var/spool/cron/${USER}
 	sudo systemctl stop cronie
 	sudo systemctl start cronie
