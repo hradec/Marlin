@@ -1,0 +1,53 @@
+2016-09-21 00:55:36,016 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-21 00:57:22,073 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0017.print_PHONE_CLIP_RIGHT3.print_PHONE_CLIP_LEFT3.print_PHONE_CLIP_TOP2.print_PHONE_CLIP_RIGHT2.print_PHONE_CLIP_RIGHT1.print_PHONE_CLIP_LEFT4.print_PHONE_CLIP_LEFT2.print_PHONE_CLIP_RIGHT.gcode
+2016-09-21 00:57:31,245 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0017.print_VATA_Support.print_VATB2.print_VATA2.gcode
+2016-09-21 00:57:45,221 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0017.print_VATA_Support.print_VATB2.print_VATA2.gcode
+2016-09-21 12:11:38,747 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-21 12:12:18,551 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-21 12:12:22,102 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.9s
+2016-09-21 12:20:05,811 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-21 12:20:05,823 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-21 12:25:35,850 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-21 12:25:35,867 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-21 12:36:37,573 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0019.print_PHONE_CLIP_LEFT3.print_PHONE_CLIP_TOP2.print_PHONE_CLIP_RIGHT1.print_PHONE_CLIP_RIGHT3.print_PHONE_CLIP_LEFT4.print_PHONE_CLIP_RIGHT2.print_PHONE_CLIP_LEFT2.print_PHONE_CLIP_RIGHT.gcode
+2016-09-21 12:50:26,970 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-21 12:50:26,983 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-21 16:57:29,199 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0020.print_BIDDLE_D3.gcode
+2016-09-21 18:01:13,429 - octoprint.server.util.sockjs - INFO - New connection from client: 24.244.32.208
+2016-09-21 18:03:15,066 - octoprint.server.util.sockjs - INFO - New connection from client: 24.244.32.150
+2016-09-21 18:07:46,276 - octoprint.server.util.sockjs - INFO - Client connection closed: 24.244.32.150
+2016-09-21 18:08:29,276 - octoprint.server.util.sockjs - INFO - New connection from client: 24.244.32.212
+2016-09-21 18:09:17,197 - octoprint.server.util.sockjs - INFO - Client connection closed: 24.244.32.212
+2016-09-21 18:11:22,816 - octoprint.server.util.sockjs - INFO - New connection from client: 24.244.32.187
+2016-09-21 18:11:30,768 - octoprint.server.util.sockjs - INFO - New connection from client: 72.143.224.156
+2016-09-21 18:12:08,957 - octoprint.server.util.sockjs - INFO - Client connection closed: 72.143.224.156
+2016-09-21 18:27:40,969 - octoprint.server.util.sockjs - INFO - Client connection closed: 24.244.32.187
+2016-09-21 18:28:04,329 - tornado.application - ERROR - Uncaught exception GET /downloads/files/local/slapCube.0020.print_BIDDLE_D3.gcode?ctime=1474502249 (24.244.32.212)
+HTTPServerRequest(protocol='http', host='hradec.no-ip.org:5000', method='GET', uri='/downloads/files/local/slapCube.0020.print_BIDDLE_D3.gcode?ctime=1474502249', version='HTTP/1.1', remote_ip='24.244.32.212', headers={'Accept-Language': 'en-ca', 'Accept-Encoding': 'gzip, deflate', 'Host': 'hradec.no-ip.org:5000', 'Accept': '*/*', 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403', 'Connection': 'keep-alive', 'X-Api-Key': '157FD34BBDC847E4B57840BA15752461', 'Referer': 'http://hradec.no-ip.org:5000/', 'Cache-Control': 'no-cache', 'X-Requested-With': 'XMLHttpRequest', 'Cookie': 'session=eyJfaWQiOnsiIGIiOiJZemRsTmpJMU5tUmtPRFV6TW1WaU1ERmhNMkUwTWpKaU0yUmhOR1ZrWTJZPSJ9fQ.CsTBPw.VfuWKFq2lCxyJ7WCTxd4H8HWKqk'})
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/tornado/web.py", line 1334, in _execute
+    result = yield result
+  File "/usr/lib/python2.7/site-packages/tornado/gen.py", line 628, in run
+    value = future.result()
+  File "/usr/lib/python2.7/site-packages/tornado/concurrent.py", line 109, in result
+    raise_exc_info(self._exc_info)
+  File "/usr/lib/python2.7/site-packages/tornado/gen.py", line 631, in run
+    yielded = self.gen.throw(*sys.exc_info())
+  File "/usr/lib/python2.7/site-packages/tornado/web.py", line 2172, in get
+    yield self.flush()
+  File "/usr/lib/python2.7/site-packages/tornado/gen.py", line 628, in run
+    value = future.result()
+  File "/usr/lib/python2.7/site-packages/tornado/concurrent.py", line 111, in result
+    raise self._exception
+StreamClosedError
+2016-09-21 18:28:04,348 - tornado.general - ERROR - Cannot send error response after headers written
+2016-09-21 18:28:30,888 - octoprint.server.util.sockjs - INFO - Client connection closed: 24.244.32.208
+2016-09-21 19:23:55,379 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0020.print_BIDDLE_D3.gcode
+2016-09-21 22:29:47,929 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0020.print_VATB2.gcode
+2016-09-21 22:34:45,944 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-21 22:34:48,317 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-21 22:34:51,108 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.48s
+2016-09-21 22:35:24,578 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-09-21 23:00:50,466 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-21 23:00:50,492 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-22 00:28:48,226 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0021.print_MIDDLE_D.gcode

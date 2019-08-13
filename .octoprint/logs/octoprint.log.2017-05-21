@@ -1,0 +1,57 @@
+2017-05-21 19:07:24,537 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2017-05-21 19:07:27,398 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.38s
+2017-05-21 19:07:32,722 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2017-05-21 19:07:40,973 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2017-05-21 19:08:14,013 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2017-05-21 19:08:14,016 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2017-05-21 19:08:17,495 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2017-05-21 19:08:19,374 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2017-05-21 19:09:44,776 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.STL_Model.gcode
+2017-05-21 19:21:08,179 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.group1_STL_Model.group_STL_Model.gcode
+2017-05-21 19:26:44,184 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.group_STL_Model.group1_STL_Model.gcode
+2017-05-21 20:06:31,157 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.group_STL_Model.group1_STL_Model.gcode
+2017-05-21 20:07:07,029 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.group_STL_Model.group1_STL_Model.gcode
+2017-05-21 20:28:01,483 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.group3.group1.gcode
+2017-05-21 20:28:02,200 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2017-05-21 20:28:06,919 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2017-05-21 20:32:15,300 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.group3.group1.gcode
+2017-05-21 20:36:22,870 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.STL_Model2.group1_STL_Model.STL_Model1.group3_STL_Model.gcode
+2017-05-21 20:37:01,488 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2017-05-21 20:37:01,494 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2017-05-21 20:40:23,888 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.STL_Model2.group1_STL_Model.STL_Model1.group3_STL_Model.gcode
+2017-05-21 20:41:10,803 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2017-05-21 20:41:10,809 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2017-05-21 20:42:23,712 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.STL_Model2.group1_STL_Model.STL_Model1.group3_STL_Model.gcode
+2017-05-21 21:24:45,314 - octoprint.filemanager.analysis - INFO - Starting analysis of local:tmp.STL_Model2.group1_STL_Model.STL_Model1.group3_STL_Model.gcode
+2017-05-21 21:47:25,716 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group1.gcode
+2017-05-21 22:02:56,019 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group1.gcode
+2017-05-21 22:19:04,296 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group5_STL_Model.group6_STL_Model.group7_STL_Model.gcode
+2017-05-21 22:21:45,287 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group9.gcode
+2017-05-21 23:10:12,743 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group9.gcode
+2017-05-21 23:10:38,691 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model6.group11_STL_Model.gcode
+2017-05-21 23:10:57,105 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group9.gcode
+2017-05-21 23:18:00,569 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model6.group11_STL_Model.gcode
+2017-05-21 23:36:02,316 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model6.group11_STL_Model.gcode
+2017-05-21 23:40:06,608 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model6.group11_STL_Model.gcode
+2017-05-21 23:42:35,772 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group10_STL_Model.STL_Model7.gcode
+2017-05-21 23:47:24,355 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2017-05-21 23:47:24,808 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model8.STL_Model7.group12_STL_Model.gcode
+2017-05-21 23:47:31,067 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2017-05-21 23:48:59,949 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model8.STL_Model7.group12_STL_Model.gcode
+2017-05-21 23:58:15,114 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model8.STL_Model7.group12_STL_Model.gcode
+2017-05-22 00:55:02,652 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.STL_Model8.STL_Model7.group12_STL_Model.gcode
+2017-05-22 00:55:52,189 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.legalzinho__mas_solta_da_mesa.gcode
+2017-05-22 01:06:49,966 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.pequeno.gcode
+2017-05-22 01:07:32,574 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.pequeno.gcode
+2017-05-22 01:18:45,520 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.pequeno.gcode
+2017-05-22 02:14:22,909 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.pequeno.gcode
+2017-05-22 12:29:16,266 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group4_STL_Model.STL_Model7.STL_Model8.gcode
+2017-05-22 13:50:24,731 - octoprint.filemanager.analysis - INFO - Starting analysis of local:fidget.group4_STL_Model.STL_Model7.STL_Model8.gcode

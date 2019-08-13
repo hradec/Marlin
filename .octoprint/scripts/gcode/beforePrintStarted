@@ -1,0 +1,29 @@
+
+M85 S99999999
+M42 P6 S0
+M42 P6 S255
+M42 P6 S180
+M106 S20
+G90
+G92 Z0
+G1 Z15
+G28 ; home all axes
+M104 S220
+;M140 S110
+G92 Z0
+G1 Z50 F5000
+G28 X ; home all axes
+G28 Y ; home all axes
+G1 X30 Y30
+G29 ; bed probe
+M280 P2 S120
+G1 X0 Y0 Z0 F5000
+
+;G1 X0 Y0 Z-22; probe Z distance
+
+G1 X0 Y0 Z-6.8; probe Z distance
+
+G92 Z0 ; reset Z to 0 
+G1 X20 Y10 Z2 F5000
+G1 X0 Y0 Z0 F5000
+;G92 Y0 Z0 ; reset Z to 0 

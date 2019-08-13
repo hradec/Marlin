@@ -1,0 +1,63 @@
+2016-10-23 14:54:39,140 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-10-23 14:54:41,621 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.45s
+2016-10-23 14:54:47,345 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2016-10-23 14:54:52,749 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-10-23 14:56:01,578 - octoprint.filemanager.analysis - INFO - Starting analysis of local:top.gcode
+2016-10-23 14:57:39,139 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2016-10-23 14:57:39,142 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2016-10-23 14:57:43,191 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-10-23 14:57:46,793 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-10-23 14:57:59,143 - octoprint.timelapse - ERROR - Could not capture image /home/rhradec/.octoprint/timelapse/tmp/top_20161023145759-0.jpg from http://hradec.no-ip.org:5001/?action=snapshot
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/timelapse.py", line 505, in _perform_capture
+    r = requests.get(self._snapshot_url, stream=True)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+2016-10-23 14:58:01,828 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-10-23 14:58:04,771 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-10-23 19:00:10,939 - octoprint.server.api - INFO - Performing command: sudo halt
+2016-10-23 19:00:31,149 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-10-23 19:00:31,608 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-10-23 19:00:34,336 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-10-23 19:00:34,339 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2016-10-23 19:00:34,350 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-10-23 19:00:34,414 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-10-23 19:00:39,526 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2016-10-23 19:00:39,866 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-10-23 19:00:39,876 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2016-10-23 19:00:39,888 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2016-10-23 19:00:39,891 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-10-23 19:00:39,904 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-10-23 19:00:39,911 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-10-23 19:00:39,939 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-10-23 19:00:40,936 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-10-23 19:00:41,462 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from http://plugins.octoprint.org/plugins.json
+2016-10-23 19:00:41,977 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-10-23 19:00:41,982 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2016-10-23 19:00:42,175 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}

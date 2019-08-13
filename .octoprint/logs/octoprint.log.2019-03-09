@@ -1,0 +1,191 @@
+2019-03-09 01:59:15,777 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2019-03-09 02:00:01,403 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2019-03-09 02:00:04,078 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2019-03-09 02:00:06,050 - octoprint.plugins.announcements - ERROR - Could not fetch channel _important from http://octoprint.org/feeds/important.xml: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/announcements/__init__.py", line 269, in _get_channel_data_from_network
+    r = requests.get(url)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,143 - octoprint.plugins.softwareupdate - ERROR - Could not check active_filters for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,162 - octoprint.plugins.softwareupdate - ERROR - Could not check touchui for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,176 - octoprint.plugins.softwareupdate - ERROR - Could not check customcontrol for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,189 - octoprint.plugins.softwareupdate - ERROR - Could not check portlister for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,290 - octoprint.plugins.softwareupdate - ERROR - Could not check requestspinner for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,304 - octoprint.plugins.softwareupdate - ERROR - Could not check cost for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,318 - octoprint.plugins.softwareupdate - ERROR - Could not check systemcommandeditor for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,333 - octoprint.plugins.softwareupdate - ERROR - Could not check bqappcompanion for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,347 - octoprint.plugins.softwareupdate - ERROR - Could not check yamlpatcher for updates
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 482, in _get_current_version
+    information, is_current = version_checker.get_latest(target, check)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 134, in get_latest
+    include_prerelease=include_prerelease)
+  File "/usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/version_checks/github_release.py", line 19, in _get_latest_release
+    r = requests.get(RELEASE_URL.format(user=user, repo=repo))
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 69, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/api.py", line 50, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))
+2019-03-09 02:00:06,455 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2019-03-09 02:00:39,728 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10

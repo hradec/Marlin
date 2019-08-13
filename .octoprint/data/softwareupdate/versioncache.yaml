@@ -1,0 +1,61 @@
+__version: 1.2.15
+active_filters:
+  available: false
+  hash: bb45bbcbc5da129ce683b84cead0e70c
+  information: {}
+  possible: false
+  timestamp: 1565669409.184392
+bqappcompanion:
+  available: false
+  hash: 89f6f1e3d58281e049181ddbd43d0560
+  information: {}
+  possible: false
+  timestamp: 1565669409.415806
+cost:
+  available: false
+  hash: fa04f0d1d83fa14eb083c4c0bc1a2a3a
+  information: {}
+  possible: false
+  timestamp: 1565669409.385139
+customcontrol:
+  available: false
+  hash: 7986e8e98ad99ed990fcb84dde792f9d
+  information: {}
+  possible: false
+  timestamp: 1565669409.226518
+octoprint:
+  available: false
+  hash: 5a14562906dc12a0c92f9181ed636c89
+  information: null
+  possible: true
+  timestamp: 1565669409.354043
+portlister:
+  available: false
+  hash: 024d007398988660a11ad050a0120296
+  information: {}
+  possible: false
+  timestamp: 1565669409.247079
+requestspinner:
+  available: false
+  hash: b6626c74ac713870a40dce828873ed83
+  information: {}
+  possible: false
+  timestamp: 1565669409.370436
+systemcommandeditor:
+  available: false
+  hash: b69ac2f81187118f1409c89d31f2e2ef
+  information: {}
+  possible: false
+  timestamp: 1565669409.401392
+touchui:
+  available: false
+  hash: 0ec90e4a65712a7632aedb0f323d0b68
+  information: {}
+  possible: false
+  timestamp: 1565669409.20515
+yamlpatcher:
+  available: false
+  hash: 0f2381b514e6c00d38b15c7a5e9f10db
+  information: {}
+  possible: false
+  timestamp: 1565669409.430704

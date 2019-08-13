@@ -1,0 +1,124 @@
+2016-09-25 13:16:57,779 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0025.print_STAGE_A3.gcode
+2016-09-25 13:18:08,446 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0025.print_STAGE_A3.gcode
+2016-09-25 13:24:11,483 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-25 13:24:14,385 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-25 13:24:17,045 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.43s
+2016-09-25 13:24:23,124 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-09-25 13:25:16,231 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0025.print_STAGE_A3.gcode
+2016-09-25 13:26:18,430 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-25 13:26:18,432 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-25 13:33:55,108 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-25 13:33:55,110 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-25 13:34:06,715 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0025.print_STAGE_A3.gcode
+2016-09-25 13:52:55,754 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0025.print_STAGE_A3.gcode
+2016-09-25 14:12:38,081 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-25 14:12:40,811 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-25 14:46:09,520 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_STAGE_A3.gcode
+2016-09-25 14:47:52,207 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_STAGE_A3.gcode
+2016-09-25 15:09:47,934 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_STAGE_A3.print_SPC_LINE_LOCKER2.gcode
+2016-09-25 15:56:11,000 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_STAGE_A3.print_SPC_LINE_LOCKER2.gcode
+2016-09-25 15:59:17,013 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_STAGE_A3.gcode
+2016-09-25 16:07:30,121 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_STAGE_A3.gcode
+2016-09-25 16:08:46,305 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_STAGE_A3.gcode
+2016-09-25 17:19:03,159 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-25 17:53:26,421 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_NUTLOCK2.gcode
+2016-09-25 17:53:40,663 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.dbool_STAGE_B2.gcode
+2016-09-25 18:24:22,749 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-25 19:22:46,351 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_VATA2.gcode
+2016-09-25 20:14:19,252 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.print_VATA2.gcode
+2016-09-25 20:19:11,224 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-25 22:52:29,819 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-25 22:52:32,066 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.43s
+2016-09-26 00:27:49,108 - octoprint.server.api - INFO - Performing command: sudo halt
+2016-09-26 00:27:57,725 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-09-26 00:28:07,915 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-09-26 00:28:10,509 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-09-26 00:28:10,511 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2016-09-26 00:28:10,523 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-09-26 00:28:10,570 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-09-26 00:28:15,107 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2016-09-26 00:28:15,450 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-09-26 00:28:15,460 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2016-09-26 00:28:15,473 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2016-09-26 00:28:15,475 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-09-26 00:28:15,489 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-09-26 00:28:15,495 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-09-26 00:28:15,523 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-09-26 00:28:16,731 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-09-26 00:28:22,032 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from http://plugins.octoprint.org/plugins.json
+2016-09-26 00:28:22,567 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-09-26 00:28:22,571 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2016-09-26 00:28:22,799 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-09-26 16:48:26,153 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'en', 'path': '/', 'base_url': 'http://hradec.no-ip.org:5000/'}
+2016-09-26 16:48:46,731 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-26 16:48:52,128 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2016-09-26 16:48:56,804 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2016-09-26 16:48:56,808 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2016-09-26 16:48:57,607 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-09-26 16:48:58,745 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.93s
+2016-09-26 16:48:59,931 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-26 16:49:02,987 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-26 16:49:07,235 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-26 16:49:09,182 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-26 17:26:50,857 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.dbool_STAGE_B2.gcode
+2016-09-26 17:37:40,794 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.dbool_STAGE_B2.gcode
+2016-09-26 17:40:33,312 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.dbool_STAGE_B2.gcode
+2016-09-26 17:43:37,106 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.dbool_STAGE_B2.gcode
+2016-09-26 17:43:49,898 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.dbool_STAGE_B2.gcode
+2016-09-26 17:43:52,746 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-26 17:43:52,751 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-26 17:58:39,753 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-26 17:58:39,755 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-26 17:58:45,912 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-26 17:58:47,968 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-26 17:59:25,314 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-26 17:59:25,316 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-26 19:23:11,223 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0026.dbool_STAGE_B2.gcode
+2016-09-26 20:15:25,692 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0027.print_VATB3.gcode
+2016-09-26 21:28:18,162 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0027.print_VATB3.gcode
+2016-09-26 21:30:00,443 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0027.print_VATB3.gcode
+2016-09-26 21:31:04,043 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0027.print_VATB3.gcode
+2016-09-26 21:31:20,624 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0027.print_VATB3.gcode
+2016-09-26 21:32:58,233 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-26 21:32:58,235 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+

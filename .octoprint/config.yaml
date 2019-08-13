@@ -1,0 +1,151 @@
+accessControl:
+  autologinAs: rhradec
+  autologinLocal: true
+  localNetworks:
+  - 127.0.0.0/8
+  - 192.168.10.0/24
+  - 10.0.10.0/24
+  salt: aP1cEQcMNr6zxupwUl5u2LN29oSE4MIJ
+api:
+  key: 8F792359E425458FAFFB7710DA1C415C
+appearance: {}
+controls:
+- command: M106 S%(speed)s
+  input:
+  - default: 80
+    name: Speed (0-255)
+    parameter: speed
+    slider: false
+  name: Enable Cool Fan
+  type: parametric_command
+- command: M42 P6 S%(speed)s
+  input:
+  - default: 128
+    name: Speed (0-255)
+    parameter: speed
+    slider: false
+  name: Enable Board Fan
+  type: parametric_command
+- command: G29
+  name: G29
+  type: command
+- command: M303 E0 S230 C8
+  name: Auto Tune Extruder PID
+  type: command
+feature: {}
+gcodeViewer: {}
+plugins:
+  ScreenSquish:
+    octoprint_max_version: ''
+  _disabled:
+  - cura
+  announcements:
+    channels:
+      _important:
+        read_until: 1521111600
+      _news:
+        read_until: 1472994000
+      _octopi:
+        read_until: 1462200600
+      _plugins:
+        read_until: 1472774400
+      _releases:
+        read_until: 1469862000
+      _spotlight:
+        read_until: 1447953971
+  cost:
+    cost_per_hour: '0'
+    cost_per_meter: '0.5'
+    currency: CAD
+  discovery:
+    upnpUuid: 80e0f0c7-62b9-4057-ac1e-933173a07e16
+  pluginmanager:
+    pip: sudo /bin/pip2
+  softwareupdate:
+    _config_version: 4
+    checks:
+      octoprint:
+        checkout_folder: /home/rhradec/tmp/
+        type: git_commit
+  touchui:
+    hasCustom: false
+    refreshCSS: false
+    requireNewCSS: false
+    whatsNew: false
+printerParameters: {}
+printerProfiles:
+  default: hbot
+  defaultProfile: {}
+serial:
+  autoconnect: true
+  baudrate: 115200
+  maxCommunicationTimeouts: {}
+  port: /dev/ttyACM0
+  timeout: {}
+server:
+  commands: {}
+  firstRun: false
+  secretKey: TqvOHtTtA8ySBpXYdOaJNregUk5wHJNg
+system:
+  actions:
+  - action: reboot
+    command: /home/rhradec/reboot
+    confirm: ''
+    name: Reboot
+  - action: shutdown
+    command: /home/rhradec/halt
+    confirm: It's safe to turn off power after lights stop blinking!!
+    name: Shutdown
+  - action: divider
+  - action: restartOctoprint
+    command: /home/rhradec/restartOctoprint
+    confirm: ''
+    name: Restart Octoprint
+temperature:
+  cutoff: 10
+  profiles:
+  - bed: 100
+    extruder: 210
+    name: '210'
+  - bed: 60
+    extruder: 180
+    name: '180'
+  - bed: '60'
+    extruder: '190'
+    name: '190'
+  - bed: '60'
+    extruder: '200'
+    name: '200'
+  - bed: '60'
+    extruder: '220'
+    name: '220'
+  - bed: '60'
+    extruder: '230'
+    name: '230'
+  - bed: '60'
+    extruder: '240'
+    name: '240'
+terminalFilters:
+- name: Suppress M105 requests/responses
+  regex: '(Send: M105)|(Recv: ok (B|T\d*):)'
+- name: Suppress M27 requests/responses
+  regex: '(Send: M27)|(Recv: SD printing byte)'
+- name: Suppress G1
+  regex: '(Send: N.*G1.*)'
+timelapse:
+  options:
+    fps: 25
+    interval: 2
+    postRoll: 0
+  type: zchange
+webcam:
+  ffmpeg: /usr/bin/ffmpeg
+  ffmpegThreads: 2
+  snapshot: http://hbot.local:5001/?action=snapshot
+  stream: http://hbot.local:5001/?action=stream
+  timelapse:
+    fps: 30
+    options:
+      interval: 5
+    postRoll: 0
+    type: timed

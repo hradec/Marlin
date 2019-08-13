@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description></description>
+    <link>/</link>
+    <atom:link href="http://octoprint.org/feeds/octopi.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 04 Sep 2016 13:20:43 +0000</pubDate>
+    <lastBuildDate>Sun, 04 Sep 2016 13:20:43 +0000</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>New OctoPi Release: 0.13.0</title>
+        <description>
+          <![CDATA[
+            <p><a href="https://github.com/guysoft">Guy Sheffer</a> just released a new version of 
+OctoPi, version 0.13.0.</p>
+
+<p>The long awaited release brings not only Raspberry Pi 3 (and Zero) support
+out of the box by being based on Raspbian Jessie, but also utilizes
+the new lite image as base for the build, meaning the download size could
+be halfed.</p>
+
+
+          ]]>
+        </description>
+        <pubDate>Mon, 02 May 2016 14:50:00 +0000</pubDate>
+        <link>http://octoprint.org/blog/2016/05/02/new-octopi-release-0-13-0/</link>
+        <guid isPermaLink="true">http://octoprint.org/blog/2016/05/02/new-octopi-release-0-13-0/</guid>
+      </item>
+    
+  </channel>
+</rss>

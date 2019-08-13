@@ -1,0 +1,74 @@
+2016-08-27 23:55:26,533 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.10: 
+2016-08-27 23:55:51,539 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.10: 
+2016-08-28 00:20:53,455 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-28 00:21:00,762 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-28 00:21:03,600 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-28 00:21:04,982 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-28 00:21:11,464 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.24s
+2016-08-28 00:21:12,995 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-08-28 00:21:16,564 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0046.TOPIDLER_COVER.gcode
+2016-08-28 00:21:19,441 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-28 00:21:25,085 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-28 00:39:00,734 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-28 00:39:53,659 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-28 00:51:32,053 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-28 00:51:40,948 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-28 00:51:40,981 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-28 00:51:46,313 - octoprint.server - INFO - Shutting down...
+2016-08-28 00:51:46,809 - octoprint.server - INFO - Goodbye!
+2016-08-28 00:51:55,767 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-08-28 00:51:55,852 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-08-28 00:51:57,781 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-08-28 00:51:57,784 - octoprint.plugin.core - INFO - Found 6 plugin(s) providing 5 mixin implementations, 3 hook handlers
+2016-08-28 00:51:57,795 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-08-28 00:51:57,916 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-08-28 00:51:57,966 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-08-28 00:52:01,929 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2016-08-28 00:52:01,935 - octoprint.plugin.core - INFO - Initialized 5 plugin implementation(s)
+2016-08-28 00:52:02,393 - octoprint.plugin.core - INFO - 6 plugin(s) registered with the system:
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+2016-08-28 00:52:02,395 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-08-28 00:52:02,409 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-08-28 00:52:02,414 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-08-28 00:52:02,430 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-08-28 00:52:03,791 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from http://plugins.octoprint.org/plugins.json
+2016-08-28 00:52:04,160 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-08-28 00:52:04,161 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-08-28 00:52:04,346 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-08-28 00:52:19,162 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://192.168.10.101:5000/'}
+2016-08-28 00:52:24,247 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'en', 'path': '/', 'base_url': 'http://192.168.10.101:5000/'}

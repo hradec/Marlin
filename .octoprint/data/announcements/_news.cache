@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description></description>
+    <link>/</link>
+    <atom:link href="http://octoprint.org/feeds/news.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 04 Sep 2016 13:20:43 +0000</pubDate>
+    <lastBuildDate>Sun, 04 Sep 2016 13:20:43 +0000</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>OctoPrint On Air #4</title>
+        <description>
+          <![CDATA[
+            The fourth episode of a monthly live broadcast for Patrons
+          ]]>
+        </description>
+        <pubDate>Sun, 04 Sep 2016 13:00:00 +0000</pubDate>
+        <link>http://octoprint.org/blog/2016/09/04/octoprint-on-air-4/</link>
+        <guid isPermaLink="true">http://octoprint.org/blog/2016/09/04/octoprint-on-air-4/</guid>
+      </item>
+    
+      <item>
+        <title>OctoPrint On Air #3</title>
+        <description>
+          <![CDATA[
+            The third episode of a monthly live broadcast for Patrons and the first one to be made public afterwards, decided by the Patrons themselves - thanks!
+          ]]>
+        </description>
+        <pubDate>Tue, 16 Aug 2016 10:00:00 +0000</pubDate>
+        <link>http://octoprint.org/blog/2016/08/16/octoprint-on-air-3/</link>
+        <guid isPermaLink="true">http://octoprint.org/blog/2016/08/16/octoprint-on-air-3/</guid>
+      </item>
+    
+      <item>
+        <title>On the state of OctoPrint</title>
+        <description>
+          <![CDATA[
+            A look at the state of OctoPrint, its current funding situation and how things will continue from here on.
+          ]]>
+        </description>
+        <pubDate>Wed, 25 May 2016 18:00:00 +0000</pubDate>
+        <link>http://octoprint.org/blog/2016/05/25/state-of-octoprint/</link>
+        <guid isPermaLink="true">http://octoprint.org/blog/2016/05/25/state-of-octoprint/</guid>
+      </item>
+    
+  </channel>
+</rss>

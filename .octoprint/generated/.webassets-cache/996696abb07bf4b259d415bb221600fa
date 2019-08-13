@@ -1,0 +1,3 @@
+V$(function () {\u000a    function PortListerViewModel(parameters) {\u000a        var self = this;\u000a\u000a        self.connection = parameters[0];\u000a\u000a        self.onDataUpdaterPluginMessage = function(plugin, message) {\u000a            if (plugin == "PortLister") {\u000a                self.connection.requestData();\u000a            }\u000a        }\u000a    }\u000a\u000a    OCTOPRINT_VIEWMODELS.push([\u000a        PortListerViewModel,\u000a        ["connectionViewModel"],\u000a        []\u000a    ]);\u000a});\u000a\u000a;\u000a
+p0
+.

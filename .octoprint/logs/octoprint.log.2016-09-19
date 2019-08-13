@@ -1,0 +1,90 @@
+2016-09-19 22:56:26,170 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0014.print_VATA2.gcode
+2016-09-19 23:39:00,585 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0014.print_VATB2.gcode
+2016-09-19 23:51:39,856 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-19 23:51:43,986 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-19 23:51:47,310 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0014.print_VATB2.gcode
+2016-09-19 23:51:47,539 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-19 23:53:33,418 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0014.print_VATB2.gcode
+2016-09-20 00:03:14,148 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 00:03:17,757 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 00:03:23,655 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 00:04:20,245 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0014.print_VATB2.gcode
+2016-09-20 00:06:48,238 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0014.print_VATB2.gcode
+2016-09-20 13:33:32,231 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0015.print_BIDDLE_C3.gcode
+2016-09-20 14:11:30,431 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 14:16:58,538 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0015.print_BIDDLE_D3.gcode
+2016-09-20 14:19:16,861 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0015.print_BIDDLE_D3.gcode
+2016-09-20 14:20:33,171 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 14:20:33,289 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 14:20:36,095 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 14:21:20,176 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-20 14:21:20,179 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-20 16:14:17,449 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 16:14:17,464 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 16:14:56,257 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 16:21:44,720 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-20 16:21:44,722 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-20 16:25:40,159 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 16:25:40,176 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 16:26:04,410 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 16:26:26,300 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-20 16:26:26,302 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-20 17:23:30,218 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 17:23:30,243 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 17:23:35,439 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 17:25:18,163 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-20 17:25:20,842 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-20 17:25:23,818 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.44s
+2016-09-20 17:25:29,677 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-09-20 17:40:41,224 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-20 17:40:41,227 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-20 18:41:45,987 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 18:41:46,003 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 18:41:48,007 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 18:45:34,375 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:546: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if source == target:
+
+2016-09-20 18:45:34,377 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/octoprint/util/__init__.py:564: UnicodeWarning: Unicode unequal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if value_source != value_target:
+
+2016-09-20 18:47:34,363 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0015.print_BIDDLE_D3.gcode
+2016-09-20 18:48:23,857 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-20 18:48:29,353 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-20 19:28:15,571 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0015.print_BIDDLE_D3.gcode
+2016-09-20 19:28:18,897 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 19:28:23,210 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 19:29:58,654 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0015.print_VATA2.gcode
+2016-09-20 19:30:06,387 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0015.print_VATA2.gcode
+2016-09-20 19:30:23,030 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_VATA2.gcode
+2016-09-20 19:30:53,410 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_VATA2.gcode
+2016-09-20 19:45:13,348 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 19:52:23,674 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 19:52:29,571 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 19:52:30,314 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 19:52:41,691 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-09-20 19:56:03,824 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 19:59:16,506 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 20:49:49,757 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-20 20:49:52,448 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-09-20 21:10:21,571 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 21:51:10,100 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 22:08:21,834 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 22:09:04,879 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0016.print_BIDDLE_D3.gcode
+2016-09-20 22:19:33,678 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-09-20 22:19:36,082 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10

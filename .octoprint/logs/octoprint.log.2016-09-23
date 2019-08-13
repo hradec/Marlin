@@ -1,0 +1,48 @@
+2016-09-23 08:49:25,501 - octoprint.server.util.sockjs - INFO - New connection from client: 72.143.225.40
+2016-09-23 09:13:21,684 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.print_MIDDLE_C.gcode
+2016-09-23 09:24:30,074 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.print_MIDDLE_C.gcode
+2016-09-23 10:06:08,147 - octoprint.server.util.sockjs - INFO - Client connection closed: 72.143.225.40
+2016-09-23 10:09:59,528 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.print_PHONE_CLIP_RIGHT3.print_PHONE_CLIP_RIGHT2.print_PHONE_CLIP_RIGHT1.print_PHONE_CLIP_RIGHT.print_PHONE_CLIP_LEFT4.print_PHONE_CLIP_TOP2.print_PHONE_CLIP_LEFT3.print_PHONE_CLIP_LEFT2.gcode
+2016-09-23 10:37:18,164 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.print_VATA2.gcode
+2016-09-23 10:38:56,187 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.print_VATA2.gcode
+2016-09-23 11:28:09,674 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.print_PHONE_CLIP_RIGHT3.print_PHONE_CLIP_RIGHT2.print_PHONE_CLIP_RIGHT1.print_PHONE_CLIP_RIGHT.print_PHONE_CLIP_LEFT4.print_PHONE_CLIP_TOP2.print_PHONE_CLIP_LEFT3.print_PHONE_CLIP_LEFT2.gcode
+2016-09-23 12:44:04,247 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.PRINTABLE_print_VATB2.gcode
+2016-09-23 13:48:34,632 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0022.PRINTABLE_print_VATB2.gcode
+2016-09-23 13:48:43,074 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 16:07:32,029 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 16:15:50,554 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 17:35:23,005 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 17:45:07,476 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 17:45:20,333 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 17:47:12,549 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 18:17:08,704 - octoprint.server.util.sockjs - INFO - New connection from client: 24.87.128.250
+2016-09-23 18:17:44,981 - octoprint.server.util.sockjs - INFO - Client connection closed: 24.87.128.250
+2016-09-23 19:46:18,762 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 19:46:30,899 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.print_VATA2.gcode
+2016-09-23 23:32:55,047 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.PRINTABLE_print_VATB2.gcode
+2016-09-23 23:34:44,850 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.PRINTABLE_print_VATB2.gcode
+2016-09-23 23:37:08,499 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.PRINTABLE_print_VATB2.gcode
+2016-09-24 00:04:43,856 - octoprint.server.util.sockjs - INFO - New connection from client: 24.87.128.250
+2016-09-24 00:15:58,455 - octoprint.server.util.sockjs - INFO - Client connection closed: 24.87.128.250
+2016-09-24 00:16:25,582 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 201, in write_message
+    self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 491, in write_message
+    self._write_frame(True, opcode, message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 480, in _write_frame
+    self.stream.write(frame)
+  File "/usr/lib/python2.7/site-packages/tornado/iostream.py", line 348, in write
+    self._handle_write()
+  File "/usr/lib/python2.7/site-packages/tornado/iostream.py", line 786, in _handle_write
+    _merge_prefix(self._write_buffer, 128 * 1024)
+  File "/usr/lib/python2.7/site-packages/tornado/iostream.py", line 1376, in _merge_prefix
+    if len(deque) == 1 and len(deque[0]) <= size:
+IndexError: deque index out of range
+2016-09-24 00:45:09,350 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slapCube.0023.PRINTABLE_print_VATB2.gcode

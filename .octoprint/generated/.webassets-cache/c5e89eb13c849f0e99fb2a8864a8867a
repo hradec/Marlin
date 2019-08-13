@@ -1,0 +1,3 @@
+V$(function() {\u000a	function activeFiltersPluginViewModel(viewModels) {\u000a		var self = this;\u000a		\u000a		self.onAfterBinding = function () {\u000a			terminal = viewModels[0];			\u000a			terminal.activeFilters = terminal.activeFilters.extend({ persist: 'terminal.activeFilters' });\u000a		}\u000a	}\u000a\u000a	OCTOPRINT_VIEWMODELS.push([\u000a		activeFiltersPluginViewModel, \u000a		["terminalViewModel"],[]\u000a	]);\u000a});\u000a\u000a\u000a;\u000a
+p0
+.

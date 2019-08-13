@@ -1,0 +1,3 @@
+2019-03-07 03:47:10,102 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.210
+2019-03-07 03:47:11,387 - octoprint.timelapse - INFO - Deleted old unrendered timelapse bike_holder.0003.print_bootleHolder3_20170816172704
+2019-03-07 03:47:24,950 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.210

@@ -1,0 +1,2390 @@
+2016-08-25 21:49:59,525 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 21:56:04,396 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:01:59,208 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:04:51,189 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:04:53,233 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:05:00,638 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:05:00,995 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:05:07,164 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:05:33,198 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0041.dbool___difference34.gcode
+2016-08-25 22:07:09,358 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:07:18,313 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:13:57,394 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:13:57,401 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0041.dbool___difference34.gcode
+2016-08-25 22:14:06,015 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:14:20,296 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:14:23,815 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:15:51,515 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0041.dbool___difference34.gcode
+2016-08-25 22:16:59,531 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:17:03,852 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:17:06,797 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:17:16,544 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:17:38,502 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-25 22:17:44,813 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0041.dbool___difference34.gcode
+2016-08-25 22:18:37,776 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-25 22:19:49,617 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-08-25 22:19:49,695 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-08-25 22:19:51,627 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-08-25 22:19:51,629 - octoprint.plugin.core - INFO - Found 6 plugin(s) providing 5 mixin implementations, 3 hook handlers
+2016-08-25 22:19:51,642 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-08-25 22:19:51,759 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-08-25 22:19:51,807 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-08-25 22:19:55,548 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2016-08-25 22:19:55,554 - octoprint.plugin.core - INFO - Initialized 5 plugin implementation(s)
+2016-08-25 22:19:56,028 - octoprint.plugin.core - INFO - 6 plugin(s) registered with the system:
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+2016-08-25 22:19:56,032 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-08-25 22:19:56,047 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-08-25 22:19:56,052 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-08-25 22:19:56,071 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-08-25 22:19:56,714 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2016-08-25 22:19:57,087 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-08-25 22:19:57,088 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-08-25 22:19:57,225 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-08-25 22:19:57,884 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-25 22:20:12,421 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-25 22:20:14,091 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-25 22:20:15,598 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-25 22:20:27,269 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-08-25 22:20:29,918 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:32,410 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:32,942 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:34,720 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:34,748 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:20:35,329 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:36,014 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:36,681 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:37,984 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:39,804 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:42,134 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:42,744 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:42,952 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:43,150 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:43,352 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:43,544 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:43,724 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:44,413 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:44,552 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:45,144 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:45,394 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:45,554 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:45,727 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:45,902 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:46,064 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:46,249 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:46,395 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:47,516 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:49,941 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:50,138 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:50,326 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:50,512 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:50,654 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:50,828 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:51,006 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:51,550 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:51,739 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:51,913 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:52,100 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:52,274 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:52,456 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:52,617 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:52,812 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:53,118 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:53,301 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:53,511 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:53,674 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:53,867 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:54,128 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:54,279 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:54,476 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:54,809 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:20:54,894 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:22:05,377 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:23:20,401 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:23:24,527 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:23:24,562 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:23:25,305 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:23:26,981 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:23:44,200 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:24:11,017 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:24:18,775 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:24:18,805 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:24:19,570 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:24:21,571 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:24:26,971 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:24:36,000 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:25:46,245 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:25:50,695 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:26:53,427 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:27:01,280 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:27:05,836 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:28:35,974 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:28:45,010 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:28:55,309 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:29:03,980 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:29:04,001 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:29:09,673 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:29:21,162 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:29:28,985 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:29:29,656 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:29:31,667 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:29:39,890 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:30:25,822 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:30:34,681 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:31:02,512 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:31:20,861 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:31:35,491 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:31:45,641 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:31:48,482 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:31:53,522 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:31:57,389 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:33:42,564 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:33:53,320 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:34:04,321 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:34:11,872 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:34:25,094 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:34:29,636 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:35:42,484 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:35:53,553 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:35:55,023 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:36:00,149 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:36:51,467 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:36:59,244 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:36:59,274 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:37:01,110 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:01,139 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:37:11,424 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:11,456 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:37:12,106 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:12,307 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:12,514 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:12,724 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:12,951 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:13,578 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:14,465 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:15,168 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:19,014 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:53,424 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:59,640 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:37:59,671 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:38:02,924 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:38:33,476 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:38:38,771 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:38:49,627 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0041.dbool___difference34.gcode
+2016-08-25 22:39:04,984 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:39:08,604 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:40:32,823 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:40:35,781 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:40:35,785 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0041.dbool___difference34.gcode
+2016-08-25 22:40:39,752 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:51:48,660 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:51:48,668 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0041.dbool___difference34.gcode
+2016-08-25 22:52:05,186 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:52:21,664 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:52:22,359 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-25 22:55:39,256 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 22:55:41,895 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-25 23:02:42,662 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 00:29:16,133 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.150
+2016-08-26 01:09:16,277 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 01:11:21,303 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.150: 
+2016-08-26 01:57:11,490 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.150: 
+2016-08-26 02:29:25,826 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.10: 
+2016-08-26 02:33:10,840 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 03:04:16,681 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 03:07:20,954 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 03:08:10,966 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 03:09:00,979 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 03:09:25,986 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.10: 
+2016-08-26 03:47:46,119 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 03:48:36,132 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 03:50:16,157 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 04:34:41,930 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.150: 
+2016-08-26 09:54:27,275 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 09:55:17,288 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 09:56:57,320 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 10:52:59,111 - octoprint.filemanager.analysis - INFO - Starting analysis of local:20mm_hollow_cube.gcode
+2016-08-26 10:54:13,724 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 10:54:18,619 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 10:54:25,423 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-26 10:54:28,915 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 10:54:30,400 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 10:54:40,363 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.42s
+2016-08-26 10:54:42,020 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-08-26 10:58:21,280 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 10:58:28,391 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 11:08:19,942 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 11:08:26,514 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 11:08:29,946 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 11:08:30,161 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 11:10:18,958 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:53:29,058 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:54:19,072 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:54:44,080 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:55:34,093 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:56:24,104 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:56:49,114 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:57:39,127 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:58:29,140 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:59:19,152 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 15:59:44,163 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.150: 
+2016-08-26 16:50:45,032 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 18:08:14,004 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0043.dbool___difference38.gcode
+2016-08-26 18:11:57,420 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 18:12:12,889 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:12:20,227 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:12:24,763 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:12:45,392 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:12:46,371 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.4s
+2016-08-26 18:12:53,571 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:13:09,643 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-26 18:13:11,532 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 18:13:12,978 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 18:13:26,452 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:13:28,651 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:13:30,714 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:19:47,124 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:19:49,699 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:19:52,602 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:19:52,816 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:20:45,689 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 18:20:49,376 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:20:51,059 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:30:20,663 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:30:23,476 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:30:26,461 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:30:26,678 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:33:39,339 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 18:33:48,794 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 18:33:50,616 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:33:53,344 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:43:36,624 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 18:44:24,987 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:44:28,740 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:44:31,727 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:44:31,942 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 18:50:31,406 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 18:50:47,257 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 18:50:50,354 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 18:51:30,324 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:02:29,060 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:02:33,180 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:02:37,052 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:02:37,270 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:03:04,168 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 19:05:41,689 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 19:15:33,510 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:15:57,561 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:16:00,538 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-26 19:16:02,765 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 19:16:04,075 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 19:16:17,925 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 19:16:20,837 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:16:22,335 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:27:25,287 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:27:29,256 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:27:32,218 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:27:32,435 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:27:53,648 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 19:27:57,056 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:29:02,944 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:39:14,163 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:39:15,937 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:39:20,562 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:39:20,778 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 19:39:40,351 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 19:39:47,749 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:40:36,602 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:58:45,494 - octoprint.filemanager.analysis - INFO - Starting analysis of local:bridge-torture-test_50mm.gcode
+2016-08-26 19:58:49,567 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:58:50,872 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 19:59:50,939 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:11,800 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:14,311 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:14,497 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:15,001 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:15,009 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:17,883 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:17,890 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:20,575 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:20,607 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:00:21,276 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:22,218 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:26,649 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:32,398 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:33,256 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:33,454 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:33,712 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:33,974 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:34,231 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:34,463 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:36,580 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:37,012 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:37,317 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:00:37,455 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:01:27,903 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:06:02,957 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-26 20:11:25,021 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:11:25,031 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0043.dbool___difference38.gcode
+2016-08-26 20:11:25,917 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:11:29,003 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:11:29,362 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:12:19,830 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:12:23,073 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:16:25,741 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:16:33,524 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:16:45,289 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:16:45,804 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:18:03,076 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0043.dbool___difference38.gcode
+2016-08-26 20:18:05,676 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:18:07,001 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:26:03,647 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:26:03,654 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0043.dbool___difference38.gcode
+2016-08-26 20:26:07,054 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:26:11,284 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:26:11,527 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:27:34,215 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:32:39,895 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:33:06,879 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:33:21,528 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:33:22,046 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:33:51,468 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:37:58,613 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:38:14,483 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:38:30,370 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:38:30,886 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:49:34,011 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:56:46,351 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 20:56:55,816 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:57:09,466 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:57:09,983 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 20:59:59,237 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:04:53,005 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:05:03,706 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:05:20,303 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:05:20,822 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:06:56,634 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:07:18,139 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:10:39,006 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-26 21:10:41,913 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 21:10:43,326 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 21:10:49,535 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-08-26 21:12:30,121 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:13:01,675 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:13:16,694 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:13:17,211 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:18:03,110 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:04,117 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:04,624 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:04,871 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:05,032 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:05,212 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:07,812 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:18,434 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:18:18,476 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:19:57,363 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:20:03,539 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:20:39,974 - octoprint.server - INFO - Shutting down...
+2016-08-26 21:20:50,915 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-08-26 21:20:50,993 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-08-26 21:20:52,973 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-08-26 21:20:52,975 - octoprint.plugin.core - INFO - Found 6 plugin(s) providing 5 mixin implementations, 3 hook handlers
+2016-08-26 21:20:52,986 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-08-26 21:20:53,058 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-08-26 21:20:53,108 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-08-26 21:20:57,080 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2016-08-26 21:20:57,086 - octoprint.plugin.core - INFO - Initialized 5 plugin implementation(s)
+2016-08-26 21:20:57,530 - octoprint.plugin.core - INFO - 6 plugin(s) registered with the system:
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+2016-08-26 21:20:57,533 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-08-26 21:20:57,546 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-08-26 21:20:57,551 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-08-26 21:20:57,568 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-08-26 21:20:59,392 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-08-26 21:20:59,595 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from http://plugins.octoprint.org/plugins.json
+2016-08-26 21:20:59,960 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-08-26 21:21:00,124 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-08-26 21:22:19,061 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://192.168.10.101:5000/'}
+2016-08-26 21:22:53,780 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 21:22:53,957 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 21:22:55,274 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-26 21:22:55,348 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 21:22:55,406 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 21:22:55,498 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:23:00,736 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:23:00,774 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:23:05,429 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:23:09,858 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:23:10,677 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:23:11,684 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:25:06,212 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:25:13,826 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:25:16,012 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:25:33,318 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:25:50,259 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:28:50,961 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:29:09,469 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:29:09,508 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 21:29:10,155 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:29:10,699 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:29:40,554 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:29:42,931 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:29:45,442 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:29:47,402 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:51:11,291 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:51:17,736 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 21:58:33,657 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:03,410 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:08,639 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:08,679 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:10:09,095 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:09,596 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:12,197 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:13,263 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:13,463 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:13,638 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:13,966 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:14,027 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:14,198 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:14,481 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:14,588 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:14,781 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:15,005 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:15,504 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:15,606 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:15,787 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:16,019 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:16,155 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:16,346 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:16,536 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:16,720 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:16,891 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:18,897 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:19,215 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:19,413 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:19,651 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:19,787 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:19,979 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:20,163 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:20,336 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:20,640 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:20,709 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:20,895 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:21,144 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:21,318 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:21,462 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:21,688 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:21,808 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:21,989 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:22,192 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:10:22,318 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:25,943 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:26,142 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:26,508 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:26,706 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:26,895 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:27,201 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:27,258 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:27,429 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:27,691 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:27,781 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:27,965 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:28,614 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:29,132 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:29,333 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:29,540 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:29,734 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:30,186 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:30,375 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:30,742 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:30,932 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:31,201 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:31,348 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:31,527 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:31,724 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:31,915 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:32,096 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:32,293 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:32,482 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:32,838 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:33,112 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:35,219 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:41,860 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:43,469 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:44,942 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:46,514 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:11:49,523 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:15:50,969 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:15:59,324 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-26 22:16:01,886 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 22:16:03,544 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 22:16:09,527 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-08-26 22:20:00,911 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:01,728 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:01,968 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:02,164 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:02,430 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:03,702 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:04,567 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:04,774 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:04,990 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:05,228 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:20:05,499 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:25:36,981 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0043.dbool___difference38.gcode
+2016-08-26 22:25:48,199 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:26:09,156 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:26:24,732 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-26 22:26:26,655 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-26 22:26:27,926 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-26 22:26:39,889 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:30:56,151 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:31:11,112 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:31:12,108 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:31:12,293 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:32:05,000 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:32:21,524 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:32:25,409 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:35:48,869 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:36:12,482 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:36:29,285 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:36:29,801 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:37:25,176 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:37:29,423 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:43:40,680 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:43:40,792 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:43:40,946 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:43:41,187 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:43:41,460 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:43:41,521 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:45:50,163 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:49:01,183 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:49:03,853 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:49:35,537 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:49:52,416 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:49:52,930 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:50:38,305 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:50:40,362 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:55:30,918 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 22:55:57,351 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:56:12,460 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:56:12,970 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 22:58:24,110 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:02:08,478 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:02:22,277 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:02:34,484 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:02:35,000 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:03:27,412 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:07:24,954 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:07:38,224 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:07:51,749 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:07:52,265 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:08:52,264 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:10:09,301 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:14:40,395 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:14:50,465 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:15:03,996 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:15:04,511 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:15:39,428 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:15:54,343 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:15:58,251 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:19:36,796 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:19:56,018 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:19:56,572 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:20:09,445 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:20:09,962 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:21:51,659 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:26:24,780 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:26:48,481 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:27:03,255 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:27:03,772 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-26 23:28:59,700 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:29:07,446 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-26 23:29:21,531 - octoprint.server - INFO - Shutting down...
+2016-08-26 23:29:21,577 - octoprint.server - INFO - Goodbye!
+2016-08-26 23:29:32,067 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-08-26 23:29:32,149 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-08-26 23:29:34,124 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-08-26 23:29:34,126 - octoprint.plugin.core - INFO - Found 6 plugin(s) providing 5 mixin implementations, 3 hook handlers
+2016-08-26 23:29:34,137 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-08-26 23:29:34,317 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-08-26 23:29:34,367 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-08-26 23:29:38,216 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2016-08-26 23:29:38,222 - octoprint.plugin.core - INFO - Initialized 5 plugin implementation(s)
+2016-08-26 23:29:38,671 - octoprint.plugin.core - INFO - 6 plugin(s) registered with the system:
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+2016-08-26 23:29:38,673 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-08-26 23:29:38,687 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-08-26 23:29:38,693 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-08-26 23:29:38,709 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-08-26 23:29:39,841 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-08-26 23:29:39,863 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2016-08-26 23:29:40,226 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-08-26 23:29:40,412 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-08-26 23:29:54,195 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://192.168.10.101:5000/'}
+2016-08-27 13:58:46,598 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-27 13:58:46,665 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-27 13:58:48,769 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:02:27,056 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-08-27 14:02:29,427 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-08-27 14:02:31,007 - octoprint - ERROR - Exception on /api/login [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.7/site-packages/octoprint/server/api/__init__.py", line 211, in login
+    return passive_login()
+  File "/usr/lib/python2.7/site-packages/octoprint/server/util/flask.py", line 230, in passive_login
+    if user is not None and not user.is_anonymous():
+TypeError: 'bool' object is not callable
+2016-08-27 14:02:40,602 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.43s
+2016-08-27 14:03:43,139 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:03:43,164 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 14:04:25,232 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:25,703 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:25,903 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:26,080 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:26,258 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:26,444 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:26,633 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:27,699 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:31,004 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:31,184 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:31,354 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:31,514 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:31,700 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:31,851 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:04:32,040 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:06:00,942 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:06:17,806 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:06:20,935 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:08:44,446 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-27 14:17:09,249 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:17:13,088 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:17:19,919 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0043.dbool___difference38.gcode
+2016-08-27 14:17:23,482 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 14:17:28,589 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 14:17:29,088 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 14:20:05,557 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:20:09,724 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:20:10,986 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:26:32,176 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:26:54,979 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 14:27:10,593 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 14:27:11,112 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 14:28:29,523 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:29:26,172 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0043.dbool___difference38.gcode
+2016-08-27 14:29:45,026 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:29:47,559 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:41:10,283 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:44:43,783 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:44:55,569 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:45:28,861 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:45:39,228 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:45:47,905 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:45:51,943 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:46:40,359 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:46:50,294 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:46:56,564 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 14:52:22,826 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 15:06:14,740 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-27 16:35:50,053 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.10: 
+2016-08-27 16:36:15,057 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-27 16:46:15,798 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0044.dbool_TOPIDLER2.dbool___union11.gcode
+2016-08-27 16:46:18,101 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:46:26,164 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:54:59,590 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:55:16,620 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:55:21,889 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:55:24,158 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:55:34,381 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:55:34,387 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0044.dbool_TOPIDLER2.dbool___union11.gcode
+2016-08-27 16:55:35,018 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:55:37,338 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:55:37,812 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:57:00,471 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:57:12,445 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:57:15,867 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:57:17,467 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:57:42,599 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:57:51,547 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:58:02,654 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:58:14,098 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:58:15,561 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:58:18,261 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:58:18,445 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:58:18,966 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:58:18,973 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:58:21,847 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:58:21,860 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 16:59:01,084 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0044.dbool_TOPIDLER2.dbool___union11.gcode
+2016-08-27 16:59:04,403 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:59:06,855 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 16:59:27,507 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:06:22,456 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:06:22,461 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0044.dbool_TOPIDLER2.dbool___union11.gcode
+2016-08-27 17:06:25,947 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 17:06:28,297 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 17:06:28,646 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 17:06:36,393 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:06:57,094 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:09:23,220 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:09:25,867 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:10:12,392 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:10:25,679 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:10:28,783 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 17:13:45,280 - octoprint.server.util.sockjs - WARNING - Could not send message to client 192.168.10.10: 
+2016-08-27 17:20:00,299 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-27 17:24:35,316 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError
+2016-08-27 17:36:05,901 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.150
+2016-08-27 17:36:39,193 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.150
+2016-08-27 18:00:15,342 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:00:15,607 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:27:31,672 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0044.TOPIDLER_COVER.TOPIDLER.gcode
+2016-08-27 18:27:37,736 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:28:22,910 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:34:30,938 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:34:34,829 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:34:37,001 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:34:37,186 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:36:19,551 - octoprint.filemanager.analysis - INFO - Starting analysis of local:slap.0044.TOPIDLER_COVER.TOPIDLER.gcode
+2016-08-27 18:36:30,859 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:36:34,149 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:43:33,073 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:43:36,291 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:43:38,253 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:43:38,437 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:43:39,527 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:43:47,842 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:44:12,567 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:44:44,874 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:44:58,830 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:45:11,532 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:45:22,344 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:45:24,334 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:47:39,435 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:56:13,652 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:56:14,209 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:56:16,955 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:56:17,140 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 18:56:19,054 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:56:38,718 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:56:52,259 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:56:56,624 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:58:29,596 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:58:47,078 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:58:51,703 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:58:53,773 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:59:00,315 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:59:05,069 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:59:19,892 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 18:59:25,403 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:04:12,392 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:04:16,257 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:04:21,876 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:04:22,093 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:05:54,879 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:06:05,736 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:06:14,462 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:06:18,111 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:06:21,832 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:06:22,051 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:06:22,426 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:06:26,430 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:06:33,037 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:06:46,060 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:06:48,767 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:06:51,552 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:07:43,211 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:07:43,220 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:07:47,585 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:07:47,592 - octoprint.timelapse - WARNING - Cannot capture image, image number is unset
+2016-08-27 19:08:16,727 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:08:36,452 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:08:49,377 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:09:00,635 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 19:09:21,381 - py.warnings - WARNING - /usr/lib/python2.7/site-packages/werkzeug/local.py:343: DeprecationWarning: json is deprecated.  Use get_json() instead.
+  return getattr(self._get_current_object(), name)
+
+2016-08-27 23:22:06,420 - tornado.general - ERROR - Error in periodic callback
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/periodic.py", line 69, in _run
+    next_call = self.callback()
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/session.py", line 405, in _heartbeat
+    self.handler.send_pack(proto.HEARTBEAT)
+  File "/usr/lib/python2.7/site-packages/sockjs/tornado/transports/websocket.py", line 86, in send_pack
+    self.write_message(message, binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 213, in write_message
+    return self.ws_connection.write_message(message, binary=binary)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 686, in write_message
+    message = self._compressor.compress(message)
+  File "/usr/lib/python2.7/site-packages/tornado/websocket.py", line 451, in compress
+    assert data.endswith(b'\x00\x00\xff\xff')
+AssertionError

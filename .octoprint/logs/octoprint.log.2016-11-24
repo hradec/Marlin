@@ -1,0 +1,225 @@
+2016-11-24 13:45:58,446 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-11-24 13:46:04,526 - octoprint.util.pip - INFO - Found pip at /usr/sbin/pip, version is 8.1.2
+2016-11-24 13:46:11,035 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2016-11-24 13:46:15,063 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [115200, 250000, 230400, 57600, 38400, 19200, 9600], 'ports': [], 'baudratePreference': 115200}
+2016-11-24 13:46:15,066 - octoprint.plugins.portlister - INFO - Checking if /dev/media0 is in []
+2016-11-24 13:46:15,067 - octoprint.plugins.portlister - WARNING - Won't autoconnect because /dev/media0 isn't in []
+2016-11-24 13:46:15,085 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [115200, 250000, 230400, 57600, 38400, 19200, 9600], 'ports': [], 'baudratePreference': 115200}
+2016-11-24 13:46:15,087 - octoprint.plugins.portlister - INFO - Checking if /dev/video0 is in []
+2016-11-24 13:46:15,088 - octoprint.plugins.portlister - WARNING - Won't autoconnect because /dev/video0 isn't in []
+2016-11-24 13:46:40,404 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [115200, 250000, 230400, 57600, 38400, 19200, 9600], 'ports': [], 'baudratePreference': 115200}
+2016-11-24 13:46:40,405 - octoprint.plugins.portlister - INFO - Checking if /dev/media1 is in []
+2016-11-24 13:46:40,407 - octoprint.plugins.portlister - WARNING - Won't autoconnect because /dev/media1 isn't in []
+2016-11-24 13:46:40,424 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [115200, 250000, 230400, 57600, 38400, 19200, 9600], 'ports': [], 'baudratePreference': 115200}
+2016-11-24 13:46:40,426 - octoprint.plugins.portlister - INFO - Checking if /dev/video1 is in []
+2016-11-24 13:46:40,427 - octoprint.plugins.portlister - WARNING - Won't autoconnect because /dev/video1 isn't in []
+2016-11-24 13:46:50,461 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-11-24 13:46:52,599 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-11-24 13:46:54,806 - octoprint.plugins.announcements - INFO - Loaded channel _important from http://octoprint.org/feeds/important.xml in 0.24s
+2016-11-24 13:47:58,623 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-11-24 13:48:00,589 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-11-24 13:49:31,434 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [115200, 250000, 230400, 57600, 38400, 19200, 9600], 'ports': [], 'baudratePreference': 115200}
+2016-11-24 13:49:31,438 - octoprint.plugins.portlister - INFO - Checking if /dev/media1 is in []
+2016-11-24 13:49:31,440 - octoprint.plugins.portlister - WARNING - Won't autoconnect because /dev/media1 isn't in []
+2016-11-24 13:49:31,458 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [115200, 250000, 230400, 57600, 38400, 19200, 9600], 'ports': [], 'baudratePreference': 115200}
+2016-11-24 13:49:31,460 - octoprint.plugins.portlister - INFO - Checking if /dev/video1 is in []
+2016-11-24 13:49:31,461 - octoprint.plugins.portlister - WARNING - Won't autoconnect because /dev/video1 isn't in []
+2016-11-24 13:52:54,542 - octoprint.server.util.sockjs - INFO - Client connection closed: 192.168.10.10
+2016-11-24 13:52:56,305 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-11-24 13:56:06,399 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [115200, 250000, 230400, 57600, 38400, 19200, 9600], 'ports': ['/dev/ttyACM0'], 'baudratePreference': 115200}
+2016-11-24 13:56:06,400 - octoprint.plugins.portlister - INFO - Checking if /dev/ttyACM0 is in ['/dev/ttyACM0']
+2016-11-24 13:56:06,404 - octoprint.plugins.portlister - INFO - autoconnect_delay 20
+2016-11-24 13:56:26,408 - octoprint.plugins.portlister - INFO - do_auto_connect
+2016-11-24 13:56:26,410 - octoprint.plugins.portlister - INFO - realpath match
+2016-11-24 13:56:26,500 - octoprint.plugins.portlister - INFO - Attempting to connect to /dev/ttyACM0 at 115200 with profile 'hbot'
+2016-11-24 14:30:36,386 - octoprint.server.api - INFO - Performing command: sudo halt
+2016-11-24 14:30:36,602 - octoprint.server - INFO - Shutting down...
+2016-11-24 14:30:36,838 - octoprint.server - INFO - Goodbye!
+2016-11-24 14:30:46,153 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-11-24 14:30:46,260 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-11-24 14:30:48,746 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-11-24 14:30:48,749 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2016-11-24 14:30:48,760 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-11-24 14:30:48,826 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-11-24 14:30:53,034 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2016-11-24 14:30:53,367 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-11-24 14:30:53,376 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2016-11-24 14:30:53,989 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2016-11-24 14:30:53,992 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-11-24 14:30:54,005 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-11-24 14:30:54,011 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-11-24 14:30:54,039 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-11-24 14:30:54,791 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-11-24 14:30:54,980 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from http://plugins.octoprint.org/plugins.json
+2016-11-24 14:30:55,410 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-11-24 14:30:55,436 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2016-11-24 14:30:55,608 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-11-24 14:31:10,919 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2016-11-24 14:50:54,671 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2016-11-24 14:50:54,674 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2016-11-24 14:59:29,979 - octoprint.server.api - INFO - Performing command: sudo halt
+2016-11-24 14:59:30,149 - octoprint.server - INFO - Shutting down...
+2016-11-24 14:59:40,960 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-11-24 15:00:13,031 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   2016-11-24 14:59:46,586 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-11-24 15:00:18,653 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-11-24 15:00:22,184 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-11-24 15:00:22,187 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2016-11-24 15:00:22,203 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-11-24 15:00:22,298 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-11-24 15:00:27,945 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2016-11-24 15:00:28,438 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-11-24 15:00:28,452 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2016-11-24 15:00:28,471 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2016-11-24 15:00:28,474 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-11-24 15:00:28,494 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-11-24 15:00:28,497 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-11-24 15:00:28,504 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-11-24 15:00:29,722 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-11-24 15:00:29,743 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2016-11-24 15:00:30,295 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-11-24 15:00:30,301 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2016-11-24 15:00:30,524 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-11-24 14:59:42,394 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+                                                                                                                                                                                                                   2016-11-24 14:59:40,993 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-11-24 15:00:13,057 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-11-24 15:00:16,567 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-11-24 15:00:16,583 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2016-11-24 15:00:16,599 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-11-24 15:00:16,695 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-11-24 15:00:22,344 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2016-11-24 15:00:22,856 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-11-24 15:00:22,870 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2016-11-24 15:00:22,888 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2016-11-24 15:00:22,892 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-11-24 15:00:22,911 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-11-24 15:00:22,914 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-11-24 15:00:22,921 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-11-24 15:00:23,880 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-11-24 15:00:23,904 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2016-11-24 15:00:24,446 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-11-24 15:00:24,452 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2016-11-24 15:00:24,674 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-11-24 14:59:41,027 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-11-24 15:00:13,096 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-11-24 15:00:16,761 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-11-24 15:00:16,764 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2016-11-24 15:00:16,780 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-11-24 15:00:16,875 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-11-24 15:00:22,486 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2016-11-24 15:00:23,007 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-11-24 15:00:23,021 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2016-11-24 15:00:23,040 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2016-11-24 15:00:23,043 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-11-24 15:00:23,062 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-11-24 15:00:23,067 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-11-24 15:00:23,093 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-11-24 15:00:24,054 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-11-24 15:00:24,076 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2016-11-24 15:00:24,628 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-11-24 15:00:24,638 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2016-11-24 15:00:24,856 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2016-11-24 14:59:39,137 - octoprint.server - INFO - Starting OctoPrint 1.2.15 (HEAD -> master branch)
+2016-11-24 14:59:39,275 - octoprint.plugin.core - INFO - Loading plugins from /home/rhradec/.octoprint/plugins, /usr/lib/python2.7/site-packages/octoprint/plugins and installed plugin packages...
+2016-11-24 14:59:41,861 - octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2016-11-24 14:59:41,864 - octoprint.plugin.core - INFO - Found 17 plugin(s) providing 16 mixin implementations, 15 hook handlers
+2016-11-24 14:59:41,875 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/.octoprint/uploads...
+2016-11-24 14:59:41,940 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/.octoprint/uploads initialized successfully.
+2016-11-24 14:59:45,946 - octoprint.util.pip - INFO - Found pip at /bin/pip2, version is 8.1.2
+2016-11-24 14:59:46,284 - octoprint.plugins.softwareupdate - INFO - Loaded version cache from disk
+2016-11-24 14:59:46,294 - octoprint.plugin.core - INFO - Initialized 16 plugin implementation(s)
+2016-11-24 14:59:46,306 - octoprint.plugin.core - INFO - 17 plugin(s) registered with the system:
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+| !CuraEngine (<= 15.04) (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/cura
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Plugin Manager (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2016-11-24 14:59:46,309 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2016-11-24 14:59:46,323 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2016-11-24 14:59:46,326 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2016-11-24 14:59:46,343 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2016-11-24 14:59:47,569 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2016-11-24 14:59:47,602 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2016-11-24 14:59:48,033 - octoprint.server - INFO - Listening on http://0.0.0.0:5000
+2016-11-24 14:59:48,040 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2016-11-24 14:59:48,197 - octoprint.server - INFO - Preemptively caching / for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}

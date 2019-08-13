@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+
+if [ "$(lsusb | grep Microsoft)" != "" ] ; then 
+	/bin/mjpg_streamer  -i "input_uvc.so  -d $(ls /dev/video?) -y -n -f 10 -q 50" -o 'output_http.so -p 5001' > /tmp/mjpg.log 2>&1 
+fi

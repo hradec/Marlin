@@ -1,0 +1,19 @@
+Send: M503
+Recv: echo:Steps per unit:
+Recv: echo:  M92 X54.23 Y54.23 Z54.23 E80.00
+Recv: echo:Maximum feedrates (mm/s):
+Recv: echo:  M203 X300.00 Y200.00 Z300.00 E200.00
+Recv: echo:Maximum Acceleration (mm/s2):
+Recv: echo:  M201 X1500 Y1000 Z500 E3000
+Recv: echo:Acceleration: S=acceleration, T=retract acceleration
+Recv: echo:  M204 S3000.00 T9000.00
+Recv: echo:Advanced variables: S=Min feedrate (mm/s), T=Min travel feedrate (mm/s), B=minimum segment time (ms), X=maximum XY jerk (mm/s),  Z=maximum Z jerk (mm/s),  E=maximum E jerk (mm/s)
+Recv: echo:  M205 S0.00 T0.00 B20000 X10.00 Z0.50 E1.00
+Recv: echo:Home offset (mm):
+Recv: echo:  M206 X0.00 Y0.00 Z0.00
+Recv: echo:PID settings:
+Recv: echo:   M301 P27.67 I2.23 D85.70
+
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description></description>
+    <link>/</link>
+    <atom:link href="http://octoprint.org/feeds/spotlight.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 04 Sep 2016 13:20:43 +0000</pubDate>
+    <lastBuildDate>Sun, 04 Sep 2016 13:20:43 +0000</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Community Spotlight: TouchUI Plugin</title>
+        <description>
+          <![CDATA[
+            A lot of people have complained about OctoPrint&#39;s default web interface not being optimized for mobile or small screen devices, and rightly so. One of the reasons why I created the plugin interface for OctoPrint 1.2.0 was that I hoped that it would enable people to get creative and solve such pain points themselves, and it&#39;s great to see developers like Paul de Vries aka &quot;Billy Blaze&quot; stepping up to that challenge.<br />
+
+
+
+          ]]>
+        </description>
+        <pubDate>Thu, 19 Nov 2015 17:26:11 +0000</pubDate>
+        <link>http://octoprint.org/blog/2015/11/19/community-spotlight-touchui-plugin/</link>
+        <guid isPermaLink="true">http://octoprint.org/blog/2015/11/19/community-spotlight-touchui-plugin/</guid>
+      </item>
+    
+      <item>
+        <title>Community spotlight: Makerbot(clone) support via a plugin</title>
+        <description>
+          <![CDATA[
+            It&#39;s not a secret that OctoPrint so far lacked support for Makerbot printers and their clones (e.g. Flashforge) and that I wasn&#39;t going to do anything about that due to various reasons (the most prominent one being no access to a machine to test with, but admittedly also some other reservations). With the arrival of the plugin system in OctoPrint&#39;s development branch <span class="proflinkWrapper"><span class="proflinkPrefix">+</span><a class="proflink" href="https://plus.google.com/118024220644837840366" oid="118024220644837840366">Mark Walker</a></span>Â took it upon himself to change that and with &quot;GPX&quot; [1] developed a plugin around the &quot;gpx&quot; tool, which converts GCODE to the x3g format used by these printers. Mark has the plugin do this on the fly, basically having it act as a translation layer between OctoPrint itself and the serial port connected to the printer and thus allowing FlashForge and Makerbot printers up until Gen5 (read: Replicator 2 being the last one) to work together with OctoPrint.<br />
+
+
+
+          ]]>
+        </description>
+        <pubDate>Tue, 28 Apr 2015 11:47:52 +0000</pubDate>
+        <link>http://octoprint.org/blog/2015/04/28/community-spotlight-makerbot-clone-support-via-a-plugin/</link>
+        <guid isPermaLink="true">http://octoprint.org/blog/2015/04/28/community-spotlight-makerbot-clone-support-via-a-plugin/</guid>
+      </item>
+    
+  </channel>
+</rss>
