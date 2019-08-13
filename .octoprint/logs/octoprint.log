@@ -2611,3 +2611,195 @@ Traceback (most recent call last):
     return mapping[key]             # can't use 'key in mapping' with defaultdict
 KeyboardInterrupt
 2019-08-12 23:05:59,141 - octoprint.server - INFO - Shutting down...
+2019-08-12 23:13:10,965 - octoprint.startup - INFO - ******************************************************************************
+2019-08-12 23:13:10,970 - octoprint.startup - INFO - Starting OctoPrint 1.3.11
+2019-08-12 23:13:10,972 - octoprint.startup - INFO - ******************************************************************************
+2019-08-12 23:13:11,125 - octoprint.plugin.core - INFO - Loading plugins from /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins, /home/rhradec/.octoprint/plugins and installed plugin packages...
+2019-08-12 23:13:15,743 - octoprint.plugins.octoprint.plugins.discovery - INFO - pybonjour is not installed, Zeroconf Discovery won't be available
+2019-08-12 23:13:15,813 - octoprint.plugin.core - INFO - Found 26 plugin(s) providing 26 mixin implementations, 35 hook handlers
+2019-08-12 23:13:16,936 - octoprint.server.heartbeat - INFO - Starting server heartbeat, 900.0s interval
+2019-08-12 23:13:16,967 - octoprint.server - INFO - Intermediary server started
+2019-08-12 23:13:16,968 - octoprint.plugin.core - INFO - Loading plugins from /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins, /home/rhradec/.octoprint/plugins and installed plugin packages...
+2019-08-12 23:13:17,987 - octoprint.plugin.core - INFO - Found 26 plugin(s) providing 26 mixin implementations, 35 hook handlers
+2019-08-12 23:13:18,084 - octoprint.filemanager.storage - INFO - Initializing the file metadata for /home/rhradec/Marlin/.octoprint/uploads...
+2019-08-12 23:13:19,416 - octoprint.filemanager.storage - INFO - ... file metadata for /home/rhradec/Marlin/.octoprint/uploads initialized successfully.
+2019-08-12 23:13:19,687 - octoprint.plugins.softwareupdate - INFO - Version cache was created for another version of OctoPrint, not using it
+2019-08-12 23:13:24,316 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:13:29,073 - octoprint.util.pip - INFO - Version of pip is 19.2.2
+2019-08-12 23:13:29,076 - octoprint.util.pip - INFO - pip installs to /usr/lib/octoprint/lib/python2.7/site-packages (writable -> no), --user flag needed -> no, virtual env -> yes
+2019-08-12 23:13:29,078 - octoprint.util.pip - INFO - ==> pip ok -> NO!
+2019-08-12 23:13:29,080 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages.
+2019-08-12 23:13:29,090 - octoprint.plugin.core - INFO - Initialized 26 plugin implementation(s)
+2019-08-12 23:13:29,136 - octoprint.plugin.core - INFO - 26 plugin(s) registered with the system:
+|  Action Command Prompt Support (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/action_command_prompt
+|  Active Filters (0.0.1) = /usr/lib/python2.7/site-packages/octoprint_active_filters
+|  Announcement Plugin (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/announcements
+|  Anonymous Usage Tracking (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/tracking
+|  Application Keys Plugin (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/appkeys
+|  Backup & Restore (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/backup
+|  BQ Android App Companion (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_bqappcompanion
+|  Core Wizard (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/corewizard
+|  Cost Plugin (0.1.2) = /usr/lib/python2.7/site-packages/octoprint_cost
+|  Custom Control Editor (0.2.1) = /usr/lib/python2.7/site-packages/octoprint_customControl
+|  Discovery (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/discovery
+|  EEPROM Marlin Editor Plugin (0.1.0) = /usr/lib/python2.7/site-packages/octoprint_eeprom_marlin
+|  Error Tracking (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/errortracking
+|  Force Login (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/forcelogin
+|  Logging (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/logging
+|  Pi Support Plugin (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pi_support
+|  Plugin Manager (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pluginmanager
+|  PortLister (0.1.5) = /usr/lib/python2.7/site-packages/octoprint_portlister
+|  Printer Safety Check (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/printer_safety_check
+|  RequestSpinner (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_requestspinner
+|  ScreenSquish (0.1) = /usr/lib/python2.7/site-packages/octoprint_ScreenSquish
+|  Software Update (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/softwareupdate
+|  System Command Editor (0.3.1) = /usr/lib/python2.7/site-packages/octoprint_systemcommandeditor
+|  TouchUI (0.3.4) = /usr/lib/python2.7/site-packages/octoprint_touchui
+|  Virtual Printer (bundled) = /usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/virtual_printer
+|  Yamlpatcher (0.1.1) = /usr/lib/python2.7/site-packages/octoprint_yamlpatcher
+2019-08-12 23:13:29,178 - octoprint.environment - INFO - Detected environment is Python 2.7.12 under Linux (linux2). Details:
+|  hardware:
+|    cores: 4
+|    freq: 900.0
+|    ram: 967061504
+|  os:
+|    id: linux
+|    platform: linux2
+|  plugins:
+|    pi_support:
+|      model: Raspberry Pi 2 Model B Rev 1.1
+|  python:
+|    pip: 8.1.2
+|    version: 2.7.12
+|    virtualenv: /usr/lib/octoprint
+2019-08-12 23:13:29,206 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/webassets...
+2019-08-12 23:13:29,250 - octoprint.server - INFO - Reset webasset folder /home/rhradec/.octoprint/generated/.webassets-cache...
+2019-08-12 23:13:32,001 - octoprint.server - INFO - Shutting down intermediary server...
+2019-08-12 23:13:32,306 - octoprint.server - INFO - Intermediary server shut down
+2019-08-12 23:13:32,314 - octoprint.events - INFO - Processing startup event, this is our first event
+2019-08-12 23:13:32,315 - octoprint.events - INFO - Adding 0 events to queue that were held back before startup event
+2019-08-12 23:13:32,317 - octoprint.filemanager - INFO - Adding backlog items from all storage types to analysis queue...
+2019-08-12 23:13:32,327 - octoprint.filemanager - INFO - Added 0 items from storage type "local" to analysis queue
+2019-08-12 23:13:32,632 - octoprint.server.util.watchdog - INFO - Running initial scan on watched folder...
+2019-08-12 23:13:32,637 - octoprint.util.comm - INFO - Changing monitoring state from "Offline" to "Opening serial port"
+2019-08-12 23:13:32,652 - octoprint.util.comm - INFO - Changing monitoring state from "Opening serial port" to "Connecting"
+2019-08-12 23:13:32,657 - octoprint.server.util.watchdog - INFO - ... initial scan done.
+2019-08-12 23:13:32,717 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:13:32,718 - octoprint.plugins.discovery - INFO - Registered OctoPrint instance on hbot for SSDP
+2019-08-12 23:13:32,752 - octoprint.plugins.pi_support - ERROR - Got an error while trying to fetch the current throttle state via "/usr/bin/vcgencmd get_throttled"
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pi_support/__init__.py", line 263, in _check_throttled_state
+    state = get_vcgencmd_throttled_state(command)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/pi_support/__init__.py", line 137, in get_vcgencmd_throttled_state
+    output = sarge.get_stdout(command)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1503, in get_stdout
+    p = capture_stdout(cmd, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1473, in capture_stdout
+    return run(cmd, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1462, in run
+    p.run(input=input, async_=async_)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1071, in run
+    self.run_node(node, input=input, async_=False)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1187, in run_node
+    result = getattr(self, method)(node, input, async_)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 1333, in run_command_node
+    node.cmd.run(input=input, async_=async_)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/fixes.py", line 24, in decorated_function
+    return f(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/sarge/__init__.py", line 658, in run
+    raise ValueError('Command not found: %s' % self.args[0])
+ValueError: Command not found: /usr/bin/vcgencmd
+2019-08-12 23:13:32,768 - octoprint.server - INFO - Listening on http://0.0.0.0:5000 and http://[::]:5000
+2019-08-12 23:13:32,906 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from disk, was still valid
+2019-08-12 23:13:34,177 - octoprint.plugins.pluginmanager - INFO - Loaded notice data from disk, was still valid
+2019-08-12 23:13:38,381 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:13:38,384 - octoprint.util.pip - INFO - pip installs to /usr/lib/octoprint/lib/python2.7/site-packages (writable -> no), --user flag needed -> no, virtual env -> yes
+2019-08-12 23:13:38,387 - octoprint.util.pip - INFO - ==> pip ok -> NO!
+2019-08-12 23:13:38,388 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages.
+2019-08-12 23:13:38,401 - octoprint.plugin - ERROR - Error while calling plugin softwareupdate
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugin/__init__.py", line 219, in call_plugin
+    result = getattr(plugin, method)(*args, **kwargs)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 102, in on_after_startup
+    self._check_environment()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/plugins/softwareupdate/__init__.py", line 189, in _check_environment
+    and get_comparable_version(versions["pip"]) >= get_comparable_version(MINIMUM_PIP)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/version.py", line 148, in get_comparable_version
+    if "-" in version_string:
+TypeError: argument of type 'NoneType' is not iterable
+2019-08-12 23:13:38,405 - octoprint.plugins.portlister - INFO - Port Lister () {}
+2019-08-12 23:13:39,336 - octoprint.server.preemptive_cache - INFO - Preemptively caching / (ui _default) for {'query_string': 'l10n=en', 'path': '/', 'base_url': 'http://hbot.local:5000/'}
+2019-08-12 23:13:40,228 - octoprint.plugins.softwareupdate - WARNING - Software update hook systemcommandeditor provides check for itself but that was already registered by eeprom_marlin - overwriting that third party registration now!
+2019-08-12 23:13:41,843 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:13:43,402 - octoprint.util.comm - INFO - Changing monitoring state from "Connecting" to "Operational"
+2019-08-12 23:13:43,433 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:13:43,503 - octoprint.util.comm - INFO - Printer reports firmware name "Marlin V1; Sprinter/grbl mashup for gen6"
+2019-08-12 23:14:14,342 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:14:18,189 - octoprint.server.preemptive_cache - INFO - ... done in 38.85s
+2019-08-12 23:14:35,460 - octoprint.server.util.sockjs - INFO - New connection from client: 192.168.10.10
+2019-08-12 23:14:35,795 - octoprint.server.util.flask - INFO - Passively logging in user rhradec from 192.168.10.10
+2019-08-12 23:15:18,871 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:15:19,934 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:15:20,065 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:15:20,179 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:15:20,420 - octoprint.util.pip - INFO - Using "/usr/lib/octoprint/bin/python2 -m pip" as command to invoke pip
+2019-08-12 23:15:35,551 - octoprint.util.pip - INFO - pip installs to /usr/lib/octoprint/lib/python2.7/site-packages/ (writable -> no), --user flag needed -> no, virtual env -> yes
+2019-08-12 23:15:35,552 - octoprint.util.pip - INFO - ==> pip ok -> NO!
+2019-08-12 23:15:35,553 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages/.
+2019-08-12 23:15:35,566 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages/.
+2019-08-12 23:15:35,573 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages/.
+2019-08-12 23:15:35,574 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages/.
+2019-08-12 23:15:35,597 - octoprint.util.pip - ERROR - Cannot use this pip install, can't write to the install dir and also can't use --user for installing. Check your setup and the permissions on /usr/lib/octoprint/lib/python2.7/site-packages/.
+2019-08-12 23:15:36,561 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2019-08-12 23:15:36,915 - tornado.access - WARNING - 404 GET /api/printerprofiles/_default (192.168.10.10) 29.20ms
+2019-08-12 23:15:36,979 - tornado.access - WARNING - 404 GET /api/printerprofiles/_default (192.168.10.10) 31.47ms
+2019-08-12 23:15:40,318 - octoprint.server.util.sockjs - INFO - User rhradec logged in on the socket from client 192.168.10.10
+2019-08-12 23:17:46,716 - octoprint.util.comm - INFO - Changing monitoring state from "Operational" to "Offline"
+2019-08-12 23:17:54,481 - octoprint.util.comm - INFO - Changing monitoring state from "Offline" to "Opening serial port"
+2019-08-12 23:17:54,490 - octoprint.util.comm - INFO - Changing monitoring state from "Opening serial port" to "Connecting"
+2019-08-12 23:17:54,525 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:17:55,403 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:17:57,067 - octoprint.util.comm - INFO - Changing monitoring state from "Connecting" to "Operational"
+2019-08-12 23:17:57,083 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:17:57,147 - octoprint.util.comm - INFO - Printer reports firmware name "Marlin V1; Sprinter/grbl mashup for gen6"
+2019-08-12 23:19:40,241 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2019-08-12 23:19:40,247 - octoprint.plugins.portlister - WARNING - Not auto connecting because printer is not closed nor in error state.
+2019-08-12 23:19:40,855 - octoprint.util.comm - ERROR - Unexpected error while reading from serial port
+Traceback (most recent call last):
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/comm.py", line 2739, in _readline
+    ret = self._serial.readline()
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/octoprint/util/comm.py", line 4844, in readline
+    c = self.read(1)
+  File "/usr/lib/octoprint/lib/python2.7/site-packages/serial/serialposix.py", line 501, in read
+    'device reports readiness to read but returned no data '
+SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+2019-08-12 23:19:40,883 - octoprint.util.comm - ERROR - Please see https://faq.octoprint.org/serialerror for possible reasons of this.
+2019-08-12 23:19:40,902 - octoprint.util.comm - INFO - Changing monitoring state from "Operational" to "Offline (Error: SerialException: 'device reports readiness to read but returned no data (device disconnected or multiple access on port?)' @ comm.py:_readline:2739)"
+2019-08-12 23:19:41,860 - octoprint.plugins.portlister - INFO - on_port_created connection_options {'portPreference': '/dev/ttyACM0', 'autoconnect': True, 'baudrates': [250000, 230400, 115200, 57600, 38400, 19200, 9600], 'ports': ['/dev/ttyACM0'], 'baudratePreference': 115200}
+2019-08-12 23:19:41,862 - octoprint.plugins.portlister - INFO - Checking if /dev/ttyACM0 is in ['/dev/ttyACM0']
+2019-08-12 23:19:41,869 - octoprint.plugins.portlister - INFO - autoconnect_delay 20
+2019-08-12 23:20:01,884 - octoprint.plugins.portlister - INFO - do_auto_connect
+2019-08-12 23:20:01,891 - octoprint.plugins.portlister - INFO - realpath match
+2019-08-12 23:20:02,040 - octoprint.plugins.portlister - INFO - Attempting to connect to /dev/ttyACM0 at 115200 with profile 'hbot'
+2019-08-12 23:20:02,070 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from https://plugins.octoprint.org/plugins.json
+2019-08-12 23:20:02,335 - octoprint.util.comm - INFO - Changing monitoring state from "Offline" to "Opening serial port"
+2019-08-12 23:20:02,343 - octoprint.util.comm - INFO - Changing monitoring state from "Opening serial port" to "Connecting"
+2019-08-12 23:20:02,365 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:20:03,254 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:20:04,924 - octoprint.util.comm - INFO - Changing monitoring state from "Connecting" to "Operational"
+2019-08-12 23:20:04,948 - octoprint.util.comm - INFO - M110 detected, setting current line number to 0
+2019-08-12 23:20:04,992 - octoprint.util.comm - INFO - Printer reports firmware name "Marlin V1; Sprinter/grbl mashup for gen6"
+2019-08-12 23:20:07,525 - octoprint.plugins.pluginmanager - INFO - Loaded plugin notices data from https://plugins.octoprint.org/notices.json
+2019-08-12 23:21:00,107 - octoprint.plugins.softwareupdate - INFO - Saved version cache to disk
+2019-08-12 23:21:58,888 - octoprint.plugins.pluginmanager - INFO - Loaded plugin repository data from https://plugins.octoprint.org/plugins.json
+2019-08-12 23:22:00,933 - octoprint.plugins.pluginmanager - INFO - Loaded plugin notices data from https://plugins.octoprint.org/notices.json
+2019-08-12 23:22:29,942 - octoprint.plugins.backup - INFO - Creating backup zip at /home/rhradec/.octoprint/data/backup/.octoprint-backup-20190812-232229.zip (excluded: timelapse,uploads,timelapse_tmp)...
+2019-08-12 23:22:30,064 - octoprint.plugins.backup - INFO - ... done creating backup zip.

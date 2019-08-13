@@ -35,19 +35,23 @@ controls:
 feature: {}
 gcodeViewer: {}
 plugins:
+  ScreenSquish:
+    octoprint_max_version: ''
   _disabled:
   - cura
   announcements:
     _config_version: 1
     channels:
+      _blog:
+        read_until: 1563963300
       _important:
         read_until: 1521111600
       _octopi:
-        read_until: 1462200600
+        read_until: 1549966200
       _plugins:
-        read_until: 1472774400
+        read_until: 1560211200
       _releases:
-        read_until: 1469862000
+        read_until: 1557824400
   cost:
     cost_per_hour: '0'
     cost_per_meter: '0.5'
@@ -81,6 +85,7 @@ plugins:
     requireNewCSS: false
     whatsNew: false
   tracking:
+    enabled: false
     unique_id: 8ff6ccb0-9449-49c4-a0cd-14490d306a71
 printerParameters: {}
 printerProfiles:
@@ -94,10 +99,18 @@ serial:
   timeout: {}
 server:
   commands:
+    serverRestartCommand: /home/rhradec/restartOctoprint
     systemRestartCommand: /home/rhradec/reboot
     systemShutdownCommand: /home/rhradec/halt
   firstRun: false
+  onlineCheck:
+    enabled: true
+  pluginBlacklist:
+    enabled: false
   secretKey: TqvOHtTtA8ySBpXYdOaJNregUk5wHJNg
+  seenWizards:
+    corewizard: 3
+    tracking: null
 system:
   actions:
   - action: divider
@@ -109,24 +122,31 @@ temperature:
   cutoff: 10
   profiles:
   - bed: 100
+    chamber: null
     extruder: 210
     name: '210'
   - bed: 60
+    chamber: null
     extruder: 180
     name: '180'
   - bed: 60
+    chamber: null
     extruder: 190
     name: '190'
   - bed: 60
+    chamber: null
     extruder: 200
     name: '200'
   - bed: 60
+    chamber: null
     extruder: 220
     name: '220'
   - bed: 60
+    chamber: null
     extruder: 230
     name: '230'
   - bed: 60
+    chamber: null
     extruder: 240
     name: '240'
 terminalFilters:

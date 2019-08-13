@@ -1,0 +1,3 @@
+V// source: plugin/requestspinner/js/requestspinner.js\u000a$(function() {\u000a    var requestSpinner = $("#requestspinner");\u000a    if (requestSpinner.length > 0) {\u000a        $(document).ajaxStart(function() {\u000a            log.debug("Requests started...");\u000a            requestSpinner.show("slow");\u000a        });\u000a        $(document).ajaxStop(function() {\u000a            log.debug("Requests done");\u000a            requestSpinner.hide("slow");\u000a        });\u000a    }\u000a});\u000a\u000a;\u000a
+p0
+.

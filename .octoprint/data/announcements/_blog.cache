@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OctoBlog</title>
+    <link>https://octoprint.org/blog/</link>
+    <atom:link href="https://octoprint.org/feeds/octoblog.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 07 Aug 2019 10:01:31 +0000</pubDate>
+    <lastBuildDate>Wed, 07 Aug 2019 10:01:31 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+    <item>
+      <title>OctoPrint On Air #25</title>
+      <description>
+        <![CDATA[
+          The twenty fifth episode of a monthly live broadcast for Patrons which aired live on July 5th 2019.
+        ]]>
+      </description>
+      <pubDate>Wed, 24 Jul 2019 10:15:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2019/07/24/octoprint-on-air-25/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2019/07/24/octoprint-on-air-25/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+    <item>
+      <title>OctoPrint On Air #24</title>
+      <description>
+        <![CDATA[
+          The twenty fourth episode of a monthly live broadcast for Patrons which aired live on June 8th 2019.
+        ]]>
+      </description>
+      <pubDate>Wed, 12 Jun 2019 11:15:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2019/06/12/octoprint-on-air-24/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2019/06/12/octoprint-on-air-24/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+    <item>
+      <title>OctoPrint On Air #23</title>
+      <description>
+        <![CDATA[
+          The twentythird episode of a monthly live broadcast for Patrons which aired live on April 12th 2019.
+        ]]>
+      </description>
+      <pubDate>Fri, 12 Apr 2019 17:00:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2019/04/12/octoprint-on-air-23/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2019/04/12/octoprint-on-air-23/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+    <item>
+      <title>Community Forum Migration</title>
+      <description>
+        <![CDATA[
+          On February 11th 2019 we migrated the community forums to a new server. This was our experience.
+        ]]>
+      </description>
+      <pubDate>Wed, 06 Mar 2019 10:20:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2019/03/06/community-forum-migration/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2019/03/06/community-forum-migration/</guid>
+      <category>OctoPrint News</category>
+    </item>
+    <item>
+      <title>OctoPrint On Air #22</title>
+      <description>
+        <![CDATA[
+          The twenty second episode of a monthly live broadcast for Patrons which aired live on February 9th 2019.
+        ]]>
+      </description>
+      <pubDate>Mon, 18 Feb 2019 13:00:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2019/02/18/octoprint-on-air-22/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2019/02/18/octoprint-on-air-22/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+    <item>
+      <title>OctoPrint On Air #21</title>
+      <description>
+        <![CDATA[
+          The twenty first episode of a monthly live broadcast for Patrons which aired live on December 14th 2018.
+        ]]>
+      </description>
+      <pubDate>Tue, 18 Dec 2018 11:20:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2018/12/18/octoprint-on-air-21/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2018/12/18/octoprint-on-air-21/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+    <item>
+      <title>OctoPrint On Air #20</title>
+      <description>
+        <![CDATA[
+          The twentieth episode of a monthly live broadcast for Patrons which aired live on November 16th 2018.
+        ]]>
+      </description>
+      <pubDate>Fri, 23 Nov 2018 16:30:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2018/11/23/octoprint-on-air-20/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2018/11/23/octoprint-on-air-20/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+    <item>
+      <title>OctoPrint On Air #19</title>
+      <description>
+        <![CDATA[
+          The nineteenth episode of a monthly live broadcast for Patrons which aired live earlier today on September 29th 2018.
+        ]]>
+      </description>
+      <pubDate>Sat, 29 Sep 2018 17:00:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2018/09/29/octoprint-on-air-19/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2018/09/29/octoprint-on-air-19/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+    <item>
+      <title>A Guide To Safe Remote Access of OctoPrint</title>
+      <description>
+        <![CDATA[
+          In this guest post, community member Jubaleth will tell you about safe ways to access your OctoPrint instance from the internet.
+        ]]>
+      </description>
+      <pubDate>Mon, 03 Sep 2018 16:20:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2018/09/03/safe-remote-access/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2018/09/03/safe-remote-access/</guid>
+      <category>OctoPrint News</category>
+    </item>
+    <item>
+      <title>OctoPrint On Air #18</title>
+      <description>
+        <![CDATA[
+          The eighteenth episode of a monthly live broadcast for Patrons which aired live on July 28th 2018.
+        ]]>
+      </description>
+      <pubDate>Mon, 13 Aug 2018 12:30:00 +0000</pubDate>
+      <link>https://octoprint.org/blog/2018/08/13/octoprint-on-air-18/</link>
+      <guid isPermaLink="true">https://octoprint.org/blog/2018/08/13/octoprint-on-air-18/</guid>
+      <category>OctoPrint On Air</category>
+    </item>
+  </channel>
+</rss>

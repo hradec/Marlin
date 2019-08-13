@@ -1,0 +1,3 @@
+V// source: js/app/bindings/valuewithinit.js\u000ako.bindingHandlers.valueWithInit = {\u000a    init: function(element, valueAccessor, allBindingsAccessor, context) {\u000a        var observable = valueAccessor();\u000a        var value = element.value;\u000a\u000a        observable(value);\u000a\u000a        ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor, context);\u000a    },\u000a    update: ko.bindingHandlers.value.update\u000a};\u000a;\u000a
+p0
+.

@@ -1,0 +1,3 @@
+V#octopi_support_footer {\u000a    white-space: nowrap;\u000a}\u000a\u000a.pi_support_state_pulsate {\u000a    animation: pulsate 1s ease-out;\u000a    animation-iteration-count: infinite;\u000a}\u000a
+p0
+.

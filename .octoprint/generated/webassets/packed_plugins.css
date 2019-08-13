@@ -1,0 +1,57 @@
+#customControls .innerSortable {
+  width: 100%;
+  min-height: 50px;
+}
+#customControls .custom_section_horizontal > .custom_control {
+  display: inline-block;
+}
+#customControls .custom_section_vertical > .custom_control {
+  display: block;
+}
+#customControls .custom_section_vertical_section {
+  min-width: 15px;
+  min-height: 15px;
+  border: 1px dashed #000000;
+}
+#customControls .slider.slider-disabled .slider-track {
+  cursor: default !important;
+}
+#customControls input[disabled] {
+  background: #fff !important;
+  cursor: text !important;
+}
+#customControls .btn-group {
+  margin-bottom: 10px;
+}
+#customControls .btn-group.distance > .btn {
+  width: 43px;
+  padding: 3px 0;
+  height: 30px;
+}
+#customControls .slider-handle {
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -3px;
+}
+#customControls .custom_section h1 {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 21px;
+  line-height: 40px;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #E5E5E5;
+  font-weight: normal;
+}
+#customControls .custom_control .slider {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+#requestspinner{position:absolute;left:25px;bottom:25px;z-index:10000}
+#settings_plugin_yamlpatcher textarea.patch{font-family:Monaco,Menlo,Consolas,"Courier New",monospace;font-size:.8em;margin-top:10px}#settings_plugin_yamlpatcher .help-inline{margin-bottom:10px}#settings_plugin_yamlpatcher pre.diff{margin-top:10px;font-size:.8em;min-height:340px}#settings_plugin_yamlpatcher pre.diff .added{color:green;background-color:lightgreen}#settings_plugin_yamlpatcher pre.diff .removed{color:red;background-color:lightpink}#settings_plugin_yamlpatcher pre.diff .unchanged{color:grey}#settings_plugin_yamlpatcher pre.diff .separator{color:lightgray}#settings_plugin_yamlpatcher pre.pre-scrollable{min-height:200px;max-height:200px}

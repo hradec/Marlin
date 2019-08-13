@@ -1,61 +1,153 @@
-__version: 1.2.15
+__version: 1.3.11
 active_filters:
   available: false
-  hash: bb45bbcbc5da129ce683b84cead0e70c
-  information: {}
+  error: null
+  hash: ee9880d836a88aaddd22d63bb1facf3f
+  information:
+    local:
+      name: 0.0.1
+      value: 0.0.1
+    needs_online: true
+    remote:
+      name: 0.0.1
+      release_notes: https://github.com/MoonshineSG/OctoPrint-ActiveFilters/releases/tag/0.0.1
+      value: 0.0.1
+  online: true
   possible: false
-  timestamp: 1565669409.184392
+  timestamp: 1565676936.289856
 bqappcompanion:
   available: false
-  hash: 89f6f1e3d58281e049181ddbd43d0560
-  information: {}
+  error: null
+  hash: a0154504de1ab9e100241fffe73f0076
+  information:
+    local:
+      name: 0.1.1
+      value: 0.1.1
+    needs_online: true
+    remote:
+      name: 0.1.1 (stable)
+      release_notes: https://github.com/bq/OctoPrint-AppCompanion/releases/tag/0.1.1
+      value: 0.1.1
+  online: true
   possible: false
-  timestamp: 1565669409.415806
+  timestamp: 1565676935.6236
 cost:
-  available: false
-  hash: fa04f0d1d83fa14eb083c4c0bc1a2a3a
-  information: {}
+  available: true
+  error: null
+  hash: 95c06ad79d50839a8b50777bc48a772a
+  information:
+    local:
+      name: 0.1.2
+      value: 0.1.2
+    needs_online: true
+    remote:
+      name: '0.1.3: The Missing Release'
+      release_notes: https://github.com/jasiek/OctoPrint-Cost/releases/tag/0.1.3
+      value: 0.1.3
+  online: true
   possible: false
-  timestamp: 1565669409.385139
+  timestamp: 1565676936.270166
 customcontrol:
   available: false
-  hash: 7986e8e98ad99ed990fcb84dde792f9d
-  information: {}
+  error: null
+  hash: 2c75bb513eb40c98ab7741f47d49399a
+  information:
+    local:
+      name: 0.2.1
+      value: 0.2.1
+    needs_online: true
+    remote:
+      name: Version 0.2.1
+      release_notes: https://github.com/Salandora/octoprint-customControl/releases/tag/0.2.1
+      value: 0.2.1
+  online: true
   possible: false
-  timestamp: 1565669409.226518
+  timestamp: 1565676935.67575
 octoprint:
   available: false
-  hash: 5a14562906dc12a0c92f9181ed636c89
+  error: null
+  hash: 323e8fe6d9be0f36d045edb1d9463fce
   information: null
+  online: true
   possible: true
-  timestamp: 1565669409.354043
+  timestamp: 1565676910.933103
 portlister:
-  available: false
-  hash: 024d007398988660a11ad050a0120296
-  information: {}
+  available: true
+  error: null
+  hash: 0b30055448a26c2bc91efcf57589e183
+  information:
+    local:
+      name: 0.1.5
+      value: 0.1.5
+    needs_online: true
+    remote:
+      name: 0.1.8
+      release_notes: https://github.com/markwal/OctoPrint-PortLister/releases/tag/0.1.8
+      value: 0.1.8
+  online: true
   possible: false
-  timestamp: 1565669409.247079
+  timestamp: 1565676935.554459
 requestspinner:
   available: false
-  hash: b6626c74ac713870a40dce828873ed83
-  information: {}
+  error: null
+  hash: a8b4ac5a1279a4f25311c7e643a2c60c
+  information:
+    local:
+      name: 0.1.1
+      value: 0.1.1
+    needs_online: true
+    remote:
+      name: 0.1.1 (stable)
+      release_notes: https://github.com/OctoPrint/OctoPrint-RequestSpinner/releases/tag/0.1.1
+      value: 0.1.1
+  online: true
   possible: false
-  timestamp: 1565669409.370436
+  timestamp: 1565676935.599883
 systemcommandeditor:
-  available: false
-  hash: b69ac2f81187118f1409c89d31f2e2ef
-  information: {}
+  available: true
+  error: null
+  hash: f40ebeae976738fd87a12cb806018bd1
+  information:
+    local:
+      name: 0.3.1
+      value: 0.3.1
+    needs_online: true
+    remote:
+      name: Version 0.3.2
+      release_notes: https://github.com/Salandora/OctoPrint-SystemCommandEditor/releases/tag/0.3.2
+      value: 0.3.2
+  online: true
   possible: false
-  timestamp: 1565669409.401392
+  timestamp: 1565676936.209441
 touchui:
-  available: false
-  hash: 0ec90e4a65712a7632aedb0f323d0b68
-  information: {}
+  available: true
+  error: null
+  hash: 5a7caee39a0a91724fc8dcc805df7503
+  information:
+    local:
+      name: 0.3.4
+      value: 0.3.4
+    needs_online: true
+    remote:
+      name: 0.3.13
+      release_notes: https://github.com/BillyBlaze/OctoPrint-TouchUI/releases/tag/0.3.13
+      value: 0.3.13
+  online: true
   possible: false
-  timestamp: 1565669409.20515
+  timestamp: 1565676935.569325
 yamlpatcher:
   available: false
-  hash: 0f2381b514e6c00d38b15c7a5e9f10db
-  information: {}
+  error: null
+  hash: 750b6f08d60b5c9af53346943a3b3838
+  information:
+    local:
+      name: 0.1.1
+      value: 0.1.1
+    needs_online: true
+    remote:
+      name: 0.1.1 (stable)
+      release_notes: https://github.com/OctoPrint/OctoPrint-Yamlpatcher/releases/tag/0.1.1
+      value: 0.1.1
+  online: true
   possible: false
-  timestamp: 1565669409.430704
+  timestamp: 1565676936.251593

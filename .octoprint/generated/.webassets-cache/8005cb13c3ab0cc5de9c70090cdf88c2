@@ -1,0 +1,3 @@
+V// source: plugin/pi_support/clientjs/pi_support.js\u000a(function (global, factory) {\u000a    if (typeof define === "function" && define.amd) {\u000a        define(["OctoPrintClient"], factory);\u000a    } else {\u000a        factory(global.OctoPrintClient);\u000a    }\u000a})(this, function(OctoPrintClient) {\u000a    var OctoPrintPiSupportClient = function(base) {\u000a        this.base = base;\u000a    };\u000a\u000a    OctoPrintPiSupportClient.prototype.get = function(opts) {\u000a        return this.base.get(this.base.getSimpleApiUrl("pi_support"));\u000a    };\u000a\u000a    OctoPrintClient.registerPluginComponent("pi_support", OctoPrintPiSupportClient);\u000a    return OctoPrintPiSupportClient;\u000a});\u000a\u000a\u000a;\u000a
+p0
+.

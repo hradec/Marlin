@@ -1,0 +1,3 @@
+V// source: plugin/forcelogin/js/viewmodel.js\u000a/*\u000a * View model that takes care to redirect to / on logout in the regular\u000a * OctoPrint web application.\u000a */\u000a\u000a$(function() {\u000a    function ForceLoginViewModel(parameters) {\u000a        var self = this;\u000a\u000a        self.onUserLoggedOut = function() {\u000a            location.reload();\u000a        }\u000a    }\u000a\u000a    // view model class, parameters for constructor, container to bind to\u000a    ADDITIONAL_VIEWMODELS.push([ForceLoginViewModel, [], []]);\u000a});\u000a\u000a;\u000a
+p0
+.
