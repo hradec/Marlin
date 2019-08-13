@@ -473,7 +473,7 @@
 
 
 // uncomment one of the following lines for RAMPS v1.3 or v1.0, comment both for v1.2 or 1.1
-// #define RAMPS_V_1_3
+#define RAMPS_V_1_3
 // #define RAMPS_V_1_0
 
 
@@ -482,53 +482,14 @@
   #define LARGE_FLASH true
 
   #if MOTHERBOARD == 77
-    #define X_STEP_PIN         54
-    #define X_DIR_PIN          55
-    #define X_ENABLE_PIN       38
-    #define X_MIN_PIN          3
-    #define X_MAX_PIN           2 //Max endstops default to disabled "-1", set to commented value to enable.
-
-    #define Y_STEP_PIN         60
-    #define Y_DIR_PIN          61
-    #define Y_ENABLE_PIN       56
-    #define Y_MIN_PIN          14
-    #define Y_MAX_PIN          -1   //15
-
-    #define Z_STEP_PIN         46
-    #define Z_DIR_PIN          48
-    #define Z_ENABLE_PIN       63
-    #define Z_MIN_PIN          18
-    #define Z_MAX_PIN          -1
-
-    #define Y2_STEP_PIN        36
-    #define Y2_DIR_PIN         34
-    #define Y2_ENABLE_PIN      30
-
-    #define Z2_STEP_PIN        36
-    #define Z2_DIR_PIN         34
-    #define Z2_ENABLE_PIN      30
-
-    #define E0_STEP_PIN        26
-    #define E0_DIR_PIN         28
-    #define E0_ENABLE_PIN      24
-
-    #define E1_STEP_PIN        36
-    #define E1_DIR_PIN         34
-    #define E1_ENABLE_PIN      30
-
-    #define SDPOWER            -1
-    #define SDSS               25//53
-    #define LED_PIN            13
-
-    #define BEEPER             33
 
   #else
 
     #define X_STEP_PIN         54
     #define X_DIR_PIN          55
     #define X_ENABLE_PIN       38
-    #define X_MIN_PIN           18 //15 //2
-    #define X_MAX_PIN           3
+    #define X_MIN_PIN          15  // using pin 15 (max Y) since pins 3 and 2 seems to be in short state!
+    #define X_MAX_PIN          -1 // 2
 
     #define Y_STEP_PIN         60
     #define Y_DIR_PIN          61
@@ -539,7 +500,7 @@
     #define Z_STEP_PIN         46
     #define Z_DIR_PIN          48
     #define Z_ENABLE_PIN       62
-    #define Z_MIN_PIN          15 //18
+    #define Z_MIN_PIN          18
     #define Z_MAX_PIN          19
 
     #define Y2_STEP_PIN        36
@@ -602,7 +563,7 @@
   #if MOTHERBOARD == 35
     #define HEATER_0_PIN       8
   #else
-    #define HEATER_0_PIN       4   // EXTRUDER 1
+    #define HEATER_0_PIN       8   // EXTRUDER 1
   #endif
 
   #if MOTHERBOARD == 33 || MOTHERBOARD == 67
