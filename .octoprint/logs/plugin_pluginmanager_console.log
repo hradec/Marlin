@@ -1,956 +1,189 @@
-2016-08-10 21:51:34,099   /usr/bin/pip install https://github.com/platsch/OctoPrint-Autocalibration/archive/master.zip
-2016-08-10 21:51:38,139 > Collecting https://github.com/platsch/OctoPrint-Autocalibration/archive/master.zip
-2016-08-10 21:51:39,176 > Downloading https://github.com/platsch/OctoPrint-Autocalibration/archive/master.zip
-2016-08-10 21:51:42,498 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-Autocalibration==0.1)
-2016-08-10 21:51:42,499 > Collecting flask<0.11,>=0.9 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:51:43,503 > Downloading Flask-0.10.1.tar.gz (544kB)
-2016-08-10 21:51:47,576 > Collecting werkzeug<0.9,>=0.8.3 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:51:47,591 > Downloading Werkzeug-0.8.3.tar.gz (1.1MB)
-2016-08-10 21:51:53,129 > Collecting tornado<4.1,>=4.0.1 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:51:53,131 > Downloading tornado-4.0.2.tar.gz (315kB)
-2016-08-10 21:51:57,139 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:51:57,140 > Collecting PyYAML<3.11,>=3.10 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:51:57,142 > Downloading PyYAML-3.10.tar.gz (241kB)
-2016-08-10 21:52:01,727 > Collecting Flask-Login<0.3,>=0.2.2 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:01,729 > Downloading Flask-Login-0.2.11.tar.gz
-2016-08-10 21:52:04,327 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:04,328 > Collecting Flask-Babel<0.10,>=0.9 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:04,330 > Downloading Flask-Babel-0.9.tar.gz
-2016-08-10 21:52:07,336 > Collecting Flask-Assets<0.11,>=0.10 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:07,338 > Downloading Flask-Assets-0.10.tar.gz
-2016-08-10 21:52:09,822 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:09,823 > Collecting pyserial<2.8,>=2.7 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:09,825 > Downloading pyserial-2.7.tar.gz (122kB)
-2016-08-10 21:52:13,426 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:13,428 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:13,429 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:13,430 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:13,431 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:13,432 > Collecting rsa<3.3,>=3.2 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:13,433 > Downloading rsa-3.2.3-py2.py3-none-any.whl (44kB)
-2016-08-10 21:52:13,434 > Collecting pkginfo<1.3,>=1.2.1 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:13,435 > Downloading pkginfo-1.2.1.tar.gz
-2016-08-10 21:52:16,756 > Collecting requests<2.8,>=2.7.0 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:16,757 > Downloading requests-2.7.0-py2.py3-none-any.whl (470kB)
-2016-08-10 21:52:17,762 > Collecting semantic_version<2.5,>=2.4.2 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:17,763 > Downloading semantic_version-2.4.2.tar.gz
-2016-08-10 21:52:20,233 > Collecting psutil<3.3,>=3.2.1 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:22,238 > Downloading psutil-3.2.2.tar.gz (253kB)
-2016-08-10 21:52:26,070 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:26,072 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:26,074 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:26,075 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:26,077 > Collecting certifi (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:26,078 > Downloading certifi-2016.8.8-py2.py3-none-any.whl (384kB)
-2016-08-10 21:52:27,198 > Collecting backports.ssl_match_hostname (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:27,199 > Downloading backports.ssl_match_hostname-3.5.0.1.tar.gz
-2016-08-10 21:52:30,210 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,211 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,212 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,213 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,214 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,215 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,216 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,217 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,218 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,219 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,220 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-10 21:52:30,221 > Installing collected packages: OctoPrint-Autocalibration, werkzeug, flask, certifi, backports.ssl-match-hostname, tornado, PyYAML, Flask-Login, Flask-Babel, Flask-Assets, pyserial, rsa, pkginfo, requests, semantic-version, psutil
-2016-08-10 21:52:30,222 > Running setup.py install for OctoPrint-Autocalibration: started
-2016-08-10 21:52:32,353 > Running setup.py install for OctoPrint-Autocalibration: finished with status 'error'
-2016-08-10 21:52:32,355 > Complete output from command /usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-HfFIXR-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-rJXGi7-record/install-record.txt --single-version-externally-managed --compile:
-2016-08-10 21:52:32,356 > Found packages: ['octoprint_autocalibration']
-2016-08-10 21:52:32,357 > running install
-2016-08-10 21:52:32,358 > running build
-2016-08-10 21:52:32,359 > running build_py
-2016-08-10 21:52:32,360 > creating build
-2016-08-10 21:52:32,360 > creating build/lib
-2016-08-10 21:52:32,361 > creating build/lib/octoprint_autocalibration
-2016-08-10 21:52:32,362 > copying octoprint_autocalibration/__init__.py -> build/lib/octoprint_autocalibration
-2016-08-10 21:52:32,363 > running egg_info
-2016-08-10 21:52:32,363 > creating OctoPrint_Autocalibration.egg-info
-2016-08-10 21:52:32,364 > writing requirements to OctoPrint_Autocalibration.egg-info/requires.txt
-2016-08-10 21:52:32,365 > writing OctoPrint_Autocalibration.egg-info/PKG-INFO
-2016-08-10 21:52:32,366 > writing top-level names to OctoPrint_Autocalibration.egg-info/top_level.txt
-2016-08-10 21:52:32,367 > writing dependency_links to OctoPrint_Autocalibration.egg-info/dependency_links.txt
-2016-08-10 21:52:32,367 > writing entry points to OctoPrint_Autocalibration.egg-info/entry_points.txt
-2016-08-10 21:52:32,368 > writing manifest file 'OctoPrint_Autocalibration.egg-info/SOURCES.txt'
-2016-08-10 21:52:32,369 > warning: manifest_maker: standard file '-c' not found
-2016-08-10 21:52:32,370 > 
-2016-08-10 21:52:32,371 > reading manifest file 'OctoPrint_Autocalibration.egg-info/SOURCES.txt'
-2016-08-10 21:52:32,372 > reading manifest template 'MANIFEST.in'
-2016-08-10 21:52:32,373 > writing manifest file 'OctoPrint_Autocalibration.egg-info/SOURCES.txt'
-2016-08-10 21:52:32,373 > creating build/lib/octoprint_autocalibration/static
-2016-08-10 21:52:32,374 > creating build/lib/octoprint_autocalibration/static/js
-2016-08-10 21:52:32,375 > copying octoprint_autocalibration/static/js/autocalibration.js -> build/lib/octoprint_autocalibration/static/js
-2016-08-10 21:52:32,376 > creating build/lib/octoprint_autocalibration/templates
-2016-08-10 21:52:32,377 > copying octoprint_autocalibration/templates/autocalibration_settings.jinja2 -> build/lib/octoprint_autocalibration/templates
-2016-08-10 21:52:32,378 > running install_lib
-2016-08-10 21:52:32,379 > creating /usr/lib/python2.7/site-packages/octoprint_autocalibration
-2016-08-10 21:52:32,380 > error: could not create '/usr/lib/python2.7/site-packages/octoprint_autocalibration': Permission denied
-2016-08-10 21:52:32,381 > 
-2016-08-10 21:52:32,382 > ----------------------------------------
-2016-08-10 21:52:32,886 ! Command "/usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-HfFIXR-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-rJXGi7-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-HfFIXR-build/
-2016-08-11 16:11:49,145   /usr/bin/pip install https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-08-11 16:11:56,348 > Collecting https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-08-11 16:11:57,365 > Downloading https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-08-11 16:12:00,640 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:02,089 > Collecting flask<0.11,>=0.9 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:02,103 > Using cached Flask-0.10.1.tar.gz
-2016-08-11 16:12:06,233 > Collecting werkzeug<0.9,>=0.8.3 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:07,261 > Using cached Werkzeug-0.8.3.tar.gz
-2016-08-11 16:12:11,930 > Collecting tornado<4.1,>=4.0.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:11,939 > Using cached tornado-4.0.2.tar.gz
-2016-08-11 16:12:17,188 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:17,196 > Collecting PyYAML<3.11,>=3.10 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:17,199 > Using cached PyYAML-3.10.tar.gz
-2016-08-11 16:12:23,770 > Collecting Flask-Login<0.3,>=0.2.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:23,777 > Using cached Flask-Login-0.2.11.tar.gz
-2016-08-11 16:12:27,109 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:27,112 > Collecting Flask-Babel<0.10,>=0.9 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:27,116 > Using cached Flask-Babel-0.9.tar.gz
-2016-08-11 16:12:30,381 > Collecting Flask-Assets<0.11,>=0.10 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:30,402 > Using cached Flask-Assets-0.10.tar.gz
-2016-08-11 16:12:33,583 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:33,587 > Collecting pyserial<2.8,>=2.7 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:33,593 > Using cached pyserial-2.7.tar.gz
-2016-08-11 16:12:37,709 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:37,712 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:37,722 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:37,726 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:37,732 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:37,735 > Collecting rsa<3.3,>=3.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:37,738 > Using cached rsa-3.2.3-py2.py3-none-any.whl
-2016-08-11 16:12:37,740 > Collecting pkginfo<1.3,>=1.2.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:37,745 > Using cached pkginfo-1.2.1.tar.gz
-2016-08-11 16:12:40,907 > Collecting requests<2.8,>=2.7.0 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:42,369 > Using cached requests-2.7.0-py2.py3-none-any.whl
-2016-08-11 16:12:42,378 > Collecting semantic_version<2.5,>=2.4.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:42,385 > Using cached semantic_version-2.4.2.tar.gz
-2016-08-11 16:12:45,482 > Collecting psutil<3.3,>=3.2.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:48,893 > Using cached psutil-3.2.2.tar.gz
-2016-08-11 16:12:55,267 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:55,271 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:55,275 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:55,280 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:55,284 > Collecting certifi (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:55,289 > Using cached certifi-2016.8.8-py2.py3-none-any.whl
-2016-08-11 16:12:56,307 > Collecting backports.ssl_match_hostname (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:56,309 > Using cached backports.ssl_match_hostname-3.5.0.1.tar.gz
-2016-08-11 16:12:59,329 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,330 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,332 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,333 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,335 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,336 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,337 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,339 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,340 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,341 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,343 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-08-11 16:12:59,344 > Installing collected packages: OctoPrint-ActiveFilters, werkzeug, flask, certifi, backports.ssl-match-hostname, tornado, PyYAML, Flask-Login, Flask-Babel, Flask-Assets, pyserial, rsa, pkginfo, requests, semantic-version, psutil
-2016-08-11 16:12:59,345 > Running setup.py install for OctoPrint-ActiveFilters: started
-2016-08-11 16:13:02,359 > Running setup.py install for OctoPrint-ActiveFilters: finished with status 'error'
-2016-08-11 16:13:02,360 > Complete output from command /usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-6vU623-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-hJLVPW-record/install-record.txt --single-version-externally-managed --compile:
-2016-08-11 16:13:02,361 > Found packages: ['octoprint_active_filters']
-2016-08-11 16:13:02,363 > running install
-2016-08-11 16:13:02,364 > running build
-2016-08-11 16:13:02,366 > running build_py
-2016-08-11 16:13:02,367 > creating build
-2016-08-11 16:13:02,368 > creating build/lib
-2016-08-11 16:13:02,369 > creating build/lib/octoprint_active_filters
-2016-08-11 16:13:02,370 > copying octoprint_active_filters/__init__.py -> build/lib/octoprint_active_filters
-2016-08-11 16:13:02,372 > running egg_info
-2016-08-11 16:13:02,373 > creating OctoPrint_ActiveFilters.egg-info
-2016-08-11 16:13:02,374 > writing requirements to OctoPrint_ActiveFilters.egg-info/requires.txt
-2016-08-11 16:13:02,375 > writing OctoPrint_ActiveFilters.egg-info/PKG-INFO
-2016-08-11 16:13:02,377 > writing top-level names to OctoPrint_ActiveFilters.egg-info/top_level.txt
-2016-08-11 16:13:02,378 > writing dependency_links to OctoPrint_ActiveFilters.egg-info/dependency_links.txt
-2016-08-11 16:13:02,380 > writing entry points to OctoPrint_ActiveFilters.egg-info/entry_points.txt
-2016-08-11 16:13:02,381 > writing manifest file 'OctoPrint_ActiveFilters.egg-info/SOURCES.txt'
-2016-08-11 16:13:02,383 > warning: manifest_maker: standard file '-c' not found
-2016-08-11 16:13:02,384 > 
-2016-08-11 16:13:02,386 > reading manifest file 'OctoPrint_ActiveFilters.egg-info/SOURCES.txt'
-2016-08-11 16:13:02,387 > reading manifest template 'MANIFEST.in'
-2016-08-11 16:13:02,388 > writing manifest file 'OctoPrint_ActiveFilters.egg-info/SOURCES.txt'
-2016-08-11 16:13:02,390 > creating build/lib/octoprint_active_filters/static
-2016-08-11 16:13:02,391 > creating build/lib/octoprint_active_filters/static/js
-2016-08-11 16:13:02,392 > copying octoprint_active_filters/static/js/active_filters.js -> build/lib/octoprint_active_filters/static/js
-2016-08-11 16:13:02,394 > copying octoprint_active_filters/static/js/knockout.persist.js -> build/lib/octoprint_active_filters/static/js
-2016-08-11 16:13:02,395 > running install_lib
-2016-08-11 16:13:02,396 > creating /usr/lib/python2.7/site-packages/octoprint_active_filters
-2016-08-11 16:13:02,397 > error: could not create '/usr/lib/python2.7/site-packages/octoprint_active_filters': Permission denied
-2016-08-11 16:13:02,399 > 
-2016-08-11 16:13:02,400 > ----------------------------------------
-2016-08-11 16:13:02,904 ! Command "/usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-6vU623-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-hJLVPW-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-6vU623-build/
-2016-08-24 19:06:58,203   /usr/sbin/pip install https://github.com/platsch/OctoPrint-Autocalibration/archive/master.zip
-2016-08-24 19:07:02,243 > Collecting https://github.com/platsch/OctoPrint-Autocalibration/archive/master.zip
-2016-08-24 19:07:03,513 > Downloading https://github.com/platsch/OctoPrint-Autocalibration/archive/master.zip
-2016-08-24 19:07:06,885 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:06,886 > Collecting flask<0.11,>=0.9 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:07,890 > Using cached Flask-0.10.1.tar.gz
-2016-08-24 19:07:11,111 > Collecting werkzeug<0.9,>=0.8.3 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:12,656 > Using cached Werkzeug-0.8.3.tar.gz
-2016-08-24 19:07:16,827 > Collecting tornado<4.1,>=4.0.1 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:16,829 > Using cached tornado-4.0.2.tar.gz
-2016-08-24 19:07:20,265 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:20,266 > Collecting PyYAML<3.11,>=3.10 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:20,267 > Using cached PyYAML-3.10.tar.gz
-2016-08-24 19:07:25,004 > Collecting Flask-Login<0.3,>=0.2.2 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:25,005 > Using cached Flask-Login-0.2.11.tar.gz
-2016-08-24 19:07:27,622 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:27,624 > Collecting Flask-Babel<0.10,>=0.9 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:27,625 > Using cached Flask-Babel-0.9.tar.gz
-2016-08-24 19:07:30,632 > Collecting Flask-Assets<0.11,>=0.10 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:30,634 > Using cached Flask-Assets-0.10.tar.gz
-2016-08-24 19:07:33,219 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:33,220 > Collecting pyserial<2.8,>=2.7 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:33,221 > Using cached pyserial-2.7.tar.gz
-2016-08-24 19:07:36,773 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:36,774 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:36,775 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:36,776 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:36,777 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:36,778 > Collecting rsa<3.3,>=3.2 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:36,779 > Using cached rsa-3.2.3-py2.py3-none-any.whl
-2016-08-24 19:07:36,780 > Collecting pkginfo<1.3,>=1.2.1 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:36,781 > Using cached pkginfo-1.2.1.tar.gz
-2016-08-24 19:07:40,682 > Collecting requests<2.8,>=2.7.0 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:40,684 > Using cached requests-2.7.0-py2.py3-none-any.whl
-2016-08-24 19:07:40,685 > Collecting semantic_version<2.5,>=2.4.2 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:40,686 > Using cached semantic_version-2.4.2.tar.gz
-2016-08-24 19:07:43,691 > Collecting psutil<3.3,>=3.2.1 (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:45,196 > Using cached psutil-3.2.2.tar.gz
-2016-08-24 19:07:50,014 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:50,015 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:50,016 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:50,017 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:50,018 > Collecting certifi (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:50,019 > Using cached certifi-2016.8.8-py2.py3-none-any.whl
-2016-08-24 19:07:51,024 > Collecting backports.ssl_match_hostname (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:51,025 > Using cached backports.ssl_match_hostname-3.5.0.1.tar.gz
-2016-08-24 19:07:53,560 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,562 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,563 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,564 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,565 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,566 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,567 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,568 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,569 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,569 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,570 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Autocalibration==0.1)
-2016-08-24 19:07:53,571 > Installing collected packages: OctoPrint-Autocalibration, werkzeug, flask, certifi, backports.ssl-match-hostname, tornado, PyYAML, Flask-Login, Flask-Babel, Flask-Assets, pyserial, rsa, pkginfo, requests, semantic-version, psutil
-2016-08-24 19:07:53,572 > Running setup.py install for OctoPrint-Autocalibration: started
-2016-08-24 19:07:55,998 > Running setup.py install for OctoPrint-Autocalibration: finished with status 'error'
-2016-08-24 19:07:55,999 > Complete output from command /usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-1fI3r8-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-Xd6k16-record/install-record.txt --single-version-externally-managed --compile:
-2016-08-24 19:07:56,001 > Found packages: ['octoprint_autocalibration']
-2016-08-24 19:07:56,002 > running install
-2016-08-24 19:07:56,003 > running build
-2016-08-24 19:07:56,004 > running build_py
-2016-08-24 19:07:56,005 > creating build
-2016-08-24 19:07:56,006 > creating build/lib
-2016-08-24 19:07:56,007 > creating build/lib/octoprint_autocalibration
-2016-08-24 19:07:56,007 > copying octoprint_autocalibration/__init__.py -> build/lib/octoprint_autocalibration
-2016-08-24 19:07:56,008 > running egg_info
-2016-08-24 19:07:56,009 > creating OctoPrint_Autocalibration.egg-info
-2016-08-24 19:07:56,010 > writing requirements to OctoPrint_Autocalibration.egg-info/requires.txt
-2016-08-24 19:07:56,011 > writing OctoPrint_Autocalibration.egg-info/PKG-INFO
-2016-08-24 19:07:56,012 > writing top-level names to OctoPrint_Autocalibration.egg-info/top_level.txt
-2016-08-24 19:07:56,013 > writing dependency_links to OctoPrint_Autocalibration.egg-info/dependency_links.txt
-2016-08-24 19:07:56,014 > writing entry points to OctoPrint_Autocalibration.egg-info/entry_points.txt
-2016-08-24 19:07:56,015 > writing manifest file 'OctoPrint_Autocalibration.egg-info/SOURCES.txt'
-2016-08-24 19:07:56,015 > warning: manifest_maker: standard file '-c' not found
-2016-08-24 19:07:56,016 > 
-2016-08-24 19:07:56,017 > reading manifest file 'OctoPrint_Autocalibration.egg-info/SOURCES.txt'
-2016-08-24 19:07:56,018 > reading manifest template 'MANIFEST.in'
-2016-08-24 19:07:56,019 > writing manifest file 'OctoPrint_Autocalibration.egg-info/SOURCES.txt'
-2016-08-24 19:07:56,020 > creating build/lib/octoprint_autocalibration/static
-2016-08-24 19:07:56,021 > creating build/lib/octoprint_autocalibration/static/js
-2016-08-24 19:07:56,022 > copying octoprint_autocalibration/static/js/autocalibration.js -> build/lib/octoprint_autocalibration/static/js
-2016-08-24 19:07:56,023 > creating build/lib/octoprint_autocalibration/templates
-2016-08-24 19:07:56,024 > copying octoprint_autocalibration/templates/autocalibration_settings.jinja2 -> build/lib/octoprint_autocalibration/templates
-2016-08-24 19:07:56,025 > running install_lib
-2016-08-24 19:07:56,026 > creating /usr/lib/python2.7/site-packages/octoprint_autocalibration
-2016-08-24 19:07:56,027 > error: could not create '/usr/lib/python2.7/site-packages/octoprint_autocalibration': Permission denied
-2016-08-24 19:07:56,028 > 
-2016-08-24 19:07:56,029 > ----------------------------------------
-2016-08-24 19:07:56,532 ! Command "/usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-1fI3r8-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-Xd6k16-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-1fI3r8-build/
-2016-09-07 10:30:35,914   /bin/pip2 install https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-09-07 10:30:40,171 > Collecting https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-09-07 10:30:41,391 > Downloading https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-09-07 10:30:44,814 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:30:44,815 > Collecting flask<0.11,>=0.9 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:30:45,819 > Using cached Flask-0.10.1.tar.gz
-2016-09-07 10:30:49,241 > Collecting werkzeug<0.9,>=0.8.3 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:30:50,246 > Using cached Werkzeug-0.8.3.tar.gz
-2016-09-07 10:30:54,254 > Collecting tornado<4.1,>=4.0.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:30:54,255 > Using cached tornado-4.0.2.tar.gz
-2016-09-07 10:30:57,873 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:30:57,875 > Collecting PyYAML<3.11,>=3.10 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:30:57,876 > Using cached PyYAML-3.10.tar.gz
-2016-09-07 10:31:02,884 > Collecting Flask-Login<0.3,>=0.2.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:02,886 > Using cached Flask-Login-0.2.11.tar.gz
-2016-09-07 10:31:05,638 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:05,639 > Collecting Flask-Babel<0.10,>=0.9 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:05,641 > Using cached Flask-Babel-0.9.tar.gz
-2016-09-07 10:31:08,647 > Collecting Flask-Assets<0.11,>=0.10 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:08,648 > Using cached Flask-Assets-0.10.tar.gz
-2016-09-07 10:31:11,384 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:11,385 > Collecting pyserial<2.8,>=2.7 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:11,402 > Using cached pyserial-2.7.tar.gz
-2016-09-07 10:31:15,106 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:15,108 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:15,110 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:15,112 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:15,114 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:15,115 > Collecting rsa<3.3,>=3.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:15,117 > Using cached rsa-3.2.3-py2.py3-none-any.whl
-2016-09-07 10:31:15,119 > Collecting pkginfo<1.3,>=1.2.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:15,120 > Using cached pkginfo-1.2.1.tar.gz
-2016-09-07 10:31:19,122 > Collecting requests<2.8,>=2.7.0 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:19,124 > Using cached requests-2.7.0-py2.py3-none-any.whl
-2016-09-07 10:31:19,125 > Collecting semantic_version<2.5,>=2.4.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:19,127 > Using cached semantic_version-2.4.2.tar.gz
-2016-09-07 10:31:22,133 > Collecting psutil<3.3,>=3.2.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:24,138 > Using cached psutil-3.2.2.tar.gz
-2016-09-07 10:31:28,827 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:28,829 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:28,830 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:28,831 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:28,833 > Collecting certifi (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:28,834 > Downloading certifi-2016.8.31-py2.py3-none-any.whl (379kB)
-2016-09-07 10:31:29,870 > Collecting backports.ssl_match_hostname (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:29,871 > Using cached backports.ssl_match_hostname-3.5.0.1.tar.gz
-2016-09-07 10:31:32,880 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,882 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,883 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,884 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,885 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,886 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,887 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,887 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,888 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,889 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,890 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:31:32,891 > Installing collected packages: OctoPrint-ActiveFilters, werkzeug, flask, certifi, backports.ssl-match-hostname, tornado, PyYAML, Flask-Login, Flask-Babel, Flask-Assets, pyserial, rsa, pkginfo, requests, semantic-version, psutil
-2016-09-07 10:31:32,893 > Running setup.py install for OctoPrint-ActiveFilters: started
-2016-09-07 10:31:35,370 > Running setup.py install for OctoPrint-ActiveFilters: finished with status 'error'
-2016-09-07 10:31:35,372 > Complete output from command /usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-qjfSjx-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-Nx1N4Z-record/install-record.txt --single-version-externally-managed --compile:
-2016-09-07 10:31:35,373 > Found packages: ['octoprint_active_filters']
-2016-09-07 10:31:35,374 > running install
-2016-09-07 10:31:35,375 > running build
-2016-09-07 10:31:35,376 > running build_py
-2016-09-07 10:31:35,377 > creating build
-2016-09-07 10:31:35,378 > creating build/lib
-2016-09-07 10:31:35,379 > creating build/lib/octoprint_active_filters
-2016-09-07 10:31:35,381 > copying octoprint_active_filters/__init__.py -> build/lib/octoprint_active_filters
-2016-09-07 10:31:35,382 > running egg_info
-2016-09-07 10:31:35,383 > creating OctoPrint_ActiveFilters.egg-info
-2016-09-07 10:31:35,385 > writing requirements to OctoPrint_ActiveFilters.egg-info/requires.txt
-2016-09-07 10:31:35,387 > writing OctoPrint_ActiveFilters.egg-info/PKG-INFO
-2016-09-07 10:31:35,388 > writing top-level names to OctoPrint_ActiveFilters.egg-info/top_level.txt
-2016-09-07 10:31:35,390 > writing dependency_links to OctoPrint_ActiveFilters.egg-info/dependency_links.txt
-2016-09-07 10:31:35,391 > writing entry points to OctoPrint_ActiveFilters.egg-info/entry_points.txt
-2016-09-07 10:31:35,394 > writing manifest file 'OctoPrint_ActiveFilters.egg-info/SOURCES.txt'
-2016-09-07 10:31:35,395 > warning: manifest_maker: standard file '-c' not found
-2016-09-07 10:31:35,397 > 
-2016-09-07 10:31:35,398 > reading manifest file 'OctoPrint_ActiveFilters.egg-info/SOURCES.txt'
-2016-09-07 10:31:35,399 > reading manifest template 'MANIFEST.in'
-2016-09-07 10:31:35,400 > writing manifest file 'OctoPrint_ActiveFilters.egg-info/SOURCES.txt'
-2016-09-07 10:31:35,401 > creating build/lib/octoprint_active_filters/static
-2016-09-07 10:31:35,402 > creating build/lib/octoprint_active_filters/static/js
-2016-09-07 10:31:35,402 > copying octoprint_active_filters/static/js/active_filters.js -> build/lib/octoprint_active_filters/static/js
-2016-09-07 10:31:35,403 > copying octoprint_active_filters/static/js/knockout.persist.js -> build/lib/octoprint_active_filters/static/js
-2016-09-07 10:31:35,405 > running install_lib
-2016-09-07 10:31:35,406 > creating /usr/lib/python2.7/site-packages/octoprint_active_filters
-2016-09-07 10:31:35,407 > error: could not create '/usr/lib/python2.7/site-packages/octoprint_active_filters': Permission denied
-2016-09-07 10:31:35,408 > 
-2016-09-07 10:31:35,409 > ----------------------------------------
-2016-09-07 10:31:35,913 ! Command "/usr/bin/python2 -u -c "import setuptools, tokenize;__file__='/tmp/pip-qjfSjx-build/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-Nx1N4Z-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-qjfSjx-build/
-2016-09-07 10:33:31,637   sudo /bin/pip2 install https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-09-07 10:33:35,741 > Collecting https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-09-07 10:33:36,960 > Downloading https://github.com/MoonshineSG/OctoPrint-ActiveFilters/archive/master.zip
-2016-09-07 10:33:40,282 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:33:40,283 > Collecting flask<0.11,>=0.9 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:33:41,287 > Downloading Flask-0.10.1.tar.gz (544kB)
-2016-09-07 10:33:45,775 > Collecting werkzeug<0.9,>=0.8.3 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:33:45,777 > Downloading Werkzeug-0.8.3.tar.gz (1.1MB)
-2016-09-07 10:33:51,265 > Collecting tornado<4.1,>=4.0.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:33:51,267 > Downloading tornado-4.0.2.tar.gz (315kB)
-2016-09-07 10:33:55,274 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:33:55,276 > Collecting PyYAML<3.11,>=3.10 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:33:55,277 > Downloading PyYAML-3.10.tar.gz (241kB)
-2016-09-07 10:34:00,285 > Collecting Flask-Login<0.3,>=0.2.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:00,286 > Downloading Flask-Login-0.2.11.tar.gz
-2016-09-07 10:34:02,935 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:02,936 > Collecting Flask-Babel<0.10,>=0.9 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:02,937 > Downloading Flask-Babel-0.9.tar.gz
-2016-09-07 10:34:05,944 > Collecting Flask-Assets<0.11,>=0.10 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:05,945 > Downloading Flask-Assets-0.10.tar.gz
-2016-09-07 10:34:08,952 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:08,953 > Collecting pyserial<2.8,>=2.7 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:08,954 > Downloading pyserial-2.7.tar.gz (122kB)
-2016-09-07 10:34:12,606 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:12,608 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:12,609 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:12,610 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:12,611 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:12,613 > Collecting rsa<3.3,>=3.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:12,614 > Downloading rsa-3.2.3-py2.py3-none-any.whl (44kB)
-2016-09-07 10:34:12,615 > Collecting pkginfo<1.3,>=1.2.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:12,617 > Downloading pkginfo-1.2.1.tar.gz
-2016-09-07 10:34:15,623 > Collecting requests<2.8,>=2.7.0 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:17,258 > Downloading requests-2.7.0-py2.py3-none-any.whl (470kB)
-2016-09-07 10:34:17,260 > Collecting semantic_version<2.5,>=2.4.2 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:17,291 > Downloading semantic_version-2.4.2.tar.gz
-2016-09-07 10:34:20,297 > Collecting psutil<3.3,>=3.2.1 (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:22,303 > Downloading psutil-3.2.2.tar.gz (253kB)
-2016-09-07 10:34:26,336 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:26,338 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:26,339 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:26,340 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:26,341 > Collecting certifi (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:26,342 > Downloading certifi-2016.8.31-py2.py3-none-any.whl (379kB)
-2016-09-07 10:34:27,411 > Collecting backports.ssl_match_hostname (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:27,412 > Downloading backports.ssl_match_hostname-3.5.0.1.tar.gz
-2016-09-07 10:34:30,570 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,572 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,573 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,574 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,576 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,577 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,579 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,580 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,581 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,583 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,584 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ActiveFilters==0.0.1)
-2016-09-07 10:34:30,585 > Installing collected packages: OctoPrint-ActiveFilters, werkzeug, flask, certifi, backports.ssl-match-hostname, tornado, PyYAML, Flask-Login, Flask-Babel, Flask-Assets, pyserial, rsa, pkginfo, requests, semantic-version, psutil
-2016-09-07 10:34:30,586 > Running setup.py install for OctoPrint-ActiveFilters: started
-2016-09-07 10:34:33,594 > Running setup.py install for OctoPrint-ActiveFilters: finished with status 'done'
-2016-09-07 10:34:33,596 > Found existing installation: Werkzeug 0.11.10
-2016-09-07 10:34:33,597 > Uninstalling Werkzeug-0.11.10:
-2016-09-07 10:34:33,598 > Successfully uninstalled Werkzeug-0.11.10
-2016-09-07 10:34:33,599 > Running setup.py install for werkzeug: started
-2016-09-07 10:34:38,809 > Running setup.py install for werkzeug: finished with status 'done'
-2016-09-07 10:34:38,811 > Found existing installation: Flask 0.11.1
-2016-09-07 10:34:38,812 > Uninstalling Flask-0.11.1:
-2016-09-07 10:34:38,813 > Successfully uninstalled Flask-0.11.1
-2016-09-07 10:34:38,815 > Running setup.py install for flask: started
-2016-09-07 10:34:43,037 > Running setup.py install for flask: finished with status 'done'
-2016-09-07 10:34:44,041 > Running setup.py install for backports.ssl-match-hostname: started
-2016-09-07 10:34:46,577 > Running setup.py install for backports.ssl-match-hostname: finished with status 'done'
-2016-09-07 10:34:46,578 > Found existing installation: tornado 4.4.1
-2016-09-07 10:34:46,580 > Uninstalling tornado-4.4.1:
-2016-09-07 10:34:46,581 > Successfully uninstalled tornado-4.4.1
-2016-09-07 10:34:46,582 > Running setup.py install for tornado: started
-2016-09-07 10:34:53,090 > Running setup.py install for tornado: finished with status 'done'
-2016-09-07 10:34:53,092 > Found existing installation: PyYAML 3.11
-2016-09-07 10:34:53,093 > Uninstalling PyYAML-3.11:
-2016-09-07 10:34:53,094 > Successfully uninstalled PyYAML-3.11
-2016-09-07 10:34:53,096 > Running setup.py install for PyYAML: started
-2016-09-07 10:34:53,600 ! DEPRECATION: Uninstalling a distutils installed project (PyYAML) has been deprecated and will be removed in a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.
-2016-09-07 10:35:42,781 > Running setup.py install for PyYAML: finished with status 'done'
-2016-09-07 10:35:42,783 > Found existing installation: Flask-Login 0.3.2
-2016-09-07 10:35:42,784 > Uninstalling Flask-Login-0.3.2:
-2016-09-07 10:35:42,786 > Successfully uninstalled Flask-Login-0.3.2
-2016-09-07 10:35:42,787 > Running setup.py install for Flask-Login: started
-2016-09-07 10:35:45,795 > Running setup.py install for Flask-Login: finished with status 'done'
-2016-09-07 10:35:45,796 > Found existing installation: Flask-Babel 0.11.1
-2016-09-07 10:35:45,797 > Uninstalling Flask-Babel-0.11.1:
-2016-09-07 10:35:45,798 > Successfully uninstalled Flask-Babel-0.11.1
-2016-09-07 10:35:45,799 > Running setup.py install for Flask-Babel: started
-2016-09-07 10:35:48,339 > Running setup.py install for Flask-Babel: finished with status 'done'
-2016-09-07 10:35:48,340 > Found existing installation: Flask-Assets 0.11
-2016-09-07 10:35:48,341 > Uninstalling Flask-Assets-0.11:
-2016-09-07 10:35:48,342 > Successfully uninstalled Flask-Assets-0.11
-2016-09-07 10:35:48,343 > Running setup.py install for Flask-Assets: started
-2016-09-07 10:35:51,163 ! DEPRECATION: Uninstalling a distutils installed project (pyserial) has been deprecated and will be removed in a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.
-2016-09-07 10:35:51,667 > Running setup.py install for Flask-Assets: finished with status 'done'
-2016-09-07 10:35:51,668 > Found existing installation: pyserial 3.1.1
-2016-09-07 10:35:51,669 > Uninstalling pyserial-3.1.1:
-2016-09-07 10:35:51,670 > Successfully uninstalled pyserial-3.1.1
-2016-09-07 10:35:51,671 > Running setup.py install for pyserial: started
-2016-09-07 10:35:55,328 > Running setup.py install for pyserial: finished with status 'done'
-2016-09-07 10:35:55,329 > Found existing installation: rsa 3.4.2
-2016-09-07 10:35:55,461 > Uninstalling rsa-3.4.2:
-2016-09-07 10:35:55,462 > Successfully uninstalled rsa-3.4.2
-2016-09-07 10:35:55,463 > Found existing installation: pkginfo 1.3.2
-2016-09-07 10:35:55,465 > Uninstalling pkginfo-1.3.2:
-2016-09-07 10:35:55,466 > Successfully uninstalled pkginfo-1.3.2
-2016-09-07 10:35:55,467 > Running setup.py install for pkginfo: started
-2016-09-07 10:35:58,474 > Running setup.py install for pkginfo: finished with status 'done'
-2016-09-07 10:35:58,476 > Found existing installation: requests 2.10.0
-2016-09-07 10:35:58,477 > Uninstalling requests-2.10.0:
-2016-09-07 10:35:58,479 > Successfully uninstalled requests-2.10.0
-2016-09-07 10:36:00,913 > Found existing installation: semantic-version 2.4.1
-2016-09-07 10:36:00,914 > Uninstalling semantic-version-2.4.1:
-2016-09-07 10:36:00,916 > Successfully uninstalled semantic-version-2.4.1
-2016-09-07 10:36:00,917 > Running setup.py install for semantic-version: started
-2016-09-07 10:36:03,956 > Running setup.py install for semantic-version: finished with status 'done'
-2016-09-07 10:36:03,957 > Found existing installation: psutil 4.3.0
-2016-09-07 10:36:03,959 > Uninstalling psutil-4.3.0:
-2016-09-07 10:36:03,960 > Successfully uninstalled psutil-4.3.0
-2016-09-07 10:36:03,962 > Running setup.py install for psutil: started
-2016-09-07 10:36:10,973 > Running setup.py install for psutil: finished with status 'done'
-2016-09-07 10:36:18,985 > Successfully installed Flask-Assets-0.10 Flask-Babel-0.9 Flask-Login-0.2.11 OctoPrint-ActiveFilters-0.0.1 PyYAML-3.10 backports.ssl-match-hostname-3.5.0.1 certifi-2016.8.31 flask-0.10.1 pkginfo-1.2.1 psutil-3.2.2 pyserial-2.7 requests-2.7.0 rsa-3.2.3 semantic-version-2.4.2 tornado-4.0.2 werkzeug-0.8.3
-2016-09-07 10:37:10,004   sudo /bin/pip2 install https://github.com/bq/OctoPrint-AppCompanion/archive/master.zip
-2016-09-07 10:37:14,162 > Collecting https://github.com/bq/OctoPrint-AppCompanion/archive/master.zip
-2016-09-07 10:37:15,281 > Downloading https://github.com/bq/OctoPrint-AppCompanion/archive/master.zip
-2016-09-07 10:37:19,741 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,742 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,743 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,744 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,745 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,746 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,747 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,748 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,749 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,750 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,751 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,752 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,753 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,754 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,755 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,756 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,758 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,759 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,760 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,762 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,763 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,764 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,766 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,767 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,767 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,768 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,769 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,770 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,771 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,772 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,772 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,773 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,774 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,775 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,776 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,777 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,778 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,779 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,780 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-AppCompanion==0.1.1)
-2016-09-07 10:37:19,781 > Installing collected packages: OctoPrint-AppCompanion
-2016-09-07 10:37:19,781 > Running setup.py install for OctoPrint-AppCompanion: started
-2016-09-07 10:37:23,002 > Running setup.py install for OctoPrint-AppCompanion: finished with status 'done'
-2016-09-07 10:37:23,004 > Successfully installed OctoPrint-AppCompanion-0.1.1
-2016-09-07 10:37:37,346   sudo /bin/pip2 install https://github.com/jasiek/OctoPrint-Cost/archive/master.zip
-2016-09-07 10:37:41,502 > Collecting https://github.com/jasiek/OctoPrint-Cost/archive/master.zip
-2016-09-07 10:37:42,671 > Downloading https://github.com/jasiek/OctoPrint-Cost/archive/master.zip (100kB)
-2016-09-07 10:37:47,488 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,489 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,492 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,493 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,494 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,495 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,496 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,497 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,497 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,498 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,499 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,500 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,501 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,502 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,503 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,504 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,505 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,506 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,507 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,508 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,509 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,510 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,510 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,511 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,512 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,513 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,514 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,515 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,516 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,517 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,518 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,519 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,519 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,520 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,521 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,522 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,523 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,524 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,525 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Cost==0.1.2)
-2016-09-07 10:37:47,526 > Installing collected packages: OctoPrint-Cost
-2016-09-07 10:37:47,527 > Running setup.py install for OctoPrint-Cost: started
-2016-09-07 10:37:50,748 > Running setup.py install for OctoPrint-Cost: finished with status 'done'
-2016-09-07 10:37:50,749 > Successfully installed OctoPrint-Cost-0.1.2
-2016-09-07 10:37:59,002   sudo /bin/pip2 install https://github.com/Salandora/octoprint-customControl/archive/master.zip
-2016-09-07 10:38:03,157 > Collecting https://github.com/Salandora/octoprint-customControl/archive/master.zip
-2016-09-07 10:38:04,426 > Downloading https://github.com/Salandora/octoprint-customControl/archive/master.zip
-2016-09-07 10:38:09,141 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,142 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,153 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,154 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,155 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,157 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,158 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,159 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,160 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,161 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,162 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,162 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,163 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,165 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,166 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,167 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,167 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,169 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,170 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,170 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,171 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,173 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,174 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,175 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,176 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,177 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,178 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,179 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,179 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,181 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,182 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,183 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,184 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,185 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,186 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,187 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,188 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,190 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,191 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-CustomControlPlugin==0.2.1)
-2016-09-07 10:38:09,193 > Installing collected packages: OctoPrint-CustomControlPlugin
-2016-09-07 10:38:09,194 > Running setup.py install for OctoPrint-CustomControlPlugin: started
-2016-09-07 10:38:12,465 > Running setup.py install for OctoPrint-CustomControlPlugin: finished with status 'done'
-2016-09-07 10:38:12,466 > Successfully installed OctoPrint-CustomControlPlugin-0.2.1
-2016-09-07 10:38:30,161   sudo /bin/pip2 install https://github.com/amsbr/OctoPrint-EEprom-Marlin/archive/master.zip
-2016-09-07 10:38:34,316 > Collecting https://github.com/amsbr/OctoPrint-EEprom-Marlin/archive/master.zip
-2016-09-07 10:38:35,585 > Downloading https://github.com/amsbr/OctoPrint-EEprom-Marlin/archive/master.zip
-2016-09-07 10:38:40,057 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,058 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,071 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,073 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,074 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,075 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,077 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,078 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,079 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,080 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,081 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,082 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,083 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,084 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,085 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,086 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,087 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,088 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,090 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,091 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,093 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,094 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,095 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,096 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,097 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,098 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,099 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,100 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,101 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,102 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,104 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,105 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,106 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,107 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,108 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,110 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,111 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,112 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,113 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-EEprom-Marlin==0.1.0)
-2016-09-07 10:38:40,114 > Installing collected packages: OctoPrint-EEprom-Marlin
-2016-09-07 10:38:40,115 > Running setup.py install for OctoPrint-EEprom-Marlin: started
-2016-09-07 10:38:43,336 > Running setup.py install for OctoPrint-EEprom-Marlin: finished with status 'done'
-2016-09-07 10:38:43,337 > Successfully installed OctoPrint-EEprom-Marlin-0.1.0
-2016-09-07 10:40:16,308   sudo /bin/pip2 install https://github.com/markwal/OctoPrint-PortLister/archive/master.zip
-2016-09-07 10:40:20,613 > Collecting https://github.com/markwal/OctoPrint-PortLister/archive/master.zip
-2016-09-07 10:40:21,782 > Downloading https://github.com/markwal/OctoPrint-PortLister/archive/master.zip
-2016-09-07 10:40:26,384 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,385 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,386 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,388 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,389 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,391 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,392 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,393 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,394 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,395 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,396 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,397 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,398 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,398 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,399 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,400 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,401 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,402 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,403 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,404 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,405 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,406 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,407 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,408 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,409 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,410 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,411 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,412 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,413 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,414 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,415 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,416 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,417 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,418 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,419 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,420 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,421 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,422 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,423 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-PortLister==0.1.5)
-2016-09-07 10:40:26,424 > Installing collected packages: OctoPrint-PortLister
-2016-09-07 10:40:26,425 > Running setup.py install for OctoPrint-PortLister: started
-2016-09-07 10:40:29,646 > Running setup.py install for OctoPrint-PortLister: finished with status 'done'
-2016-09-07 10:40:29,647 > Successfully installed OctoPrint-PortLister-0.1.5
-2016-09-07 10:40:48,840   sudo /bin/pip2 install https://github.com/OctoPrint/OctoPrint-RequestSpinner/archive/master.zip
-2016-09-07 10:40:53,145 > Collecting https://github.com/OctoPrint/OctoPrint-RequestSpinner/archive/master.zip
-2016-09-07 10:40:54,314 > Downloading https://github.com/OctoPrint/OctoPrint-RequestSpinner/archive/master.zip
-2016-09-07 10:40:58,945 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,947 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,948 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,949 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,950 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,951 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,952 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,953 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,954 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,955 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,956 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,957 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,958 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,959 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,960 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,960 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,961 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,962 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,963 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,964 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,965 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,966 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,967 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,968 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,969 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,970 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,971 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,972 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,973 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,974 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,975 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,976 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,976 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,977 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,978 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,979 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,980 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,981 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,982 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-RequestSpinner==0.1.1)
-2016-09-07 10:40:58,983 > Installing collected packages: OctoPrint-RequestSpinner
-2016-09-07 10:40:58,984 > Running setup.py install for OctoPrint-RequestSpinner: started
-2016-09-07 10:41:02,054 > Running setup.py install for OctoPrint-RequestSpinner: finished with status 'done'
-2016-09-07 10:41:02,558 > Successfully installed OctoPrint-RequestSpinner-0.1.1
-2016-09-07 10:41:15,147   sudo /bin/pip2 install https://github.com/markwal/OctoPrint-ScreenSquish/archive/master.zip
-2016-09-07 10:41:19,455 > Collecting https://github.com/markwal/OctoPrint-ScreenSquish/archive/master.zip
-2016-09-07 10:41:21,625 > Downloading https://github.com/markwal/OctoPrint-ScreenSquish/archive/master.zip
-2016-09-07 10:41:24,896 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,669 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,670 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,672 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,673 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,675 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,676 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,677 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,677 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,678 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,679 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,680 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,681 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,682 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,682 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,683 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,684 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,685 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,686 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,688 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,689 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,690 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,691 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,692 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,693 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,694 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,695 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,696 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,697 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,698 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,698 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,700 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,701 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,701 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,702 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,703 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,704 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,705 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,706 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-ScreenSquish==0.1)
-2016-09-07 10:41:26,707 > Installing collected packages: OctoPrint-ScreenSquish
-2016-09-07 10:41:26,708 > Running setup.py install for OctoPrint-ScreenSquish: started
-2016-09-07 10:41:30,079 > Running setup.py install for OctoPrint-ScreenSquish: finished with status 'done'
-2016-09-07 10:41:30,081 > Successfully installed OctoPrint-ScreenSquish-0.1
-2016-09-07 10:41:48,455   sudo /bin/pip2 install https://github.com/Salandora/OctoPrint-SystemCommandEditor/archive/master.zip
-2016-09-07 10:41:52,611 > Collecting https://github.com/Salandora/OctoPrint-SystemCommandEditor/archive/master.zip
-2016-09-07 10:41:53,780 > Downloading https://github.com/Salandora/OctoPrint-SystemCommandEditor/archive/master.zip
-2016-09-07 10:41:58,469 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,471 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,472 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,474 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,475 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,476 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,477 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,478 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,479 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,480 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,481 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,481 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,482 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,483 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,484 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,485 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,486 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,488 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,490 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,491 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,492 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,493 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,494 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,495 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,496 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,497 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,498 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,498 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,500 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,501 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,501 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,502 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,503 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,504 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,505 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,506 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,507 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,508 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,509 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-SystemCommandEditor==0.3.1)
-2016-09-07 10:41:58,510 > Installing collected packages: OctoPrint-SystemCommandEditor
-2016-09-07 10:41:58,511 > Running setup.py install for OctoPrint-SystemCommandEditor: started
-2016-09-07 10:42:01,782 > Running setup.py install for OctoPrint-SystemCommandEditor: finished with status 'done'
-2016-09-07 10:42:01,784 > Successfully installed OctoPrint-SystemCommandEditor-0.3.1
-2016-09-07 10:44:24,537   sudo /bin/pip2 install https://github.com/BillyBlaze/OctoPrint-TouchUI/archive/master.zip
-2016-09-07 10:44:28,843 > Collecting https://github.com/BillyBlaze/OctoPrint-TouchUI/archive/master.zip
-2016-09-07 10:44:30,012 > Downloading https://github.com/BillyBlaze/OctoPrint-TouchUI/archive/master.zip (753kB)
-2016-09-07 10:44:36,013 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from TouchUI==0.3.4)
-2016-09-07 10:44:36,014 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,016 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,017 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,018 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,019 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,020 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,021 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,022 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,023 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,024 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,025 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,026 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,027 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,028 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,028 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,029 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,030 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,031 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,032 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,033 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,034 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,035 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,036 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,036 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,037 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,038 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,039 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,040 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,041 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,042 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,043 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,044 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,044 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,045 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,046 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,047 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,048 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,049 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->TouchUI==0.3.4)
-2016-09-07 10:44:36,050 > Installing collected packages: TouchUI
-2016-09-07 10:44:36,050 > Running setup.py install for TouchUI: started
-2016-09-07 10:44:39,221 > Running setup.py install for TouchUI: finished with status 'done'
-2016-09-07 10:44:40,225 > Successfully installed TouchUI-0.3.4
-2016-09-07 11:11:05,471   sudo /bin/pip2 install https://github.com/OctoPrint/OctoPrint-Yamlpatcher/archive/master.zip
-2016-09-07 11:11:09,731 > Collecting https://github.com/OctoPrint/OctoPrint-Yamlpatcher/archive/master.zip
-2016-09-07 11:11:11,003 > Downloading https://github.com/OctoPrint/OctoPrint-Yamlpatcher/archive/master.zip
-2016-09-07 11:11:16,047 > Requirement already satisfied (use --upgrade to upgrade): OctoPrint in /usr/lib/python2.7/site-packages (from OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,050 > Requirement already satisfied (use --upgrade to upgrade): flask<0.11,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,051 > Requirement already satisfied (use --upgrade to upgrade): werkzeug<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,053 > Requirement already satisfied (use --upgrade to upgrade): tornado<4.1,>=4.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,054 > Requirement already satisfied (use --upgrade to upgrade): sockjs-tornado<1.1,>=1.0.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,055 > Requirement already satisfied (use --upgrade to upgrade): PyYAML<3.11,>=3.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,056 > Requirement already satisfied (use --upgrade to upgrade): Flask-Login<0.3,>=0.2.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,058 > Requirement already satisfied (use --upgrade to upgrade): Flask-Principal<0.4,>=0.3.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,059 > Requirement already satisfied (use --upgrade to upgrade): Flask-Babel<0.10,>=0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,060 > Requirement already satisfied (use --upgrade to upgrade): Flask-Assets<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,060 > Requirement already satisfied (use --upgrade to upgrade): markdown<2.7,>=2.6.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,062 > Requirement already satisfied (use --upgrade to upgrade): pyserial<2.8,>=2.7 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,063 > Requirement already satisfied (use --upgrade to upgrade): netaddr<0.8,>=0.7.17 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,064 > Requirement already satisfied (use --upgrade to upgrade): watchdog<0.9,>=0.8.3 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,065 > Requirement already satisfied (use --upgrade to upgrade): sarge<0.2,>=0.1.4 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,066 > Requirement already satisfied (use --upgrade to upgrade): netifaces<0.11,>=0.10 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,067 > Requirement already satisfied (use --upgrade to upgrade): pylru<1.1,>=1.0.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,068 > Requirement already satisfied (use --upgrade to upgrade): rsa<3.3,>=3.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,069 > Requirement already satisfied (use --upgrade to upgrade): pkginfo<1.3,>=1.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,070 > Requirement already satisfied (use --upgrade to upgrade): requests<2.8,>=2.7.0 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,071 > Requirement already satisfied (use --upgrade to upgrade): semantic_version<2.5,>=2.4.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,072 > Requirement already satisfied (use --upgrade to upgrade): psutil<3.3,>=3.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,074 > Requirement already satisfied (use --upgrade to upgrade): awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,075 > Requirement already satisfied (use --upgrade to upgrade): feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,075 > Requirement already satisfied (use --upgrade to upgrade): Jinja2>=2.4 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,076 > Requirement already satisfied (use --upgrade to upgrade): itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.9->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,078 > Requirement already satisfied (use --upgrade to upgrade): certifi in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,079 > Requirement already satisfied (use --upgrade to upgrade): backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from tornado<4.1,>=4.0.1->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,079 > Requirement already satisfied (use --upgrade to upgrade): blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.4,>=0.3.5->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,080 > Requirement already satisfied (use --upgrade to upgrade): Babel>=1.0 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,082 > Requirement already satisfied (use --upgrade to upgrade): speaklater>=1.2 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,083 > Requirement already satisfied (use --upgrade to upgrade): webassets>=0.10 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.11,>=0.10->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,084 > Requirement already satisfied (use --upgrade to upgrade): argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,085 > Requirement already satisfied (use --upgrade to upgrade): pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.9,>=0.8.3->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,086 > Requirement already satisfied (use --upgrade to upgrade): pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<3.3,>=3.2->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,087 > Requirement already satisfied (use --upgrade to upgrade): regex in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,088 > Requirement already satisfied (use --upgrade to upgrade): Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,090 > Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2>=2.4->flask<0.11,>=0.9->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,092 > Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=1.0->Flask-Babel<0.10,>=0.9->OctoPrint->OctoPrint-Yamlpatcher==0.1.1)
-2016-09-07 11:11:16,094 > Installing collected packages: OctoPrint-Yamlpatcher
-2016-09-07 11:11:16,096 > Running setup.py install for OctoPrint-Yamlpatcher: started
-2016-09-07 11:11:19,103 > Running setup.py install for OctoPrint-Yamlpatcher: finished with status 'done'
-2016-09-07 11:11:19,606 > Successfully installed OctoPrint-Yamlpatcher-0.1.1
+2019-09-28 12:23:42,534   /usr/lib/octoprint/bin/python2 -m pip --disable-pip-version-check install https://github.com/StefanCohen/OctoPrint-Dashboard/archive/master.zip --no-cache-dir
+2019-09-28 12:23:47,951 > Collecting https://github.com/StefanCohen/OctoPrint-Dashboard/archive/master.zip
+2019-09-28 12:23:49,271 > Downloading https://github.com/StefanCohen/OctoPrint-Dashboard/archive/master.zip
+2019-09-28 12:23:53,595 > Requirement already satisfied: OctoPrint in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint-Dashboard==1.5.1) (1.3.11)
+2019-09-28 12:23:56,605 > Requirement already satisfied: psutil in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint-Dashboard==1.5.1) (5.6.3)
+2019-09-28 12:23:56,607 > Requirement already satisfied: flask<0.11,>=0.10.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.10.1)
+2019-09-28 12:23:56,607 > Requirement already satisfied: Jinja2<2.9,>=2.8.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (2.8.1)
+2019-09-28 12:23:56,608 > Requirement already satisfied: tornado==4.5.3 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (4.5.3)
+2019-09-28 12:23:56,609 > Requirement already satisfied: Flask-Login<0.3,>=0.2.11 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.2.11)
+2019-09-28 12:23:56,609 > Requirement already satisfied: regex!=2018.11.6 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (2016.7.21)
+2019-09-28 12:23:56,610 > Requirement already satisfied: Flask-Principal<0.5,>=0.4 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.4.0)
+2019-09-28 12:23:56,611 > Requirement already satisfied: Flask-Babel<0.13,>=0.12 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.12.2)
+2019-09-28 12:23:56,611 > Requirement already satisfied: Flask-Assets<0.13,>=0.12 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.12)
+2019-09-28 12:23:56,612 > Requirement already satisfied: werkzeug<0.16,>=0.15.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.15.6)
+2019-09-28 12:23:56,613 > Requirement already satisfied: cachelib<0.2,>=0.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.1)
+2019-09-28 12:23:56,614 > Requirement already satisfied: PyYAML<6,>=5.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (5.1.2)
+2019-09-28 12:23:56,614 > Requirement already satisfied: markdown<3.1,>=3.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (3.0.1)
+2019-09-28 12:23:56,615 > Requirement already satisfied: pyserial<3.5,>=3.4 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (3.4)
+2019-09-28 12:23:56,616 > Requirement already satisfied: netaddr<0.8,>=0.7.19 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.7.19)
+2019-09-28 12:23:56,616 > Requirement already satisfied: watchdog<0.10,>=0.9.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.9.0)
+2019-09-28 12:23:56,617 > Requirement already satisfied: sarge==0.1.5post0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.1.5.post0)
+2019-09-28 12:23:56,618 > Requirement already satisfied: netifaces<0.11,>=0.10.9 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.10.9)
+2019-09-28 12:23:56,618 > Requirement already satisfied: pylru<1.3,>=1.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.2.0)
+2019-09-28 12:23:56,619 > Requirement already satisfied: rsa<5,>=4.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (4.0)
+2019-09-28 12:23:56,620 > Requirement already satisfied: pkginfo<1.6,>=1.5.0.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.5.0.1)
+2019-09-28 12:23:56,621 > Requirement already satisfied: requests<3,>=2.21.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (2.22.0)
+2019-09-28 12:23:56,621 > Requirement already satisfied: semantic_version<2.7,>=2.6 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (2.6.0)
+2019-09-28 12:23:56,622 > Requirement already satisfied: Click<8,>=7 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (7.0)
+2019-09-28 12:23:56,623 > Requirement already satisfied: awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.6.5)
+2019-09-28 12:23:56,623 > Requirement already satisfied: feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (5.2.1)
+2019-09-28 12:23:56,624 > Requirement already satisfied: chainmap<1.1,>=1.0.3 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.0.3)
+2019-09-28 12:23:56,625 > Requirement already satisfied: future<0.18,>=0.17.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.17.1)
+2019-09-28 12:23:56,625 > Requirement already satisfied: scandir<1.11,>=1.10 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.10.0)
+2019-09-28 12:23:56,626 > Requirement already satisfied: websocket-client<0.57,>=0.56 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.56.0)
+2019-09-28 12:23:56,627 > Requirement already satisfied: wrapt<1.12,>=1.11.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.11.2)
+2019-09-28 12:23:56,627 > Requirement already satisfied: futures<3.3,>=3.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (3.2.0)
+2019-09-28 12:23:56,628 > Requirement already satisfied: emoji<0.6,>=0.5.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.5.4)
+2019-09-28 12:23:56,629 > Requirement already satisfied: monotonic<1.6,>=1.5 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.5)
+2019-09-28 12:23:56,630 > Requirement already satisfied: frozendict<1.3,>=1.2 in /usr/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (1.2)
+2019-09-28 12:23:56,631 > Requirement already satisfied: sentry-sdk==0.7.7 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (0.7.7)
+2019-09-28 12:23:56,631 > Requirement already satisfied: typing<4,>=3.6.6 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->OctoPrint-Dashboard==1.5.1) (3.7.4.1)
+2019-09-28 12:23:56,632 > Requirement already satisfied: itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.10.1->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.24)
+2019-09-28 12:23:56,633 > Requirement already satisfied: MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2<2.9,>=2.8.1->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.23)
+2019-09-28 12:23:56,633 > Requirement already satisfied: singledispatch in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->OctoPrint-Dashboard==1.5.1) (3.4.0.3)
+2019-09-28 12:23:56,634 > Requirement already satisfied: certifi in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->OctoPrint-Dashboard==1.5.1) (2019.6.16)
+2019-09-28 12:23:56,635 > Requirement already satisfied: backports_abc>=0.4 in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.4)
+2019-09-28 12:23:56,635 > Requirement already satisfied: blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.5,>=0.4->OctoPrint->OctoPrint-Dashboard==1.5.1) (1.4)
+2019-09-28 12:23:56,636 > Requirement already satisfied: Babel>=2.3 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.13,>=0.12->OctoPrint->OctoPrint-Dashboard==1.5.1) (2.3.4)
+2019-09-28 12:23:56,637 > Requirement already satisfied: webassets>=0.11.1 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.13,>=0.12->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.11.1)
+2019-09-28 12:23:56,637 > Requirement already satisfied: argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.10,>=0.9.0->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.26.2)
+2019-09-28 12:23:56,638 > Requirement already satisfied: pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.10,>=0.9.0->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.1.2)
+2019-09-28 12:23:56,639 > Requirement already satisfied: pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<5,>=4.0->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.1.9)
+2019-09-28 12:23:56,639 > Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->OctoPrint-Dashboard==1.5.1) (3.0.4)
+2019-09-28 12:23:56,640 > Requirement already satisfied: idna<2.9,>=2.5 in /usr/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->OctoPrint-Dashboard==1.5.1) (2.8)
+2019-09-28 12:23:56,641 > Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->OctoPrint-Dashboard==1.5.1) (1.25.6)
+2019-09-28 12:23:56,641 > Requirement already satisfied: Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->OctoPrint-Dashboard==1.5.1) (0.4.19)
+2019-09-28 12:23:56,642 > Requirement already satisfied: six in /usr/lib/python2.7/site-packages (from websocket-client<0.57,>=0.56->OctoPrint->OctoPrint-Dashboard==1.5.1) (1.10.0)
+2019-09-28 12:23:56,643 > Requirement already satisfied: backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from websocket-client<0.57,>=0.56->OctoPrint->OctoPrint-Dashboard==1.5.1) (3.7.0.1)
+2019-09-28 12:23:56,643 > Requirement already satisfied: pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=2.3->Flask-Babel<0.13,>=0.12->OctoPrint->OctoPrint-Dashboard==1.5.1) (2016.6.1)
+2019-09-28 12:23:56,644 > Installing collected packages: OctoPrint-Dashboard
+2019-09-28 12:23:56,645 > Running setup.py install for OctoPrint-Dashboard: started
+2019-09-28 12:24:00,030 > Running setup.py install for OctoPrint-Dashboard: finished with status 'done'
+2019-09-28 12:24:00,031 > Successfully installed OctoPrint-Dashboard-1.5.1
+2019-09-28 12:24:13,441   /usr/lib/octoprint/bin/python2 -m pip --disable-pip-version-check install https://github.com/birkbjo/OctoPrint-Themeify/archive/master.zip --no-cache-dir
+2019-09-28 12:24:18,806 > Collecting https://github.com/birkbjo/OctoPrint-Themeify/archive/master.zip
+2019-09-28 12:24:20,025 > Downloading https://github.com/birkbjo/OctoPrint-Themeify/archive/master.zip
+2019-09-28 12:24:24,247 > Requirement already satisfied: OctoPrint in /usr/lib/octoprint/lib/python2.7/site-packages (from Themeify==1.2.0) (1.3.11)
+2019-09-28 12:24:27,262 > Requirement already satisfied: flask<0.11,>=0.10.1 in /usr/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.10.1)
+2019-09-28 12:24:27,263 > Requirement already satisfied: Jinja2<2.9,>=2.8.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (2.8.1)
+2019-09-28 12:24:27,264 > Requirement already satisfied: tornado==4.5.3 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (4.5.3)
+2019-09-28 12:24:27,265 > Requirement already satisfied: Flask-Login<0.3,>=0.2.11 in /usr/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.2.11)
+2019-09-28 12:24:27,266 > Requirement already satisfied: regex!=2018.11.6 in /usr/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (2016.7.21)
+2019-09-28 12:24:27,266 > Requirement already satisfied: Flask-Principal<0.5,>=0.4 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.4.0)
+2019-09-28 12:24:27,267 > Requirement already satisfied: Flask-Babel<0.13,>=0.12 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.12.2)
+2019-09-28 12:24:27,268 > Requirement already satisfied: Flask-Assets<0.13,>=0.12 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.12)
+2019-09-28 12:24:27,269 > Requirement already satisfied: werkzeug<0.16,>=0.15.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.15.6)
+2019-09-28 12:24:27,269 > Requirement already satisfied: cachelib<0.2,>=0.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.1)
+2019-09-28 12:24:27,270 > Requirement already satisfied: PyYAML<6,>=5.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (5.1.2)
+2019-09-28 12:24:27,271 > Requirement already satisfied: markdown<3.1,>=3.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (3.0.1)
+2019-09-28 12:24:27,272 > Requirement already satisfied: pyserial<3.5,>=3.4 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (3.4)
+2019-09-28 12:24:27,272 > Requirement already satisfied: netaddr<0.8,>=0.7.19 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.7.19)
+2019-09-28 12:24:27,273 > Requirement already satisfied: watchdog<0.10,>=0.9.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.9.0)
+2019-09-28 12:24:27,274 > Requirement already satisfied: sarge==0.1.5post0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.1.5.post0)
+2019-09-28 12:24:27,275 > Requirement already satisfied: netifaces<0.11,>=0.10.9 in /usr/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.10.9)
+2019-09-28 12:24:27,275 > Requirement already satisfied: pylru<1.3,>=1.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.2.0)
+2019-09-28 12:24:27,276 > Requirement already satisfied: rsa<5,>=4.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (4.0)
+2019-09-28 12:24:27,277 > Requirement already satisfied: pkginfo<1.6,>=1.5.0.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.5.0.1)
+2019-09-28 12:24:27,277 > Requirement already satisfied: requests<3,>=2.21.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (2.22.0)
+2019-09-28 12:24:27,278 > Requirement already satisfied: semantic_version<2.7,>=2.6 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (2.6.0)
+2019-09-28 12:24:27,278 > Requirement already satisfied: psutil<5.7,>=5.6.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (5.6.3)
+2019-09-28 12:24:27,279 > Requirement already satisfied: Click<8,>=7 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (7.0)
+2019-09-28 12:24:27,280 > Requirement already satisfied: awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.6.5)
+2019-09-28 12:24:27,280 > Requirement already satisfied: feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (5.2.1)
+2019-09-28 12:24:27,281 > Requirement already satisfied: chainmap<1.1,>=1.0.3 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.0.3)
+2019-09-28 12:24:27,282 > Requirement already satisfied: future<0.18,>=0.17.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.17.1)
+2019-09-28 12:24:27,282 > Requirement already satisfied: scandir<1.11,>=1.10 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.10.0)
+2019-09-28 12:24:27,283 > Requirement already satisfied: websocket-client<0.57,>=0.56 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.56.0)
+2019-09-28 12:24:27,284 > Requirement already satisfied: wrapt<1.12,>=1.11.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.11.2)
+2019-09-28 12:24:27,284 > Requirement already satisfied: futures<3.3,>=3.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (3.2.0)
+2019-09-28 12:24:27,285 > Requirement already satisfied: emoji<0.6,>=0.5.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.5.4)
+2019-09-28 12:24:27,286 > Requirement already satisfied: monotonic<1.6,>=1.5 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.5)
+2019-09-28 12:24:27,286 > Requirement already satisfied: frozendict<1.3,>=1.2 in /usr/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (1.2)
+2019-09-28 12:24:27,287 > Requirement already satisfied: sentry-sdk==0.7.7 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (0.7.7)
+2019-09-28 12:24:27,288 > Requirement already satisfied: typing<4,>=3.6.6 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->Themeify==1.2.0) (3.7.4.1)
+2019-09-28 12:24:27,289 > Requirement already satisfied: itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.10.1->OctoPrint->Themeify==1.2.0) (0.24)
+2019-09-28 12:24:27,290 > Requirement already satisfied: MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2<2.9,>=2.8.1->OctoPrint->Themeify==1.2.0) (0.23)
+2019-09-28 12:24:27,290 > Requirement already satisfied: singledispatch in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->Themeify==1.2.0) (3.4.0.3)
+2019-09-28 12:24:27,291 > Requirement already satisfied: certifi in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->Themeify==1.2.0) (2019.6.16)
+2019-09-28 12:24:27,292 > Requirement already satisfied: backports_abc>=0.4 in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->Themeify==1.2.0) (0.4)
+2019-09-28 12:24:27,293 > Requirement already satisfied: blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.5,>=0.4->OctoPrint->Themeify==1.2.0) (1.4)
+2019-09-28 12:24:27,294 > Requirement already satisfied: Babel>=2.3 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.13,>=0.12->OctoPrint->Themeify==1.2.0) (2.3.4)
+2019-09-28 12:24:27,294 > Requirement already satisfied: webassets>=0.11.1 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.13,>=0.12->OctoPrint->Themeify==1.2.0) (0.11.1)
+2019-09-28 12:24:27,295 > Requirement already satisfied: argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.10,>=0.9.0->OctoPrint->Themeify==1.2.0) (0.26.2)
+2019-09-28 12:24:27,296 > Requirement already satisfied: pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.10,>=0.9.0->OctoPrint->Themeify==1.2.0) (0.1.2)
+2019-09-28 12:24:27,298 > Requirement already satisfied: pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<5,>=4.0->OctoPrint->Themeify==1.2.0) (0.1.9)
+2019-09-28 12:24:27,299 > Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->Themeify==1.2.0) (3.0.4)
+2019-09-28 12:24:27,300 > Requirement already satisfied: idna<2.9,>=2.5 in /usr/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->Themeify==1.2.0) (2.8)
+2019-09-28 12:24:27,301 > Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->Themeify==1.2.0) (1.25.6)
+2019-09-28 12:24:27,302 > Requirement already satisfied: Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->Themeify==1.2.0) (0.4.19)
+2019-09-28 12:24:27,313 > Requirement already satisfied: six in /usr/lib/python2.7/site-packages (from websocket-client<0.57,>=0.56->OctoPrint->Themeify==1.2.0) (1.10.0)
+2019-09-28 12:24:27,314 > Requirement already satisfied: backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from websocket-client<0.57,>=0.56->OctoPrint->Themeify==1.2.0) (3.7.0.1)
+2019-09-28 12:24:27,316 > Requirement already satisfied: pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=2.3->Flask-Babel<0.13,>=0.12->OctoPrint->Themeify==1.2.0) (2016.6.1)
+2019-09-28 12:24:27,317 > Installing collected packages: Themeify
+2019-09-28 12:24:27,318 > Running setup.py install for Themeify: started
+2019-09-28 12:24:30,703 > Running setup.py install for Themeify: finished with status 'done'
+2019-09-28 12:24:30,705 > Successfully installed Themeify-1.2.0
+2019-09-28 13:17:36,705   /usr/lib/octoprint/bin/python2 -m pip --disable-pip-version-check install https://github.com/OllisGit/OctoPrint-DisplayLayerProgress/releases/latest/download/master.zip --no-cache-dir
+2019-09-28 13:17:42,172 > Collecting https://github.com/OllisGit/OctoPrint-DisplayLayerProgress/releases/latest/download/master.zip
+2019-09-28 13:17:43,492 > Downloading https://github.com/OllisGit/OctoPrint-DisplayLayerProgress/releases/latest/download/master.zip (334kB)
+2019-09-28 13:17:47,664 > Requirement already satisfied: OctoPrint in /usr/lib/octoprint/lib/python2.7/site-packages (from DisplayLayerProgress==1.13.0) (1.3.11)
+2019-09-28 13:17:50,988 > Requirement already satisfied: flask<0.11,>=0.10.1 in /usr/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.10.1)
+2019-09-28 13:17:50,989 > Requirement already satisfied: Jinja2<2.9,>=2.8.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (2.8.1)
+2019-09-28 13:17:50,990 > Requirement already satisfied: tornado==4.5.3 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (4.5.3)
+2019-09-28 13:17:50,991 > Requirement already satisfied: Flask-Login<0.3,>=0.2.11 in /usr/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.2.11)
+2019-09-28 13:17:50,991 > Requirement already satisfied: regex!=2018.11.6 in /usr/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (2016.7.21)
+2019-09-28 13:17:50,992 > Requirement already satisfied: Flask-Principal<0.5,>=0.4 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.4.0)
+2019-09-28 13:17:50,993 > Requirement already satisfied: Flask-Babel<0.13,>=0.12 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.12.2)
+2019-09-28 13:17:50,993 > Requirement already satisfied: Flask-Assets<0.13,>=0.12 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.12)
+2019-09-28 13:17:50,994 > Requirement already satisfied: werkzeug<0.16,>=0.15.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.15.6)
+2019-09-28 13:17:50,994 > Requirement already satisfied: cachelib<0.2,>=0.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.1)
+2019-09-28 13:17:50,995 > Requirement already satisfied: PyYAML<6,>=5.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (5.1.2)
+2019-09-28 13:17:50,995 > Requirement already satisfied: markdown<3.1,>=3.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (3.0.1)
+2019-09-28 13:17:50,996 > Requirement already satisfied: pyserial<3.5,>=3.4 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (3.4)
+2019-09-28 13:17:50,997 > Requirement already satisfied: netaddr<0.8,>=0.7.19 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.7.19)
+2019-09-28 13:17:50,997 > Requirement already satisfied: watchdog<0.10,>=0.9.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.9.0)
+2019-09-28 13:17:50,998 > Requirement already satisfied: sarge==0.1.5post0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.1.5.post0)
+2019-09-28 13:17:50,999 > Requirement already satisfied: netifaces<0.11,>=0.10.9 in /usr/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.10.9)
+2019-09-28 13:17:50,999 > Requirement already satisfied: pylru<1.3,>=1.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.2.0)
+2019-09-28 13:17:51,000 > Requirement already satisfied: rsa<5,>=4.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (4.0)
+2019-09-28 13:17:51,001 > Requirement already satisfied: pkginfo<1.6,>=1.5.0.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.5.0.1)
+2019-09-28 13:17:51,002 > Requirement already satisfied: requests<3,>=2.21.0 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (2.22.0)
+2019-09-28 13:17:51,002 > Requirement already satisfied: semantic_version<2.7,>=2.6 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (2.6.0)
+2019-09-28 13:17:51,003 > Requirement already satisfied: psutil<5.7,>=5.6.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (5.6.3)
+2019-09-28 13:17:51,004 > Requirement already satisfied: Click<8,>=7 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (7.0)
+2019-09-28 13:17:51,004 > Requirement already satisfied: awesome-slugify<1.7,>=1.6.5 in /usr/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.6.5)
+2019-09-28 13:17:51,005 > Requirement already satisfied: feedparser<5.3,>=5.2.1 in /usr/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (5.2.1)
+2019-09-28 13:17:51,005 > Requirement already satisfied: chainmap<1.1,>=1.0.3 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.0.3)
+2019-09-28 13:17:51,006 > Requirement already satisfied: future<0.18,>=0.17.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.17.1)
+2019-09-28 13:17:51,007 > Requirement already satisfied: scandir<1.11,>=1.10 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.10.0)
+2019-09-28 13:17:51,007 > Requirement already satisfied: websocket-client<0.57,>=0.56 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.56.0)
+2019-09-28 13:17:51,008 > Requirement already satisfied: wrapt<1.12,>=1.11.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.11.2)
+2019-09-28 13:17:51,009 > Requirement already satisfied: futures<3.3,>=3.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (3.2.0)
+2019-09-28 13:17:51,010 > Requirement already satisfied: emoji<0.6,>=0.5.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.5.4)
+2019-09-28 13:17:51,010 > Requirement already satisfied: monotonic<1.6,>=1.5 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.5)
+2019-09-28 13:17:51,011 > Requirement already satisfied: frozendict<1.3,>=1.2 in /usr/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (1.2)
+2019-09-28 13:17:51,012 > Requirement already satisfied: sentry-sdk==0.7.7 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (0.7.7)
+2019-09-28 13:17:51,012 > Requirement already satisfied: typing<4,>=3.6.6 in /usr/lib/octoprint/lib/python2.7/site-packages (from OctoPrint->DisplayLayerProgress==1.13.0) (3.7.4.1)
+2019-09-28 13:17:51,013 > Requirement already satisfied: itsdangerous>=0.21 in /usr/lib/python2.7/site-packages (from flask<0.11,>=0.10.1->OctoPrint->DisplayLayerProgress==1.13.0) (0.24)
+2019-09-28 13:17:51,014 > Requirement already satisfied: MarkupSafe in /usr/lib/python2.7/site-packages (from Jinja2<2.9,>=2.8.1->OctoPrint->DisplayLayerProgress==1.13.0) (0.23)
+2019-09-28 13:17:51,014 > Requirement already satisfied: singledispatch in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->DisplayLayerProgress==1.13.0) (3.4.0.3)
+2019-09-28 13:17:51,015 > Requirement already satisfied: certifi in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->DisplayLayerProgress==1.13.0) (2019.6.16)
+2019-09-28 13:17:51,015 > Requirement already satisfied: backports_abc>=0.4 in /usr/lib/python2.7/site-packages (from tornado==4.5.3->OctoPrint->DisplayLayerProgress==1.13.0) (0.4)
+2019-09-28 13:17:51,016 > Requirement already satisfied: blinker in /usr/lib/python2.7/site-packages (from Flask-Principal<0.5,>=0.4->OctoPrint->DisplayLayerProgress==1.13.0) (1.4)
+2019-09-28 13:17:51,017 > Requirement already satisfied: Babel>=2.3 in /usr/lib/python2.7/site-packages (from Flask-Babel<0.13,>=0.12->OctoPrint->DisplayLayerProgress==1.13.0) (2.3.4)
+2019-09-28 13:17:51,017 > Requirement already satisfied: webassets>=0.11.1 in /usr/lib/python2.7/site-packages (from Flask-Assets<0.13,>=0.12->OctoPrint->DisplayLayerProgress==1.13.0) (0.11.1)
+2019-09-28 13:17:51,018 > Requirement already satisfied: argh>=0.24.1 in /usr/lib/python2.7/site-packages (from watchdog<0.10,>=0.9.0->OctoPrint->DisplayLayerProgress==1.13.0) (0.26.2)
+2019-09-28 13:17:51,019 > Requirement already satisfied: pathtools>=0.1.1 in /usr/lib/python2.7/site-packages (from watchdog<0.10,>=0.9.0->OctoPrint->DisplayLayerProgress==1.13.0) (0.1.2)
+2019-09-28 13:17:51,019 > Requirement already satisfied: pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<5,>=4.0->OctoPrint->DisplayLayerProgress==1.13.0) (0.1.9)
+2019-09-28 13:17:51,020 > Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /usr/lib/octoprint/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->DisplayLayerProgress==1.13.0) (3.0.4)
+2019-09-28 13:17:51,021 > Requirement already satisfied: idna<2.9,>=2.5 in /usr/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->DisplayLayerProgress==1.13.0) (2.8)
+2019-09-28 13:17:51,021 > Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/lib/octoprint/lib/python2.7/site-packages (from requests<3,>=2.21.0->OctoPrint->DisplayLayerProgress==1.13.0) (1.25.6)
+2019-09-28 13:17:51,022 > Requirement already satisfied: Unidecode<0.05,>=0.04.14 in /usr/lib/python2.7/site-packages (from awesome-slugify<1.7,>=1.6.5->OctoPrint->DisplayLayerProgress==1.13.0) (0.4.19)
+2019-09-28 13:17:51,023 > Requirement already satisfied: six in /usr/lib/python2.7/site-packages (from websocket-client<0.57,>=0.56->OctoPrint->DisplayLayerProgress==1.13.0) (1.10.0)
+2019-09-28 13:17:51,023 > Requirement already satisfied: backports.ssl_match_hostname in /usr/lib/python2.7/site-packages (from websocket-client<0.57,>=0.56->OctoPrint->DisplayLayerProgress==1.13.0) (3.7.0.1)
+2019-09-28 13:17:51,024 > Requirement already satisfied: pytz>=0a in /usr/lib/python2.7/site-packages (from Babel>=2.3->Flask-Babel<0.13,>=0.12->OctoPrint->DisplayLayerProgress==1.13.0) (2016.6.1)
+2019-09-28 13:17:51,024 > Installing collected packages: DisplayLayerProgress
+2019-09-28 13:17:51,025 > Running setup.py install for DisplayLayerProgress: started
+2019-09-28 13:17:54,611 > Running setup.py install for DisplayLayerProgress: finished with status 'done'
+2019-09-28 13:17:54,612 > Successfully installed DisplayLayerProgress-1.13.0

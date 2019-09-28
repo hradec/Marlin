@@ -1,3 +1,429 @@
+// JS assets for plugin DisplayLayerProgress
+(function () {
+    try {
+        // source: plugin/DisplayLayerProgress/js/DisplayLayerProgress.js
+        /*
+         * View model for DisplayLayerProgress
+         *
+         * Author: Olli
+         * License: AGPLv3
+         */
+        $(function () {
+            function DisplaylayerprogressViewModel(parameters) {
+                var PLUGIN_ID = "DisplayLayerProgress";
+                // enable support of resetSettings
+                new ResetSettingsUtil().assignResetSettingsFeature(PLUGIN_ID, function(data){
+                                        // assign new settings-values // TODO find a more generic way
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.showOnNavBar(data.showOnNavBar);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.showOnPrinterDisplay(data.showOnPrinterDisplay);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.showAllPrinterMessages(data.showAllPrinterMessages);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.navBarMessagePattern(data.navBarMessagePattern);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.printerDisplayMessagePattern(data.printerDisplayMessagePattern);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.printerDisplayScreenLocation(data.printerDisplayScreenLocation);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.printerDisplayWidth(data.printerDisplayWidth);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.addTrailingChar(data.addTrailingChar);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.layerExpressions(data.layerExpressions);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.showLayerInStatusBar(data.showLayerInStatusBar);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.showHeightInStatusBar(data.showHeightInStatusBar);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.updatePrinterDisplayWhilePrinting(data.updatePrinterDisplayWhilePrinting);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.feedrateFactor(data.feedrateFactor);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.feedrateFormat(data.feedrateFormat);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.debuggingEnabled(data.debuggingEnabled);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.layerAverageDurationCount(data.layerAverageDurationCount);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.layerAverageFormatPattern(data.layerAverageFormatPattern);
+                                        self.settingsViewModel.settings.plugins.DisplayLayerProgress.zMaxExpressionPattern(data.zMaxExpressionPattern);
+                });
+        
+                var self = this;
+        
+                // assign the injected parameters, e.g.:
+                self.loginStateViewModel = parameters[0];
+                self.settingsViewModel = parameters[1];
+        
+                self.navBarMessage = ko.observable();
+        
+                // startup
+                self.onStartup = function () {
+                    //alert("hallo");
+                    var element = $("#state").find(".accordion-inner .progress");
+                    if (element.length) {
+                        var busyIndicator = " <i class='fa fa-spinner fa-spin busyIndicator' style='display:none'></i>";
+        
+                        // height
+                        var label = gettext("Current Height");
+                        var tooltip = gettext("Might be inaccurate!");
+                        element.before("<span id='heightStateOutput' style='display:none'><span title='" + tooltip + "'>" + label + "</span>" + ": "
+                            + "<strong id='state_height_message'>- / -</strong>"+busyIndicator+"  <br/></span>");
+                        // layer
+                        label = gettext("Layer");
+                        tooltip = gettext("Shows the layer information");
+                        element.before("<span id='layerStateOutput' style='display:none'> <span title='" + tooltip + "'>" + label + "</span>" + ": "
+                            + "<strong id='state_layer_message'>- / -</strong>"+busyIndicator+"<br/></span>");
+        
+                        // call backend for update navbar and printer-display
+                        OctoPrint.get("api/plugin/"+PLUGIN_ID);
+                    }
+        
+                    $("#layerExpressionTextArea").numberedtextarea();
+                };
+        
+                var printerDisplay = null;
+                // receive data from server
+                self.onDataUpdaterPluginMessage = function (plugin, data) {
+        
+                    if (plugin != PLUGIN_ID) {
+                        return;
+                    }
+        
+                    if (data.busy){
+                        $(".busyIndicator").show();
+                    } else {
+                        $(".busyIndicator").hide();
+                    }
+        
+                    // NavBar
+                    if (data.navBarMessage){
+                        self.navBarMessage(data.navBarMessage);
+                    }
+        
+                    // visibility of height/layer in statebar
+                    if (data.showHeightInStatusBar != null){
+                        if(data.showHeightInStatusBar == true){
+                            $("#heightStateOutput").show();
+                        } else {
+                            $("#heightStateOutput").hide();
+                        }
+                    }
+                    if (data.showLayerInStatusBar != null){
+                        if (data.showLayerInStatusBar == true){
+                            $("#layerStateOutput").show();
+                        } else {
+                            $("#layerStateOutput").hide();
+                        }
+                    }
+                    // State Layer
+                    if (data.stateMessage){
+                        var layerElement = document.getElementById("state_layer_message");
+                        if (layerElement != null && data.stateMessage != null) {
+                            layerElement.innerHTML = data.stateMessage;
+                        }
+                    }
+                    // State Height
+                    if (data.heightMessage){
+                        var heightElement = document.getElementById("state_height_message");
+                        if (heightElement != null && data.heightMessage != null) {
+                            heightElement.innerHTML = data.heightMessage;
+                        }
+                    }
+        			// Printer Display
+                    if ( (printerDisplay == null && data.initPrinterDisplay) ||
+                          data.initPrinterDisplay){
+                        if (printerDisplay != null){
+                            $("h4.ui-pnotify-title:contains('Printer Display')").parent().parent().remove();
+                        }
+                        //var stack_bar_bottom = {"dir1": "up", "dir2": "left", "spacing1": 0, "spacing2": 0};
+                        var stack_bar_bottom = JSON.parse("{"+data.printerDisplayScreenLocation+"}");
+                        printerDisplay = new PNotify({
+                            title: 'Printer Display',
+                            type: 'info',
+                            width: data.printerDisplayWidth,
+                            //addclass: "stack-bottomleft",
+                            addclass: data.classDefinition,
+                            stack: stack_bar_bottom,
+                            hide: false
+                            });
+                    }
+        			if (data.showDesktopPrinterDisplay && data.printerDisplay && printerDisplay != null){
+                        printerDisplay.update({
+                            text: '<h3 class="fontsforweb_fontid_507"><font color="lightblue" style="background-color:blue;">'+data.printerDisplay+'</font></h3>'
+                        });
+        			}
+        
+        			// NotificationMessages
+        			if (data.notifyType){
+        			    var notfiyType = data.notifyType;
+        			    var notifyMessage = data.notifyMessage;
+                        new PNotify({
+                            title: 'Attention',
+                            text: notifyMessage,
+                            type: notfiyType,
+                            hide: false
+                            });
+        
+        			}
+        
+                };
+        
+                self.onBeforeBinding = function () {
+                    self.settings = self.settingsViewModel.settings.plugins.DisplayLayerProgress;
+                    // From server-settings to client-settings
+                };
+        
+                self.onSettingsBeforeSave = function () {
+                }
+            }
+        
+            /* view model class, parameters for constructor, container to bind to
+             * Please see http://docs.octoprint.org/en/master/plugins/viewmodels.html#registering-custom-viewmodels for more details
+             * and a full list of the available options.
+             */
+            OCTOPRINT_VIEWMODELS.push({
+                construct: DisplaylayerprogressViewModel,
+                // ViewModels your plugin depends on, e.g. loginStateViewModel, settingsViewModel, ...
+                dependencies: ["loginStateViewModel", "settingsViewModel"],
+                // Elements to bind to, e.g. #settings_plugin_DisplayLayerProgress, #tab_plugin_DisplayLayerProgress, ...
+                //elements: [document.getElementById("progressinfo_plugin_navbar")]
+                elements: [
+                    document.getElementById("displayLayerProgress_plugin_navbar"),
+                    document.getElementById("displayLayerProgress_plugin_settings")
+                ]
+            });
+        });
+        
+        ;
+        
+        // source: plugin/DisplayLayerProgress/js/ResetSettingsUtil.js
+        /**
+         *
+         */
+        function ResetSettingsUtil(){
+        
+            var RESET_BUTTON_ID = "resetSettingsButton"
+            var RESET_BUTTON_HTML = "<button id='"+RESET_BUTTON_ID+"' class='btn btn-warning' style='margin-right:3%'>Reset Settings</button>"
+        
+            this.assignResetSettingsFeature = function(PLUGIN_ID_string, mapSettingsToViewModel_function){
+                var resetSettingsButtonFunction = function(){
+                    var resetButton = $("#" + RESET_BUTTON_ID).hide();
+                }
+                // hide reset button when hidding settings. needed because of next dialog-shown event
+                var settingsDialog = $("#settings_dialog");
+                var settingsDialogDOMElement = settingsDialog.get(0);
+        
+                var eventObject = $._data(settingsDialogDOMElement, 'events');
+                if (eventObject != undefined && eventObject.hide != undefined){
+                    // already there, is it my function
+                    if (eventObject.hide[0].handler.name != "resetSettingsButtonFunction"){
+                        settingsDialog.on('hide', resetSettingsButtonFunction);
+                    }
+                } else {
+                    settingsDialog.on('hide', resetSettingsButtonFunction);
+                }
+        
+                // add click hook for own plugin the check if resetSettings is available
+                var pluginSettingsLink = $("ul[id=settingsTabs] > li[id^=settings_plugin_"+PLUGIN_ID_string+"] > a[href^=\\#settings_plugin_"+PLUGIN_ID_string+"]:not([hooked="+PLUGIN_ID_string+"])");
+                pluginSettingsLink.attr("hooked", PLUGIN_ID_string);
+                pluginSettingsLink.click(function() {
+                    // call backend, is resetSettingsButtonEnabled
+                    // hide reset settings button
+                    $.ajax({
+                        url: API_BASEURL + "plugin/"+PLUGIN_ID_string+"?action=isResetSettingsEnabled",
+                        type: "GET"
+                    }).done(function( data ){
+                        var resetButton = $("#" + RESET_BUTTON_ID);
+                        if (data.enabled == "true"){
+                            // build-button, if necessary
+                            if (resetButton.length == 0){
+                                // add button to page
+                                $(".modal-footer > .aboutlink").after(RESET_BUTTON_HTML);
+                                resetButton = $("#" + RESET_BUTTON_ID);
+                            }
+        
+                            // add/update click action
+                            resetButton.unbind( "click" );
+                            resetButton.click(function() {
+                                $.ajax({
+                                    url: API_BASEURL + "plugin/"+PLUGIN_ID_string+"?action=resetSettings",
+                                    type: "GET"
+                                }).done(function( data ){
+                                    new PNotify({
+                                        title: "Default settings saved!",
+                                        text: "The plugin-settings were now reseted to default values.<br>Please do a Browser reload (Strg+F5) to update all settings in the UI.",
+                                        type: "info",
+                                        hide: true
+                                    });
+        
+                                    mapSettingsToViewModel_function(data);
+                                });
+                            });
+        
+                            resetButton.show();
+                        } else {
+                            if (resetButton.length != 0){
+                                resetButton.hide();
+                            }
+                        }
+                    });
+                });
+        
+                // default behaviour -> hide reset button --> if not already assigned
+                var otherSettingsLink = $("ul[id=settingsTabs] > li[id^=settings_] > a[href^=\\#settings_]:not([hooked])");
+                if (otherSettingsLink.length != 0){
+                    otherSettingsLink.attr("hooked", "otherSettings");
+                    otherSettingsLink.click(resetSettingsButtonFunction);
+                }
+            }
+        
+        }
+        
+        ;
+        
+        // source: plugin/DisplayLayerProgress/js/jquery-numberedtextarea.js
+        /*
+         * NumberedTextarea - jQuery Plugin
+         * Textarea with line numbering
+         *
+         * Copyright (c) 2015 Dariusz Arciszewski
+         *
+         * Requires: jQuery v2.0+
+         *
+         * Licensed under the GPL licenses:
+         *   http://www.gnu.org/licenses/gpl.html
+         */
+        
+        (function ($) {
+        
+            $.fn.numberedtextarea = function(options) {
+        
+                var settings = $.extend({
+                    color:          null,        // Font color
+                    borderColor:    null,        // Border color
+                    class:          null,        // Add class to the 'numberedtextarea-wrapper'
+                    allowTabChar:   false,       // If true Tab key creates indentation
+                }, options);
+        
+                this.each(function() {
+                    if(this.nodeName.toLowerCase() !== "textarea") {
+                        console.log('This is not a <textarea>, so no way Jose...');
+                        return false;
+                    }
+        
+                    addWrapper(this, settings);
+                    addLineNumbers(this, settings);
+        
+                    if(settings.allowTabChar) {
+                        $(this).allowTabChar();
+                    }
+                });
+        
+                return this;
+            };
+        
+            $.fn.allowTabChar = function() {
+                if (this.jquery) {
+                    this.each(function() {
+                        if (this.nodeType == 1) {
+                            var nodeName = this.nodeName.toLowerCase();
+                            if (nodeName == "textarea" || (nodeName == "input" && this.type == "text")) {
+                                allowTabChar(this);
+                            }
+                        }
+                    })
+                }
+                return this;
+            }
+        
+        
+        
+            function addWrapper(element, settings) {
+                var wrapper = $('<div class="numberedtextarea-wrapper"></div>').insertAfter(element);
+                $(element).detach().appendTo(wrapper);
+            }
+        
+            function addLineNumbers(element, settings) {
+                element = $(element);
+        
+                var wrapper = element.parents('.numberedtextarea-wrapper');
+        
+                // Get textarea styles to implement it on line numbers div
+                var paddingLeft = parseFloat(element.css('padding-left'));
+                var paddingTop = parseFloat(element.css('padding-top'));
+                var paddingBottom = parseFloat(element.css('padding-bottom'));
+        
+                var lineNumbers = $('<div class="numberedtextarea-line-numbers"></div>').insertAfter(element);
+        
+                element.css({
+                    paddingLeft: paddingLeft + lineNumbers.width() + 'px'
+                }).on('input propertychange change keyup paste', function() {
+                    renderLineNumbers(element, settings);
+                }).on('scroll', function() {
+                    scrollLineNumbers(element, settings);
+                });
+        
+                lineNumbers.css({
+                    paddingLeft: paddingLeft + 'px',
+                    paddingTop: paddingTop + 'px',
+                    lineHeight: element.css('line-height'),
+                    fontFamily: element.css('font-family'),
+                    width: lineNumbers.width() - paddingLeft + 'px',
+                });
+        
+                element.trigger('change');
+            }
+        
+            function renderLineNumbers(element, settings) {
+                element = $(element);
+        
+                var linesDiv = element.parent().find('.numberedtextarea-line-numbers');
+                var count = element.val().split("\n").length;
+                var paddingBottom = parseFloat(element.css('padding-bottom'));
+        
+                linesDiv.find('.numberedtextarea-number').remove();
+        
+                for(i = 1; i<=count; i++) {
+                    var line = $('<div class="numberedtextarea-number numberedtextarea-number-' + i + '">' + i + '</div>').appendTo(linesDiv);
+        
+                    if(i === count) {
+                    	line.css('margin-bottom', paddingBottom + 'px');
+                    }
+                }
+            }
+        
+            function scrollLineNumbers(element, settings) {
+                element = $(element);
+                var linesDiv = element.parent().find('.numberedtextarea-line-numbers');
+                linesDiv.scrollTop(element.scrollTop());
+            }
+        
+            function pasteIntoInput(el, text) {
+                el.focus();
+                if (typeof el.selectionStart == "number") {
+                    var val = el.value;
+                    var selStart = el.selectionStart;
+                    el.value = val.slice(0, selStart) + text + val.slice(el.selectionEnd);
+                    el.selectionEnd = el.selectionStart = selStart + text.length;
+                } else if (typeof document.selection != "undefined") {
+                    var textRange = document.selection.createRange();
+                    textRange.text = text;
+                    textRange.collapse(false);
+                    textRange.select();
+                }
+            }
+        
+            function allowTabChar(el) {
+                $(el).keydown(function(e) {
+                    if (e.which == 9) {
+                        pasteIntoInput(this, "\t");
+                        return false;
+                    }
+                });
+        
+                // For Opera, which only allows suppression of keypress events, not keydown
+                $(el).keypress(function(e) {
+                    if (e.which == 9) {
+                        return false;
+                    }
+                });
+            }
+        
+        }(jQuery));
+        
+        ;
+        
+    } catch (error) {
+        log.error("Error in JS assets for plugin DisplayLayerProgress:", (error.stack || error));
+    }
+})();
+
 // JS assets for plugin ScreenSquish
 (function () {
     try {
@@ -121,19 +547,46 @@
                 var self = this;
         
                 // There must be a nicer way of doing this.
+        	
+        	settingsState.check_cost = ko.observable(true);
+        
+        	settingsState.costPerWeight = ko.pureComputed(function() {
+        	  var currency = settingsState.settings.plugins.cost.currency();
+        	  var weight = settingsState.settings.plugins.cost.weight();
+        	  return currency + '/' + weight;
+        	});
+        	settingsState.costPerLength = ko.pureComputed(function() {
+        	  var currency = settingsState.settings.plugins.cost.currency();
+        	  var length = settingsState.settings.plugins.cost.length();
+        	  return currency + '/' + length;
+        	});
+        	settingsState.costPerTime = ko.pureComputed(function() {
+        	  var currency = settingsState.settings.plugins.cost.currency();
+        	  var time = settingsState.settings.plugins.cost.time();
+        	  return currency + '/' + time;
+        	});
+        	
                 printerState.costString = ko.pureComputed(function() {
                     if (settingsState.settings === undefined) return '-';
                     if (printerState.filament().length == 0) return '-';
-                    
+        
                     var currency = settingsState.settings.plugins.cost.currency();
-                    var cost_per_meter = settingsState.settings.plugins.cost.cost_per_meter();
-                    var cost_per_hour = settingsState.settings.plugins.cost.cost_per_hour();
+        	    var cost_per_length = settingsState.settings.plugins.cost.cost_per_length();
+        	    var cost_per_weight = settingsState.settings.plugins.cost.cost_per_weight();
+        	    var density_of_filament = settingsState.settings.plugins.cost.density_of_filament();
+                    var cost_per_time = settingsState.settings.plugins.cost.cost_per_time();
         
-                    var filament_used_meters = printerState.filament()[0].data().length / 1000;
-                    var expected_time_hours = printerState.estimatedPrintTime() / 3600;
+                    var filament_used_length = printerState.filament()[0].data().length / 1000;
+        	    var filament_used_volume = printerState.filament()[0].data().volume / 1000;
+                    var expected_time = printerState.estimatedPrintTime() / 3600;
         
-                    var totalCost = cost_per_meter * filament_used_meters + expected_time_hours * cost_per_hour;
-                    
+        	    if (settingsState.check_cost()) {
+        	      var totalCost = cost_per_weight * filament_used_volume * density_of_filament + expected_time * cost_per_time;
+        	    }
+        	    else {
+        	      var totalCost = cost_per_length * filament_used_length + expected_time * cost_per_time;
+        	    }
+        
                     return '' + currency + totalCost.toFixed(2);
                 });
         
@@ -145,21 +598,29 @@
                         var gcode = data.gcodeAnalysis;
                         if (gcode.hasOwnProperty('filament') && gcode.filament.hasOwnProperty('tool0') && gcode.hasOwnProperty('estimatedPrintTime')) {
                             var currency = settingsState.settings.plugins.cost.currency();
-                            var cost_per_meter = settingsState.settings.plugins.cost.cost_per_meter();
-                            var cost_per_hour = settingsState.settings.plugins.cost.cost_per_hour();
+        		    var cost_per_length = settingsState.settings.plugins.cost.cost_per_length();
+                            var cost_per_weight = settingsState.settings.plugins.cost.cost_per_weight();
+        		    var density_of_filament = settingsState.settings.plugins.cost.density_of_filament();
+                            var cost_per_time = settingsState.settings.plugins.cost.cost_per_time();
         
-                            var filament_used_meters = gcode.filament.tool0.length / 1000;
-                            var expected_time_hours = gcode.estimatedPrintTime / 3600;
+                            var filament_used_length = gcode.filament.tool0.length / 1000;
+        		    var filament_used_volume = gcode.filament.tool0.volume / 1000;
+                            var expected_time = gcode.estimatedPrintTime / 3600;
         
-                            var totalCost = cost_per_meter * filament_used_meters + expected_time_hours * cost_per_hour;
+        		    if (settingsState.check_cost()) {
+        		      var totalCost = cost_per_weight * filament_used_volume * density_of_filament + expected_time * cost_per_time;
+        		    }
+        		    else {
+        		      var totalCost = cost_per_length * filament_used_length + expected_time * cost_per_time;
+        		    }
         
                             output += gettext("Cost") + ": " + currency + totalCost.toFixed(2);
                         }
                     }
-                    
+        
                     return output;
                 };
-                
+        
                 self.onStartup = function() {
                     var element = $("#state").find(".accordion-inner .progress");
                     if (element.length) {
@@ -4940,6 +5401,188 @@
     }
 })();
 
+// JS assets for plugin dashboard
+(function () {
+    try {
+        // source: plugin/dashboard/js/dashboard.js
+        /*
+         * View model for OctoPrint-Dashboard
+         *
+         * Author: Stefan Cohen
+         * License: AGPLv3
+         */
+        $(function() {    
+            function DashboardViewModel(parameters) {
+                var self = this;
+        
+                self.temperatureModel = parameters[0];
+                self.printerStateModel = parameters[1];
+                self.printerProfilesModel = parameters[2];
+                self.connectionModel = parameters[3];
+                self.settingsViewModel = parameters[4];
+                self.displaylayerprogressViewModel = parameters[5];
+                self.controlViewModel = parameters[6];
+        
+                
+                self.totalLayer = ko.observable("-");
+                self.currentLayer = ko.observable("-");
+                self.currentHeight = ko.observable("-");
+                self.totalHeightWithExtrusion = ko.observable("-");
+                self.feedrate = ko.observable("-");
+                self.feedrateG0 = ko.observable("-");
+                self.feedrateG1 = ko.observable("-");
+                self.fanspeed = ko.observable("Off");
+                self.lastLayerDuration = ko.observable("-");
+                self.averageLayerDuration = ko.observable("-");
+                self.getEta = ko.observable();
+                self.embedUrl = ko.observable("");
+        
+                self.cpuPercent = ko.observable(0);
+                self.virtualMemPercent = ko.observable(0);
+                self.diskUsagePercent = ko.observable(0);
+                self.cpuTemp = ko.observable(0);
+        
+                
+                //Notify user if displaylayerprogress plugin is not installed
+                self.DisplayLayerProgressAvailable = function() {
+                    if (self.settingsViewModel.settings.plugins.DisplayLayerProgress)
+                        return;
+                    else {
+                        printerDisplay = new PNotify({
+                            title: 'Dashboard',
+                            type: 'warning',
+                            text: 'Can\'t get stats from <a href="https://plugins.octoprint.org/plugins/DisplayLayerProgress/"" target="_blank">DisplayLayerProgress</a>. This plugin is required and provides GCode parsing for Fan Speed, Layer/Height info and Average layer time. Is it installed, enabled and on the latest version?',
+                            hide: false
+                            });
+                        return "Warning: Can't get stats from <a href='https://plugins.octoprint.org/plugins/DisplayLayerProgress/' target='_blank'>DisplayLayerProgress</a>. Is it installed, enabled and on the latest version?";                
+                    }
+                };
+        
+                // Toggle fullscreen
+                self.fullScreen = function() {
+                    var elem = document.getElementById("dasboardContainer");
+                    if (elem.requestFullscreen) {
+                        if (!document.fullscreenElement) {
+                            elem.requestFullscreen();
+                        } else {
+                          if (document.exitFullscreen) {
+                            document.exitFullscreen(); 
+                          }
+                        }
+                    } else if (elem.mozRequestFullScreen) { /* Firefox */
+                        if (!document.mozFullscreenElement) {
+                            elem.mozRequestFullScreen();
+                        } else {
+                          if (document.mozExitFullscreen) {
+                            document.mozExitFullscreen(); 
+                          }
+                        }
+                    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                        if (!document.webkitFullscreenElement) {
+                            elem.webkitRequestFullscreen();
+                        } else {
+                          if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen(); 
+                          }
+                        }
+                    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                        if (!document.msFullscreenElement) {
+                            elem.msRequestFullscreen();
+                        } else {
+                          if (document.msExitFullscreen) {
+                            document.msExitFullscreen(); 
+                          }
+                        }
+                    }
+        
+                    return
+                }
+        
+                //Events from displaylayerprogress Plugin
+                self.onDataUpdaterPluginMessage = function(plugin, data) {
+                    if (plugin != "dashboard") {
+                        return;
+                        }
+                    if (data.totalLayer) { self.totalLayer(data.totalLayer); }
+                    if (data.currentLayer) { self.currentLayer(data.currentLayer); }
+                    if (data.currentHeight) { self.currentHeight(data.currentHeight); }
+                    if (data.totalHeightWithExtrusion) { self.totalHeightWithExtrusion(data.totalHeightWithExtrusion); }
+                    if (data.feedrate) { self.feedrate(data.feedrate); }
+                    if (data.feedrateG0) { self.feedrateG0(data.feedrateG0); }
+                    if (data.feedrateG1) { self.feedrateG1(data.feedrateG1); }
+                    if (data.fanspeed) { self.fanspeed(data.fanspeed); }
+                    if (data.lastLayerDuration) { self.lastLayerDuration(data.lastLayerDuration); }
+                    if (data.averageLayerDuration) { self.averageLayerDuration(data.averageLayerDuration); }
+                    if (data.cpuPercent) { self.cpuPercent(data.cpuPercent); }
+                    if (data.virtualMemPercent) { self.virtualMemPercent(data.virtualMemPercent); }
+                    if (data.diskUsagePercent) { self.diskUsagePercent(data.diskUsagePercent); }
+                    if (data.cpuTemp) { self.cpuTemp(data.cpuTemp); }
+                };
+        
+                self.embedUrl = function() { 
+                    if (self.settingsViewModel.settings.webcam && self.settingsViewModel.settings.plugins.dashboard.showWebCam) {
+                            return self.settingsViewModel.settings.webcam.streamUrl();
+                    }
+                    else return "ERROR: Webcam not enabled in config.";
+                };
+        
+                self.getEta = function(seconds) { 
+                    dt = new Date();
+                    dt.setSeconds( dt.getSeconds() + seconds )
+                    return dt.toTimeString().split(' ')[0];
+                };
+        
+                self.formatFanOffset = function(fanSpeed) {
+                    fanSpeed = fanSpeed.replace("%", "");
+                    fanSpeed = fanSpeed.replace("-", 1);
+                    fanSpeed = fanSpeed.replace("Off", 1);
+                    if (fanSpeed) {
+                        return 350 * (1 - (fanSpeed / 100));
+                    }
+                    else return 0;
+                };
+        
+                self.formatProgressOffset = function(currentProgress) {
+                    if (currentProgress) {
+                        return 339.292 * (1 - (currentProgress / 100));
+                    }
+                    else return "0.0";
+                };
+        
+                self.formatTempOffset = function(temp, range) {
+                    if (temp) {
+                        return 350 * (1 - temp / range);
+                    }
+                    else return 350;            
+                };
+        
+                self.formatConnectionstatus = function(currentStatus) {
+                    if (currentStatus) {
+                        return "Connected";
+                    }
+                    else return "Disconnected";
+                };
+              };
+        
+            // view model class, parameters for constructor, container to bind to
+            OCTOPRINT_VIEWMODELS.push({
+                construct: DashboardViewModel,
+                dependencies: [  "temperatureViewModel", "printerStateViewModel", "printerProfilesViewModel", "connectionViewModel", "settingsViewModel", "displaylayerprogressViewModel", "controlViewModel" ],
+                optional: [ "displaylayerprogressViewModel" ],
+                elements: [ "#tab_plugin_dashboard" ]
+            });
+        });
+        
+        
+        
+        
+        ;
+        
+    } catch (error) {
+        log.error("Error in JS assets for plugin dashboard:", (error.stack || error));
+    }
+})();
+
 // JS assets for plugin eeprom_marlin
 (function () {
     try {
@@ -5351,2113 +5994,14 @@
 (function () {
     try {
         // source: plugin/systemcommandeditor/js/jquery.ui.sortable.js
-        /*! jQuery UI - v1.9.2 - 2015-06-04
+        /*! jQuery UI - v1.12.1 - 2018-11-18
         * http://jqueryui.com
-        * Includes: jquery.ui.core.js, jquery.ui.widget.js, jquery.ui.mouse.js, jquery.ui.sortable.js
-        * Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
-        
-        (function( $, undefined ) {
-        
-        var uuid = 0,
-        	runiqueId = /^ui-id-\d+$/;
-        
-        // prevent duplicate loading
-        // this is only a problem because we proxy existing functions
-        // and we don't want to double proxy them
-        $.ui = $.ui || {};
-        if ( $.ui.version ) {
-        	return;
-        }
-        
-        $.extend( $.ui, {
-        	version: "1.9.2",
-        
-        	keyCode: {
-        		BACKSPACE: 8,
-        		COMMA: 188,
-        		DELETE: 46,
-        		DOWN: 40,
-        		END: 35,
-        		ENTER: 13,
-        		ESCAPE: 27,
-        		HOME: 36,
-        		LEFT: 37,
-        		NUMPAD_ADD: 107,
-        		NUMPAD_DECIMAL: 110,
-        		NUMPAD_DIVIDE: 111,
-        		NUMPAD_ENTER: 108,
-        		NUMPAD_MULTIPLY: 106,
-        		NUMPAD_SUBTRACT: 109,
-        		PAGE_DOWN: 34,
-        		PAGE_UP: 33,
-        		PERIOD: 190,
-        		RIGHT: 39,
-        		SPACE: 32,
-        		TAB: 9,
-        		UP: 38
-        	}
-        });
-        
-        // plugins
-        $.fn.extend({
-        	_focus: $.fn.focus,
-        	focus: function( delay, fn ) {
-        		return typeof delay === "number" ?
-        			this.each(function() {
-        				var elem = this;
-        				setTimeout(function() {
-        					$( elem ).focus();
-        					if ( fn ) {
-        						fn.call( elem );
-        					}
-        				}, delay );
-        			}) :
-        			this._focus.apply( this, arguments );
-        	},
-        
-        	scrollParent: function() {
-        		var scrollParent;
-        		if (($.ui.ie && (/(static|relative)/).test(this.css('position'))) || (/absolute/).test(this.css('position'))) {
-        			scrollParent = this.parents().filter(function() {
-        				return (/(relative|absolute|fixed)/).test($.css(this,'position')) && (/(auto|scroll)/).test($.css(this,'overflow')+$.css(this,'overflow-y')+$.css(this,'overflow-x'));
-        			}).eq(0);
-        		} else {
-        			scrollParent = this.parents().filter(function() {
-        				return (/(auto|scroll)/).test($.css(this,'overflow')+$.css(this,'overflow-y')+$.css(this,'overflow-x'));
-        			}).eq(0);
-        		}
-        
-        		return (/fixed/).test(this.css('position')) || !scrollParent.length ? $(document) : scrollParent;
-        	},
-        
-        	zIndex: function( zIndex ) {
-        		if ( zIndex !== undefined ) {
-        			return this.css( "zIndex", zIndex );
-        		}
-        
-        		if ( this.length ) {
-        			var elem = $( this[ 0 ] ), position, value;
-        			while ( elem.length && elem[ 0 ] !== document ) {
-        				// Ignore z-index if position is set to a value where z-index is ignored by the browser
-        				// This makes behavior of this function consistent across browsers
-        				// WebKit always returns auto if the element is positioned
-        				position = elem.css( "position" );
-        				if ( position === "absolute" || position === "relative" || position === "fixed" ) {
-        					// IE returns 0 when zIndex is not specified
-        					// other browsers return a string
-        					// we ignore the case of nested elements with an explicit value of 0
-        					// <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
-        					value = parseInt( elem.css( "zIndex" ), 10 );
-        					if ( !isNaN( value ) && value !== 0 ) {
-        						return value;
-        					}
-        				}
-        				elem = elem.parent();
-        			}
-        		}
-        
-        		return 0;
-        	},
-        
-        	uniqueId: function() {
-        		return this.each(function() {
-        			if ( !this.id ) {
-        				this.id = "ui-id-" + (++uuid);
-        			}
-        		});
-        	},
-        
-        	removeUniqueId: function() {
-        		return this.each(function() {
-        			if ( runiqueId.test( this.id ) ) {
-        				$( this ).removeAttr( "id" );
-        			}
-        		});
-        	}
-        });
-        
-        // selectors
-        function focusable( element, isTabIndexNotNaN ) {
-        	var map, mapName, img,
-        		nodeName = element.nodeName.toLowerCase();
-        	if ( "area" === nodeName ) {
-        		map = element.parentNode;
-        		mapName = map.name;
-        		if ( !element.href || !mapName || map.nodeName.toLowerCase() !== "map" ) {
-        			return false;
-        		}
-        		img = $( "img[usemap=#" + mapName + "]" )[0];
-        		return !!img && visible( img );
-        	}
-        	return ( /input|select|textarea|button|object/.test( nodeName ) ?
-        		!element.disabled :
-        		"a" === nodeName ?
-        			element.href || isTabIndexNotNaN :
-        			isTabIndexNotNaN) &&
-        		// the element and all of its ancestors must be visible
-        		visible( element );
-        }
-        
-        function visible( element ) {
-        	return $.expr.filters.visible( element ) &&
-        		!$( element ).parents().andSelf().filter(function() {
-        			return $.css( this, "visibility" ) === "hidden";
-        		}).length;
-        }
-        
-        $.extend( $.expr[ ":" ], {
-        	data: $.expr.createPseudo ?
-        		$.expr.createPseudo(function( dataName ) {
-        			return function( elem ) {
-        				return !!$.data( elem, dataName );
-        			};
-        		}) :
-        		// support: jQuery <1.8
-        		function( elem, i, match ) {
-        			return !!$.data( elem, match[ 3 ] );
-        		},
-        
-        	focusable: function( element ) {
-        		return focusable( element, !isNaN( $.attr( element, "tabindex" ) ) );
-        	},
-        
-        	tabbable: function( element ) {
-        		var tabIndex = $.attr( element, "tabindex" ),
-        			isTabIndexNaN = isNaN( tabIndex );
-        		return ( isTabIndexNaN || tabIndex >= 0 ) && focusable( element, !isTabIndexNaN );
-        	}
-        });
-        
-        // support
-        $(function() {
-        	var body = document.body,
-        		div = body.appendChild( div = document.createElement( "div" ) );
-        
-        	// access offsetHeight before setting the style to prevent a layout bug
-        	// in IE 9 which causes the element to continue to take up space even
-        	// after it is removed from the DOM (#8026)
-        	div.offsetHeight;
-        
-        	$.extend( div.style, {
-        		minHeight: "100px",
-        		height: "auto",
-        		padding: 0,
-        		borderWidth: 0
-        	});
-        
-        	$.support.minHeight = div.offsetHeight === 100;
-        	$.support.selectstart = "onselectstart" in div;
-        
-        	// set display to none to avoid a layout bug in IE
-        	// http://dev.jquery.com/ticket/4014
-        	body.removeChild( div ).style.display = "none";
-        });
-        
-        // support: jQuery <1.8
-        if ( !$( "<a>" ).outerWidth( 1 ).jquery ) {
-        	$.each( [ "Width", "Height" ], function( i, name ) {
-        		var side = name === "Width" ? [ "Left", "Right" ] : [ "Top", "Bottom" ],
-        			type = name.toLowerCase(),
-        			orig = {
-        				innerWidth: $.fn.innerWidth,
-        				innerHeight: $.fn.innerHeight,
-        				outerWidth: $.fn.outerWidth,
-        				outerHeight: $.fn.outerHeight
-        			};
-        
-        		function reduce( elem, size, border, margin ) {
-        			$.each( side, function() {
-        				size -= parseFloat( $.css( elem, "padding" + this ) ) || 0;
-        				if ( border ) {
-        					size -= parseFloat( $.css( elem, "border" + this + "Width" ) ) || 0;
-        				}
-        				if ( margin ) {
-        					size -= parseFloat( $.css( elem, "margin" + this ) ) || 0;
-        				}
-        			});
-        			return size;
-        		}
-        
-        		$.fn[ "inner" + name ] = function( size ) {
-        			if ( size === undefined ) {
-        				return orig[ "inner" + name ].call( this );
-        			}
-        
-        			return this.each(function() {
-        				$( this ).css( type, reduce( this, size ) + "px" );
-        			});
-        		};
-        
-        		$.fn[ "outer" + name] = function( size, margin ) {
-        			if ( typeof size !== "number" ) {
-        				return orig[ "outer" + name ].call( this, size );
-        			}
-        
-        			return this.each(function() {
-        				$( this).css( type, reduce( this, size, true, margin ) + "px" );
-        			});
-        		};
-        	});
-        }
-        
-        // support: jQuery 1.6.1, 1.6.2 (http://bugs.jquery.com/ticket/9413)
-        if ( $( "<a>" ).data( "a-b", "a" ).removeData( "a-b" ).data( "a-b" ) ) {
-        	$.fn.removeData = (function( removeData ) {
-        		return function( key ) {
-        			if ( arguments.length ) {
-        				return removeData.call( this, $.camelCase( key ) );
-        			} else {
-        				return removeData.call( this );
-        			}
-        		};
-        	})( $.fn.removeData );
-        }
-        
-        
-        
-        
-        
-        // deprecated
-        
-        (function() {
-        	var uaMatch = /msie ([\w.]+)/.exec( navigator.userAgent.toLowerCase() ) || [];
-        	$.ui.ie = uaMatch.length ? true : false;
-        	$.ui.ie6 = parseFloat( uaMatch[ 1 ], 10 ) === 6;
-        })();
-        
-        $.fn.extend({
-        	disableSelection: function() {
-        		return this.bind( ( $.support.selectstart ? "selectstart" : "mousedown" ) +
-        			".ui-disableSelection", function( event ) {
-        				event.preventDefault();
-        			});
-        	},
-        
-        	enableSelection: function() {
-        		return this.unbind( ".ui-disableSelection" );
-        	}
-        });
-        
-        $.extend( $.ui, {
-        	// $.ui.plugin is deprecated.  Use the proxy pattern instead.
-        	plugin: {
-        		add: function( module, option, set ) {
-        			var i,
-        				proto = $.ui[ module ].prototype;
-        			for ( i in set ) {
-        				proto.plugins[ i ] = proto.plugins[ i ] || [];
-        				proto.plugins[ i ].push( [ option, set[ i ] ] );
-        			}
-        		},
-        		call: function( instance, name, args ) {
-        			var i,
-        				set = instance.plugins[ name ];
-        			if ( !set || !instance.element[ 0 ].parentNode || instance.element[ 0 ].parentNode.nodeType === 11 ) {
-        				return;
-        			}
-        
-        			for ( i = 0; i < set.length; i++ ) {
-        				if ( instance.options[ set[ i ][ 0 ] ] ) {
-        					set[ i ][ 1 ].apply( instance.element, args );
-        				}
-        			}
-        		}
-        	},
-        
-        	contains: $.contains,
-        
-        	// only used by resizable
-        	hasScroll: function( el, a ) {
-        
-        		//If overflow is hidden, the element might have extra content, but the user wants to hide it
-        		if ( $( el ).css( "overflow" ) === "hidden") {
-        			return false;
-        		}
-        
-        		var scroll = ( a && a === "left" ) ? "scrollLeft" : "scrollTop",
-        			has = false;
-        
-        		if ( el[ scroll ] > 0 ) {
-        			return true;
-        		}
-        
-        		// TODO: determine which cases actually cause this to happen
-        		// if the element doesn't have the scroll set, see if it's possible to
-        		// set the scroll
-        		el[ scroll ] = 1;
-        		has = ( el[ scroll ] > 0 );
-        		el[ scroll ] = 0;
-        		return has;
-        	},
-        
-        	// these are odd functions, fix the API or move into individual plugins
-        	isOverAxis: function( x, reference, size ) {
-        		//Determines when x coordinate is over "b" element axis
-        		return ( x > reference ) && ( x < ( reference + size ) );
-        	},
-        	isOver: function( y, x, top, left, height, width ) {
-        		//Determines when x, y coordinates is over "b" element
-        		return $.ui.isOverAxis( y, top, height ) && $.ui.isOverAxis( x, left, width );
-        	}
-        });
-        
-        })( jQuery );
-        (function( $, undefined ) {
-        
-        var uuid = 0,
-        	slice = Array.prototype.slice,
-        	_cleanData = $.cleanData;
-        $.cleanData = function( elems ) {
-        	for ( var i = 0, elem; (elem = elems[i]) != null; i++ ) {
-        		try {
-        			$( elem ).triggerHandler( "remove" );
-        		// http://bugs.jquery.com/ticket/8235
-        		} catch( e ) {}
-        	}
-        	_cleanData( elems );
-        };
-        
-        $.widget = function( name, base, prototype ) {
-        	var fullName, existingConstructor, constructor, basePrototype,
-        		namespace = name.split( "." )[ 0 ];
-        
-        	name = name.split( "." )[ 1 ];
-        	fullName = namespace + "-" + name;
-        
-        	if ( !prototype ) {
-        		prototype = base;
-        		base = $.Widget;
-        	}
-        
-        	// create selector for plugin
-        	$.expr[ ":" ][ fullName.toLowerCase() ] = function( elem ) {
-        		return !!$.data( elem, fullName );
-        	};
-        
-        	$[ namespace ] = $[ namespace ] || {};
-        	existingConstructor = $[ namespace ][ name ];
-        	constructor = $[ namespace ][ name ] = function( options, element ) {
-        		// allow instantiation without "new" keyword
-        		if ( !this._createWidget ) {
-        			return new constructor( options, element );
-        		}
-        
-        		// allow instantiation without initializing for simple inheritance
-        		// must use "new" keyword (the code above always passes args)
-        		if ( arguments.length ) {
-        			this._createWidget( options, element );
-        		}
-        	};
-        	// extend with the existing constructor to carry over any static properties
-        	$.extend( constructor, existingConstructor, {
-        		version: prototype.version,
-        		// copy the object used to create the prototype in case we need to
-        		// redefine the widget later
-        		_proto: $.extend( {}, prototype ),
-        		// track widgets that inherit from this widget in case this widget is
-        		// redefined after a widget inherits from it
-        		_childConstructors: []
-        	});
-        
-        	basePrototype = new base();
-        	// we need to make the options hash a property directly on the new instance
-        	// otherwise we'll modify the options hash on the prototype that we're
-        	// inheriting from
-        	basePrototype.options = $.widget.extend( {}, basePrototype.options );
-        	$.each( prototype, function( prop, value ) {
-        		if ( $.isFunction( value ) ) {
-        			prototype[ prop ] = (function() {
-        				var _super = function() {
-        						return base.prototype[ prop ].apply( this, arguments );
-        					},
-        					_superApply = function( args ) {
-        						return base.prototype[ prop ].apply( this, args );
-        					};
-        				return function() {
-        					var __super = this._super,
-        						__superApply = this._superApply,
-        						returnValue;
-        
-        					this._super = _super;
-        					this._superApply = _superApply;
-        
-        					returnValue = value.apply( this, arguments );
-        
-        					this._super = __super;
-        					this._superApply = __superApply;
-        
-        					return returnValue;
-        				};
-        			})();
-        		}
-        	});
-        	constructor.prototype = $.widget.extend( basePrototype, {
-        		// TODO: remove support for widgetEventPrefix
-        		// always use the name + a colon as the prefix, e.g., draggable:start
-        		// don't prefix for widgets that aren't DOM-based
-        		widgetEventPrefix: existingConstructor ? basePrototype.widgetEventPrefix : name
-        	}, prototype, {
-        		constructor: constructor,
-        		namespace: namespace,
-        		widgetName: name,
-        		// TODO remove widgetBaseClass, see #8155
-        		widgetBaseClass: fullName,
-        		widgetFullName: fullName
-        	});
-        
-        	// If this widget is being redefined then we need to find all widgets that
-        	// are inheriting from it and redefine all of them so that they inherit from
-        	// the new version of this widget. We're essentially trying to replace one
-        	// level in the prototype chain.
-        	if ( existingConstructor ) {
-        		$.each( existingConstructor._childConstructors, function( i, child ) {
-        			var childPrototype = child.prototype;
-        
-        			// redefine the child widget using the same prototype that was
-        			// originally used, but inherit from the new version of the base
-        			$.widget( childPrototype.namespace + "." + childPrototype.widgetName, constructor, child._proto );
-        		});
-        		// remove the list of existing child constructors from the old constructor
-        		// so the old child constructors can be garbage collected
-        		delete existingConstructor._childConstructors;
-        	} else {
-        		base._childConstructors.push( constructor );
-        	}
-        
-        	$.widget.bridge( name, constructor );
-        };
-        
-        $.widget.extend = function( target ) {
-        	var input = slice.call( arguments, 1 ),
-        		inputIndex = 0,
-        		inputLength = input.length,
-        		key,
-        		value;
-        	for ( ; inputIndex < inputLength; inputIndex++ ) {
-        		for ( key in input[ inputIndex ] ) {
-        			value = input[ inputIndex ][ key ];
-        			if ( input[ inputIndex ].hasOwnProperty( key ) && value !== undefined ) {
-        				// Clone objects
-        				if ( $.isPlainObject( value ) ) {
-        					target[ key ] = $.isPlainObject( target[ key ] ) ?
-        						$.widget.extend( {}, target[ key ], value ) :
-        						// Don't extend strings, arrays, etc. with objects
-        						$.widget.extend( {}, value );
-        				// Copy everything else by reference
-        				} else {
-        					target[ key ] = value;
-        				}
-        			}
-        		}
-        	}
-        	return target;
-        };
-        
-        $.widget.bridge = function( name, object ) {
-        	var fullName = object.prototype.widgetFullName || name;
-        	$.fn[ name ] = function( options ) {
-        		var isMethodCall = typeof options === "string",
-        			args = slice.call( arguments, 1 ),
-        			returnValue = this;
-        
-        		// allow multiple hashes to be passed on init
-        		options = !isMethodCall && args.length ?
-        			$.widget.extend.apply( null, [ options ].concat(args) ) :
-        			options;
-        
-        		if ( isMethodCall ) {
-        			this.each(function() {
-        				var methodValue,
-        					instance = $.data( this, fullName );
-        				if ( !instance ) {
-        					return $.error( "cannot call methods on " + name + " prior to initialization; " +
-        						"attempted to call method '" + options + "'" );
-        				}
-        				if ( !$.isFunction( instance[options] ) || options.charAt( 0 ) === "_" ) {
-        					return $.error( "no such method '" + options + "' for " + name + " widget instance" );
-        				}
-        				methodValue = instance[ options ].apply( instance, args );
-        				if ( methodValue !== instance && methodValue !== undefined ) {
-        					returnValue = methodValue && methodValue.jquery ?
-        						returnValue.pushStack( methodValue.get() ) :
-        						methodValue;
-        					return false;
-        				}
-        			});
-        		} else {
-        			this.each(function() {
-        				var instance = $.data( this, fullName );
-        				if ( instance ) {
-        					instance.option( options || {} )._init();
-        				} else {
-        					$.data( this, fullName, new object( options, this ) );
-        				}
-        			});
-        		}
-        
-        		return returnValue;
-        	};
-        };
-        
-        $.Widget = function( /* options, element */ ) {};
-        $.Widget._childConstructors = [];
-        
-        $.Widget.prototype = {
-        	widgetName: "widget",
-        	widgetEventPrefix: "",
-        	defaultElement: "<div>",
-        	options: {
-        		disabled: false,
-        
-        		// callbacks
-        		create: null
-        	},
-        	_createWidget: function( options, element ) {
-        		element = $( element || this.defaultElement || this )[ 0 ];
-        		this.element = $( element );
-        		this.uuid = uuid++;
-        		this.eventNamespace = "." + this.widgetName + this.uuid;
-        		this.options = $.widget.extend( {},
-        			this.options,
-        			this._getCreateOptions(),
-        			options );
-        
-        		this.bindings = $();
-        		this.hoverable = $();
-        		this.focusable = $();
-        
-        		if ( element !== this ) {
-        			// 1.9 BC for #7810
-        			// TODO remove dual storage
-        			$.data( element, this.widgetName, this );
-        			$.data( element, this.widgetFullName, this );
-        			this._on( true, this.element, {
-        				remove: function( event ) {
-        					if ( event.target === element ) {
-        						this.destroy();
-        					}
-        				}
-        			});
-        			this.document = $( element.style ?
-        				// element within the document
-        				element.ownerDocument :
-        				// element is window or document
-        				element.document || element );
-        			this.window = $( this.document[0].defaultView || this.document[0].parentWindow );
-        		}
-        
-        		this._create();
-        		this._trigger( "create", null, this._getCreateEventData() );
-        		this._init();
-        	},
-        	_getCreateOptions: $.noop,
-        	_getCreateEventData: $.noop,
-        	_create: $.noop,
-        	_init: $.noop,
-        
-        	destroy: function() {
-        		this._destroy();
-        		// we can probably remove the unbind calls in 2.0
-        		// all event bindings should go through this._on()
-        		this.element
-        			.unbind( this.eventNamespace )
-        			// 1.9 BC for #7810
-        			// TODO remove dual storage
-        			.removeData( this.widgetName )
-        			.removeData( this.widgetFullName )
-        			// support: jquery <1.6.3
-        			// http://bugs.jquery.com/ticket/9413
-        			.removeData( $.camelCase( this.widgetFullName ) );
-        		this.widget()
-        			.unbind( this.eventNamespace )
-        			.removeAttr( "aria-disabled" )
-        			.removeClass(
-        				this.widgetFullName + "-disabled " +
-        				"ui-state-disabled" );
-        
-        		// clean up events and states
-        		this.bindings.unbind( this.eventNamespace );
-        		this.hoverable.removeClass( "ui-state-hover" );
-        		this.focusable.removeClass( "ui-state-focus" );
-        	},
-        	_destroy: $.noop,
-        
-        	widget: function() {
-        		return this.element;
-        	},
-        
-        	option: function( key, value ) {
-        		var options = key,
-        			parts,
-        			curOption,
-        			i;
-        
-        		if ( arguments.length === 0 ) {
-        			// don't return a reference to the internal hash
-        			return $.widget.extend( {}, this.options );
-        		}
-        
-        		if ( typeof key === "string" ) {
-        			// handle nested keys, e.g., "foo.bar" => { foo: { bar: ___ } }
-        			options = {};
-        			parts = key.split( "." );
-        			key = parts.shift();
-        			if ( parts.length ) {
-        				curOption = options[ key ] = $.widget.extend( {}, this.options[ key ] );
-        				for ( i = 0; i < parts.length - 1; i++ ) {
-        					curOption[ parts[ i ] ] = curOption[ parts[ i ] ] || {};
-        					curOption = curOption[ parts[ i ] ];
-        				}
-        				key = parts.pop();
-        				if ( value === undefined ) {
-        					return curOption[ key ] === undefined ? null : curOption[ key ];
-        				}
-        				curOption[ key ] = value;
-        			} else {
-        				if ( value === undefined ) {
-        					return this.options[ key ] === undefined ? null : this.options[ key ];
-        				}
-        				options[ key ] = value;
-        			}
-        		}
-        
-        		this._setOptions( options );
-        
-        		return this;
-        	},
-        	_setOptions: function( options ) {
-        		var key;
-        
-        		for ( key in options ) {
-        			this._setOption( key, options[ key ] );
-        		}
-        
-        		return this;
-        	},
-        	_setOption: function( key, value ) {
-        		this.options[ key ] = value;
-        
-        		if ( key === "disabled" ) {
-        			this.widget()
-        				.toggleClass( this.widgetFullName + "-disabled ui-state-disabled", !!value )
-        				.attr( "aria-disabled", value );
-        			this.hoverable.removeClass( "ui-state-hover" );
-        			this.focusable.removeClass( "ui-state-focus" );
-        		}
-        
-        		return this;
-        	},
-        
-        	enable: function() {
-        		return this._setOption( "disabled", false );
-        	},
-        	disable: function() {
-        		return this._setOption( "disabled", true );
-        	},
-        
-        	_on: function( suppressDisabledCheck, element, handlers ) {
-        		var delegateElement,
-        			instance = this;
-        
-        		// no suppressDisabledCheck flag, shuffle arguments
-        		if ( typeof suppressDisabledCheck !== "boolean" ) {
-        			handlers = element;
-        			element = suppressDisabledCheck;
-        			suppressDisabledCheck = false;
-        		}
-        
-        		// no element argument, shuffle and use this.element
-        		if ( !handlers ) {
-        			handlers = element;
-        			element = this.element;
-        			delegateElement = this.widget();
-        		} else {
-        			// accept selectors, DOM elements
-        			element = delegateElement = $( element );
-        			this.bindings = this.bindings.add( element );
-        		}
-        
-        		$.each( handlers, function( event, handler ) {
-        			function handlerProxy() {
-        				// allow widgets to customize the disabled handling
-        				// - disabled as an array instead of boolean
-        				// - disabled class as method for disabling individual parts
-        				if ( !suppressDisabledCheck &&
-        						( instance.options.disabled === true ||
-        							$( this ).hasClass( "ui-state-disabled" ) ) ) {
-        					return;
-        				}
-        				return ( typeof handler === "string" ? instance[ handler ] : handler )
-        					.apply( instance, arguments );
-        			}
-        
-        			// copy the guid so direct unbinding works
-        			if ( typeof handler !== "string" ) {
-        				handlerProxy.guid = handler.guid =
-        					handler.guid || handlerProxy.guid || $.guid++;
-        			}
-        
-        			var match = event.match( /^(\w+)\s*(.*)$/ ),
-        				eventName = match[1] + instance.eventNamespace,
-        				selector = match[2];
-        			if ( selector ) {
-        				delegateElement.delegate( selector, eventName, handlerProxy );
-        			} else {
-        				element.bind( eventName, handlerProxy );
-        			}
-        		});
-        	},
-        
-        	_off: function( element, eventName ) {
-        		eventName = (eventName || "").split( " " ).join( this.eventNamespace + " " ) + this.eventNamespace;
-        		element.unbind( eventName ).undelegate( eventName );
-        	},
-        
-        	_delay: function( handler, delay ) {
-        		function handlerProxy() {
-        			return ( typeof handler === "string" ? instance[ handler ] : handler )
-        				.apply( instance, arguments );
-        		}
-        		var instance = this;
-        		return setTimeout( handlerProxy, delay || 0 );
-        	},
-        
-        	_hoverable: function( element ) {
-        		this.hoverable = this.hoverable.add( element );
-        		this._on( element, {
-        			mouseenter: function( event ) {
-        				$( event.currentTarget ).addClass( "ui-state-hover" );
-        			},
-        			mouseleave: function( event ) {
-        				$( event.currentTarget ).removeClass( "ui-state-hover" );
-        			}
-        		});
-        	},
-        
-        	_focusable: function( element ) {
-        		this.focusable = this.focusable.add( element );
-        		this._on( element, {
-        			focusin: function( event ) {
-        				$( event.currentTarget ).addClass( "ui-state-focus" );
-        			},
-        			focusout: function( event ) {
-        				$( event.currentTarget ).removeClass( "ui-state-focus" );
-        			}
-        		});
-        	},
-        
-        	_trigger: function( type, event, data ) {
-        		var prop, orig,
-        			callback = this.options[ type ];
-        
-        		data = data || {};
-        		event = $.Event( event );
-        		event.type = ( type === this.widgetEventPrefix ?
-        			type :
-        			this.widgetEventPrefix + type ).toLowerCase();
-        		// the original event may come from any element
-        		// so we need to reset the target on the new event
-        		event.target = this.element[ 0 ];
-        
-        		// copy original event properties over to the new event
-        		orig = event.originalEvent;
-        		if ( orig ) {
-        			for ( prop in orig ) {
-        				if ( !( prop in event ) ) {
-        					event[ prop ] = orig[ prop ];
-        				}
-        			}
-        		}
-        
-        		this.element.trigger( event, data );
-        		return !( $.isFunction( callback ) &&
-        			callback.apply( this.element[0], [ event ].concat( data ) ) === false ||
-        			event.isDefaultPrevented() );
-        	}
-        };
-        
-        $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
-        	$.Widget.prototype[ "_" + method ] = function( element, options, callback ) {
-        		if ( typeof options === "string" ) {
-        			options = { effect: options };
-        		}
-        		var hasOptions,
-        			effectName = !options ?
-        				method :
-        				options === true || typeof options === "number" ?
-        					defaultEffect :
-        					options.effect || defaultEffect;
-        		options = options || {};
-        		if ( typeof options === "number" ) {
-        			options = { duration: options };
-        		}
-        		hasOptions = !$.isEmptyObject( options );
-        		options.complete = callback;
-        		if ( options.delay ) {
-        			element.delay( options.delay );
-        		}
-        		if ( hasOptions && $.effects && ( $.effects.effect[ effectName ] || $.uiBackCompat !== false && $.effects[ effectName ] ) ) {
-        			element[ method ]( options );
-        		} else if ( effectName !== method && element[ effectName ] ) {
-        			element[ effectName ]( options.duration, options.easing, callback );
-        		} else {
-        			element.queue(function( next ) {
-        				$( this )[ method ]();
-        				if ( callback ) {
-        					callback.call( element[ 0 ] );
-        				}
-        				next();
-        			});
-        		}
-        	};
-        });
-        
-        // DEPRECATED
-        if ( $.uiBackCompat !== false ) {
-        	$.Widget.prototype._getCreateOptions = function() {
-        		return $.metadata && $.metadata.get( this.element[0] )[ this.widgetName ];
-        	};
-        }
-        
-        })( jQuery );
-        (function( $, undefined ) {
-        
-        var mouseHandled = false;
-        $( document ).mouseup( function( e ) {
-        	mouseHandled = false;
-        });
-        
-        $.widget("ui.mouse", {
-        	version: "1.9.2",
-        	options: {
-        		cancel: 'input,textarea,button,select,option',
-        		distance: 1,
-        		delay: 0
-        	},
-        	_mouseInit: function() {
-        		var that = this;
-        
-        		this.element
-        			.bind('mousedown.'+this.widgetName, function(event) {
-        				return that._mouseDown(event);
-        			})
-        			.bind('click.'+this.widgetName, function(event) {
-        				if (true === $.data(event.target, that.widgetName + '.preventClickEvent')) {
-        					$.removeData(event.target, that.widgetName + '.preventClickEvent');
-        					event.stopImmediatePropagation();
-        					return false;
-        				}
-        			});
-        
-        		this.started = false;
-        	},
-        
-        	// TODO: make sure destroying one instance of mouse doesn't mess with
-        	// other instances of mouse
-        	_mouseDestroy: function() {
-        		this.element.unbind('.'+this.widgetName);
-        		if ( this._mouseMoveDelegate ) {
-        			$(document)
-        				.unbind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
-        				.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
-        		}
-        	},
-        
-        	_mouseDown: function(event) {
-        		// don't let more than one widget handle mouseStart
-        		if( mouseHandled ) { return; }
-        
-        		// we may have missed mouseup (out of window)
-        		(this._mouseStarted && this._mouseUp(event));
-        
-        		this._mouseDownEvent = event;
-        
-        		var that = this,
-        			btnIsLeft = (event.which === 1),
-        			// event.target.nodeName works around a bug in IE 8 with
-        			// disabled inputs (#7620)
-        			elIsCancel = (typeof this.options.cancel === "string" && event.target.nodeName ? $(event.target).closest(this.options.cancel).length : false);
-        		if (!btnIsLeft || elIsCancel || !this._mouseCapture(event)) {
-        			return true;
-        		}
-        
-        		this.mouseDelayMet = !this.options.delay;
-        		if (!this.mouseDelayMet) {
-        			this._mouseDelayTimer = setTimeout(function() {
-        				that.mouseDelayMet = true;
-        			}, this.options.delay);
-        		}
-        
-        		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
-        			this._mouseStarted = (this._mouseStart(event) !== false);
-        			if (!this._mouseStarted) {
-        				event.preventDefault();
-        				return true;
-        			}
-        		}
-        
-        		// Click event may never have fired (Gecko & Opera)
-        		if (true === $.data(event.target, this.widgetName + '.preventClickEvent')) {
-        			$.removeData(event.target, this.widgetName + '.preventClickEvent');
-        		}
-        
-        		// these delegates are required to keep context
-        		this._mouseMoveDelegate = function(event) {
-        			return that._mouseMove(event);
-        		};
-        		this._mouseUpDelegate = function(event) {
-        			return that._mouseUp(event);
-        		};
-        		$(document)
-        			.bind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
-        			.bind('mouseup.'+this.widgetName, this._mouseUpDelegate);
-        
-        		event.preventDefault();
-        
-        		mouseHandled = true;
-        		return true;
-        	},
-        
-        	_mouseMove: function(event) {
-        		// IE mouseup check - mouseup happened when mouse was out of window
-        		if ($.ui.ie && !(document.documentMode >= 9) && !event.button) {
-        			return this._mouseUp(event);
-        		}
-        
-        		if (this._mouseStarted) {
-        			this._mouseDrag(event);
-        			return event.preventDefault();
-        		}
-        
-        		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
-        			this._mouseStarted =
-        				(this._mouseStart(this._mouseDownEvent, event) !== false);
-        			(this._mouseStarted ? this._mouseDrag(event) : this._mouseUp(event));
-        		}
-        
-        		return !this._mouseStarted;
-        	},
-        
-        	_mouseUp: function(event) {
-        		$(document)
-        			.unbind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
-        			.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
-        
-        		if (this._mouseStarted) {
-        			this._mouseStarted = false;
-        
-        			if (event.target === this._mouseDownEvent.target) {
-        				$.data(event.target, this.widgetName + '.preventClickEvent', true);
-        			}
-        
-        			this._mouseStop(event);
-        		}
-        
-        		return false;
-        	},
-        
-        	_mouseDistanceMet: function(event) {
-        		return (Math.max(
-        				Math.abs(this._mouseDownEvent.pageX - event.pageX),
-        				Math.abs(this._mouseDownEvent.pageY - event.pageY)
-        			) >= this.options.distance
-        		);
-        	},
-        
-        	_mouseDelayMet: function(event) {
-        		return this.mouseDelayMet;
-        	},
-        
-        	// These are placeholder methods, to be overriden by extending plugin
-        	_mouseStart: function(event) {},
-        	_mouseDrag: function(event) {},
-        	_mouseStop: function(event) {},
-        	_mouseCapture: function(event) { return true; }
-        });
-        
-        })(jQuery);
-        (function( $, undefined ) {
-        
-        $.widget("ui.sortable", $.ui.mouse, {
-        	version: "1.9.2",
-        	widgetEventPrefix: "sort",
-        	ready: false,
-        	options: {
-        		appendTo: "parent",
-        		axis: false,
-        		connectWith: false,
-        		containment: false,
-        		cursor: 'auto',
-        		cursorAt: false,
-        		dropOnEmpty: true,
-        		forcePlaceholderSize: false,
-        		forceHelperSize: false,
-        		grid: false,
-        		handle: false,
-        		helper: "original",
-        		items: '> *',
-        		opacity: false,
-        		placeholder: false,
-        		revert: false,
-        		scroll: true,
-        		scrollSensitivity: 20,
-        		scrollSpeed: 20,
-        		scope: "default",
-        		tolerance: "intersect",
-        		zIndex: 1000
-        	},
-        	_create: function() {
-        
-        		var o = this.options;
-        		this.containerCache = {};
-        		this.element.addClass("ui-sortable");
-        
-        		//Get the items
-        		this.refresh();
-        
-        		//Let's determine if the items are being displayed horizontally
-        		this.floating = this.items.length ? o.axis === 'x' || (/left|right/).test(this.items[0].item.css('float')) || (/inline|table-cell/).test(this.items[0].item.css('display')) : false;
-        
-        		//Let's determine the parent's offset
-        		this.offset = this.element.offset();
-        
-        		//Initialize mouse events for interaction
-        		this._mouseInit();
-        
-        		//We're ready to go
-        		this.ready = true
-        
-        	},
-        
-        	_destroy: function() {
-        		this.element
-        			.removeClass("ui-sortable ui-sortable-disabled");
-        		this._mouseDestroy();
-        
-        		for ( var i = this.items.length - 1; i >= 0; i-- )
-        			this.items[i].item.removeData(this.widgetName + "-item");
-        
-        		return this;
-        	},
-        
-        	_setOption: function(key, value){
-        		if ( key === "disabled" ) {
-        			this.options[ key ] = value;
-        
-        			this.widget().toggleClass( "ui-sortable-disabled", !!value );
-        		} else {
-        			// Don't call widget base _setOption for disable as it adds ui-state-disabled class
-        			$.Widget.prototype._setOption.apply(this, arguments);
-        		}
-        	},
-        
-        	_mouseCapture: function(event, overrideHandle) {
-        		var that = this;
-        
-        		if (this.reverting) {
-        			return false;
-        		}
-        
-        		if(this.options.disabled || this.options.type == 'static') return false;
-        
-        		//We have to refresh the items data once first
-        		this._refreshItems(event);
-        
-        		//Find out if the clicked node (or one of its parents) is a actual item in this.items
-        		var currentItem = null, nodes = $(event.target).parents().each(function() {
-        			if($.data(this, that.widgetName + '-item') == that) {
-        				currentItem = $(this);
-        				return false;
-        			}
-        		});
-        		if($.data(event.target, that.widgetName + '-item') == that) currentItem = $(event.target);
-        
-        		if(!currentItem) return false;
-        		if(this.options.handle && !overrideHandle) {
-        			var validHandle = false;
-        
-        			$(this.options.handle, currentItem).find("*").andSelf().each(function() { if(this == event.target) validHandle = true; });
-        			if(!validHandle) return false;
-        		}
-        
-        		this.currentItem = currentItem;
-        		this._removeCurrentsFromItems();
-        		return true;
-        
-        	},
-        
-        	_mouseStart: function(event, overrideHandle, noActivation) {
-        
-        		var o = this.options;
-        		this.currentContainer = this;
-        
-        		//We only need to call refreshPositions, because the refreshItems call has been moved to mouseCapture
-        		this.refreshPositions();
-        
-        		//Create and append the visible helper
-        		this.helper = this._createHelper(event);
-        
-        		//Cache the helper size
-        		this._cacheHelperProportions();
-        
-        		/*
-        		 * - Position generation -
-        		 * This block generates everything position related - it's the core of draggables.
-        		 */
-        
-        		//Cache the margins of the original element
-        		this._cacheMargins();
-        
-        		//Get the next scrolling parent
-        		this.scrollParent = this.helper.scrollParent();
-        
-        		//The element's absolute position on the page minus margins
-        		this.offset = this.currentItem.offset();
-        		this.offset = {
-        			top: this.offset.top - this.margins.top,
-        			left: this.offset.left - this.margins.left
-        		};
-        
-        		$.extend(this.offset, {
-        			click: { //Where the click happened, relative to the element
-        				left: event.pageX - this.offset.left,
-        				top: event.pageY - this.offset.top
-        			},
-        			parent: this._getParentOffset(),
-        			relative: this._getRelativeOffset() //This is a relative to absolute position minus the actual position calculation - only used for relative positioned helper
-        		});
-        
-        		// Only after we got the offset, we can change the helper's position to absolute
-        		// TODO: Still need to figure out a way to make relative sorting possible
-        		this.helper.css("position", "absolute");
-        		this.cssPosition = this.helper.css("position");
-        
-        		//Generate the original position
-        		this.originalPosition = this._generatePosition(event);
-        		this.originalPageX = event.pageX;
-        		this.originalPageY = event.pageY;
-        
-        		//Adjust the mouse offset relative to the helper if 'cursorAt' is supplied
-        		(o.cursorAt && this._adjustOffsetFromHelper(o.cursorAt));
-        
-        		//Cache the former DOM position
-        		this.domPosition = { prev: this.currentItem.prev()[0], parent: this.currentItem.parent()[0] };
-        
-        		//If the helper is not the original, hide the original so it's not playing any role during the drag, won't cause anything bad this way
-        		if(this.helper[0] != this.currentItem[0]) {
-        			this.currentItem.hide();
-        		}
-        
-        		//Create the placeholder
-        		this._createPlaceholder();
-        
-        		//Set a containment if given in the options
-        		if(o.containment)
-        			this._setContainment();
-        
-        		if(o.cursor) { // cursor option
-        			if ($('body').css("cursor")) this._storedCursor = $('body').css("cursor");
-        			$('body').css("cursor", o.cursor);
-        		}
-        
-        		if(o.opacity) { // opacity option
-        			if (this.helper.css("opacity")) this._storedOpacity = this.helper.css("opacity");
-        			this.helper.css("opacity", o.opacity);
-        		}
-        
-        		if(o.zIndex) { // zIndex option
-        			if (this.helper.css("zIndex")) this._storedZIndex = this.helper.css("zIndex");
-        			this.helper.css("zIndex", o.zIndex);
-        		}
-        
-        		//Prepare scrolling
-        		if(this.scrollParent[0] != document && this.scrollParent[0].tagName != 'HTML')
-        			this.overflowOffset = this.scrollParent.offset();
-        
-        		//Call callbacks
-        		this._trigger("start", event, this._uiHash());
-        
-        		//Recache the helper size
-        		if(!this._preserveHelperProportions)
-        			this._cacheHelperProportions();
-        
-        
-        		//Post 'activate' events to possible containers
-        		if(!noActivation) {
-        			 for (var i = this.containers.length - 1; i >= 0; i--) { this.containers[i]._trigger("activate", event, this._uiHash(this)); }
-        		}
-        
-        		//Prepare possible droppables
-        		if($.ui.ddmanager)
-        			$.ui.ddmanager.current = this;
-        
-        		if ($.ui.ddmanager && !o.dropBehaviour)
-        			$.ui.ddmanager.prepareOffsets(this, event);
-        
-        		this.dragging = true;
-        
-        		this.helper.addClass("ui-sortable-helper");
-        		this._mouseDrag(event); //Execute the drag once - this causes the helper not to be visible before getting its correct position
-        		return true;
-        
-        	},
-        
-        	_mouseDrag: function(event) {
-        
-        		//Compute the helpers position
-        		this.position = this._generatePosition(event);
-        		this.positionAbs = this._convertPositionTo("absolute");
-        
-        		if (!this.lastPositionAbs) {
-        			this.lastPositionAbs = this.positionAbs;
-        		}
-        
-        		//Do scrolling
-        		if(this.options.scroll) {
-        			var o = this.options, scrolled = false;
-        			if(this.scrollParent[0] != document && this.scrollParent[0].tagName != 'HTML') {
-        
-        				if((this.overflowOffset.top + this.scrollParent[0].offsetHeight) - event.pageY < o.scrollSensitivity)
-        					this.scrollParent[0].scrollTop = scrolled = this.scrollParent[0].scrollTop + o.scrollSpeed;
-        				else if(event.pageY - this.overflowOffset.top < o.scrollSensitivity)
-        					this.scrollParent[0].scrollTop = scrolled = this.scrollParent[0].scrollTop - o.scrollSpeed;
-        
-        				if((this.overflowOffset.left + this.scrollParent[0].offsetWidth) - event.pageX < o.scrollSensitivity)
-        					this.scrollParent[0].scrollLeft = scrolled = this.scrollParent[0].scrollLeft + o.scrollSpeed;
-        				else if(event.pageX - this.overflowOffset.left < o.scrollSensitivity)
-        					this.scrollParent[0].scrollLeft = scrolled = this.scrollParent[0].scrollLeft - o.scrollSpeed;
-        
-        			} else {
-        
-        				if(event.pageY - $(document).scrollTop() < o.scrollSensitivity)
-        					scrolled = $(document).scrollTop($(document).scrollTop() - o.scrollSpeed);
-        				else if($(window).height() - (event.pageY - $(document).scrollTop()) < o.scrollSensitivity)
-        					scrolled = $(document).scrollTop($(document).scrollTop() + o.scrollSpeed);
-        
-        				if(event.pageX - $(document).scrollLeft() < o.scrollSensitivity)
-        					scrolled = $(document).scrollLeft($(document).scrollLeft() - o.scrollSpeed);
-        				else if($(window).width() - (event.pageX - $(document).scrollLeft()) < o.scrollSensitivity)
-        					scrolled = $(document).scrollLeft($(document).scrollLeft() + o.scrollSpeed);
-        
-        			}
-        
-        			if(scrolled !== false && $.ui.ddmanager && !o.dropBehaviour)
-        				$.ui.ddmanager.prepareOffsets(this, event);
-        		}
-        
-        		//Regenerate the absolute position used for position checks
-        		this.positionAbs = this._convertPositionTo("absolute");
-        
-        		//Set the helper position
-        		if(!this.options.axis || this.options.axis != "y") this.helper[0].style.left = this.position.left+'px';
-        		if(!this.options.axis || this.options.axis != "x") this.helper[0].style.top = this.position.top+'px';
-        
-        		//Rearrange
-        		for (var i = this.items.length - 1; i >= 0; i--) {
-        
-        			//Cache variables and intersection, continue if no intersection
-        			var item = this.items[i], itemElement = item.item[0], intersection = this._intersectsWithPointer(item);
-        			if (!intersection) continue;
-        
-        			// Only put the placeholder inside the current Container, skip all
-        			// items form other containers. This works because when moving
-        			// an item from one container to another the
-        			// currentContainer is switched before the placeholder is moved.
-        			//
-        			// Without this moving items in "sub-sortables" can cause the placeholder to jitter
-        			// beetween the outer and inner container.
-        			if (item.instance !== this.currentContainer) continue;
-        
-        			if (itemElement != this.currentItem[0] //cannot intersect with itself
-        				&&	this.placeholder[intersection == 1 ? "next" : "prev"]()[0] != itemElement //no useless actions that have been done before
-        				&&	!$.contains(this.placeholder[0], itemElement) //no action if the item moved is the parent of the item checked
-        				&& (this.options.type == 'semi-dynamic' ? !$.contains(this.element[0], itemElement) : true)
-        				//&& itemElement.parentNode == this.placeholder[0].parentNode // only rearrange items within the same container
-        			) {
-        
-        				this.direction = intersection == 1 ? "down" : "up";
-        
-        				if (this.options.tolerance == "pointer" || this._intersectsWithSides(item)) {
-        					this._rearrange(event, item);
-        				} else {
-        					break;
-        				}
-        
-        				this._trigger("change", event, this._uiHash());
-        				break;
-        			}
-        		}
-        
-        		//Post events to containers
-        		this._contactContainers(event);
-        
-        		//Interconnect with droppables
-        		if($.ui.ddmanager) $.ui.ddmanager.drag(this, event);
-        
-        		//Call callbacks
-        		this._trigger('sort', event, this._uiHash());
-        
-        		this.lastPositionAbs = this.positionAbs;
-        		return false;
-        
-        	},
-        
-        	_mouseStop: function(event, noPropagation) {
-        
-        		if(!event) return;
-        
-        		//If we are using droppables, inform the manager about the drop
-        		if ($.ui.ddmanager && !this.options.dropBehaviour)
-        			$.ui.ddmanager.drop(this, event);
-        
-        		if(this.options.revert) {
-        			var that = this;
-        			var cur = this.placeholder.offset();
-        
-        			this.reverting = true;
-        
-        			$(this.helper).animate({
-        				left: cur.left - this.offset.parent.left - this.margins.left + (this.offsetParent[0] == document.body ? 0 : this.offsetParent[0].scrollLeft),
-        				top: cur.top - this.offset.parent.top - this.margins.top + (this.offsetParent[0] == document.body ? 0 : this.offsetParent[0].scrollTop)
-        			}, parseInt(this.options.revert, 10) || 500, function() {
-        				that._clear(event);
-        			});
-        		} else {
-        			this._clear(event, noPropagation);
-        		}
-        
-        		return false;
-        
-        	},
-        
-        	cancel: function() {
-        
-        		if(this.dragging) {
-        
-        			this._mouseUp({ target: null });
-        
-        			if(this.options.helper == "original")
-        				this.currentItem.css(this._storedCSS).removeClass("ui-sortable-helper");
-        			else
-        				this.currentItem.show();
-        
-        			//Post deactivating events to containers
-        			for (var i = this.containers.length - 1; i >= 0; i--){
-        				this.containers[i]._trigger("deactivate", null, this._uiHash(this));
-        				if(this.containers[i].containerCache.over) {
-        					this.containers[i]._trigger("out", null, this._uiHash(this));
-        					this.containers[i].containerCache.over = 0;
-        				}
-        			}
-        
-        		}
-        
-        		if (this.placeholder) {
-        			//$(this.placeholder[0]).remove(); would have been the jQuery way - unfortunately, it unbinds ALL events from the original node!
-        			if(this.placeholder[0].parentNode) this.placeholder[0].parentNode.removeChild(this.placeholder[0]);
-        			if(this.options.helper != "original" && this.helper && this.helper[0].parentNode) this.helper.remove();
-        
-        			$.extend(this, {
-        				helper: null,
-        				dragging: false,
-        				reverting: false,
-        				_noFinalSort: null
-        			});
-        
-        			if(this.domPosition.prev) {
-        				$(this.domPosition.prev).after(this.currentItem);
-        			} else {
-        				$(this.domPosition.parent).prepend(this.currentItem);
-        			}
-        		}
-        
-        		return this;
-        
-        	},
-        
-        	serialize: function(o) {
-        
-        		var items = this._getItemsAsjQuery(o && o.connected);
-        		var str = []; o = o || {};
-        
-        		$(items).each(function() {
-        			var res = ($(o.item || this).attr(o.attribute || 'id') || '').match(o.expression || (/(.+)[-=_](.+)/));
-        			if(res) str.push((o.key || res[1]+'[]')+'='+(o.key && o.expression ? res[1] : res[2]));
-        		});
-        
-        		if(!str.length && o.key) {
-        			str.push(o.key + '=');
-        		}
-        
-        		return str.join('&');
-        
-        	},
-        
-        	toArray: function(o) {
-        
-        		var items = this._getItemsAsjQuery(o && o.connected);
-        		var ret = []; o = o || {};
-        
-        		items.each(function() { ret.push($(o.item || this).attr(o.attribute || 'id') || ''); });
-        		return ret;
-        
-        	},
-        
-        	/* Be careful with the following core functions */
-        	_intersectsWith: function(item) {
-        
-        		var x1 = this.positionAbs.left,
-        			x2 = x1 + this.helperProportions.width,
-        			y1 = this.positionAbs.top,
-        			y2 = y1 + this.helperProportions.height;
-        
-        		var l = item.left,
-        			r = l + item.width,
-        			t = item.top,
-        			b = t + item.height;
-        
-        		var dyClick = this.offset.click.top,
-        			dxClick = this.offset.click.left;
-        
-        		var isOverElement = (y1 + dyClick) > t && (y1 + dyClick) < b && (x1 + dxClick) > l && (x1 + dxClick) < r;
-        
-        		if(	   this.options.tolerance == "pointer"
-        			|| this.options.forcePointerForContainers
-        			|| (this.options.tolerance != "pointer" && this.helperProportions[this.floating ? 'width' : 'height'] > item[this.floating ? 'width' : 'height'])
-        		) {
-        			return isOverElement;
-        		} else {
-        
-        			return (l < x1 + (this.helperProportions.width / 2) // Right Half
-        				&& x2 - (this.helperProportions.width / 2) < r // Left Half
-        				&& t < y1 + (this.helperProportions.height / 2) // Bottom Half
-        				&& y2 - (this.helperProportions.height / 2) < b ); // Top Half
-        
-        		}
-        	},
-        
-        	_intersectsWithPointer: function(item) {
-        
-        		var isOverElementHeight = (this.options.axis === 'x') || $.ui.isOverAxis(this.positionAbs.top + this.offset.click.top, item.top, item.height),
-        			isOverElementWidth = (this.options.axis === 'y') || $.ui.isOverAxis(this.positionAbs.left + this.offset.click.left, item.left, item.width),
-        			isOverElement = isOverElementHeight && isOverElementWidth,
-        			verticalDirection = this._getDragVerticalDirection(),
-        			horizontalDirection = this._getDragHorizontalDirection();
-        
-        		if (!isOverElement)
-        			return false;
-        
-        		return this.floating ?
-        			( ((horizontalDirection && horizontalDirection == "right") || verticalDirection == "down") ? 2 : 1 )
-        			: ( verticalDirection && (verticalDirection == "down" ? 2 : 1) );
-        
-        	},
-        
-        	_intersectsWithSides: function(item) {
-        
-        		var isOverBottomHalf = $.ui.isOverAxis(this.positionAbs.top + this.offset.click.top, item.top + (item.height/2), item.height),
-        			isOverRightHalf = $.ui.isOverAxis(this.positionAbs.left + this.offset.click.left, item.left + (item.width/2), item.width),
-        			verticalDirection = this._getDragVerticalDirection(),
-        			horizontalDirection = this._getDragHorizontalDirection();
-        
-        		if (this.floating && horizontalDirection) {
-        			return ((horizontalDirection == "right" && isOverRightHalf) || (horizontalDirection == "left" && !isOverRightHalf));
-        		} else {
-        			return verticalDirection && ((verticalDirection == "down" && isOverBottomHalf) || (verticalDirection == "up" && !isOverBottomHalf));
-        		}
-        
-        	},
-        
-        	_getDragVerticalDirection: function() {
-        		var delta = this.positionAbs.top - this.lastPositionAbs.top;
-        		return delta != 0 && (delta > 0 ? "down" : "up");
-        	},
-        
-        	_getDragHorizontalDirection: function() {
-        		var delta = this.positionAbs.left - this.lastPositionAbs.left;
-        		return delta != 0 && (delta > 0 ? "right" : "left");
-        	},
-        
-        	refresh: function(event) {
-        		this._refreshItems(event);
-        		this.refreshPositions();
-        		return this;
-        	},
-        
-        	_connectWith: function() {
-        		var options = this.options;
-        		return options.connectWith.constructor == String
-        			? [options.connectWith]
-        			: options.connectWith;
-        	},
-        
-        	_getItemsAsjQuery: function(connected) {
-        
-        		var items = [];
-        		var queries = [];
-        		var connectWith = this._connectWith();
-        
-        		if(connectWith && connected) {
-        			for (var i = connectWith.length - 1; i >= 0; i--){
-        				var cur = $(connectWith[i]);
-        				for (var j = cur.length - 1; j >= 0; j--){
-        					var inst = $.data(cur[j], this.widgetName);
-        					if(inst && inst != this && !inst.options.disabled) {
-        						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element) : $(inst.options.items, inst.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), inst]);
-        					}
-        				};
-        			};
-        		}
-        
-        		queries.push([$.isFunction(this.options.items) ? this.options.items.call(this.element, null, { options: this.options, item: this.currentItem }) : $(this.options.items, this.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), this]);
-        
-        		for (var i = queries.length - 1; i >= 0; i--){
-        			queries[i][0].each(function() {
-        				items.push(this);
-        			});
-        		};
-        
-        		return $(items);
-        
-        	},
-        
-        	_removeCurrentsFromItems: function() {
-        
-        		var list = this.currentItem.find(":data(" + this.widgetName + "-item)");
-        
-        		this.items = $.grep(this.items, function (item) {
-        			for (var j=0; j < list.length; j++) {
-        				if(list[j] == item.item[0])
-        					return false;
-        			};
-        			return true;
-        		});
-        
-        	},
-        
-        	_refreshItems: function(event) {
-        
-        		this.items = [];
-        		this.containers = [this];
-        		var items = this.items;
-        		var queries = [[$.isFunction(this.options.items) ? this.options.items.call(this.element[0], event, { item: this.currentItem }) : $(this.options.items, this.element), this]];
-        		var connectWith = this._connectWith();
-        
-        		if(connectWith && this.ready) { //Shouldn't be run the first time through due to massive slow-down
-        			for (var i = connectWith.length - 1; i >= 0; i--){
-        				var cur = $(connectWith[i]);
-        				for (var j = cur.length - 1; j >= 0; j--){
-        					var inst = $.data(cur[j], this.widgetName);
-        					if(inst && inst != this && !inst.options.disabled) {
-        						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element[0], event, { item: this.currentItem }) : $(inst.options.items, inst.element), inst]);
-        						this.containers.push(inst);
-        					}
-        				};
-        			};
-        		}
-        
-        		for (var i = queries.length - 1; i >= 0; i--) {
-        			var targetData = queries[i][1];
-        			var _queries = queries[i][0];
-        
-        			for (var j=0, queriesLength = _queries.length; j < queriesLength; j++) {
-        				var item = $(_queries[j]);
-        
-        				item.data(this.widgetName + '-item', targetData); // Data for target checking (mouse manager)
-        
-        				items.push({
-        					item: item,
-        					instance: targetData,
-        					width: 0, height: 0,
-        					left: 0, top: 0
-        				});
-        			};
-        		};
-        
-        	},
-        
-        	refreshPositions: function(fast) {
-        
-        		//This has to be redone because due to the item being moved out/into the offsetParent, the offsetParent's position will change
-        		if(this.offsetParent && this.helper) {
-        			this.offset.parent = this._getParentOffset();
-        		}
-        
-        		for (var i = this.items.length - 1; i >= 0; i--){
-        			var item = this.items[i];
-        
-        			//We ignore calculating positions of all connected containers when we're not over them
-        			if(item.instance != this.currentContainer && this.currentContainer && item.item[0] != this.currentItem[0])
-        				continue;
-        
-        			var t = this.options.toleranceElement ? $(this.options.toleranceElement, item.item) : item.item;
-        
-        			if (!fast) {
-        				item.width = t.outerWidth();
-        				item.height = t.outerHeight();
-        			}
-        
-        			var p = t.offset();
-        			item.left = p.left;
-        			item.top = p.top;
-        		};
-        
-        		if(this.options.custom && this.options.custom.refreshContainers) {
-        			this.options.custom.refreshContainers.call(this);
-        		} else {
-        			for (var i = this.containers.length - 1; i >= 0; i--){
-        				var p = this.containers[i].element.offset();
-        				this.containers[i].containerCache.left = p.left;
-        				this.containers[i].containerCache.top = p.top;
-        				this.containers[i].containerCache.width	= this.containers[i].element.outerWidth();
-        				this.containers[i].containerCache.height = this.containers[i].element.outerHeight();
-        			};
-        		}
-        
-        		return this;
-        	},
-        
-        	_createPlaceholder: function(that) {
-        		that = that || this;
-        		var o = that.options;
-        
-        		if(!o.placeholder || o.placeholder.constructor == String) {
-        			var className = o.placeholder;
-        			o.placeholder = {
-        				element: function() {
-        
-        					var el = $(document.createElement(that.currentItem[0].nodeName))
-        						.addClass(className || that.currentItem[0].className+" ui-sortable-placeholder")
-        						.removeClass("ui-sortable-helper")[0];
-        
-        					if(!className)
-        						el.style.visibility = "hidden";
-        
-        					return el;
-        				},
-        				update: function(container, p) {
-        
-        					// 1. If a className is set as 'placeholder option, we don't force sizes - the class is responsible for that
-        					// 2. The option 'forcePlaceholderSize can be enabled to force it even if a class name is specified
-        					if(className && !o.forcePlaceholderSize) return;
-        
-        					//If the element doesn't have a actual height by itself (without styles coming from a stylesheet), it receives the inline height from the dragged item
-        					if(!p.height()) { p.height(that.currentItem.innerHeight() - parseInt(that.currentItem.css('paddingTop')||0, 10) - parseInt(that.currentItem.css('paddingBottom')||0, 10)); };
-        					if(!p.width()) { p.width(that.currentItem.innerWidth() - parseInt(that.currentItem.css('paddingLeft')||0, 10) - parseInt(that.currentItem.css('paddingRight')||0, 10)); };
-        				}
-        			};
-        		}
-        
-        		//Create the placeholder
-        		that.placeholder = $(o.placeholder.element.call(that.element, that.currentItem));
-        
-        		//Append it after the actual current item
-        		that.currentItem.after(that.placeholder);
-        
-        		//Update the size of the placeholder (TODO: Logic to fuzzy, see line 316/317)
-        		o.placeholder.update(that, that.placeholder);
-        
-        	},
-        
-        	_contactContainers: function(event) {
-        
-        		// get innermost container that intersects with item
-        		var innermostContainer = null, innermostIndex = null;
-        
-        
-        		for (var i = this.containers.length - 1; i >= 0; i--){
-        
-        			// never consider a container that's located within the item itself
-        			if($.contains(this.currentItem[0], this.containers[i].element[0]))
-        				continue;
-        
-        			if(this._intersectsWith(this.containers[i].containerCache)) {
-        
-        				// if we've already found a container and it's more "inner" than this, then continue
-        				if(innermostContainer && $.contains(this.containers[i].element[0], innermostContainer.element[0]))
-        					continue;
-        
-        				innermostContainer = this.containers[i];
-        				innermostIndex = i;
-        
-        			} else {
-        				// container doesn't intersect. trigger "out" event if necessary
-        				if(this.containers[i].containerCache.over) {
-        					this.containers[i]._trigger("out", event, this._uiHash(this));
-        					this.containers[i].containerCache.over = 0;
-        				}
-        			}
-        
-        		}
-        
-        		// if no intersecting containers found, return
-        		if(!innermostContainer) return;
-        
-        		// move the item into the container if it's not there already
-        		if(this.containers.length === 1) {
-        			this.containers[innermostIndex]._trigger("over", event, this._uiHash(this));
-        			this.containers[innermostIndex].containerCache.over = 1;
-        		} else {
-        
-        			//When entering a new container, we will find the item with the least distance and append our item near it
-        			var dist = 10000; var itemWithLeastDistance = null;
-        			var posProperty = this.containers[innermostIndex].floating ? 'left' : 'top';
-        			var sizeProperty = this.containers[innermostIndex].floating ? 'width' : 'height';
-        			var base = this.positionAbs[posProperty] + this.offset.click[posProperty];
-        			for (var j = this.items.length - 1; j >= 0; j--) {
-        				if(!$.contains(this.containers[innermostIndex].element[0], this.items[j].item[0])) continue;
-        				if(this.items[j].item[0] == this.currentItem[0]) continue;
-        				var cur = this.items[j].item.offset()[posProperty];
-        				var nearBottom = false;
-        				if(Math.abs(cur - base) > Math.abs(cur + this.items[j][sizeProperty] - base)){
-        					nearBottom = true;
-        					cur += this.items[j][sizeProperty];
-        				}
-        
-        				if(Math.abs(cur - base) < dist) {
-        					dist = Math.abs(cur - base); itemWithLeastDistance = this.items[j];
-        					this.direction = nearBottom ? "up": "down";
-        				}
-        			}
-        
-        			if(!itemWithLeastDistance && !this.options.dropOnEmpty) //Check if dropOnEmpty is enabled
-        				return;
-        
-        			this.currentContainer = this.containers[innermostIndex];
-        			itemWithLeastDistance ? this._rearrange(event, itemWithLeastDistance, null, true) : this._rearrange(event, null, this.containers[innermostIndex].element, true);
-        			this._trigger("change", event, this._uiHash());
-        			this.containers[innermostIndex]._trigger("change", event, this._uiHash(this));
-        
-        			//Update the placeholder
-        			this.options.placeholder.update(this.currentContainer, this.placeholder);
-        
-        			this.containers[innermostIndex]._trigger("over", event, this._uiHash(this));
-        			this.containers[innermostIndex].containerCache.over = 1;
-        		}
-        
-        
-        	},
-        
-        	_createHelper: function(event) {
-        
-        		var o = this.options;
-        		var helper = $.isFunction(o.helper) ? $(o.helper.apply(this.element[0], [event, this.currentItem])) : (o.helper == 'clone' ? this.currentItem.clone() : this.currentItem);
-        
-        		if(!helper.parents('body').length) //Add the helper to the DOM if that didn't happen already
-        			$(o.appendTo != 'parent' ? o.appendTo : this.currentItem[0].parentNode)[0].appendChild(helper[0]);
-        
-        		if(helper[0] == this.currentItem[0])
-        			this._storedCSS = { width: this.currentItem[0].style.width, height: this.currentItem[0].style.height, position: this.currentItem.css("position"), top: this.currentItem.css("top"), left: this.currentItem.css("left") };
-        
-        		if(helper[0].style.width == '' || o.forceHelperSize) helper.width(this.currentItem.width());
-        		if(helper[0].style.height == '' || o.forceHelperSize) helper.height(this.currentItem.height());
-        
-        		return helper;
-        
-        	},
-        
-        	_adjustOffsetFromHelper: function(obj) {
-        		if (typeof obj == 'string') {
-        			obj = obj.split(' ');
-        		}
-        		if ($.isArray(obj)) {
-        			obj = {left: +obj[0], top: +obj[1] || 0};
-        		}
-        		if ('left' in obj) {
-        			this.offset.click.left = obj.left + this.margins.left;
-        		}
-        		if ('right' in obj) {
-        			this.offset.click.left = this.helperProportions.width - obj.right + this.margins.left;
-        		}
-        		if ('top' in obj) {
-        			this.offset.click.top = obj.top + this.margins.top;
-        		}
-        		if ('bottom' in obj) {
-        			this.offset.click.top = this.helperProportions.height - obj.bottom + this.margins.top;
-        		}
-        	},
-        
-        	_getParentOffset: function() {
-        
-        
-        		//Get the offsetParent and cache its position
-        		this.offsetParent = this.helper.offsetParent();
-        		var po = this.offsetParent.offset();
-        
-        		// This is a special case where we need to modify a offset calculated on start, since the following happened:
-        		// 1. The position of the helper is absolute, so it's position is calculated based on the next positioned parent
-        		// 2. The actual offset parent is a child of the scroll parent, and the scroll parent isn't the document, which means that
-        		//    the scroll is included in the initial calculation of the offset of the parent, and never recalculated upon drag
-        		if(this.cssPosition == 'absolute' && this.scrollParent[0] != document && $.contains(this.scrollParent[0], this.offsetParent[0])) {
-        			po.left += this.scrollParent.scrollLeft();
-        			po.top += this.scrollParent.scrollTop();
-        		}
-        
-        		if((this.offsetParent[0] == document.body) //This needs to be actually done for all browsers, since pageX/pageY includes this information
-        		|| (this.offsetParent[0].tagName && this.offsetParent[0].tagName.toLowerCase() == 'html' && $.ui.ie)) //Ugly IE fix
-        			po = { top: 0, left: 0 };
-        
-        		return {
-        			top: po.top + (parseInt(this.offsetParent.css("borderTopWidth"),10) || 0),
-        			left: po.left + (parseInt(this.offsetParent.css("borderLeftWidth"),10) || 0)
-        		};
-        
-        	},
-        
-        	_getRelativeOffset: function() {
-        
-        		if(this.cssPosition == "relative") {
-        			var p = this.currentItem.position();
-        			return {
-        				top: p.top - (parseInt(this.helper.css("top"),10) || 0) + this.scrollParent.scrollTop(),
-        				left: p.left - (parseInt(this.helper.css("left"),10) || 0) + this.scrollParent.scrollLeft()
-        			};
-        		} else {
-        			return { top: 0, left: 0 };
-        		}
-        
-        	},
-        
-        	_cacheMargins: function() {
-        		this.margins = {
-        			left: (parseInt(this.currentItem.css("marginLeft"),10) || 0),
-        			top: (parseInt(this.currentItem.css("marginTop"),10) || 0)
-        		};
-        	},
-        
-        	_cacheHelperProportions: function() {
-        		this.helperProportions = {
-        			width: this.helper.outerWidth(),
-        			height: this.helper.outerHeight()
-        		};
-        	},
-        
-        	_setContainment: function() {
-        
-        		var o = this.options;
-        		if(o.containment == 'parent') o.containment = this.helper[0].parentNode;
-        		if(o.containment == 'document' || o.containment == 'window') this.containment = [
-        			0 - this.offset.relative.left - this.offset.parent.left,
-        			0 - this.offset.relative.top - this.offset.parent.top,
-        			$(o.containment == 'document' ? document : window).width() - this.helperProportions.width - this.margins.left,
-        			($(o.containment == 'document' ? document : window).height() || document.body.parentNode.scrollHeight) - this.helperProportions.height - this.margins.top
-        		];
-        
-        		if(!(/^(document|window|parent)$/).test(o.containment)) {
-        			var ce = $(o.containment)[0];
-        			var co = $(o.containment).offset();
-        			var over = ($(ce).css("overflow") != 'hidden');
-        
-        			this.containment = [
-        				co.left + (parseInt($(ce).css("borderLeftWidth"),10) || 0) + (parseInt($(ce).css("paddingLeft"),10) || 0) - this.margins.left,
-        				co.top + (parseInt($(ce).css("borderTopWidth"),10) || 0) + (parseInt($(ce).css("paddingTop"),10) || 0) - this.margins.top,
-        				co.left+(over ? Math.max(ce.scrollWidth,ce.offsetWidth) : ce.offsetWidth) - (parseInt($(ce).css("borderLeftWidth"),10) || 0) - (parseInt($(ce).css("paddingRight"),10) || 0) - this.helperProportions.width - this.margins.left,
-        				co.top+(over ? Math.max(ce.scrollHeight,ce.offsetHeight) : ce.offsetHeight) - (parseInt($(ce).css("borderTopWidth"),10) || 0) - (parseInt($(ce).css("paddingBottom"),10) || 0) - this.helperProportions.height - this.margins.top
-        			];
-        		}
-        
-        	},
-        
-        	_convertPositionTo: function(d, pos) {
-        
-        		if(!pos) pos = this.position;
-        		var mod = d == "absolute" ? 1 : -1;
-        		var o = this.options, scroll = this.cssPosition == 'absolute' && !(this.scrollParent[0] != document && $.contains(this.scrollParent[0], this.offsetParent[0])) ? this.offsetParent : this.scrollParent, scrollIsRootNode = (/(html|body)/i).test(scroll[0].tagName);
-        
-        		return {
-        			top: (
-        				pos.top																	// The absolute mouse position
-        				+ this.offset.relative.top * mod										// Only for relative positioned nodes: Relative offset from element to offset parent
-        				+ this.offset.parent.top * mod											// The offsetParent's offset without borders (offset + border)
-        				- ( ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollTop() : ( scrollIsRootNode ? 0 : scroll.scrollTop() ) ) * mod)
-        			),
-        			left: (
-        				pos.left																// The absolute mouse position
-        				+ this.offset.relative.left * mod										// Only for relative positioned nodes: Relative offset from element to offset parent
-        				+ this.offset.parent.left * mod											// The offsetParent's offset without borders (offset + border)
-        				- ( ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollLeft() : scrollIsRootNode ? 0 : scroll.scrollLeft() ) * mod)
-        			)
-        		};
-        
-        	},
-        
-        	_generatePosition: function(event) {
-        
-        		var o = this.options, scroll = this.cssPosition == 'absolute' && !(this.scrollParent[0] != document && $.contains(this.scrollParent[0], this.offsetParent[0])) ? this.offsetParent : this.scrollParent, scrollIsRootNode = (/(html|body)/i).test(scroll[0].tagName);
-        
-        		// This is another very weird special case that only happens for relative elements:
-        		// 1. If the css position is relative
-        		// 2. and the scroll parent is the document or similar to the offset parent
-        		// we have to refresh the relative offset during the scroll so there are no jumps
-        		if(this.cssPosition == 'relative' && !(this.scrollParent[0] != document && this.scrollParent[0] != this.offsetParent[0])) {
-        			this.offset.relative = this._getRelativeOffset();
-        		}
-        
-        		var pageX = event.pageX;
-        		var pageY = event.pageY;
-        
-        		/*
-        		 * - Position constraining -
-        		 * Constrain the position to a mix of grid, containment.
-        		 */
-        
-        		if(this.originalPosition) { //If we are not dragging yet, we won't check for options
-        
-        			if(this.containment) {
-        				if(event.pageX - this.offset.click.left < this.containment[0]) pageX = this.containment[0] + this.offset.click.left;
-        				if(event.pageY - this.offset.click.top < this.containment[1]) pageY = this.containment[1] + this.offset.click.top;
-        				if(event.pageX - this.offset.click.left > this.containment[2]) pageX = this.containment[2] + this.offset.click.left;
-        				if(event.pageY - this.offset.click.top > this.containment[3]) pageY = this.containment[3] + this.offset.click.top;
-        			}
-        
-        			if(o.grid) {
-        				var top = this.originalPageY + Math.round((pageY - this.originalPageY) / o.grid[1]) * o.grid[1];
-        				pageY = this.containment ? (!(top - this.offset.click.top < this.containment[1] || top - this.offset.click.top > this.containment[3]) ? top : (!(top - this.offset.click.top < this.containment[1]) ? top - o.grid[1] : top + o.grid[1])) : top;
-        
-        				var left = this.originalPageX + Math.round((pageX - this.originalPageX) / o.grid[0]) * o.grid[0];
-        				pageX = this.containment ? (!(left - this.offset.click.left < this.containment[0] || left - this.offset.click.left > this.containment[2]) ? left : (!(left - this.offset.click.left < this.containment[0]) ? left - o.grid[0] : left + o.grid[0])) : left;
-        			}
-        
-        		}
-        
-        		return {
-        			top: (
-        				pageY																// The absolute mouse position
-        				- this.offset.click.top													// Click offset (relative to the element)
-        				- this.offset.relative.top												// Only for relative positioned nodes: Relative offset from element to offset parent
-        				- this.offset.parent.top												// The offsetParent's offset without borders (offset + border)
-        				+ ( ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollTop() : ( scrollIsRootNode ? 0 : scroll.scrollTop() ) ))
-        			),
-        			left: (
-        				pageX																// The absolute mouse position
-        				- this.offset.click.left												// Click offset (relative to the element)
-        				- this.offset.relative.left												// Only for relative positioned nodes: Relative offset from element to offset parent
-        				- this.offset.parent.left												// The offsetParent's offset without borders (offset + border)
-        				+ ( ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollLeft() : scrollIsRootNode ? 0 : scroll.scrollLeft() ))
-        			)
-        		};
-        
-        	},
-        
-        	_rearrange: function(event, i, a, hardRefresh) {
-        
-        		a ? a[0].appendChild(this.placeholder[0]) : i.item[0].parentNode.insertBefore(this.placeholder[0], (this.direction == 'down' ? i.item[0] : i.item[0].nextSibling));
-        
-        		//Various things done here to improve the performance:
-        		// 1. we create a setTimeout, that calls refreshPositions
-        		// 2. on the instance, we have a counter variable, that get's higher after every append
-        		// 3. on the local scope, we copy the counter variable, and check in the timeout, if it's still the same
-        		// 4. this lets only the last addition to the timeout stack through
-        		this.counter = this.counter ? ++this.counter : 1;
-        		var counter = this.counter;
-        
-        		this._delay(function() {
-        			if(counter == this.counter) this.refreshPositions(!hardRefresh); //Precompute after each DOM insertion, NOT on mousemove
-        		});
-        
-        	},
-        
-        	_clear: function(event, noPropagation) {
-        
-        		this.reverting = false;
-        		// We delay all events that have to be triggered to after the point where the placeholder has been removed and
-        		// everything else normalized again
-        		var delayedTriggers = [];
-        
-        		// We first have to update the dom position of the actual currentItem
-        		// Note: don't do it if the current item is already removed (by a user), or it gets reappended (see #4088)
-        		if(!this._noFinalSort && this.currentItem.parent().length) this.placeholder.before(this.currentItem);
-        		this._noFinalSort = null;
-        
-        		if(this.helper[0] == this.currentItem[0]) {
-        			for(var i in this._storedCSS) {
-        				if(this._storedCSS[i] == 'auto' || this._storedCSS[i] == 'static') this._storedCSS[i] = '';
-        			}
-        			this.currentItem.css(this._storedCSS).removeClass("ui-sortable-helper");
-        		} else {
-        			this.currentItem.show();
-        		}
-        
-        		if(this.fromOutside && !noPropagation) delayedTriggers.push(function(event) { this._trigger("receive", event, this._uiHash(this.fromOutside)); });
-        		if((this.fromOutside || this.domPosition.prev != this.currentItem.prev().not(".ui-sortable-helper")[0] || this.domPosition.parent != this.currentItem.parent()[0]) && !noPropagation) delayedTriggers.push(function(event) { this._trigger("update", event, this._uiHash()); }); //Trigger update callback if the DOM position has changed
-        
-        		// Check if the items Container has Changed and trigger appropriate
-        		// events.
-        		if (this !== this.currentContainer) {
-        			if(!noPropagation) {
-        				delayedTriggers.push(function(event) { this._trigger("remove", event, this._uiHash()); });
-        				delayedTriggers.push((function(c) { return function(event) { c._trigger("receive", event, this._uiHash(this)); };  }).call(this, this.currentContainer));
-        				delayedTriggers.push((function(c) { return function(event) { c._trigger("update", event, this._uiHash(this));  }; }).call(this, this.currentContainer));
-        			}
-        		}
-        
-        
-        		//Post events to containers
-        		for (var i = this.containers.length - 1; i >= 0; i--){
-        			if(!noPropagation) delayedTriggers.push((function(c) { return function(event) { c._trigger("deactivate", event, this._uiHash(this)); };  }).call(this, this.containers[i]));
-        			if(this.containers[i].containerCache.over) {
-        				delayedTriggers.push((function(c) { return function(event) { c._trigger("out", event, this._uiHash(this)); };  }).call(this, this.containers[i]));
-        				this.containers[i].containerCache.over = 0;
-        			}
-        		}
-        
-        		//Do what was originally in plugins
-        		if(this._storedCursor) $('body').css("cursor", this._storedCursor); //Reset cursor
-        		if(this._storedOpacity) this.helper.css("opacity", this._storedOpacity); //Reset opacity
-        		if(this._storedZIndex) this.helper.css("zIndex", this._storedZIndex == 'auto' ? '' : this._storedZIndex); //Reset z-index
-        
-        		this.dragging = false;
-        		if(this.cancelHelperRemoval) {
-        			if(!noPropagation) {
-        				this._trigger("beforeStop", event, this._uiHash());
-        				for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].call(this, event); }; //Trigger all delayed events
-        				this._trigger("stop", event, this._uiHash());
-        			}
-        
-        			this.fromOutside = false;
-        			return false;
-        		}
-        
-        		if(!noPropagation) this._trigger("beforeStop", event, this._uiHash());
-        
-        		//$(this.placeholder[0]).remove(); would have been the jQuery way - unfortunately, it unbinds ALL events from the original node!
-        		this.placeholder[0].parentNode.removeChild(this.placeholder[0]);
-        
-        		if(this.helper[0] != this.currentItem[0]) this.helper.remove(); this.helper = null;
-        
-        		if(!noPropagation) {
-        			for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].call(this, event); }; //Trigger all delayed events
-        			this._trigger("stop", event, this._uiHash());
-        		}
-        
-        		this.fromOutside = false;
-        		return true;
-        
-        	},
-        
-        	_trigger: function() {
-        		if ($.Widget.prototype._trigger.apply(this, arguments) === false) {
-        			this.cancel();
-        		}
-        	},
-        
-        	_uiHash: function(_inst) {
-        		var inst = _inst || this;
-        		return {
-        			helper: inst.helper,
-        			placeholder: inst.placeholder || $([]),
-        			position: inst.position,
-        			originalPosition: inst.originalPosition,
-        			offset: inst.positionAbs,
-        			item: inst.currentItem,
-        			sender: _inst ? _inst.element : null
-        		};
-        	}
-        
-        });
-        
-        })(jQuery);
-        
+        * Includes: widget.js, data.js, disable-selection.js, scroll-parent.js, widgets/draggable.js, widgets/droppable.js, widgets/resizable.js, widgets/selectable.js, widgets/sortable.js, widgets/mouse.js
+        * Copyright jQuery Foundation and other contributors; Licensed MIT */
+        
+        (function(t){"function"==typeof define&&define.amd?define(["jquery"],t):t(jQuery)})(function(t){t.ui=t.ui||{},t.ui.version="1.12.1";var e=0,i=Array.prototype.slice;t.cleanData=function(e){return function(i){var s,n,o;for(o=0;null!=(n=i[o]);o++)try{s=t._data(n,"events"),s&&s.remove&&t(n).triggerHandler("remove")}catch(a){}e(i)}}(t.cleanData),t.widget=function(e,i,s){var n,o,a,r={},l=e.split(".")[0];e=e.split(".")[1];var h=l+"-"+e;return s||(s=i,i=t.Widget),t.isArray(s)&&(s=t.extend.apply(null,[{}].concat(s))),t.expr[":"][h.toLowerCase()]=function(e){return!!t.data(e,h)},t[l]=t[l]||{},n=t[l][e],o=t[l][e]=function(t,e){return this._createWidget?(arguments.length&&this._createWidget(t,e),void 0):new o(t,e)},t.extend(o,n,{version:s.version,_proto:t.extend({},s),_childConstructors:[]}),a=new i,a.options=t.widget.extend({},a.options),t.each(s,function(e,s){return t.isFunction(s)?(r[e]=function(){function t(){return i.prototype[e].apply(this,arguments)}function n(t){return i.prototype[e].apply(this,t)}return function(){var e,i=this._super,o=this._superApply;return this._super=t,this._superApply=n,e=s.apply(this,arguments),this._super=i,this._superApply=o,e}}(),void 0):(r[e]=s,void 0)}),o.prototype=t.widget.extend(a,{widgetEventPrefix:n?a.widgetEventPrefix||e:e},r,{constructor:o,namespace:l,widgetName:e,widgetFullName:h}),n?(t.each(n._childConstructors,function(e,i){var s=i.prototype;t.widget(s.namespace+"."+s.widgetName,o,i._proto)}),delete n._childConstructors):i._childConstructors.push(o),t.widget.bridge(e,o),o},t.widget.extend=function(e){for(var s,n,o=i.call(arguments,1),a=0,r=o.length;r>a;a++)for(s in o[a])n=o[a][s],o[a].hasOwnProperty(s)&&void 0!==n&&(e[s]=t.isPlainObject(n)?t.isPlainObject(e[s])?t.widget.extend({},e[s],n):t.widget.extend({},n):n);return e},t.widget.bridge=function(e,s){var n=s.prototype.widgetFullName||e;t.fn[e]=function(o){var a="string"==typeof o,r=i.call(arguments,1),l=this;return a?this.length||"instance"!==o?this.each(function(){var i,s=t.data(this,n);return"instance"===o?(l=s,!1):s?t.isFunction(s[o])&&"_"!==o.charAt(0)?(i=s[o].apply(s,r),i!==s&&void 0!==i?(l=i&&i.jquery?l.pushStack(i.get()):i,!1):void 0):t.error("no such method '"+o+"' for "+e+" widget instance"):t.error("cannot call methods on "+e+" prior to initialization; "+"attempted to call method '"+o+"'")}):l=void 0:(r.length&&(o=t.widget.extend.apply(null,[o].concat(r))),this.each(function(){var e=t.data(this,n);e?(e.option(o||{}),e._init&&e._init()):t.data(this,n,new s(o,this))})),l}},t.Widget=function(){},t.Widget._childConstructors=[],t.Widget.prototype={widgetName:"widget",widgetEventPrefix:"",defaultElement:"<div>",options:{classes:{},disabled:!1,create:null},_createWidget:function(i,s){s=t(s||this.defaultElement||this)[0],this.element=t(s),this.uuid=e++,this.eventNamespace="."+this.widgetName+this.uuid,this.bindings=t(),this.hoverable=t(),this.focusable=t(),this.classesElementLookup={},s!==this&&(t.data(s,this.widgetFullName,this),this._on(!0,this.element,{remove:function(t){t.target===s&&this.destroy()}}),this.document=t(s.style?s.ownerDocument:s.document||s),this.window=t(this.document[0].defaultView||this.document[0].parentWindow)),this.options=t.widget.extend({},this.options,this._getCreateOptions(),i),this._create(),this.options.disabled&&this._setOptionDisabled(this.options.disabled),this._trigger("create",null,this._getCreateEventData()),this._init()},_getCreateOptions:function(){return{}},_getCreateEventData:t.noop,_create:t.noop,_init:t.noop,destroy:function(){var e=this;this._destroy(),t.each(this.classesElementLookup,function(t,i){e._removeClass(i,t)}),this.element.off(this.eventNamespace).removeData(this.widgetFullName),this.widget().off(this.eventNamespace).removeAttr("aria-disabled"),this.bindings.off(this.eventNamespace)},_destroy:t.noop,widget:function(){return this.element},option:function(e,i){var s,n,o,a=e;if(0===arguments.length)return t.widget.extend({},this.options);if("string"==typeof e)if(a={},s=e.split("."),e=s.shift(),s.length){for(n=a[e]=t.widget.extend({},this.options[e]),o=0;s.length-1>o;o++)n[s[o]]=n[s[o]]||{},n=n[s[o]];if(e=s.pop(),1===arguments.length)return void 0===n[e]?null:n[e];n[e]=i}else{if(1===arguments.length)return void 0===this.options[e]?null:this.options[e];a[e]=i}return this._setOptions(a),this},_setOptions:function(t){var e;for(e in t)this._setOption(e,t[e]);return this},_setOption:function(t,e){return"classes"===t&&this._setOptionClasses(e),this.options[t]=e,"disabled"===t&&this._setOptionDisabled(e),this},_setOptionClasses:function(e){var i,s,n;for(i in e)n=this.classesElementLookup[i],e[i]!==this.options.classes[i]&&n&&n.length&&(s=t(n.get()),this._removeClass(n,i),s.addClass(this._classes({element:s,keys:i,classes:e,add:!0})))},_setOptionDisabled:function(t){this._toggleClass(this.widget(),this.widgetFullName+"-disabled",null,!!t),t&&(this._removeClass(this.hoverable,null,"ui-state-hover"),this._removeClass(this.focusable,null,"ui-state-focus"))},enable:function(){return this._setOptions({disabled:!1})},disable:function(){return this._setOptions({disabled:!0})},_classes:function(e){function i(i,o){var a,r;for(r=0;i.length>r;r++)a=n.classesElementLookup[i[r]]||t(),a=e.add?t(t.unique(a.get().concat(e.element.get()))):t(a.not(e.element).get()),n.classesElementLookup[i[r]]=a,s.push(i[r]),o&&e.classes[i[r]]&&s.push(e.classes[i[r]])}var s=[],n=this;return e=t.extend({element:this.element,classes:this.options.classes||{}},e),this._on(e.element,{remove:"_untrackClassesElement"}),e.keys&&i(e.keys.match(/\S+/g)||[],!0),e.extra&&i(e.extra.match(/\S+/g)||[]),s.join(" ")},_untrackClassesElement:function(e){var i=this;t.each(i.classesElementLookup,function(s,n){-1!==t.inArray(e.target,n)&&(i.classesElementLookup[s]=t(n.not(e.target).get()))})},_removeClass:function(t,e,i){return this._toggleClass(t,e,i,!1)},_addClass:function(t,e,i){return this._toggleClass(t,e,i,!0)},_toggleClass:function(t,e,i,s){s="boolean"==typeof s?s:i;var n="string"==typeof t||null===t,o={extra:n?e:i,keys:n?t:e,element:n?this.element:t,add:s};return o.element.toggleClass(this._classes(o),s),this},_on:function(e,i,s){var n,o=this;"boolean"!=typeof e&&(s=i,i=e,e=!1),s?(i=n=t(i),this.bindings=this.bindings.add(i)):(s=i,i=this.element,n=this.widget()),t.each(s,function(s,a){function r(){return e||o.options.disabled!==!0&&!t(this).hasClass("ui-state-disabled")?("string"==typeof a?o[a]:a).apply(o,arguments):void 0}"string"!=typeof a&&(r.guid=a.guid=a.guid||r.guid||t.guid++);var l=s.match(/^([\w:-]*)\s*(.*)$/),h=l[1]+o.eventNamespace,c=l[2];c?n.on(h,c,r):i.on(h,r)})},_off:function(e,i){i=(i||"").split(" ").join(this.eventNamespace+" ")+this.eventNamespace,e.off(i).off(i),this.bindings=t(this.bindings.not(e).get()),this.focusable=t(this.focusable.not(e).get()),this.hoverable=t(this.hoverable.not(e).get())},_delay:function(t,e){function i(){return("string"==typeof t?s[t]:t).apply(s,arguments)}var s=this;return setTimeout(i,e||0)},_hoverable:function(e){this.hoverable=this.hoverable.add(e),this._on(e,{mouseenter:function(e){this._addClass(t(e.currentTarget),null,"ui-state-hover")},mouseleave:function(e){this._removeClass(t(e.currentTarget),null,"ui-state-hover")}})},_focusable:function(e){this.focusable=this.focusable.add(e),this._on(e,{focusin:function(e){this._addClass(t(e.currentTarget),null,"ui-state-focus")},focusout:function(e){this._removeClass(t(e.currentTarget),null,"ui-state-focus")}})},_trigger:function(e,i,s){var n,o,a=this.options[e];if(s=s||{},i=t.Event(i),i.type=(e===this.widgetEventPrefix?e:this.widgetEventPrefix+e).toLowerCase(),i.target=this.element[0],o=i.originalEvent)for(n in o)n in i||(i[n]=o[n]);return this.element.trigger(i,s),!(t.isFunction(a)&&a.apply(this.element[0],[i].concat(s))===!1||i.isDefaultPrevented())}},t.each({show:"fadeIn",hide:"fadeOut"},function(e,i){t.Widget.prototype["_"+e]=function(s,n,o){"string"==typeof n&&(n={effect:n});var a,r=n?n===!0||"number"==typeof n?i:n.effect||i:e;n=n||{},"number"==typeof n&&(n={duration:n}),a=!t.isEmptyObject(n),n.complete=o,n.delay&&s.delay(n.delay),a&&t.effects&&t.effects.effect[r]?s[e](n):r!==e&&s[r]?s[r](n.duration,n.easing,o):s.queue(function(i){t(this)[e](),o&&o.call(s[0]),i()})}}),t.widget,t.extend(t.expr[":"],{data:t.expr.createPseudo?t.expr.createPseudo(function(e){return function(i){return!!t.data(i,e)}}):function(e,i,s){return!!t.data(e,s[3])}}),t.fn.extend({disableSelection:function(){var t="onselectstart"in document.createElement("div")?"selectstart":"mousedown";return function(){return this.on(t+".ui-disableSelection",function(t){t.preventDefault()})}}(),enableSelection:function(){return this.off(".ui-disableSelection")}}),t.fn.scrollParent=function(e){var i=this.css("position"),s="absolute"===i,n=e?/(auto|scroll|hidden)/:/(auto|scroll)/,o=this.parents().filter(function(){var e=t(this);return s&&"static"===e.css("position")?!1:n.test(e.css("overflow")+e.css("overflow-y")+e.css("overflow-x"))}).eq(0);return"fixed"!==i&&o.length?o:t(this[0].ownerDocument||document)},t.ui.ie=!!/msie [\w.]+/.exec(navigator.userAgent.toLowerCase());var s=!1;t(document).on("mouseup",function(){s=!1}),t.widget("ui.mouse",{version:"1.12.1",options:{cancel:"input, textarea, button, select, option",distance:1,delay:0},_mouseInit:function(){var e=this;this.element.on("mousedown."+this.widgetName,function(t){return e._mouseDown(t)}).on("click."+this.widgetName,function(i){return!0===t.data(i.target,e.widgetName+".preventClickEvent")?(t.removeData(i.target,e.widgetName+".preventClickEvent"),i.stopImmediatePropagation(),!1):void 0}),this.started=!1},_mouseDestroy:function(){this.element.off("."+this.widgetName),this._mouseMoveDelegate&&this.document.off("mousemove."+this.widgetName,this._mouseMoveDelegate).off("mouseup."+this.widgetName,this._mouseUpDelegate)},_mouseDown:function(e){if(!s){this._mouseMoved=!1,this._mouseStarted&&this._mouseUp(e),this._mouseDownEvent=e;var i=this,n=1===e.which,o="string"==typeof this.options.cancel&&e.target.nodeName?t(e.target).closest(this.options.cancel).length:!1;return n&&!o&&this._mouseCapture(e)?(this.mouseDelayMet=!this.options.delay,this.mouseDelayMet||(this._mouseDelayTimer=setTimeout(function(){i.mouseDelayMet=!0},this.options.delay)),this._mouseDistanceMet(e)&&this._mouseDelayMet(e)&&(this._mouseStarted=this._mouseStart(e)!==!1,!this._mouseStarted)?(e.preventDefault(),!0):(!0===t.data(e.target,this.widgetName+".preventClickEvent")&&t.removeData(e.target,this.widgetName+".preventClickEvent"),this._mouseMoveDelegate=function(t){return i._mouseMove(t)},this._mouseUpDelegate=function(t){return i._mouseUp(t)},this.document.on("mousemove."+this.widgetName,this._mouseMoveDelegate).on("mouseup."+this.widgetName,this._mouseUpDelegate),e.preventDefault(),s=!0,!0)):!0}},_mouseMove:function(e){if(this._mouseMoved){if(t.ui.ie&&(!document.documentMode||9>document.documentMode)&&!e.button)return this._mouseUp(e);if(!e.which)if(e.originalEvent.altKey||e.originalEvent.ctrlKey||e.originalEvent.metaKey||e.originalEvent.shiftKey)this.ignoreMissingWhich=!0;else if(!this.ignoreMissingWhich)return this._mouseUp(e)}return(e.which||e.button)&&(this._mouseMoved=!0),this._mouseStarted?(this._mouseDrag(e),e.preventDefault()):(this._mouseDistanceMet(e)&&this._mouseDelayMet(e)&&(this._mouseStarted=this._mouseStart(this._mouseDownEvent,e)!==!1,this._mouseStarted?this._mouseDrag(e):this._mouseUp(e)),!this._mouseStarted)},_mouseUp:function(e){this.document.off("mousemove."+this.widgetName,this._mouseMoveDelegate).off("mouseup."+this.widgetName,this._mouseUpDelegate),this._mouseStarted&&(this._mouseStarted=!1,e.target===this._mouseDownEvent.target&&t.data(e.target,this.widgetName+".preventClickEvent",!0),this._mouseStop(e)),this._mouseDelayTimer&&(clearTimeout(this._mouseDelayTimer),delete this._mouseDelayTimer),this.ignoreMissingWhich=!1,s=!1,e.preventDefault()},_mouseDistanceMet:function(t){return Math.max(Math.abs(this._mouseDownEvent.pageX-t.pageX),Math.abs(this._mouseDownEvent.pageY-t.pageY))>=this.options.distance},_mouseDelayMet:function(){return this.mouseDelayMet},_mouseStart:function(){},_mouseDrag:function(){},_mouseStop:function(){},_mouseCapture:function(){return!0}}),t.ui.plugin={add:function(e,i,s){var n,o=t.ui[e].prototype;for(n in s)o.plugins[n]=o.plugins[n]||[],o.plugins[n].push([i,s[n]])},call:function(t,e,i,s){var n,o=t.plugins[e];if(o&&(s||t.element[0].parentNode&&11!==t.element[0].parentNode.nodeType))for(n=0;o.length>n;n++)t.options[o[n][0]]&&o[n][1].apply(t.element,i)}},t.ui.safeActiveElement=function(t){var e;try{e=t.activeElement}catch(i){e=t.body}return e||(e=t.body),e.nodeName||(e=t.body),e},t.ui.safeBlur=function(e){e&&"body"!==e.nodeName.toLowerCase()&&t(e).trigger("blur")},t.widget("ui.draggable",t.ui.mouse,{version:"1.12.1",widgetEventPrefix:"drag",options:{addClasses:!0,appendTo:"parent",axis:!1,connectToSortable:!1,containment:!1,cursor:"auto",cursorAt:!1,grid:!1,handle:!1,helper:"original",iframeFix:!1,opacity:!1,refreshPositions:!1,revert:!1,revertDuration:500,scope:"default",scroll:!0,scrollSensitivity:20,scrollSpeed:20,snap:!1,snapMode:"both",snapTolerance:20,stack:!1,zIndex:!1,drag:null,start:null,stop:null},_create:function(){"original"===this.options.helper&&this._setPositionRelative(),this.options.addClasses&&this._addClass("ui-draggable"),this._setHandleClassName(),this._mouseInit()},_setOption:function(t,e){this._super(t,e),"handle"===t&&(this._removeHandleClassName(),this._setHandleClassName())},_destroy:function(){return(this.helper||this.element).is(".ui-draggable-dragging")?(this.destroyOnClear=!0,void 0):(this._removeHandleClassName(),this._mouseDestroy(),void 0)},_mouseCapture:function(e){var i=this.options;return this.helper||i.disabled||t(e.target).closest(".ui-resizable-handle").length>0?!1:(this.handle=this._getHandle(e),this.handle?(this._blurActiveElement(e),this._blockFrames(i.iframeFix===!0?"iframe":i.iframeFix),!0):!1)},_blockFrames:function(e){this.iframeBlocks=this.document.find(e).map(function(){var e=t(this);return t("<div>").css("position","absolute").appendTo(e.parent()).outerWidth(e.outerWidth()).outerHeight(e.outerHeight()).offset(e.offset())[0]})},_unblockFrames:function(){this.iframeBlocks&&(this.iframeBlocks.remove(),delete this.iframeBlocks)},_blurActiveElement:function(e){var i=t.ui.safeActiveElement(this.document[0]),s=t(e.target);s.closest(i).length||t.ui.safeBlur(i)},_mouseStart:function(e){var i=this.options;return this.helper=this._createHelper(e),this._addClass(this.helper,"ui-draggable-dragging"),this._cacheHelperProportions(),t.ui.ddmanager&&(t.ui.ddmanager.current=this),this._cacheMargins(),this.cssPosition=this.helper.css("position"),this.scrollParent=this.helper.scrollParent(!0),this.offsetParent=this.helper.offsetParent(),this.hasFixedAncestor=this.helper.parents().filter(function(){return"fixed"===t(this).css("position")}).length>0,this.positionAbs=this.element.offset(),this._refreshOffsets(e),this.originalPosition=this.position=this._generatePosition(e,!1),this.originalPageX=e.pageX,this.originalPageY=e.pageY,i.cursorAt&&this._adjustOffsetFromHelper(i.cursorAt),this._setContainment(),this._trigger("start",e)===!1?(this._clear(),!1):(this._cacheHelperProportions(),t.ui.ddmanager&&!i.dropBehaviour&&t.ui.ddmanager.prepareOffsets(this,e),this._mouseDrag(e,!0),t.ui.ddmanager&&t.ui.ddmanager.dragStart(this,e),!0)},_refreshOffsets:function(t){this.offset={top:this.positionAbs.top-this.margins.top,left:this.positionAbs.left-this.margins.left,scroll:!1,parent:this._getParentOffset(),relative:this._getRelativeOffset()},this.offset.click={left:t.pageX-this.offset.left,top:t.pageY-this.offset.top}},_mouseDrag:function(e,i){if(this.hasFixedAncestor&&(this.offset.parent=this._getParentOffset()),this.position=this._generatePosition(e,!0),this.positionAbs=this._convertPositionTo("absolute"),!i){var s=this._uiHash();if(this._trigger("drag",e,s)===!1)return this._mouseUp(new t.Event("mouseup",e)),!1;this.position=s.position}return this.helper[0].style.left=this.position.left+"px",this.helper[0].style.top=this.position.top+"px",t.ui.ddmanager&&t.ui.ddmanager.drag(this,e),!1},_mouseStop:function(e){var i=this,s=!1;return t.ui.ddmanager&&!this.options.dropBehaviour&&(s=t.ui.ddmanager.drop(this,e)),this.dropped&&(s=this.dropped,this.dropped=!1),"invalid"===this.options.revert&&!s||"valid"===this.options.revert&&s||this.options.revert===!0||t.isFunction(this.options.revert)&&this.options.revert.call(this.element,s)?t(this.helper).animate(this.originalPosition,parseInt(this.options.revertDuration,10),function(){i._trigger("stop",e)!==!1&&i._clear()}):this._trigger("stop",e)!==!1&&this._clear(),!1},_mouseUp:function(e){return this._unblockFrames(),t.ui.ddmanager&&t.ui.ddmanager.dragStop(this,e),this.handleElement.is(e.target)&&this.element.trigger("focus"),t.ui.mouse.prototype._mouseUp.call(this,e)},cancel:function(){return this.helper.is(".ui-draggable-dragging")?this._mouseUp(new t.Event("mouseup",{target:this.element[0]})):this._clear(),this},_getHandle:function(e){return this.options.handle?!!t(e.target).closest(this.element.find(this.options.handle)).length:!0},_setHandleClassName:function(){this.handleElement=this.options.handle?this.element.find(this.options.handle):this.element,this._addClass(this.handleElement,"ui-draggable-handle")},_removeHandleClassName:function(){this._removeClass(this.handleElement,"ui-draggable-handle")},_createHelper:function(e){var i=this.options,s=t.isFunction(i.helper),n=s?t(i.helper.apply(this.element[0],[e])):"clone"===i.helper?this.element.clone().removeAttr("id"):this.element;return n.parents("body").length||n.appendTo("parent"===i.appendTo?this.element[0].parentNode:i.appendTo),s&&n[0]===this.element[0]&&this._setPositionRelative(),n[0]===this.element[0]||/(fixed|absolute)/.test(n.css("position"))||n.css("position","absolute"),n},_setPositionRelative:function(){/^(?:r|a|f)/.test(this.element.css("position"))||(this.element[0].style.position="relative")},_adjustOffsetFromHelper:function(e){"string"==typeof e&&(e=e.split(" ")),t.isArray(e)&&(e={left:+e[0],top:+e[1]||0}),"left"in e&&(this.offset.click.left=e.left+this.margins.left),"right"in e&&(this.offset.click.left=this.helperProportions.width-e.right+this.margins.left),"top"in e&&(this.offset.click.top=e.top+this.margins.top),"bottom"in e&&(this.offset.click.top=this.helperProportions.height-e.bottom+this.margins.top)},_isRootNode:function(t){return/(html|body)/i.test(t.tagName)||t===this.document[0]},_getParentOffset:function(){var e=this.offsetParent.offset(),i=this.document[0];return"absolute"===this.cssPosition&&this.scrollParent[0]!==i&&t.contains(this.scrollParent[0],this.offsetParent[0])&&(e.left+=this.scrollParent.scrollLeft(),e.top+=this.scrollParent.scrollTop()),this._isRootNode(this.offsetParent[0])&&(e={top:0,left:0}),{top:e.top+(parseInt(this.offsetParent.css("borderTopWidth"),10)||0),left:e.left+(parseInt(this.offsetParent.css("borderLeftWidth"),10)||0)}},_getRelativeOffset:function(){if("relative"!==this.cssPosition)return{top:0,left:0};var t=this.element.position(),e=this._isRootNode(this.scrollParent[0]);return{top:t.top-(parseInt(this.helper.css("top"),10)||0)+(e?0:this.scrollParent.scrollTop()),left:t.left-(parseInt(this.helper.css("left"),10)||0)+(e?0:this.scrollParent.scrollLeft())}},_cacheMargins:function(){this.margins={left:parseInt(this.element.css("marginLeft"),10)||0,top:parseInt(this.element.css("marginTop"),10)||0,right:parseInt(this.element.css("marginRight"),10)||0,bottom:parseInt(this.element.css("marginBottom"),10)||0}},_cacheHelperProportions:function(){this.helperProportions={width:this.helper.outerWidth(),height:this.helper.outerHeight()}},_setContainment:function(){var e,i,s,n=this.options,o=this.document[0];return this.relativeContainer=null,n.containment?"window"===n.containment?(this.containment=[t(window).scrollLeft()-this.offset.relative.left-this.offset.parent.left,t(window).scrollTop()-this.offset.relative.top-this.offset.parent.top,t(window).scrollLeft()+t(window).width()-this.helperProportions.width-this.margins.left,t(window).scrollTop()+(t(window).height()||o.body.parentNode.scrollHeight)-this.helperProportions.height-this.margins.top],void 0):"document"===n.containment?(this.containment=[0,0,t(o).width()-this.helperProportions.width-this.margins.left,(t(o).height()||o.body.parentNode.scrollHeight)-this.helperProportions.height-this.margins.top],void 0):n.containment.constructor===Array?(this.containment=n.containment,void 0):("parent"===n.containment&&(n.containment=this.helper[0].parentNode),i=t(n.containment),s=i[0],s&&(e=/(scroll|auto)/.test(i.css("overflow")),this.containment=[(parseInt(i.css("borderLeftWidth"),10)||0)+(parseInt(i.css("paddingLeft"),10)||0),(parseInt(i.css("borderTopWidth"),10)||0)+(parseInt(i.css("paddingTop"),10)||0),(e?Math.max(s.scrollWidth,s.offsetWidth):s.offsetWidth)-(parseInt(i.css("borderRightWidth"),10)||0)-(parseInt(i.css("paddingRight"),10)||0)-this.helperProportions.width-this.margins.left-this.margins.right,(e?Math.max(s.scrollHeight,s.offsetHeight):s.offsetHeight)-(parseInt(i.css("borderBottomWidth"),10)||0)-(parseInt(i.css("paddingBottom"),10)||0)-this.helperProportions.height-this.margins.top-this.margins.bottom],this.relativeContainer=i),void 0):(this.containment=null,void 0)},_convertPositionTo:function(t,e){e||(e=this.position);var i="absolute"===t?1:-1,s=this._isRootNode(this.scrollParent[0]);return{top:e.top+this.offset.relative.top*i+this.offset.parent.top*i-("fixed"===this.cssPosition?-this.offset.scroll.top:s?0:this.offset.scroll.top)*i,left:e.left+this.offset.relative.left*i+this.offset.parent.left*i-("fixed"===this.cssPosition?-this.offset.scroll.left:s?0:this.offset.scroll.left)*i}},_generatePosition:function(t,e){var i,s,n,o,a=this.options,r=this._isRootNode(this.scrollParent[0]),l=t.pageX,h=t.pageY;return r&&this.offset.scroll||(this.offset.scroll={top:this.scrollParent.scrollTop(),left:this.scrollParent.scrollLeft()}),e&&(this.containment&&(this.relativeContainer?(s=this.relativeContainer.offset(),i=[this.containment[0]+s.left,this.containment[1]+s.top,this.containment[2]+s.left,this.containment[3]+s.top]):i=this.containment,t.pageX-this.offset.click.left<i[0]&&(l=i[0]+this.offset.click.left),t.pageY-this.offset.click.top<i[1]&&(h=i[1]+this.offset.click.top),t.pageX-this.offset.click.left>i[2]&&(l=i[2]+this.offset.click.left),t.pageY-this.offset.click.top>i[3]&&(h=i[3]+this.offset.click.top)),a.grid&&(n=a.grid[1]?this.originalPageY+Math.round((h-this.originalPageY)/a.grid[1])*a.grid[1]:this.originalPageY,h=i?n-this.offset.click.top>=i[1]||n-this.offset.click.top>i[3]?n:n-this.offset.click.top>=i[1]?n-a.grid[1]:n+a.grid[1]:n,o=a.grid[0]?this.originalPageX+Math.round((l-this.originalPageX)/a.grid[0])*a.grid[0]:this.originalPageX,l=i?o-this.offset.click.left>=i[0]||o-this.offset.click.left>i[2]?o:o-this.offset.click.left>=i[0]?o-a.grid[0]:o+a.grid[0]:o),"y"===a.axis&&(l=this.originalPageX),"x"===a.axis&&(h=this.originalPageY)),{top:h-this.offset.click.top-this.offset.relative.top-this.offset.parent.top+("fixed"===this.cssPosition?-this.offset.scroll.top:r?0:this.offset.scroll.top),left:l-this.offset.click.left-this.offset.relative.left-this.offset.parent.left+("fixed"===this.cssPosition?-this.offset.scroll.left:r?0:this.offset.scroll.left)}},_clear:function(){this._removeClass(this.helper,"ui-draggable-dragging"),this.helper[0]===this.element[0]||this.cancelHelperRemoval||this.helper.remove(),this.helper=null,this.cancelHelperRemoval=!1,this.destroyOnClear&&this.destroy()},_trigger:function(e,i,s){return s=s||this._uiHash(),t.ui.plugin.call(this,e,[i,s,this],!0),/^(drag|start|stop)/.test(e)&&(this.positionAbs=this._convertPositionTo("absolute"),s.offset=this.positionAbs),t.Widget.prototype._trigger.call(this,e,i,s)},plugins:{},_uiHash:function(){return{helper:this.helper,position:this.position,originalPosition:this.originalPosition,offset:this.positionAbs}}}),t.ui.plugin.add("draggable","connectToSortable",{start:function(e,i,s){var n=t.extend({},i,{item:s.element});s.sortables=[],t(s.options.connectToSortable).each(function(){var i=t(this).sortable("instance");i&&!i.options.disabled&&(s.sortables.push(i),i.refreshPositions(),i._trigger("activate",e,n))})},stop:function(e,i,s){var n=t.extend({},i,{item:s.element});s.cancelHelperRemoval=!1,t.each(s.sortables,function(){var t=this;t.isOver?(t.isOver=0,s.cancelHelperRemoval=!0,t.cancelHelperRemoval=!1,t._storedCSS={position:t.placeholder.css("position"),top:t.placeholder.css("top"),left:t.placeholder.css("left")},t._mouseStop(e),t.options.helper=t.options._helper):(t.cancelHelperRemoval=!0,t._trigger("deactivate",e,n))})},drag:function(e,i,s){t.each(s.sortables,function(){var n=!1,o=this;o.positionAbs=s.positionAbs,o.helperProportions=s.helperProportions,o.offset.click=s.offset.click,o._intersectsWith(o.containerCache)&&(n=!0,t.each(s.sortables,function(){return this.positionAbs=s.positionAbs,this.helperProportions=s.helperProportions,this.offset.click=s.offset.click,this!==o&&this._intersectsWith(this.containerCache)&&t.contains(o.element[0],this.element[0])&&(n=!1),n})),n?(o.isOver||(o.isOver=1,s._parent=i.helper.parent(),o.currentItem=i.helper.appendTo(o.element).data("ui-sortable-item",!0),o.options._helper=o.options.helper,o.options.helper=function(){return i.helper[0]},e.target=o.currentItem[0],o._mouseCapture(e,!0),o._mouseStart(e,!0,!0),o.offset.click.top=s.offset.click.top,o.offset.click.left=s.offset.click.left,o.offset.parent.left-=s.offset.parent.left-o.offset.parent.left,o.offset.parent.top-=s.offset.parent.top-o.offset.parent.top,s._trigger("toSortable",e),s.dropped=o.element,t.each(s.sortables,function(){this.refreshPositions()}),s.currentItem=s.element,o.fromOutside=s),o.currentItem&&(o._mouseDrag(e),i.position=o.position)):o.isOver&&(o.isOver=0,o.cancelHelperRemoval=!0,o.options._revert=o.options.revert,o.options.revert=!1,o._trigger("out",e,o._uiHash(o)),o._mouseStop(e,!0),o.options.revert=o.options._revert,o.options.helper=o.options._helper,o.placeholder&&o.placeholder.remove(),i.helper.appendTo(s._parent),s._refreshOffsets(e),i.position=s._generatePosition(e,!0),s._trigger("fromSortable",e),s.dropped=!1,t.each(s.sortables,function(){this.refreshPositions()}))})}}),t.ui.plugin.add("draggable","cursor",{start:function(e,i,s){var n=t("body"),o=s.options;n.css("cursor")&&(o._cursor=n.css("cursor")),n.css("cursor",o.cursor)},stop:function(e,i,s){var n=s.options;n._cursor&&t("body").css("cursor",n._cursor)}}),t.ui.plugin.add("draggable","opacity",{start:function(e,i,s){var n=t(i.helper),o=s.options;n.css("opacity")&&(o._opacity=n.css("opacity")),n.css("opacity",o.opacity)},stop:function(e,i,s){var n=s.options;n._opacity&&t(i.helper).css("opacity",n._opacity)}}),t.ui.plugin.add("draggable","scroll",{start:function(t,e,i){i.scrollParentNotHidden||(i.scrollParentNotHidden=i.helper.scrollParent(!1)),i.scrollParentNotHidden[0]!==i.document[0]&&"HTML"!==i.scrollParentNotHidden[0].tagName&&(i.overflowOffset=i.scrollParentNotHidden.offset())},drag:function(e,i,s){var n=s.options,o=!1,a=s.scrollParentNotHidden[0],r=s.document[0];a!==r&&"HTML"!==a.tagName?(n.axis&&"x"===n.axis||(s.overflowOffset.top+a.offsetHeight-e.pageY<n.scrollSensitivity?a.scrollTop=o=a.scrollTop+n.scrollSpeed:e.pageY-s.overflowOffset.top<n.scrollSensitivity&&(a.scrollTop=o=a.scrollTop-n.scrollSpeed)),n.axis&&"y"===n.axis||(s.overflowOffset.left+a.offsetWidth-e.pageX<n.scrollSensitivity?a.scrollLeft=o=a.scrollLeft+n.scrollSpeed:e.pageX-s.overflowOffset.left<n.scrollSensitivity&&(a.scrollLeft=o=a.scrollLeft-n.scrollSpeed))):(n.axis&&"x"===n.axis||(e.pageY-t(r).scrollTop()<n.scrollSensitivity?o=t(r).scrollTop(t(r).scrollTop()-n.scrollSpeed):t(window).height()-(e.pageY-t(r).scrollTop())<n.scrollSensitivity&&(o=t(r).scrollTop(t(r).scrollTop()+n.scrollSpeed))),n.axis&&"y"===n.axis||(e.pageX-t(r).scrollLeft()<n.scrollSensitivity?o=t(r).scrollLeft(t(r).scrollLeft()-n.scrollSpeed):t(window).width()-(e.pageX-t(r).scrollLeft())<n.scrollSensitivity&&(o=t(r).scrollLeft(t(r).scrollLeft()+n.scrollSpeed)))),o!==!1&&t.ui.ddmanager&&!n.dropBehaviour&&t.ui.ddmanager.prepareOffsets(s,e)}}),t.ui.plugin.add("draggable","snap",{start:function(e,i,s){var n=s.options;s.snapElements=[],t(n.snap.constructor!==String?n.snap.items||":data(ui-draggable)":n.snap).each(function(){var e=t(this),i=e.offset();this!==s.element[0]&&s.snapElements.push({item:this,width:e.outerWidth(),height:e.outerHeight(),top:i.top,left:i.left})})},drag:function(e,i,s){var n,o,a,r,l,h,c,u,d,p,f=s.options,g=f.snapTolerance,m=i.offset.left,_=m+s.helperProportions.width,v=i.offset.top,b=v+s.helperProportions.height;for(d=s.snapElements.length-1;d>=0;d--)l=s.snapElements[d].left-s.margins.left,h=l+s.snapElements[d].width,c=s.snapElements[d].top-s.margins.top,u=c+s.snapElements[d].height,l-g>_||m>h+g||c-g>b||v>u+g||!t.contains(s.snapElements[d].item.ownerDocument,s.snapElements[d].item)?(s.snapElements[d].snapping&&s.options.snap.release&&s.options.snap.release.call(s.element,e,t.extend(s._uiHash(),{snapItem:s.snapElements[d].item})),s.snapElements[d].snapping=!1):("inner"!==f.snapMode&&(n=g>=Math.abs(c-b),o=g>=Math.abs(u-v),a=g>=Math.abs(l-_),r=g>=Math.abs(h-m),n&&(i.position.top=s._convertPositionTo("relative",{top:c-s.helperProportions.height,left:0}).top),o&&(i.position.top=s._convertPositionTo("relative",{top:u,left:0}).top),a&&(i.position.left=s._convertPositionTo("relative",{top:0,left:l-s.helperProportions.width}).left),r&&(i.position.left=s._convertPositionTo("relative",{top:0,left:h}).left)),p=n||o||a||r,"outer"!==f.snapMode&&(n=g>=Math.abs(c-v),o=g>=Math.abs(u-b),a=g>=Math.abs(l-m),r=g>=Math.abs(h-_),n&&(i.position.top=s._convertPositionTo("relative",{top:c,left:0}).top),o&&(i.position.top=s._convertPositionTo("relative",{top:u-s.helperProportions.height,left:0}).top),a&&(i.position.left=s._convertPositionTo("relative",{top:0,left:l}).left),r&&(i.position.left=s._convertPositionTo("relative",{top:0,left:h-s.helperProportions.width}).left)),!s.snapElements[d].snapping&&(n||o||a||r||p)&&s.options.snap.snap&&s.options.snap.snap.call(s.element,e,t.extend(s._uiHash(),{snapItem:s.snapElements[d].item})),s.snapElements[d].snapping=n||o||a||r||p)}}),t.ui.plugin.add("draggable","stack",{start:function(e,i,s){var n,o=s.options,a=t.makeArray(t(o.stack)).sort(function(e,i){return(parseInt(t(e).css("zIndex"),10)||0)-(parseInt(t(i).css("zIndex"),10)||0)});a.length&&(n=parseInt(t(a[0]).css("zIndex"),10)||0,t(a).each(function(e){t(this).css("zIndex",n+e)}),this.css("zIndex",n+a.length))}}),t.ui.plugin.add("draggable","zIndex",{start:function(e,i,s){var n=t(i.helper),o=s.options;n.css("zIndex")&&(o._zIndex=n.css("zIndex")),n.css("zIndex",o.zIndex)},stop:function(e,i,s){var n=s.options;n._zIndex&&t(i.helper).css("zIndex",n._zIndex)}}),t.ui.draggable,t.widget("ui.droppable",{version:"1.12.1",widgetEventPrefix:"drop",options:{accept:"*",addClasses:!0,greedy:!1,scope:"default",tolerance:"intersect",activate:null,deactivate:null,drop:null,out:null,over:null},_create:function(){var e,i=this.options,s=i.accept;this.isover=!1,this.isout=!0,this.accept=t.isFunction(s)?s:function(t){return t.is(s)},this.proportions=function(){return arguments.length?(e=arguments[0],void 0):e?e:e={width:this.element[0].offsetWidth,height:this.element[0].offsetHeight}},this._addToManager(i.scope),i.addClasses&&this._addClass("ui-droppable")},_addToManager:function(e){t.ui.ddmanager.droppables[e]=t.ui.ddmanager.droppables[e]||[],t.ui.ddmanager.droppables[e].push(this)},_splice:function(t){for(var e=0;t.length>e;e++)t[e]===this&&t.splice(e,1)},_destroy:function(){var e=t.ui.ddmanager.droppables[this.options.scope];this._splice(e)},_setOption:function(e,i){if("accept"===e)this.accept=t.isFunction(i)?i:function(t){return t.is(i)};else if("scope"===e){var s=t.ui.ddmanager.droppables[this.options.scope];this._splice(s),this._addToManager(i)}this._super(e,i)},_activate:function(e){var i=t.ui.ddmanager.current;this._addActiveClass(),i&&this._trigger("activate",e,this.ui(i))
+        },_deactivate:function(e){var i=t.ui.ddmanager.current;this._removeActiveClass(),i&&this._trigger("deactivate",e,this.ui(i))},_over:function(e){var i=t.ui.ddmanager.current;i&&(i.currentItem||i.element)[0]!==this.element[0]&&this.accept.call(this.element[0],i.currentItem||i.element)&&(this._addHoverClass(),this._trigger("over",e,this.ui(i)))},_out:function(e){var i=t.ui.ddmanager.current;i&&(i.currentItem||i.element)[0]!==this.element[0]&&this.accept.call(this.element[0],i.currentItem||i.element)&&(this._removeHoverClass(),this._trigger("out",e,this.ui(i)))},_drop:function(e,i){var s=i||t.ui.ddmanager.current,o=!1;return s&&(s.currentItem||s.element)[0]!==this.element[0]?(this.element.find(":data(ui-droppable)").not(".ui-draggable-dragging").each(function(){var i=t(this).droppable("instance");return i.options.greedy&&!i.options.disabled&&i.options.scope===s.options.scope&&i.accept.call(i.element[0],s.currentItem||s.element)&&n(s,t.extend(i,{offset:i.element.offset()}),i.options.tolerance,e)?(o=!0,!1):void 0}),o?!1:this.accept.call(this.element[0],s.currentItem||s.element)?(this._removeActiveClass(),this._removeHoverClass(),this._trigger("drop",e,this.ui(s)),this.element):!1):!1},ui:function(t){return{draggable:t.currentItem||t.element,helper:t.helper,position:t.position,offset:t.positionAbs}},_addHoverClass:function(){this._addClass("ui-droppable-hover")},_removeHoverClass:function(){this._removeClass("ui-droppable-hover")},_addActiveClass:function(){this._addClass("ui-droppable-active")},_removeActiveClass:function(){this._removeClass("ui-droppable-active")}});var n=t.ui.intersect=function(){function t(t,e,i){return t>=e&&e+i>t}return function(e,i,s,n){if(!i.offset)return!1;var o=(e.positionAbs||e.position.absolute).left+e.margins.left,a=(e.positionAbs||e.position.absolute).top+e.margins.top,r=o+e.helperProportions.width,l=a+e.helperProportions.height,h=i.offset.left,c=i.offset.top,u=h+i.proportions().width,d=c+i.proportions().height;switch(s){case"fit":return o>=h&&u>=r&&a>=c&&d>=l;case"intersect":return o+e.helperProportions.width/2>h&&u>r-e.helperProportions.width/2&&a+e.helperProportions.height/2>c&&d>l-e.helperProportions.height/2;case"pointer":return t(n.pageY,c,i.proportions().height)&&t(n.pageX,h,i.proportions().width);case"touch":return(a>=c&&d>=a||l>=c&&d>=l||c>a&&l>d)&&(o>=h&&u>=o||r>=h&&u>=r||h>o&&r>u);default:return!1}}}();t.ui.ddmanager={current:null,droppables:{"default":[]},prepareOffsets:function(e,i){var s,n,o=t.ui.ddmanager.droppables[e.options.scope]||[],a=i?i.type:null,r=(e.currentItem||e.element).find(":data(ui-droppable)").addBack();t:for(s=0;o.length>s;s++)if(!(o[s].options.disabled||e&&!o[s].accept.call(o[s].element[0],e.currentItem||e.element))){for(n=0;r.length>n;n++)if(r[n]===o[s].element[0]){o[s].proportions().height=0;continue t}o[s].visible="none"!==o[s].element.css("display"),o[s].visible&&("mousedown"===a&&o[s]._activate.call(o[s],i),o[s].offset=o[s].element.offset(),o[s].proportions({width:o[s].element[0].offsetWidth,height:o[s].element[0].offsetHeight}))}},drop:function(e,i){var s=!1;return t.each((t.ui.ddmanager.droppables[e.options.scope]||[]).slice(),function(){this.options&&(!this.options.disabled&&this.visible&&n(e,this,this.options.tolerance,i)&&(s=this._drop.call(this,i)||s),!this.options.disabled&&this.visible&&this.accept.call(this.element[0],e.currentItem||e.element)&&(this.isout=!0,this.isover=!1,this._deactivate.call(this,i)))}),s},dragStart:function(e,i){e.element.parentsUntil("body").on("scroll.droppable",function(){e.options.refreshPositions||t.ui.ddmanager.prepareOffsets(e,i)})},drag:function(e,i){e.options.refreshPositions&&t.ui.ddmanager.prepareOffsets(e,i),t.each(t.ui.ddmanager.droppables[e.options.scope]||[],function(){if(!this.options.disabled&&!this.greedyChild&&this.visible){var s,o,a,r=n(e,this,this.options.tolerance,i),l=!r&&this.isover?"isout":r&&!this.isover?"isover":null;l&&(this.options.greedy&&(o=this.options.scope,a=this.element.parents(":data(ui-droppable)").filter(function(){return t(this).droppable("instance").options.scope===o}),a.length&&(s=t(a[0]).droppable("instance"),s.greedyChild="isover"===l)),s&&"isover"===l&&(s.isover=!1,s.isout=!0,s._out.call(s,i)),this[l]=!0,this["isout"===l?"isover":"isout"]=!1,this["isover"===l?"_over":"_out"].call(this,i),s&&"isout"===l&&(s.isout=!1,s.isover=!0,s._over.call(s,i)))}})},dragStop:function(e,i){e.element.parentsUntil("body").off("scroll.droppable"),e.options.refreshPositions||t.ui.ddmanager.prepareOffsets(e,i)}},t.uiBackCompat!==!1&&t.widget("ui.droppable",t.ui.droppable,{options:{hoverClass:!1,activeClass:!1},_addActiveClass:function(){this._super(),this.options.activeClass&&this.element.addClass(this.options.activeClass)},_removeActiveClass:function(){this._super(),this.options.activeClass&&this.element.removeClass(this.options.activeClass)},_addHoverClass:function(){this._super(),this.options.hoverClass&&this.element.addClass(this.options.hoverClass)},_removeHoverClass:function(){this._super(),this.options.hoverClass&&this.element.removeClass(this.options.hoverClass)}}),t.ui.droppable,t.widget("ui.resizable",t.ui.mouse,{version:"1.12.1",widgetEventPrefix:"resize",options:{alsoResize:!1,animate:!1,animateDuration:"slow",animateEasing:"swing",aspectRatio:!1,autoHide:!1,classes:{"ui-resizable-se":"ui-icon ui-icon-gripsmall-diagonal-se"},containment:!1,ghost:!1,grid:!1,handles:"e,s,se",helper:!1,maxHeight:null,maxWidth:null,minHeight:10,minWidth:10,zIndex:90,resize:null,start:null,stop:null},_num:function(t){return parseFloat(t)||0},_isNumber:function(t){return!isNaN(parseFloat(t))},_hasScroll:function(e,i){if("hidden"===t(e).css("overflow"))return!1;var s=i&&"left"===i?"scrollLeft":"scrollTop",n=!1;return e[s]>0?!0:(e[s]=1,n=e[s]>0,e[s]=0,n)},_create:function(){var e,i=this.options,s=this;this._addClass("ui-resizable"),t.extend(this,{_aspectRatio:!!i.aspectRatio,aspectRatio:i.aspectRatio,originalElement:this.element,_proportionallyResizeElements:[],_helper:i.helper||i.ghost||i.animate?i.helper||"ui-resizable-helper":null}),this.element[0].nodeName.match(/^(canvas|textarea|input|select|button|img)$/i)&&(this.element.wrap(t("<div class='ui-wrapper' style='overflow: hidden;'></div>").css({position:this.element.css("position"),width:this.element.outerWidth(),height:this.element.outerHeight(),top:this.element.css("top"),left:this.element.css("left")})),this.element=this.element.parent().data("ui-resizable",this.element.resizable("instance")),this.elementIsWrapper=!0,e={marginTop:this.originalElement.css("marginTop"),marginRight:this.originalElement.css("marginRight"),marginBottom:this.originalElement.css("marginBottom"),marginLeft:this.originalElement.css("marginLeft")},this.element.css(e),this.originalElement.css("margin",0),this.originalResizeStyle=this.originalElement.css("resize"),this.originalElement.css("resize","none"),this._proportionallyResizeElements.push(this.originalElement.css({position:"static",zoom:1,display:"block"})),this.originalElement.css(e),this._proportionallyResize()),this._setupHandles(),i.autoHide&&t(this.element).on("mouseenter",function(){i.disabled||(s._removeClass("ui-resizable-autohide"),s._handles.show())}).on("mouseleave",function(){i.disabled||s.resizing||(s._addClass("ui-resizable-autohide"),s._handles.hide())}),this._mouseInit()},_destroy:function(){this._mouseDestroy();var e,i=function(e){t(e).removeData("resizable").removeData("ui-resizable").off(".resizable").find(".ui-resizable-handle").remove()};return this.elementIsWrapper&&(i(this.element),e=this.element,this.originalElement.css({position:e.css("position"),width:e.outerWidth(),height:e.outerHeight(),top:e.css("top"),left:e.css("left")}).insertAfter(e),e.remove()),this.originalElement.css("resize",this.originalResizeStyle),i(this.originalElement),this},_setOption:function(t,e){switch(this._super(t,e),t){case"handles":this._removeHandles(),this._setupHandles();break;default:}},_setupHandles:function(){var e,i,s,n,o,a=this.options,r=this;if(this.handles=a.handles||(t(".ui-resizable-handle",this.element).length?{n:".ui-resizable-n",e:".ui-resizable-e",s:".ui-resizable-s",w:".ui-resizable-w",se:".ui-resizable-se",sw:".ui-resizable-sw",ne:".ui-resizable-ne",nw:".ui-resizable-nw"}:"e,s,se"),this._handles=t(),this.handles.constructor===String)for("all"===this.handles&&(this.handles="n,e,s,w,se,sw,ne,nw"),s=this.handles.split(","),this.handles={},i=0;s.length>i;i++)e=t.trim(s[i]),n="ui-resizable-"+e,o=t("<div>"),this._addClass(o,"ui-resizable-handle "+n),o.css({zIndex:a.zIndex}),this.handles[e]=".ui-resizable-"+e,this.element.append(o);this._renderAxis=function(e){var i,s,n,o;e=e||this.element;for(i in this.handles)this.handles[i].constructor===String?this.handles[i]=this.element.children(this.handles[i]).first().show():(this.handles[i].jquery||this.handles[i].nodeType)&&(this.handles[i]=t(this.handles[i]),this._on(this.handles[i],{mousedown:r._mouseDown})),this.elementIsWrapper&&this.originalElement[0].nodeName.match(/^(textarea|input|select|button)$/i)&&(s=t(this.handles[i],this.element),o=/sw|ne|nw|se|n|s/.test(i)?s.outerHeight():s.outerWidth(),n=["padding",/ne|nw|n/.test(i)?"Top":/se|sw|s/.test(i)?"Bottom":/^e$/.test(i)?"Right":"Left"].join(""),e.css(n,o),this._proportionallyResize()),this._handles=this._handles.add(this.handles[i])},this._renderAxis(this.element),this._handles=this._handles.add(this.element.find(".ui-resizable-handle")),this._handles.disableSelection(),this._handles.on("mouseover",function(){r.resizing||(this.className&&(o=this.className.match(/ui-resizable-(se|sw|ne|nw|n|e|s|w)/i)),r.axis=o&&o[1]?o[1]:"se")}),a.autoHide&&(this._handles.hide(),this._addClass("ui-resizable-autohide"))},_removeHandles:function(){this._handles.remove()},_mouseCapture:function(e){var i,s,n=!1;for(i in this.handles)s=t(this.handles[i])[0],(s===e.target||t.contains(s,e.target))&&(n=!0);return!this.options.disabled&&n},_mouseStart:function(e){var i,s,n,o=this.options,a=this.element;return this.resizing=!0,this._renderProxy(),i=this._num(this.helper.css("left")),s=this._num(this.helper.css("top")),o.containment&&(i+=t(o.containment).scrollLeft()||0,s+=t(o.containment).scrollTop()||0),this.offset=this.helper.offset(),this.position={left:i,top:s},this.size=this._helper?{width:this.helper.width(),height:this.helper.height()}:{width:a.width(),height:a.height()},this.originalSize=this._helper?{width:a.outerWidth(),height:a.outerHeight()}:{width:a.width(),height:a.height()},this.sizeDiff={width:a.outerWidth()-a.width(),height:a.outerHeight()-a.height()},this.originalPosition={left:i,top:s},this.originalMousePosition={left:e.pageX,top:e.pageY},this.aspectRatio="number"==typeof o.aspectRatio?o.aspectRatio:this.originalSize.width/this.originalSize.height||1,n=t(".ui-resizable-"+this.axis).css("cursor"),t("body").css("cursor","auto"===n?this.axis+"-resize":n),this._addClass("ui-resizable-resizing"),this._propagate("start",e),!0},_mouseDrag:function(e){var i,s,n=this.originalMousePosition,o=this.axis,a=e.pageX-n.left||0,r=e.pageY-n.top||0,l=this._change[o];return this._updatePrevProperties(),l?(i=l.apply(this,[e,a,r]),this._updateVirtualBoundaries(e.shiftKey),(this._aspectRatio||e.shiftKey)&&(i=this._updateRatio(i,e)),i=this._respectSize(i,e),this._updateCache(i),this._propagate("resize",e),s=this._applyChanges(),!this._helper&&this._proportionallyResizeElements.length&&this._proportionallyResize(),t.isEmptyObject(s)||(this._updatePrevProperties(),this._trigger("resize",e,this.ui()),this._applyChanges()),!1):!1},_mouseStop:function(e){this.resizing=!1;var i,s,n,o,a,r,l,h=this.options,c=this;return this._helper&&(i=this._proportionallyResizeElements,s=i.length&&/textarea/i.test(i[0].nodeName),n=s&&this._hasScroll(i[0],"left")?0:c.sizeDiff.height,o=s?0:c.sizeDiff.width,a={width:c.helper.width()-o,height:c.helper.height()-n},r=parseFloat(c.element.css("left"))+(c.position.left-c.originalPosition.left)||null,l=parseFloat(c.element.css("top"))+(c.position.top-c.originalPosition.top)||null,h.animate||this.element.css(t.extend(a,{top:l,left:r})),c.helper.height(c.size.height),c.helper.width(c.size.width),this._helper&&!h.animate&&this._proportionallyResize()),t("body").css("cursor","auto"),this._removeClass("ui-resizable-resizing"),this._propagate("stop",e),this._helper&&this.helper.remove(),!1},_updatePrevProperties:function(){this.prevPosition={top:this.position.top,left:this.position.left},this.prevSize={width:this.size.width,height:this.size.height}},_applyChanges:function(){var t={};return this.position.top!==this.prevPosition.top&&(t.top=this.position.top+"px"),this.position.left!==this.prevPosition.left&&(t.left=this.position.left+"px"),this.size.width!==this.prevSize.width&&(t.width=this.size.width+"px"),this.size.height!==this.prevSize.height&&(t.height=this.size.height+"px"),this.helper.css(t),t},_updateVirtualBoundaries:function(t){var e,i,s,n,o,a=this.options;o={minWidth:this._isNumber(a.minWidth)?a.minWidth:0,maxWidth:this._isNumber(a.maxWidth)?a.maxWidth:1/0,minHeight:this._isNumber(a.minHeight)?a.minHeight:0,maxHeight:this._isNumber(a.maxHeight)?a.maxHeight:1/0},(this._aspectRatio||t)&&(e=o.minHeight*this.aspectRatio,s=o.minWidth/this.aspectRatio,i=o.maxHeight*this.aspectRatio,n=o.maxWidth/this.aspectRatio,e>o.minWidth&&(o.minWidth=e),s>o.minHeight&&(o.minHeight=s),o.maxWidth>i&&(o.maxWidth=i),o.maxHeight>n&&(o.maxHeight=n)),this._vBoundaries=o},_updateCache:function(t){this.offset=this.helper.offset(),this._isNumber(t.left)&&(this.position.left=t.left),this._isNumber(t.top)&&(this.position.top=t.top),this._isNumber(t.height)&&(this.size.height=t.height),this._isNumber(t.width)&&(this.size.width=t.width)},_updateRatio:function(t){var e=this.position,i=this.size,s=this.axis;return this._isNumber(t.height)?t.width=t.height*this.aspectRatio:this._isNumber(t.width)&&(t.height=t.width/this.aspectRatio),"sw"===s&&(t.left=e.left+(i.width-t.width),t.top=null),"nw"===s&&(t.top=e.top+(i.height-t.height),t.left=e.left+(i.width-t.width)),t},_respectSize:function(t){var e=this._vBoundaries,i=this.axis,s=this._isNumber(t.width)&&e.maxWidth&&e.maxWidth<t.width,n=this._isNumber(t.height)&&e.maxHeight&&e.maxHeight<t.height,o=this._isNumber(t.width)&&e.minWidth&&e.minWidth>t.width,a=this._isNumber(t.height)&&e.minHeight&&e.minHeight>t.height,r=this.originalPosition.left+this.originalSize.width,l=this.originalPosition.top+this.originalSize.height,h=/sw|nw|w/.test(i),c=/nw|ne|n/.test(i);return o&&(t.width=e.minWidth),a&&(t.height=e.minHeight),s&&(t.width=e.maxWidth),n&&(t.height=e.maxHeight),o&&h&&(t.left=r-e.minWidth),s&&h&&(t.left=r-e.maxWidth),a&&c&&(t.top=l-e.minHeight),n&&c&&(t.top=l-e.maxHeight),t.width||t.height||t.left||!t.top?t.width||t.height||t.top||!t.left||(t.left=null):t.top=null,t},_getPaddingPlusBorderDimensions:function(t){for(var e=0,i=[],s=[t.css("borderTopWidth"),t.css("borderRightWidth"),t.css("borderBottomWidth"),t.css("borderLeftWidth")],n=[t.css("paddingTop"),t.css("paddingRight"),t.css("paddingBottom"),t.css("paddingLeft")];4>e;e++)i[e]=parseFloat(s[e])||0,i[e]+=parseFloat(n[e])||0;return{height:i[0]+i[2],width:i[1]+i[3]}},_proportionallyResize:function(){if(this._proportionallyResizeElements.length)for(var t,e=0,i=this.helper||this.element;this._proportionallyResizeElements.length>e;e++)t=this._proportionallyResizeElements[e],this.outerDimensions||(this.outerDimensions=this._getPaddingPlusBorderDimensions(t)),t.css({height:i.height()-this.outerDimensions.height||0,width:i.width()-this.outerDimensions.width||0})},_renderProxy:function(){var e=this.element,i=this.options;this.elementOffset=e.offset(),this._helper?(this.helper=this.helper||t("<div style='overflow:hidden;'></div>"),this._addClass(this.helper,this._helper),this.helper.css({width:this.element.outerWidth(),height:this.element.outerHeight(),position:"absolute",left:this.elementOffset.left+"px",top:this.elementOffset.top+"px",zIndex:++i.zIndex}),this.helper.appendTo("body").disableSelection()):this.helper=this.element},_change:{e:function(t,e){return{width:this.originalSize.width+e}},w:function(t,e){var i=this.originalSize,s=this.originalPosition;return{left:s.left+e,width:i.width-e}},n:function(t,e,i){var s=this.originalSize,n=this.originalPosition;return{top:n.top+i,height:s.height-i}},s:function(t,e,i){return{height:this.originalSize.height+i}},se:function(e,i,s){return t.extend(this._change.s.apply(this,arguments),this._change.e.apply(this,[e,i,s]))},sw:function(e,i,s){return t.extend(this._change.s.apply(this,arguments),this._change.w.apply(this,[e,i,s]))},ne:function(e,i,s){return t.extend(this._change.n.apply(this,arguments),this._change.e.apply(this,[e,i,s]))},nw:function(e,i,s){return t.extend(this._change.n.apply(this,arguments),this._change.w.apply(this,[e,i,s]))}},_propagate:function(e,i){t.ui.plugin.call(this,e,[i,this.ui()]),"resize"!==e&&this._trigger(e,i,this.ui())},plugins:{},ui:function(){return{originalElement:this.originalElement,element:this.element,helper:this.helper,position:this.position,size:this.size,originalSize:this.originalSize,originalPosition:this.originalPosition}}}),t.ui.plugin.add("resizable","animate",{stop:function(e){var i=t(this).resizable("instance"),s=i.options,n=i._proportionallyResizeElements,o=n.length&&/textarea/i.test(n[0].nodeName),a=o&&i._hasScroll(n[0],"left")?0:i.sizeDiff.height,r=o?0:i.sizeDiff.width,l={width:i.size.width-r,height:i.size.height-a},h=parseFloat(i.element.css("left"))+(i.position.left-i.originalPosition.left)||null,c=parseFloat(i.element.css("top"))+(i.position.top-i.originalPosition.top)||null;i.element.animate(t.extend(l,c&&h?{top:c,left:h}:{}),{duration:s.animateDuration,easing:s.animateEasing,step:function(){var s={width:parseFloat(i.element.css("width")),height:parseFloat(i.element.css("height")),top:parseFloat(i.element.css("top")),left:parseFloat(i.element.css("left"))};n&&n.length&&t(n[0]).css({width:s.width,height:s.height}),i._updateCache(s),i._propagate("resize",e)}})}}),t.ui.plugin.add("resizable","containment",{start:function(){var e,i,s,n,o,a,r,l=t(this).resizable("instance"),h=l.options,c=l.element,u=h.containment,d=u instanceof t?u.get(0):/parent/.test(u)?c.parent().get(0):u;d&&(l.containerElement=t(d),/document/.test(u)||u===document?(l.containerOffset={left:0,top:0},l.containerPosition={left:0,top:0},l.parentData={element:t(document),left:0,top:0,width:t(document).width(),height:t(document).height()||document.body.parentNode.scrollHeight}):(e=t(d),i=[],t(["Top","Right","Left","Bottom"]).each(function(t,s){i[t]=l._num(e.css("padding"+s))}),l.containerOffset=e.offset(),l.containerPosition=e.position(),l.containerSize={height:e.innerHeight()-i[3],width:e.innerWidth()-i[1]},s=l.containerOffset,n=l.containerSize.height,o=l.containerSize.width,a=l._hasScroll(d,"left")?d.scrollWidth:o,r=l._hasScroll(d)?d.scrollHeight:n,l.parentData={element:d,left:s.left,top:s.top,width:a,height:r}))},resize:function(e){var i,s,n,o,a=t(this).resizable("instance"),r=a.options,l=a.containerOffset,h=a.position,c=a._aspectRatio||e.shiftKey,u={top:0,left:0},d=a.containerElement,p=!0;d[0]!==document&&/static/.test(d.css("position"))&&(u=l),h.left<(a._helper?l.left:0)&&(a.size.width=a.size.width+(a._helper?a.position.left-l.left:a.position.left-u.left),c&&(a.size.height=a.size.width/a.aspectRatio,p=!1),a.position.left=r.helper?l.left:0),h.top<(a._helper?l.top:0)&&(a.size.height=a.size.height+(a._helper?a.position.top-l.top:a.position.top),c&&(a.size.width=a.size.height*a.aspectRatio,p=!1),a.position.top=a._helper?l.top:0),n=a.containerElement.get(0)===a.element.parent().get(0),o=/relative|absolute/.test(a.containerElement.css("position")),n&&o?(a.offset.left=a.parentData.left+a.position.left,a.offset.top=a.parentData.top+a.position.top):(a.offset.left=a.element.offset().left,a.offset.top=a.element.offset().top),i=Math.abs(a.sizeDiff.width+(a._helper?a.offset.left-u.left:a.offset.left-l.left)),s=Math.abs(a.sizeDiff.height+(a._helper?a.offset.top-u.top:a.offset.top-l.top)),i+a.size.width>=a.parentData.width&&(a.size.width=a.parentData.width-i,c&&(a.size.height=a.size.width/a.aspectRatio,p=!1)),s+a.size.height>=a.parentData.height&&(a.size.height=a.parentData.height-s,c&&(a.size.width=a.size.height*a.aspectRatio,p=!1)),p||(a.position.left=a.prevPosition.left,a.position.top=a.prevPosition.top,a.size.width=a.prevSize.width,a.size.height=a.prevSize.height)},stop:function(){var e=t(this).resizable("instance"),i=e.options,s=e.containerOffset,n=e.containerPosition,o=e.containerElement,a=t(e.helper),r=a.offset(),l=a.outerWidth()-e.sizeDiff.width,h=a.outerHeight()-e.sizeDiff.height;e._helper&&!i.animate&&/relative/.test(o.css("position"))&&t(this).css({left:r.left-n.left-s.left,width:l,height:h}),e._helper&&!i.animate&&/static/.test(o.css("position"))&&t(this).css({left:r.left-n.left-s.left,width:l,height:h})}}),t.ui.plugin.add("resizable","alsoResize",{start:function(){var e=t(this).resizable("instance"),i=e.options;t(i.alsoResize).each(function(){var e=t(this);e.data("ui-resizable-alsoresize",{width:parseFloat(e.width()),height:parseFloat(e.height()),left:parseFloat(e.css("left")),top:parseFloat(e.css("top"))})})},resize:function(e,i){var s=t(this).resizable("instance"),n=s.options,o=s.originalSize,a=s.originalPosition,r={height:s.size.height-o.height||0,width:s.size.width-o.width||0,top:s.position.top-a.top||0,left:s.position.left-a.left||0};t(n.alsoResize).each(function(){var e=t(this),s=t(this).data("ui-resizable-alsoresize"),n={},o=e.parents(i.originalElement[0]).length?["width","height"]:["width","height","top","left"];t.each(o,function(t,e){var i=(s[e]||0)+(r[e]||0);i&&i>=0&&(n[e]=i||null)}),e.css(n)})},stop:function(){t(this).removeData("ui-resizable-alsoresize")}}),t.ui.plugin.add("resizable","ghost",{start:function(){var e=t(this).resizable("instance"),i=e.size;e.ghost=e.originalElement.clone(),e.ghost.css({opacity:.25,display:"block",position:"relative",height:i.height,width:i.width,margin:0,left:0,top:0}),e._addClass(e.ghost,"ui-resizable-ghost"),t.uiBackCompat!==!1&&"string"==typeof e.options.ghost&&e.ghost.addClass(this.options.ghost),e.ghost.appendTo(e.helper)},resize:function(){var e=t(this).resizable("instance");e.ghost&&e.ghost.css({position:"relative",height:e.size.height,width:e.size.width})},stop:function(){var e=t(this).resizable("instance");e.ghost&&e.helper&&e.helper.get(0).removeChild(e.ghost.get(0))}}),t.ui.plugin.add("resizable","grid",{resize:function(){var e,i=t(this).resizable("instance"),s=i.options,n=i.size,o=i.originalSize,a=i.originalPosition,r=i.axis,l="number"==typeof s.grid?[s.grid,s.grid]:s.grid,h=l[0]||1,c=l[1]||1,u=Math.round((n.width-o.width)/h)*h,d=Math.round((n.height-o.height)/c)*c,p=o.width+u,f=o.height+d,g=s.maxWidth&&p>s.maxWidth,m=s.maxHeight&&f>s.maxHeight,_=s.minWidth&&s.minWidth>p,v=s.minHeight&&s.minHeight>f;s.grid=l,_&&(p+=h),v&&(f+=c),g&&(p-=h),m&&(f-=c),/^(se|s|e)$/.test(r)?(i.size.width=p,i.size.height=f):/^(ne)$/.test(r)?(i.size.width=p,i.size.height=f,i.position.top=a.top-d):/^(sw)$/.test(r)?(i.size.width=p,i.size.height=f,i.position.left=a.left-u):((0>=f-c||0>=p-h)&&(e=i._getPaddingPlusBorderDimensions(this)),f-c>0?(i.size.height=f,i.position.top=a.top-d):(f=c-e.height,i.size.height=f,i.position.top=a.top+o.height-f),p-h>0?(i.size.width=p,i.position.left=a.left-u):(p=h-e.width,i.size.width=p,i.position.left=a.left+o.width-p))}}),t.ui.resizable,t.widget("ui.selectable",t.ui.mouse,{version:"1.12.1",options:{appendTo:"body",autoRefresh:!0,distance:0,filter:"*",tolerance:"touch",selected:null,selecting:null,start:null,stop:null,unselected:null,unselecting:null},_create:function(){var e=this;this._addClass("ui-selectable"),this.dragged=!1,this.refresh=function(){e.elementPos=t(e.element[0]).offset(),e.selectees=t(e.options.filter,e.element[0]),e._addClass(e.selectees,"ui-selectee"),e.selectees.each(function(){var i=t(this),s=i.offset(),n={left:s.left-e.elementPos.left,top:s.top-e.elementPos.top};t.data(this,"selectable-item",{element:this,$element:i,left:n.left,top:n.top,right:n.left+i.outerWidth(),bottom:n.top+i.outerHeight(),startselected:!1,selected:i.hasClass("ui-selected"),selecting:i.hasClass("ui-selecting"),unselecting:i.hasClass("ui-unselecting")})})},this.refresh(),this._mouseInit(),this.helper=t("<div>"),this._addClass(this.helper,"ui-selectable-helper")},_destroy:function(){this.selectees.removeData("selectable-item"),this._mouseDestroy()},_mouseStart:function(e){var i=this,s=this.options;this.opos=[e.pageX,e.pageY],this.elementPos=t(this.element[0]).offset(),this.options.disabled||(this.selectees=t(s.filter,this.element[0]),this._trigger("start",e),t(s.appendTo).append(this.helper),this.helper.css({left:e.pageX,top:e.pageY,width:0,height:0}),s.autoRefresh&&this.refresh(),this.selectees.filter(".ui-selected").each(function(){var s=t.data(this,"selectable-item");s.startselected=!0,e.metaKey||e.ctrlKey||(i._removeClass(s.$element,"ui-selected"),s.selected=!1,i._addClass(s.$element,"ui-unselecting"),s.unselecting=!0,i._trigger("unselecting",e,{unselecting:s.element}))}),t(e.target).parents().addBack().each(function(){var s,n=t.data(this,"selectable-item");return n?(s=!e.metaKey&&!e.ctrlKey||!n.$element.hasClass("ui-selected"),i._removeClass(n.$element,s?"ui-unselecting":"ui-selected")._addClass(n.$element,s?"ui-selecting":"ui-unselecting"),n.unselecting=!s,n.selecting=s,n.selected=s,s?i._trigger("selecting",e,{selecting:n.element}):i._trigger("unselecting",e,{unselecting:n.element}),!1):void 0}))},_mouseDrag:function(e){if(this.dragged=!0,!this.options.disabled){var i,s=this,n=this.options,o=this.opos[0],a=this.opos[1],r=e.pageX,l=e.pageY;return o>r&&(i=r,r=o,o=i),a>l&&(i=l,l=a,a=i),this.helper.css({left:o,top:a,width:r-o,height:l-a}),this.selectees.each(function(){var i=t.data(this,"selectable-item"),h=!1,c={};i&&i.element!==s.element[0]&&(c.left=i.left+s.elementPos.left,c.right=i.right+s.elementPos.left,c.top=i.top+s.elementPos.top,c.bottom=i.bottom+s.elementPos.top,"touch"===n.tolerance?h=!(c.left>r||o>c.right||c.top>l||a>c.bottom):"fit"===n.tolerance&&(h=c.left>o&&r>c.right&&c.top>a&&l>c.bottom),h?(i.selected&&(s._removeClass(i.$element,"ui-selected"),i.selected=!1),i.unselecting&&(s._removeClass(i.$element,"ui-unselecting"),i.unselecting=!1),i.selecting||(s._addClass(i.$element,"ui-selecting"),i.selecting=!0,s._trigger("selecting",e,{selecting:i.element}))):(i.selecting&&((e.metaKey||e.ctrlKey)&&i.startselected?(s._removeClass(i.$element,"ui-selecting"),i.selecting=!1,s._addClass(i.$element,"ui-selected"),i.selected=!0):(s._removeClass(i.$element,"ui-selecting"),i.selecting=!1,i.startselected&&(s._addClass(i.$element,"ui-unselecting"),i.unselecting=!0),s._trigger("unselecting",e,{unselecting:i.element}))),i.selected&&(e.metaKey||e.ctrlKey||i.startselected||(s._removeClass(i.$element,"ui-selected"),i.selected=!1,s._addClass(i.$element,"ui-unselecting"),i.unselecting=!0,s._trigger("unselecting",e,{unselecting:i.element})))))}),!1}},_mouseStop:function(e){var i=this;return this.dragged=!1,t(".ui-unselecting",this.element[0]).each(function(){var s=t.data(this,"selectable-item");i._removeClass(s.$element,"ui-unselecting"),s.unselecting=!1,s.startselected=!1,i._trigger("unselected",e,{unselected:s.element})}),t(".ui-selecting",this.element[0]).each(function(){var s=t.data(this,"selectable-item");i._removeClass(s.$element,"ui-selecting")._addClass(s.$element,"ui-selected"),s.selecting=!1,s.selected=!0,s.startselected=!0,i._trigger("selected",e,{selected:s.element})}),this._trigger("stop",e),this.helper.remove(),!1}}),t.widget("ui.sortable",t.ui.mouse,{version:"1.12.1",widgetEventPrefix:"sort",ready:!1,options:{appendTo:"parent",axis:!1,connectWith:!1,containment:!1,cursor:"auto",cursorAt:!1,dropOnEmpty:!0,forcePlaceholderSize:!1,forceHelperSize:!1,grid:!1,handle:!1,helper:"original",items:"> *",opacity:!1,placeholder:!1,revert:!1,scroll:!0,scrollSensitivity:20,scrollSpeed:20,scope:"default",tolerance:"intersect",zIndex:1e3,activate:null,beforeStop:null,change:null,deactivate:null,out:null,over:null,receive:null,remove:null,sort:null,start:null,stop:null,update:null},_isOverAxis:function(t,e,i){return t>=e&&e+i>t},_isFloating:function(t){return/left|right/.test(t.css("float"))||/inline|table-cell/.test(t.css("display"))},_create:function(){this.containerCache={},this._addClass("ui-sortable"),this.refresh(),this.offset=this.element.offset(),this._mouseInit(),this._setHandleClassName(),this.ready=!0},_setOption:function(t,e){this._super(t,e),"handle"===t&&this._setHandleClassName()},_setHandleClassName:function(){var e=this;this._removeClass(this.element.find(".ui-sortable-handle"),"ui-sortable-handle"),t.each(this.items,function(){e._addClass(this.instance.options.handle?this.item.find(this.instance.options.handle):this.item,"ui-sortable-handle")})},_destroy:function(){this._mouseDestroy();for(var t=this.items.length-1;t>=0;t--)this.items[t].item.removeData(this.widgetName+"-item");return this},_mouseCapture:function(e,i){var s=null,n=!1,o=this;return this.reverting?!1:this.options.disabled||"static"===this.options.type?!1:(this._refreshItems(e),t(e.target).parents().each(function(){return t.data(this,o.widgetName+"-item")===o?(s=t(this),!1):void 0}),t.data(e.target,o.widgetName+"-item")===o&&(s=t(e.target)),s?!this.options.handle||i||(t(this.options.handle,s).find("*").addBack().each(function(){this===e.target&&(n=!0)}),n)?(this.currentItem=s,this._removeCurrentsFromItems(),!0):!1:!1)},_mouseStart:function(e,i,s){var n,o,a=this.options;if(this.currentContainer=this,this.refreshPositions(),this.helper=this._createHelper(e),this._cacheHelperProportions(),this._cacheMargins(),this.scrollParent=this.helper.scrollParent(),this.offset=this.currentItem.offset(),this.offset={top:this.offset.top-this.margins.top,left:this.offset.left-this.margins.left},t.extend(this.offset,{click:{left:e.pageX-this.offset.left,top:e.pageY-this.offset.top},parent:this._getParentOffset(),relative:this._getRelativeOffset()}),this.helper.css("position","absolute"),this.cssPosition=this.helper.css("position"),this.originalPosition=this._generatePosition(e),this.originalPageX=e.pageX,this.originalPageY=e.pageY,a.cursorAt&&this._adjustOffsetFromHelper(a.cursorAt),this.domPosition={prev:this.currentItem.prev()[0],parent:this.currentItem.parent()[0]},this.helper[0]!==this.currentItem[0]&&this.currentItem.hide(),this._createPlaceholder(),a.containment&&this._setContainment(),a.cursor&&"auto"!==a.cursor&&(o=this.document.find("body"),this.storedCursor=o.css("cursor"),o.css("cursor",a.cursor),this.storedStylesheet=t("<style>*{ cursor: "+a.cursor+" !important; }</style>").appendTo(o)),a.opacity&&(this.helper.css("opacity")&&(this._storedOpacity=this.helper.css("opacity")),this.helper.css("opacity",a.opacity)),a.zIndex&&(this.helper.css("zIndex")&&(this._storedZIndex=this.helper.css("zIndex")),this.helper.css("zIndex",a.zIndex)),this.scrollParent[0]!==this.document[0]&&"HTML"!==this.scrollParent[0].tagName&&(this.overflowOffset=this.scrollParent.offset()),this._trigger("start",e,this._uiHash()),this._preserveHelperProportions||this._cacheHelperProportions(),!s)for(n=this.containers.length-1;n>=0;n--)this.containers[n]._trigger("activate",e,this._uiHash(this));return t.ui.ddmanager&&(t.ui.ddmanager.current=this),t.ui.ddmanager&&!a.dropBehaviour&&t.ui.ddmanager.prepareOffsets(this,e),this.dragging=!0,this._addClass(this.helper,"ui-sortable-helper"),this._mouseDrag(e),!0},_mouseDrag:function(e){var i,s,n,o,a=this.options,r=!1;for(this.position=this._generatePosition(e),this.positionAbs=this._convertPositionTo("absolute"),this.lastPositionAbs||(this.lastPositionAbs=this.positionAbs),this.options.scroll&&(this.scrollParent[0]!==this.document[0]&&"HTML"!==this.scrollParent[0].tagName?(this.overflowOffset.top+this.scrollParent[0].offsetHeight-e.pageY<a.scrollSensitivity?this.scrollParent[0].scrollTop=r=this.scrollParent[0].scrollTop+a.scrollSpeed:e.pageY-this.overflowOffset.top<a.scrollSensitivity&&(this.scrollParent[0].scrollTop=r=this.scrollParent[0].scrollTop-a.scrollSpeed),this.overflowOffset.left+this.scrollParent[0].offsetWidth-e.pageX<a.scrollSensitivity?this.scrollParent[0].scrollLeft=r=this.scrollParent[0].scrollLeft+a.scrollSpeed:e.pageX-this.overflowOffset.left<a.scrollSensitivity&&(this.scrollParent[0].scrollLeft=r=this.scrollParent[0].scrollLeft-a.scrollSpeed)):(e.pageY-this.document.scrollTop()<a.scrollSensitivity?r=this.document.scrollTop(this.document.scrollTop()-a.scrollSpeed):this.window.height()-(e.pageY-this.document.scrollTop())<a.scrollSensitivity&&(r=this.document.scrollTop(this.document.scrollTop()+a.scrollSpeed)),e.pageX-this.document.scrollLeft()<a.scrollSensitivity?r=this.document.scrollLeft(this.document.scrollLeft()-a.scrollSpeed):this.window.width()-(e.pageX-this.document.scrollLeft())<a.scrollSensitivity&&(r=this.document.scrollLeft(this.document.scrollLeft()+a.scrollSpeed))),r!==!1&&t.ui.ddmanager&&!a.dropBehaviour&&t.ui.ddmanager.prepareOffsets(this,e)),this.positionAbs=this._convertPositionTo("absolute"),this.options.axis&&"y"===this.options.axis||(this.helper[0].style.left=this.position.left+"px"),this.options.axis&&"x"===this.options.axis||(this.helper[0].style.top=this.position.top+"px"),i=this.items.length-1;i>=0;i--)if(s=this.items[i],n=s.item[0],o=this._intersectsWithPointer(s),o&&s.instance===this.currentContainer&&n!==this.currentItem[0]&&this.placeholder[1===o?"next":"prev"]()[0]!==n&&!t.contains(this.placeholder[0],n)&&("semi-dynamic"===this.options.type?!t.contains(this.element[0],n):!0)){if(this.direction=1===o?"down":"up","pointer"!==this.options.tolerance&&!this._intersectsWithSides(s))break;
+        this._rearrange(e,s),this._trigger("change",e,this._uiHash());break}return this._contactContainers(e),t.ui.ddmanager&&t.ui.ddmanager.drag(this,e),this._trigger("sort",e,this._uiHash()),this.lastPositionAbs=this.positionAbs,!1},_mouseStop:function(e,i){if(e){if(t.ui.ddmanager&&!this.options.dropBehaviour&&t.ui.ddmanager.drop(this,e),this.options.revert){var s=this,n=this.placeholder.offset(),o=this.options.axis,a={};o&&"x"!==o||(a.left=n.left-this.offset.parent.left-this.margins.left+(this.offsetParent[0]===this.document[0].body?0:this.offsetParent[0].scrollLeft)),o&&"y"!==o||(a.top=n.top-this.offset.parent.top-this.margins.top+(this.offsetParent[0]===this.document[0].body?0:this.offsetParent[0].scrollTop)),this.reverting=!0,t(this.helper).animate(a,parseInt(this.options.revert,10)||500,function(){s._clear(e)})}else this._clear(e,i);return!1}},cancel:function(){if(this.dragging){this._mouseUp(new t.Event("mouseup",{target:null})),"original"===this.options.helper?(this.currentItem.css(this._storedCSS),this._removeClass(this.currentItem,"ui-sortable-helper")):this.currentItem.show();for(var e=this.containers.length-1;e>=0;e--)this.containers[e]._trigger("deactivate",null,this._uiHash(this)),this.containers[e].containerCache.over&&(this.containers[e]._trigger("out",null,this._uiHash(this)),this.containers[e].containerCache.over=0)}return this.placeholder&&(this.placeholder[0].parentNode&&this.placeholder[0].parentNode.removeChild(this.placeholder[0]),"original"!==this.options.helper&&this.helper&&this.helper[0].parentNode&&this.helper.remove(),t.extend(this,{helper:null,dragging:!1,reverting:!1,_noFinalSort:null}),this.domPosition.prev?t(this.domPosition.prev).after(this.currentItem):t(this.domPosition.parent).prepend(this.currentItem)),this},serialize:function(e){var i=this._getItemsAsjQuery(e&&e.connected),s=[];return e=e||{},t(i).each(function(){var i=(t(e.item||this).attr(e.attribute||"id")||"").match(e.expression||/(.+)[\-=_](.+)/);i&&s.push((e.key||i[1]+"[]")+"="+(e.key&&e.expression?i[1]:i[2]))}),!s.length&&e.key&&s.push(e.key+"="),s.join("&")},toArray:function(e){var i=this._getItemsAsjQuery(e&&e.connected),s=[];return e=e||{},i.each(function(){s.push(t(e.item||this).attr(e.attribute||"id")||"")}),s},_intersectsWith:function(t){var e=this.positionAbs.left,i=e+this.helperProportions.width,s=this.positionAbs.top,n=s+this.helperProportions.height,o=t.left,a=o+t.width,r=t.top,l=r+t.height,h=this.offset.click.top,c=this.offset.click.left,u="x"===this.options.axis||s+h>r&&l>s+h,d="y"===this.options.axis||e+c>o&&a>e+c,p=u&&d;return"pointer"===this.options.tolerance||this.options.forcePointerForContainers||"pointer"!==this.options.tolerance&&this.helperProportions[this.floating?"width":"height"]>t[this.floating?"width":"height"]?p:e+this.helperProportions.width/2>o&&a>i-this.helperProportions.width/2&&s+this.helperProportions.height/2>r&&l>n-this.helperProportions.height/2},_intersectsWithPointer:function(t){var e,i,s="x"===this.options.axis||this._isOverAxis(this.positionAbs.top+this.offset.click.top,t.top,t.height),n="y"===this.options.axis||this._isOverAxis(this.positionAbs.left+this.offset.click.left,t.left,t.width),o=s&&n;return o?(e=this._getDragVerticalDirection(),i=this._getDragHorizontalDirection(),this.floating?"right"===i||"down"===e?2:1:e&&("down"===e?2:1)):!1},_intersectsWithSides:function(t){var e=this._isOverAxis(this.positionAbs.top+this.offset.click.top,t.top+t.height/2,t.height),i=this._isOverAxis(this.positionAbs.left+this.offset.click.left,t.left+t.width/2,t.width),s=this._getDragVerticalDirection(),n=this._getDragHorizontalDirection();return this.floating&&n?"right"===n&&i||"left"===n&&!i:s&&("down"===s&&e||"up"===s&&!e)},_getDragVerticalDirection:function(){var t=this.positionAbs.top-this.lastPositionAbs.top;return 0!==t&&(t>0?"down":"up")},_getDragHorizontalDirection:function(){var t=this.positionAbs.left-this.lastPositionAbs.left;return 0!==t&&(t>0?"right":"left")},refresh:function(t){return this._refreshItems(t),this._setHandleClassName(),this.refreshPositions(),this},_connectWith:function(){var t=this.options;return t.connectWith.constructor===String?[t.connectWith]:t.connectWith},_getItemsAsjQuery:function(e){function i(){r.push(this)}var s,n,o,a,r=[],l=[],h=this._connectWith();if(h&&e)for(s=h.length-1;s>=0;s--)for(o=t(h[s],this.document[0]),n=o.length-1;n>=0;n--)a=t.data(o[n],this.widgetFullName),a&&a!==this&&!a.options.disabled&&l.push([t.isFunction(a.options.items)?a.options.items.call(a.element):t(a.options.items,a.element).not(".ui-sortable-helper").not(".ui-sortable-placeholder"),a]);for(l.push([t.isFunction(this.options.items)?this.options.items.call(this.element,null,{options:this.options,item:this.currentItem}):t(this.options.items,this.element).not(".ui-sortable-helper").not(".ui-sortable-placeholder"),this]),s=l.length-1;s>=0;s--)l[s][0].each(i);return t(r)},_removeCurrentsFromItems:function(){var e=this.currentItem.find(":data("+this.widgetName+"-item)");this.items=t.grep(this.items,function(t){for(var i=0;e.length>i;i++)if(e[i]===t.item[0])return!1;return!0})},_refreshItems:function(e){this.items=[],this.containers=[this];var i,s,n,o,a,r,l,h,c=this.items,u=[[t.isFunction(this.options.items)?this.options.items.call(this.element[0],e,{item:this.currentItem}):t(this.options.items,this.element),this]],d=this._connectWith();if(d&&this.ready)for(i=d.length-1;i>=0;i--)for(n=t(d[i],this.document[0]),s=n.length-1;s>=0;s--)o=t.data(n[s],this.widgetFullName),o&&o!==this&&!o.options.disabled&&(u.push([t.isFunction(o.options.items)?o.options.items.call(o.element[0],e,{item:this.currentItem}):t(o.options.items,o.element),o]),this.containers.push(o));for(i=u.length-1;i>=0;i--)for(a=u[i][1],r=u[i][0],s=0,h=r.length;h>s;s++)l=t(r[s]),l.data(this.widgetName+"-item",a),c.push({item:l,instance:a,width:0,height:0,left:0,top:0})},refreshPositions:function(e){this.floating=this.items.length?"x"===this.options.axis||this._isFloating(this.items[0].item):!1,this.offsetParent&&this.helper&&(this.offset.parent=this._getParentOffset());var i,s,n,o;for(i=this.items.length-1;i>=0;i--)s=this.items[i],s.instance!==this.currentContainer&&this.currentContainer&&s.item[0]!==this.currentItem[0]||(n=this.options.toleranceElement?t(this.options.toleranceElement,s.item):s.item,e||(s.width=n.outerWidth(),s.height=n.outerHeight()),o=n.offset(),s.left=o.left,s.top=o.top);if(this.options.custom&&this.options.custom.refreshContainers)this.options.custom.refreshContainers.call(this);else for(i=this.containers.length-1;i>=0;i--)o=this.containers[i].element.offset(),this.containers[i].containerCache.left=o.left,this.containers[i].containerCache.top=o.top,this.containers[i].containerCache.width=this.containers[i].element.outerWidth(),this.containers[i].containerCache.height=this.containers[i].element.outerHeight();return this},_createPlaceholder:function(e){e=e||this;var i,s=e.options;s.placeholder&&s.placeholder.constructor!==String||(i=s.placeholder,s.placeholder={element:function(){var s=e.currentItem[0].nodeName.toLowerCase(),n=t("<"+s+">",e.document[0]);return e._addClass(n,"ui-sortable-placeholder",i||e.currentItem[0].className)._removeClass(n,"ui-sortable-helper"),"tbody"===s?e._createTrPlaceholder(e.currentItem.find("tr").eq(0),t("<tr>",e.document[0]).appendTo(n)):"tr"===s?e._createTrPlaceholder(e.currentItem,n):"img"===s&&n.attr("src",e.currentItem.attr("src")),i||n.css("visibility","hidden"),n},update:function(t,n){(!i||s.forcePlaceholderSize)&&(n.height()||n.height(e.currentItem.innerHeight()-parseInt(e.currentItem.css("paddingTop")||0,10)-parseInt(e.currentItem.css("paddingBottom")||0,10)),n.width()||n.width(e.currentItem.innerWidth()-parseInt(e.currentItem.css("paddingLeft")||0,10)-parseInt(e.currentItem.css("paddingRight")||0,10)))}}),e.placeholder=t(s.placeholder.element.call(e.element,e.currentItem)),e.currentItem.after(e.placeholder),s.placeholder.update(e,e.placeholder)},_createTrPlaceholder:function(e,i){var s=this;e.children().each(function(){t("<td>&#160;</td>",s.document[0]).attr("colspan",t(this).attr("colspan")||1).appendTo(i)})},_contactContainers:function(e){var i,s,n,o,a,r,l,h,c,u,d=null,p=null;for(i=this.containers.length-1;i>=0;i--)if(!t.contains(this.currentItem[0],this.containers[i].element[0]))if(this._intersectsWith(this.containers[i].containerCache)){if(d&&t.contains(this.containers[i].element[0],d.element[0]))continue;d=this.containers[i],p=i}else this.containers[i].containerCache.over&&(this.containers[i]._trigger("out",e,this._uiHash(this)),this.containers[i].containerCache.over=0);if(d)if(1===this.containers.length)this.containers[p].containerCache.over||(this.containers[p]._trigger("over",e,this._uiHash(this)),this.containers[p].containerCache.over=1);else{for(n=1e4,o=null,c=d.floating||this._isFloating(this.currentItem),a=c?"left":"top",r=c?"width":"height",u=c?"pageX":"pageY",s=this.items.length-1;s>=0;s--)t.contains(this.containers[p].element[0],this.items[s].item[0])&&this.items[s].item[0]!==this.currentItem[0]&&(l=this.items[s].item.offset()[a],h=!1,e[u]-l>this.items[s][r]/2&&(h=!0),n>Math.abs(e[u]-l)&&(n=Math.abs(e[u]-l),o=this.items[s],this.direction=h?"up":"down"));if(!o&&!this.options.dropOnEmpty)return;if(this.currentContainer===this.containers[p])return this.currentContainer.containerCache.over||(this.containers[p]._trigger("over",e,this._uiHash()),this.currentContainer.containerCache.over=1),void 0;o?this._rearrange(e,o,null,!0):this._rearrange(e,null,this.containers[p].element,!0),this._trigger("change",e,this._uiHash()),this.containers[p]._trigger("change",e,this._uiHash(this)),this.currentContainer=this.containers[p],this.options.placeholder.update(this.currentContainer,this.placeholder),this.containers[p]._trigger("over",e,this._uiHash(this)),this.containers[p].containerCache.over=1}},_createHelper:function(e){var i=this.options,s=t.isFunction(i.helper)?t(i.helper.apply(this.element[0],[e,this.currentItem])):"clone"===i.helper?this.currentItem.clone():this.currentItem;return s.parents("body").length||t("parent"!==i.appendTo?i.appendTo:this.currentItem[0].parentNode)[0].appendChild(s[0]),s[0]===this.currentItem[0]&&(this._storedCSS={width:this.currentItem[0].style.width,height:this.currentItem[0].style.height,position:this.currentItem.css("position"),top:this.currentItem.css("top"),left:this.currentItem.css("left")}),(!s[0].style.width||i.forceHelperSize)&&s.width(this.currentItem.width()),(!s[0].style.height||i.forceHelperSize)&&s.height(this.currentItem.height()),s},_adjustOffsetFromHelper:function(e){"string"==typeof e&&(e=e.split(" ")),t.isArray(e)&&(e={left:+e[0],top:+e[1]||0}),"left"in e&&(this.offset.click.left=e.left+this.margins.left),"right"in e&&(this.offset.click.left=this.helperProportions.width-e.right+this.margins.left),"top"in e&&(this.offset.click.top=e.top+this.margins.top),"bottom"in e&&(this.offset.click.top=this.helperProportions.height-e.bottom+this.margins.top)},_getParentOffset:function(){this.offsetParent=this.helper.offsetParent();var e=this.offsetParent.offset();return"absolute"===this.cssPosition&&this.scrollParent[0]!==this.document[0]&&t.contains(this.scrollParent[0],this.offsetParent[0])&&(e.left+=this.scrollParent.scrollLeft(),e.top+=this.scrollParent.scrollTop()),(this.offsetParent[0]===this.document[0].body||this.offsetParent[0].tagName&&"html"===this.offsetParent[0].tagName.toLowerCase()&&t.ui.ie)&&(e={top:0,left:0}),{top:e.top+(parseInt(this.offsetParent.css("borderTopWidth"),10)||0),left:e.left+(parseInt(this.offsetParent.css("borderLeftWidth"),10)||0)}},_getRelativeOffset:function(){if("relative"===this.cssPosition){var t=this.currentItem.position();return{top:t.top-(parseInt(this.helper.css("top"),10)||0)+this.scrollParent.scrollTop(),left:t.left-(parseInt(this.helper.css("left"),10)||0)+this.scrollParent.scrollLeft()}}return{top:0,left:0}},_cacheMargins:function(){this.margins={left:parseInt(this.currentItem.css("marginLeft"),10)||0,top:parseInt(this.currentItem.css("marginTop"),10)||0}},_cacheHelperProportions:function(){this.helperProportions={width:this.helper.outerWidth(),height:this.helper.outerHeight()}},_setContainment:function(){var e,i,s,n=this.options;"parent"===n.containment&&(n.containment=this.helper[0].parentNode),("document"===n.containment||"window"===n.containment)&&(this.containment=[0-this.offset.relative.left-this.offset.parent.left,0-this.offset.relative.top-this.offset.parent.top,"document"===n.containment?this.document.width():this.window.width()-this.helperProportions.width-this.margins.left,("document"===n.containment?this.document.height()||document.body.parentNode.scrollHeight:this.window.height()||this.document[0].body.parentNode.scrollHeight)-this.helperProportions.height-this.margins.top]),/^(document|window|parent)$/.test(n.containment)||(e=t(n.containment)[0],i=t(n.containment).offset(),s="hidden"!==t(e).css("overflow"),this.containment=[i.left+(parseInt(t(e).css("borderLeftWidth"),10)||0)+(parseInt(t(e).css("paddingLeft"),10)||0)-this.margins.left,i.top+(parseInt(t(e).css("borderTopWidth"),10)||0)+(parseInt(t(e).css("paddingTop"),10)||0)-this.margins.top,i.left+(s?Math.max(e.scrollWidth,e.offsetWidth):e.offsetWidth)-(parseInt(t(e).css("borderLeftWidth"),10)||0)-(parseInt(t(e).css("paddingRight"),10)||0)-this.helperProportions.width-this.margins.left,i.top+(s?Math.max(e.scrollHeight,e.offsetHeight):e.offsetHeight)-(parseInt(t(e).css("borderTopWidth"),10)||0)-(parseInt(t(e).css("paddingBottom"),10)||0)-this.helperProportions.height-this.margins.top])},_convertPositionTo:function(e,i){i||(i=this.position);var s="absolute"===e?1:-1,n="absolute"!==this.cssPosition||this.scrollParent[0]!==this.document[0]&&t.contains(this.scrollParent[0],this.offsetParent[0])?this.scrollParent:this.offsetParent,o=/(html|body)/i.test(n[0].tagName);return{top:i.top+this.offset.relative.top*s+this.offset.parent.top*s-("fixed"===this.cssPosition?-this.scrollParent.scrollTop():o?0:n.scrollTop())*s,left:i.left+this.offset.relative.left*s+this.offset.parent.left*s-("fixed"===this.cssPosition?-this.scrollParent.scrollLeft():o?0:n.scrollLeft())*s}},_generatePosition:function(e){var i,s,n=this.options,o=e.pageX,a=e.pageY,r="absolute"!==this.cssPosition||this.scrollParent[0]!==this.document[0]&&t.contains(this.scrollParent[0],this.offsetParent[0])?this.scrollParent:this.offsetParent,l=/(html|body)/i.test(r[0].tagName);return"relative"!==this.cssPosition||this.scrollParent[0]!==this.document[0]&&this.scrollParent[0]!==this.offsetParent[0]||(this.offset.relative=this._getRelativeOffset()),this.originalPosition&&(this.containment&&(e.pageX-this.offset.click.left<this.containment[0]&&(o=this.containment[0]+this.offset.click.left),e.pageY-this.offset.click.top<this.containment[1]&&(a=this.containment[1]+this.offset.click.top),e.pageX-this.offset.click.left>this.containment[2]&&(o=this.containment[2]+this.offset.click.left),e.pageY-this.offset.click.top>this.containment[3]&&(a=this.containment[3]+this.offset.click.top)),n.grid&&(i=this.originalPageY+Math.round((a-this.originalPageY)/n.grid[1])*n.grid[1],a=this.containment?i-this.offset.click.top>=this.containment[1]&&i-this.offset.click.top<=this.containment[3]?i:i-this.offset.click.top>=this.containment[1]?i-n.grid[1]:i+n.grid[1]:i,s=this.originalPageX+Math.round((o-this.originalPageX)/n.grid[0])*n.grid[0],o=this.containment?s-this.offset.click.left>=this.containment[0]&&s-this.offset.click.left<=this.containment[2]?s:s-this.offset.click.left>=this.containment[0]?s-n.grid[0]:s+n.grid[0]:s)),{top:a-this.offset.click.top-this.offset.relative.top-this.offset.parent.top+("fixed"===this.cssPosition?-this.scrollParent.scrollTop():l?0:r.scrollTop()),left:o-this.offset.click.left-this.offset.relative.left-this.offset.parent.left+("fixed"===this.cssPosition?-this.scrollParent.scrollLeft():l?0:r.scrollLeft())}},_rearrange:function(t,e,i,s){i?i[0].appendChild(this.placeholder[0]):e.item[0].parentNode.insertBefore(this.placeholder[0],"down"===this.direction?e.item[0]:e.item[0].nextSibling),this.counter=this.counter?++this.counter:1;var n=this.counter;this._delay(function(){n===this.counter&&this.refreshPositions(!s)})},_clear:function(t,e){function i(t,e,i){return function(s){i._trigger(t,s,e._uiHash(e))}}this.reverting=!1;var s,n=[];if(!this._noFinalSort&&this.currentItem.parent().length&&this.placeholder.before(this.currentItem),this._noFinalSort=null,this.helper[0]===this.currentItem[0]){for(s in this._storedCSS)("auto"===this._storedCSS[s]||"static"===this._storedCSS[s])&&(this._storedCSS[s]="");this.currentItem.css(this._storedCSS),this._removeClass(this.currentItem,"ui-sortable-helper")}else this.currentItem.show();for(this.fromOutside&&!e&&n.push(function(t){this._trigger("receive",t,this._uiHash(this.fromOutside))}),!this.fromOutside&&this.domPosition.prev===this.currentItem.prev().not(".ui-sortable-helper")[0]&&this.domPosition.parent===this.currentItem.parent()[0]||e||n.push(function(t){this._trigger("update",t,this._uiHash())}),this!==this.currentContainer&&(e||(n.push(function(t){this._trigger("remove",t,this._uiHash())}),n.push(function(t){return function(e){t._trigger("receive",e,this._uiHash(this))}}.call(this,this.currentContainer)),n.push(function(t){return function(e){t._trigger("update",e,this._uiHash(this))}}.call(this,this.currentContainer)))),s=this.containers.length-1;s>=0;s--)e||n.push(i("deactivate",this,this.containers[s])),this.containers[s].containerCache.over&&(n.push(i("out",this,this.containers[s])),this.containers[s].containerCache.over=0);if(this.storedCursor&&(this.document.find("body").css("cursor",this.storedCursor),this.storedStylesheet.remove()),this._storedOpacity&&this.helper.css("opacity",this._storedOpacity),this._storedZIndex&&this.helper.css("zIndex","auto"===this._storedZIndex?"":this._storedZIndex),this.dragging=!1,e||this._trigger("beforeStop",t,this._uiHash()),this.placeholder[0].parentNode.removeChild(this.placeholder[0]),this.cancelHelperRemoval||(this.helper[0]!==this.currentItem[0]&&this.helper.remove(),this.helper=null),!e){for(s=0;n.length>s;s++)n[s].call(this,t);this._trigger("stop",t,this._uiHash())}return this.fromOutside=!1,!this.cancelHelperRemoval},_trigger:function(){t.Widget.prototype._trigger.apply(this,arguments)===!1&&this.cancel()},_uiHash:function(e){var i=e||this;return{helper:i.helper,placeholder:i.placeholder||t([]),position:i.position,originalPosition:i.originalPosition,offset:i.positionAbs,item:i.currentItem,sender:e?e.element:null}}})});
         ;
         
         // source: plugin/systemcommandeditor/js/systemcommandeditor.js
@@ -7709,12 +6253,35 @@
                     }
         
                     self.element(ko.mapping.fromJS(element));
-                }
+                };
+        
                 self.show = function (f) {
                     var dialog = $("#systemCommandEditorDialog");
-                    var primarybtn = $('div.modal-footer .btn-primary', dialog);
+                    var from = $('#systemCommandEditorDialogForm', dialog);
         
-                    primarybtn.unbind('click').bind('click', function (e) {
+                    from.on('submit', function (e) {
+                        var name = $('#systemCommandEditorDialog_Name');
+                        var action = $('#systemCommandEditorDialog_Action');
+        
+                        var error = false;
+        
+                        if (!name.val()) {
+                            name.closest('.control-group').removeClass('success').addClass('error');
+        
+                            error = true;
+                        }
+                        if (!action.val()) {
+                            action.closest('.control-group').removeClass('success').addClass('error');
+        
+                            error = true;
+                        }
+        
+                        if (error) {
+                            e.preventDefault();
+                            return;
+                        }
+        
+                        dialog.modal('hide');
                         var obj = ko.mapping.toJS(self.element);
         
                         if (!self.useConfirm())
@@ -7728,7 +6295,7 @@
                         backdrop: 'static',
                         keyboard: false
                     });
-                }
+                };
             }
         
             // view model class, parameters for constructor, container to bind to
@@ -7742,6 +6309,18 @@
         
     } catch (error) {
         log.error("Error in JS assets for plugin systemcommandeditor:", (error.stack || error));
+    }
+})();
+
+// JS assets for plugin themeify
+(function () {
+    try {
+        // source: plugin/themeify/dist/themeify.min.js
+        !function(e){function t(o){if(n[o])return n[o].exports;var s=n[o]={i:o,l:!1,exports:{}};return e[o].call(s.exports,s,s.exports,t),s.l=!0,s.exports}var n={};t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=0)}([function(e,t,n){n(1),e.exports=n(2)},function(e,t){function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}$(function(){function e(e){var t=this;t.classId="themeify",t.settings=e[0],t.ownSettings={},t.customRules=[],t.customizedElements=[],t.builtInElements=[],t._ownSettingsPrev={},t.configSubscriptions={enabled:"",theme:""},t.tabIcons={},t.oldTabContent={};var o=function(e){return t._ownSettingsPrev[e]};t.onStartupComplete=function(){var e=$("html").attr("id");e&&"touch"==e&&$("html").removeClass(t.classId),t.updateColors(),t._updateCustomRules()},t.setupIcons=function(){t.tabIcons.tabs().filter(function(e){return e.domId()&&e.enabled()}).map(function(e,n){var o=e.domId,s=(e.enabled,e.faIcon),l=$("<i>",{class:s()}),i=$("".concat(o()," a"));i&&"tabs"===i.closest("ul").attr("id")?(t.oldTabContent[o()]=$("".concat(o()," a")).html(),i.html(l)):console.warn("Themeify: Failed to add icon! ".concat(o()," is not a child of the tab-list!"))})},t.restoreTabs=function(){t.tabIcons.tabs().filter(function(e){return e.domId()}).map(function(e,n){var o=e.domId,s=(e.enabled,e.faIcon,t.oldTabContent[o()]);s&&$("".concat(o()," a")).html(s)})},t.enableBeforeLoaded=function(){var e=localStorage.getItem("theme");e&&$("html").addClass(t.classId).addClass(e)},t.enable=function(){if(t.ownSettings.enabled()&&"touch"!==$("html").attr("id")){var e=t.ownSettings.theme();localStorage.setItem("theme",e),$("html").addClass(t.classId).addClass(t.ownSettings.theme())}},t.addNewCustomRule=function(){var e={selector:ko.observable(""),rule:ko.observable(""),value:ko.observable(""),enabled:ko.observable(!0)};t._subscribeToDictValues(e,"customRules"),t.ownSettings.customRules.push(e)},t.addNewIcon=function(){var e={domId:ko.observable(""),enabled:ko.observable(!0),faIcon:ko.observable("")};t._subscribeToDictValues(e,"tabs"),t.tabIcons.tabs.push(e)},t.onBeforeBinding=function(){t.settings=t.settings.settings,t.ownSettings=t.settings.plugins.themeify,t.customRules=t.ownSettings.customRules.extend({rateLimit:50}),t.onRuleToggle=t.onRuleToggle,t.tabIcons={enabled:t.ownSettings.tabs.enableIcons,tabs:t.ownSettings.tabs.icons},t.tabIcons.enabled()&&t.setupIcons(),t.enable(),t._copyOwnSettings()},t.updateColors=function(){t._removeBuiltInStyles(),t.ownSettings.enableCustomization()&&t.ownSettings.color().filter(function(e){return!!e.enabled()}).map(function(e,n){t._applyRule(e,!0)})},t._updateCustomRules=function(){t._removeCustomStyles(),t.updateColors(),t.ownSettings.enableCustomization()&&t.ownSettings.customRules().filter(function(e){return!!e.enabled()}).map(function(e){t._applyRule(e)})},t._applyRule=function(e){var n=arguments.length>1&&void 0!==arguments[1]&&arguments[1],o=$(e.selector()),s=o.css(e.rule());n?t.builtInElements.push({elem:o,rule:e.rule(),old:s}):t.customizedElements.push({elem:o,rule:e.rule(),old:s}),$(e.selector()).css(e.rule(),e.value())},t.clone=function(e){if("function"==typeof e)return e();if(null===e||"object"!==n(e)||"isActiveClone"in e)return e;if(e instanceof Date)var o=new e.constructor;else var o=e.constructor();for(var s in e)Object.prototype.hasOwnProperty.call(e,s)&&(e.isActiveClone=null,o[s]=t.clone(e[s]),delete e.isActiveClone);return o},t._copyOwnSettings=function(){Object.keys(t.ownSettings).forEach(function(e,n){t._ownSettingsPrev[e]=t.clone(t.ownSettings[e])})},t.onChange=function(e,n){t.updateColors(),t._copyOwnSettings()},t.onColorChange=function(e,n){t.updateColors(),t._copyOwnSettings()},t.onCustomRuleChange=function(e){t.updateColors(),e.rule()&&e.selector()&&e.value()&&t._updateCustomRules()},t.onThemeChange=function(e){var n=o("theme");(function(e){return $("html").hasClass(e)})(e)||(localStorage.setItem("theme",e),$("html").addClass(e).removeClass(n)),t._copyOwnSettings()},t.onEnabledChange=function(e){if(e&&"touch"!==$("html").attr("id")){var n=t.ownSettings.theme();$("html").addClass(t.classId).addClass(n),localStorage.setItem("theme",n)}else $("html").removeClass(t.classId),localStorage.setItem("theme",!1);t._copyOwnSettings()},t.onEnableCustomizationChange=function(e){e?(t.updateColors(),t._updateCustomRules()):(t._removeBuiltInStyles(),t._removeCustomStyles()),t._copyOwnSettings()},t.onIconsEnableChange=function(e){e?t.setupIcons():t.restoreTabs()},t.onIconChange=function(e,n,o){t.tabIcons.enabled()&&("enabled"!==o||n||t.restoreTabs(),t.setupIcons())},t._removeCustomStyles=function(){t.customizedElements.map(function(e){return e.elem.css(e.rule,"")})},t._removeBuiltInStyles=function(){t.builtInElements.map(function(e){return e.elem.css(e.rule,"")})},t._removeCustomStylesByRule=function(e){$(e.selector()).css(e.rule(),"")},t.onRuleToggle=function(e){e.enabled(!e.enabled())},t.ruleIsDeleteable=function(e){return!e.deletable||"function"!=typeof e.deletable||e.deletable()},t.onCustomRuleDelete=function(e){t.ruleIsDeleteable(e)&&(t.customRules.remove(e),t._updateCustomRules())},t.onIconDelete=function(e){t.restoreTabs(),t.tabIcons.tabs.remove(e),t.setupIcons()},t._subscribeToDictValues=function(e,n,o){var s=o?o.bind(this,e):t.onCustomRuleChange.bind(this,e);Object.keys(e).map(function(o){t.configSubscriptions[n].push(e[o].subscribe(function(e){return s(e,o)}))})},t.onSettingsShown=function(){var e=this;Object.keys(t.ownSettings).map(function(n,o){if("customRules"==n)t.configSubscriptions[n]=[],t.customRules().map(function(e,o){t._subscribeToDictValues(e,n)});else if("color"==n){t.configSubscriptions[n]=[];var s=t.onColorChange;t.ownSettings.color().map(function(e,o){t._subscribeToDictValues(e,n,s)})}else if("tabs"==n){var l=t.configSubscriptions[n]=[],i=t.tabIcons,u=i.enabled,a=i.tabs;l.push(u.subscribe(t.onIconsEnableChange)),a().map(function(e,o){t._subscribeToDictValues(e,n,t.onIconChange)})}else{var c=t.configOnChangeMap[n]?t.configOnChangeMap[n]:t.onChange.bind(e,n);t.configSubscriptions[n]=t.ownSettings[n].subscribe(c)}})},t.onSettingsHidden=function(){Object.keys(t.configSubscriptions).map(function(e,n){Array.isArray(t.configSubscriptions[e])?t.configSubscriptions[e].forEach(function(e){e.dispose()}):t.configSubscriptions[e].dispose()})},t.enableBeforeLoaded(),t.configOnChangeMap={enabled:t.onEnabledChange,theme:t.onThemeChange,enableCustomization:t.onEnableCustomizationChange}}OCTOPRINT_VIEWMODELS.push([e,["settingsViewModel"],["#settings_plugin_themeify"]])})},function(e,t){}]);
+        ;
+        
+    } catch (error) {
+        log.error("Error in JS assets for plugin themeify:", (error.stack || error));
     }
 })();
 
@@ -7762,15 +6341,15 @@
         function d(b){var c,a;if(!this.length)return this;c=this[0];c.ownerDocument?a=c.ownerDocument:(a=c,c=a.documentElement);if(null==b){if(!a.cancelFullScreen&&!a.webkitCancelFullScreen&&!a.mozCancelFullScreen)return null;b=!!a.fullScreen||!!a.webkitIsFullScreen||!!a.mozFullScreen;return!b?b:a.fullScreenElement||a.webkitCurrentFullScreenElement||a.mozFullScreenElement||b}b?(b=c.requestFullScreen||c.webkitRequestFullScreen||c.mozRequestFullScreen)&&b.call(c,Element.ALLOW_KEYBOARD_INPUT):(b=a.cancelFullScreen||
         a.webkitCancelFullScreen||a.mozCancelFullScreen)&&b.call(a);return this}jQuery.fn.fullScreen=d;jQuery.fn.toggleFullScreen=function(){return d.call(this,!d.call(this))};var e,f,g;e=document;e.webkitCancelFullScreen?(f="webkitfullscreenchange",g="webkitfullscreenerror"):e.mozCancelFullScreen?(f="mozfullscreenchange",g="mozfullscreenerror"):(f="fullscreenchange",g="fullscreenerror");jQuery(document).bind(f,function(){jQuery(document).trigger(new jQuery.Event("fullscreenchange"))});
         jQuery(document).bind(g,function(){jQuery(document).trigger(new jQuery.Event("fullscreenerror"))});
-        !function(t,i,s){function e(s,e){this.wrapper="string"==typeof s?i.querySelector(s):s,this.scroller=this.wrapper.children[0],this.scrollerStyle=this.scroller.style,this.options={resizeScrollbars:!0,mouseWheelSpeed:20,snapThreshold:.334,disablePointer:!h.hasPointer,disableTouch:h.hasPointer||!h.hasTouch,disableMouse:h.hasPointer||h.hasTouch,startX:0,startY:0,scrollY:!0,directionLockThreshold:5,momentum:!0,bounce:!0,bounceTime:600,bounceEasing:"",preventDefault:!0,preventDefaultException:{tagName:/^(INPUT|TEXTAREA|BUTTON|SELECT)$/},HWCompositing:!0,useTransition:!0,useTransform:!0,bindToWrapper:"undefined"==typeof t.onmousedown};for(var o in e)this.options[o]=e[o];this.translateZ=this.options.HWCompositing&&h.hasPerspective?" translateZ(0)":"",this.options.useTransition=h.hasTransition&&this.options.useTransition,this.options.useTransform=h.hasTransform&&this.options.useTransform,this.options.eventPassthrough=this.options.eventPassthrough===!0?"vertical":this.options.eventPassthrough,this.options.preventDefault=!this.options.eventPassthrough&&this.options.preventDefault,this.options.scrollY="vertical"==this.options.eventPassthrough?!1:this.options.scrollY,this.options.scrollX="horizontal"==this.options.eventPassthrough?!1:this.options.scrollX,this.options.freeScroll=this.options.freeScroll&&!this.options.eventPassthrough,this.options.directionLockThreshold=this.options.eventPassthrough?0:this.options.directionLockThreshold,this.options.bounceEasing="string"==typeof this.options.bounceEasing?h.ease[this.options.bounceEasing]||h.ease.circular:this.options.bounceEasing,this.options.resizePolling=void 0===this.options.resizePolling?60:this.options.resizePolling,this.options.tap===!0&&(this.options.tap="tap"),"scale"==this.options.shrinkScrollbars&&(this.options.useTransition=!1),this.options.invertWheelDirection=this.options.invertWheelDirection?-1:1,this.x=0,this.y=0,this.directionX=0,this.directionY=0,this._events={},this._init(),this.refresh(),this.scrollTo(this.options.startX,this.options.startY),this.enable()}function o(t,s,e){var o=i.createElement("div"),n=i.createElement("div");return e===!0&&(o.style.cssText="position:absolute;z-index:9999",n.style.cssText="-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.9);border-radius:3px"),n.className="iScrollIndicator","h"==t?(e===!0&&(o.style.cssText+=";height:7px;left:2px;right:2px;bottom:0",n.style.height="100%"),o.className="iScrollHorizontalScrollbar"):(e===!0&&(o.style.cssText+=";width:7px;bottom:2px;top:2px;right:1px",n.style.width="100%"),o.className="iScrollVerticalScrollbar"),o.style.cssText+=";overflow:hidden",s||(o.style.pointerEvents="none"),o.appendChild(n),o}function n(s,e){this.wrapper="string"==typeof e.el?i.querySelector(e.el):e.el,this.wrapperStyle=this.wrapper.style,this.indicator=this.wrapper.children[0],this.indicatorStyle=this.indicator.style,this.scroller=s,this.options={listenX:!0,listenY:!0,interactive:!1,resize:!0,defaultScrollbars:!1,shrink:!1,fade:!1,speedRatioX:0,speedRatioY:0};for(var o in e)this.options[o]=e[o];if(this.sizeRatioX=1,this.sizeRatioY=1,this.maxPosX=0,this.maxPosY=0,this.options.interactive&&(this.options.disableTouch||(h.addEvent(this.indicator,"touchstart",this),h.addEvent(t,"touchend",this)),this.options.disablePointer||(h.addEvent(this.indicator,h.prefixPointerEvent("pointerdown"),this),h.addEvent(t,h.prefixPointerEvent("pointerup"),this)),this.options.disableMouse||(h.addEvent(this.indicator,"mousedown",this),h.addEvent(t,"mouseup",this))),this.options.fade){this.wrapperStyle[h.style.transform]=this.scroller.translateZ;var n=h.style.transitionDuration;this.wrapperStyle[n]=h.isBadAndroid?"0.0001ms":"0ms";var a=this;h.isBadAndroid&&r(function(){"0.0001ms"===a.wrapperStyle[n]&&(a.wrapperStyle[n]="0s")}),this.wrapperStyle.opacity="0"}}var r=t.requestAnimationFrame||t.webkitRequestAnimationFrame||t.mozRequestAnimationFrame||t.oRequestAnimationFrame||t.msRequestAnimationFrame||function(i){t.setTimeout(i,1e3/60)},h=function(){function e(t){return r===!1?!1:""===r?t:r+t.charAt(0).toUpperCase()+t.substr(1)}var o={},n=i.createElement("div").style,r=function(){for(var t,i=["t","webkitT","MozT","msT","OT"],s=0,e=i.length;e>s;s++)if(t=i[s]+"ransform",t in n)return i[s].substr(0,i[s].length-1);return!1}();o.getTime=Date.now||function(){return(new Date).getTime()},o.extend=function(t,i){for(var s in i)t[s]=i[s]},o.addEvent=function(t,i,s,e){t.addEventListener(i,s,!!e)},o.removeEvent=function(t,i,s,e){t.removeEventListener(i,s,!!e)},o.prefixPointerEvent=function(i){return t.MSPointerEvent?"MSPointer"+i.charAt(7).toUpperCase()+i.substr(8):i},o.momentum=function(t,i,e,o,n,r){var h,a,l=t-i,c=s.abs(l)/e;return r=void 0===r?6e-4:r,h=t+c*c/(2*r)*(0>l?-1:1),a=c/r,o>h?(h=n?o-n/2.5*(c/8):o,l=s.abs(h-t),a=l/c):h>0&&(h=n?n/2.5*(c/8):0,l=s.abs(t)+h,a=l/c),{destination:s.round(h),duration:a}};var h=e("transform");return o.extend(o,{hasTransform:h!==!1,hasPerspective:e("perspective")in n,hasTouch:"ontouchstart"in t,hasPointer:!(!t.PointerEvent&&!t.MSPointerEvent),hasTransition:e("transition")in n}),o.isBadAndroid=function(){var i=t.navigator.appVersion;if(/Android/.test(i)&&!/Chrome\/\d/.test(i)){var s=i.match(/Safari\/(\d+.\d)/);return s&&"object"==typeof s&&s.length>=2?parseFloat(s[1])<535.19:!0}return!1}(),o.extend(o.style={},{transform:h,transitionTimingFunction:e("transitionTimingFunction"),transitionDuration:e("transitionDuration"),transitionDelay:e("transitionDelay"),transformOrigin:e("transformOrigin")}),o.hasClass=function(t,i){var s=new RegExp("(^|\\s)"+i+"(\\s|$)");return s.test(t.className)},o.addClass=function(t,i){if(!o.hasClass(t,i)){var s=t.className.split(" ");s.push(i),t.className=s.join(" ")}},o.removeClass=function(t,i){if(o.hasClass(t,i)){var s=new RegExp("(^|\\s)"+i+"(\\s|$)","g");t.className=t.className.replace(s," ")}},o.offset=function(t){for(var i=-t.offsetLeft,s=-t.offsetTop;t=t.offsetParent;)i-=t.offsetLeft,s-=t.offsetTop;return{left:i,top:s}},o.preventDefaultException=function(t,i){for(var s in i)if(i[s].test(t[s]))return!0;return!1},o.extend(o.eventType={},{touchstart:1,touchmove:1,touchend:1,mousedown:2,mousemove:2,mouseup:2,pointerdown:3,pointermove:3,pointerup:3,MSPointerDown:3,MSPointerMove:3,MSPointerUp:3}),o.extend(o.ease={},{quadratic:{style:"cubic-bezier(0.25, 0.46, 0.45, 0.94)",fn:function(t){return t*(2-t)}},circular:{style:"cubic-bezier(0.1, 0.57, 0.1, 1)",fn:function(t){return s.sqrt(1- --t*t)}},back:{style:"cubic-bezier(0.175, 0.885, 0.32, 1.275)",fn:function(t){var i=4;return(t-=1)*t*((i+1)*t+i)+1}},bounce:{style:"",fn:function(t){return(t/=1)<1/2.75?7.5625*t*t:2/2.75>t?7.5625*(t-=1.5/2.75)*t+.75:2.5/2.75>t?7.5625*(t-=2.25/2.75)*t+.9375:7.5625*(t-=2.625/2.75)*t+.984375}},elastic:{style:"",fn:function(t){var i=.22,e=.4;return 0===t?0:1==t?1:e*s.pow(2,-10*t)*s.sin((t-i/4)*(2*s.PI)/i)+1}}}),o.tap=function(t,s){var e=i.createEvent("Event");e.initEvent(s,!0,!0),e.pageX=t.pageX,e.pageY=t.pageY,t.target.dispatchEvent(e)},o.click=function(t){var s,e=t.target;/(SELECT|INPUT|TEXTAREA)/i.test(e.tagName)||(s=i.createEvent("MouseEvents"),s.initMouseEvent("click",!0,!0,t.view,1,e.screenX,e.screenY,e.clientX,e.clientY,t.ctrlKey,t.altKey,t.shiftKey,t.metaKey,0,null),s._constructed=!0,e.dispatchEvent(s))},o}();e.prototype={version:"5.2.0",_init:function(){this._initEvents(),(this.options.scrollbars||this.options.indicators)&&this._initIndicators(),this.options.mouseWheel&&this._initWheel(),this.options.snap&&this._initSnap(),this.options.keyBindings&&this._initKeys()},destroy:function(){this._initEvents(!0),clearTimeout(this.resizeTimeout),this.resizeTimeout=null,this._execEvent("destroy")},_transitionEnd:function(t){t.target==this.scroller&&this.isInTransition&&(this._transitionTime(),this.resetPosition(this.options.bounceTime)||(this.isInTransition=!1,this._execEvent("scrollEnd")))},_start:function(t){if(1!=h.eventType[t.type]){var i;if(i=t.which?t.button:t.button<2?0:4==t.button?1:2,0!==i)return}if(this.enabled&&(!this.initiated||h.eventType[t.type]===this.initiated)){!this.options.preventDefault||h.isBadAndroid||h.preventDefaultException(t.target,this.options.preventDefaultException)||t.preventDefault();var e,o=t.touches?t.touches[0]:t;this.initiated=h.eventType[t.type],this.moved=!1,this.distX=0,this.distY=0,this.directionX=0,this.directionY=0,this.directionLocked=0,this.startTime=h.getTime(),this.options.useTransition&&this.isInTransition?(this._transitionTime(),this.isInTransition=!1,e=this.getComputedPosition(),this._translate(s.round(e.x),s.round(e.y)),this._execEvent("scrollEnd")):!this.options.useTransition&&this.isAnimating&&(this.isAnimating=!1,this._execEvent("scrollEnd")),this.startX=this.x,this.startY=this.y,this.absStartX=this.x,this.absStartY=this.y,this.pointX=o.pageX,this.pointY=o.pageY,this._execEvent("beforeScrollStart")}},_move:function(t){if(this.enabled&&h.eventType[t.type]===this.initiated){this.options.preventDefault&&t.preventDefault();var i,e,o,n,r=t.touches?t.touches[0]:t,a=r.pageX-this.pointX,l=r.pageY-this.pointY,c=h.getTime();if(this.pointX=r.pageX,this.pointY=r.pageY,this.distX+=a,this.distY+=l,o=s.abs(this.distX),n=s.abs(this.distY),!(c-this.endTime>300&&10>o&&10>n)){if(this.directionLocked||this.options.freeScroll||(o>n+this.options.directionLockThreshold?this.directionLocked="h":n>=o+this.options.directionLockThreshold?this.directionLocked="v":this.directionLocked="n"),"h"==this.directionLocked){if("vertical"==this.options.eventPassthrough)t.preventDefault();else if("horizontal"==this.options.eventPassthrough)return void(this.initiated=!1);l=0}else if("v"==this.directionLocked){if("horizontal"==this.options.eventPassthrough)t.preventDefault();else if("vertical"==this.options.eventPassthrough)return void(this.initiated=!1);a=0}a=this.hasHorizontalScroll?a:0,l=this.hasVerticalScroll?l:0,i=this.x+a,e=this.y+l,(i>0||i<this.maxScrollX)&&(i=this.options.bounce?this.x+a/3:i>0?0:this.maxScrollX),(e>0||e<this.maxScrollY)&&(e=this.options.bounce?this.y+l/3:e>0?0:this.maxScrollY),this.directionX=a>0?-1:0>a?1:0,this.directionY=l>0?-1:0>l?1:0,this.moved||this._execEvent("scrollStart"),this.moved=!0,this._translate(i,e),c-this.startTime>300&&(this.startTime=c,this.startX=this.x,this.startY=this.y)}}},_end:function(t){if(this.enabled&&h.eventType[t.type]===this.initiated){this.options.preventDefault&&!h.preventDefaultException(t.target,this.options.preventDefaultException)&&t.preventDefault();var i,e,o=(t.changedTouches?t.changedTouches[0]:t,h.getTime()-this.startTime),n=s.round(this.x),r=s.round(this.y),a=s.abs(n-this.startX),l=s.abs(r-this.startY),c=0,p="";if(this.isInTransition=0,this.initiated=0,this.endTime=h.getTime(),!this.resetPosition(this.options.bounceTime)){if(this.scrollTo(n,r),!this.moved)return this.options.tap&&h.tap(t,this.options.tap),this.options.click&&h.click(t),void this._execEvent("scrollCancel");if(this._events.flick&&200>o&&100>a&&100>l)return void this._execEvent("flick");if(this.options.momentum&&300>o&&(i=this.hasHorizontalScroll?h.momentum(this.x,this.startX,o,this.maxScrollX,this.options.bounce?this.wrapperWidth:0,this.options.deceleration):{destination:n,duration:0},e=this.hasVerticalScroll?h.momentum(this.y,this.startY,o,this.maxScrollY,this.options.bounce?this.wrapperHeight:0,this.options.deceleration):{destination:r,duration:0},n=i.destination,r=e.destination,c=s.max(i.duration,e.duration),this.isInTransition=1),this.options.snap){var d=this._nearestSnap(n,r);this.currentPage=d,c=this.options.snapSpeed||s.max(s.max(s.min(s.abs(n-d.x),1e3),s.min(s.abs(r-d.y),1e3)),300),n=d.x,r=d.y,this.directionX=0,this.directionY=0,p=this.options.bounceEasing}return n!=this.x||r!=this.y?((n>0||n<this.maxScrollX||r>0||r<this.maxScrollY)&&(p=h.ease.quadratic),void this.scrollTo(n,r,c,p)):void this._execEvent("scrollEnd")}}},_resize:function(){var t=this;clearTimeout(this.resizeTimeout),this.resizeTimeout=setTimeout(function(){t.refresh()},this.options.resizePolling)},resetPosition:function(t){var i=this.x,s=this.y;return t=t||0,!this.hasHorizontalScroll||this.x>0?i=0:this.x<this.maxScrollX&&(i=this.maxScrollX),!this.hasVerticalScroll||this.y>0?s=0:this.y<this.maxScrollY&&(s=this.maxScrollY),i==this.x&&s==this.y?!1:(this.scrollTo(i,s,t,this.options.bounceEasing),!0)},disable:function(){this.enabled=!1},enable:function(){this.enabled=!0},refresh:function(){this.wrapper.offsetHeight;this.wrapperWidth=this.wrapper.clientWidth,this.wrapperHeight=this.wrapper.clientHeight,this.scrollerWidth=this.scroller.offsetWidth,this.scrollerHeight=this.scroller.offsetHeight,this.maxScrollX=this.wrapperWidth-this.scrollerWidth,this.maxScrollY=this.wrapperHeight-this.scrollerHeight,this.hasHorizontalScroll=this.options.scrollX&&this.maxScrollX<0,this.hasVerticalScroll=this.options.scrollY&&this.maxScrollY<0,this.hasHorizontalScroll||(this.maxScrollX=0,this.scrollerWidth=this.wrapperWidth),this.hasVerticalScroll||(this.maxScrollY=0,this.scrollerHeight=this.wrapperHeight),this.endTime=0,this.directionX=0,this.directionY=0,this.wrapperOffset=h.offset(this.wrapper),this._execEvent("refresh"),this.resetPosition()},on:function(t,i){this._events[t]||(this._events[t]=[]),this._events[t].push(i)},off:function(t,i){if(this._events[t]){var s=this._events[t].indexOf(i);s>-1&&this._events[t].splice(s,1)}},_execEvent:function(t){if(this._events[t]){var i=0,s=this._events[t].length;if(s)for(;s>i;i++)this._events[t][i].apply(this,[].slice.call(arguments,1))}},scrollBy:function(t,i,s,e){t=this.x+t,i=this.y+i,s=s||0,this.scrollTo(t,i,s,e)},scrollTo:function(t,i,s,e){e=e||h.ease.circular,this.isInTransition=this.options.useTransition&&s>0;var o=this.options.useTransition&&e.style;!s||o?(o&&(this._transitionTimingFunction(e.style),this._transitionTime(s)),this._translate(t,i)):this._animate(t,i,s,e.fn)},scrollToElement:function(t,i,e,o,n){if(t=t.nodeType?t:this.scroller.querySelector(t)){var r=h.offset(t);r.left-=this.wrapperOffset.left,r.top-=this.wrapperOffset.top,e===!0&&(e=s.round(t.offsetWidth/2-this.wrapper.offsetWidth/2)),o===!0&&(o=s.round(t.offsetHeight/2-this.wrapper.offsetHeight/2)),r.left-=e||0,r.top-=o||0,r.left=r.left>0?0:r.left<this.maxScrollX?this.maxScrollX:r.left,r.top=r.top>0?0:r.top<this.maxScrollY?this.maxScrollY:r.top,i=void 0===i||null===i||"auto"===i?s.max(s.abs(this.x-r.left),s.abs(this.y-r.top)):i,this.scrollTo(r.left,r.top,i,n)}},_transitionTime:function(t){t=t||0;var i=h.style.transitionDuration;if(this.scrollerStyle[i]=t+"ms",!t&&h.isBadAndroid){this.scrollerStyle[i]="0.0001ms";var s=this;r(function(){"0.0001ms"===s.scrollerStyle[i]&&(s.scrollerStyle[i]="0s")})}if(this.indicators)for(var e=this.indicators.length;e--;)this.indicators[e].transitionTime(t)},_transitionTimingFunction:function(t){if(this.scrollerStyle[h.style.transitionTimingFunction]=t,this.indicators)for(var i=this.indicators.length;i--;)this.indicators[i].transitionTimingFunction(t)},_translate:function(t,i){if(this.options.useTransform?this.scrollerStyle[h.style.transform]="translate("+t+"px,"+i+"px)"+this.translateZ:(t=s.round(t),i=s.round(i),this.scrollerStyle.left=t+"px",this.scrollerStyle.top=i+"px"),this.x=t,this.y=i,this.indicators)for(var e=this.indicators.length;e--;)this.indicators[e].updatePosition()},_initEvents:function(i){var s=i?h.removeEvent:h.addEvent,e=this.options.bindToWrapper?this.wrapper:t;s(t,"orientationchange",this),s(t,"resize",this),this.options.click&&s(this.wrapper,"click",this,!0),this.options.disableMouse||(s(this.wrapper,"mousedown",this),s(e,"mousemove",this),s(e,"mousecancel",this),s(e,"mouseup",this)),h.hasPointer&&!this.options.disablePointer&&(s(this.wrapper,h.prefixPointerEvent("pointerdown"),this),s(e,h.prefixPointerEvent("pointermove"),this),s(e,h.prefixPointerEvent("pointercancel"),this),s(e,h.prefixPointerEvent("pointerup"),this)),h.hasTouch&&!this.options.disableTouch&&(s(this.wrapper,"touchstart",this),s(e,"touchmove",this),s(e,"touchcancel",this),s(e,"touchend",this)),s(this.scroller,"transitionend",this),s(this.scroller,"webkitTransitionEnd",this),s(this.scroller,"oTransitionEnd",this),s(this.scroller,"MSTransitionEnd",this)},getComputedPosition:function(){var i,s,e=t.getComputedStyle(this.scroller,null);return this.options.useTransform?(e=e[h.style.transform].split(")")[0].split(", "),i=+(e[12]||e[4]),s=+(e[13]||e[5])):(i=+e.left.replace(/[^-\d.]/g,""),s=+e.top.replace(/[^-\d.]/g,"")),{x:i,y:s}},_initIndicators:function(){function t(t){if(h.indicators)for(var i=h.indicators.length;i--;)t.call(h.indicators[i])}var i,s=this.options.interactiveScrollbars,e="string"!=typeof this.options.scrollbars,r=[],h=this;this.indicators=[],this.options.scrollbars&&(this.options.scrollY&&(i={el:o("v",s,this.options.scrollbars),interactive:s,defaultScrollbars:!0,customStyle:e,resize:this.options.resizeScrollbars,shrink:this.options.shrinkScrollbars,fade:this.options.fadeScrollbars,listenX:!1},this.wrapper.appendChild(i.el),r.push(i)),this.options.scrollX&&(i={el:o("h",s,this.options.scrollbars),interactive:s,defaultScrollbars:!0,customStyle:e,resize:this.options.resizeScrollbars,shrink:this.options.shrinkScrollbars,fade:this.options.fadeScrollbars,listenY:!1},this.wrapper.appendChild(i.el),r.push(i))),this.options.indicators&&(r=r.concat(this.options.indicators));for(var a=r.length;a--;)this.indicators.push(new n(this,r[a]));this.options.fadeScrollbars&&(this.on("scrollEnd",function(){t(function(){this.fade()})}),this.on("scrollCancel",function(){t(function(){this.fade()})}),this.on("scrollStart",function(){t(function(){this.fade(1)})}),this.on("beforeScrollStart",function(){t(function(){this.fade(1,!0)})})),this.on("refresh",function(){t(function(){this.refresh()})}),this.on("destroy",function(){t(function(){this.destroy()}),delete this.indicators})},_initWheel:function(){h.addEvent(this.wrapper,"wheel",this),h.addEvent(this.wrapper,"mousewheel",this),h.addEvent(this.wrapper,"DOMMouseScroll",this),this.on("destroy",function(){clearTimeout(this.wheelTimeout),this.wheelTimeout=null,h.removeEvent(this.wrapper,"wheel",this),h.removeEvent(this.wrapper,"mousewheel",this),h.removeEvent(this.wrapper,"DOMMouseScroll",this)})},_wheel:function(t){if(this.enabled){t.preventDefault();var i,e,o,n,r=this;if(void 0===this.wheelTimeout&&r._execEvent("scrollStart"),clearTimeout(this.wheelTimeout),this.wheelTimeout=setTimeout(function(){r.options.snap||r._execEvent("scrollEnd"),r.wheelTimeout=void 0},400),"deltaX"in t)1===t.deltaMode?(i=-t.deltaX*this.options.mouseWheelSpeed,e=-t.deltaY*this.options.mouseWheelSpeed):(i=-t.deltaX,e=-t.deltaY);else if("wheelDeltaX"in t)i=t.wheelDeltaX/120*this.options.mouseWheelSpeed,e=t.wheelDeltaY/120*this.options.mouseWheelSpeed;else if("wheelDelta"in t)i=e=t.wheelDelta/120*this.options.mouseWheelSpeed;else{if(!("detail"in t))return;i=e=-t.detail/3*this.options.mouseWheelSpeed}if(i*=this.options.invertWheelDirection,e*=this.options.invertWheelDirection,this.hasVerticalScroll||(i=e,e=0),this.options.snap)return o=this.currentPage.pageX,n=this.currentPage.pageY,i>0?o--:0>i&&o++,e>0?n--:0>e&&n++,void this.goToPage(o,n);o=this.x+s.round(this.hasHorizontalScroll?i:0),n=this.y+s.round(this.hasVerticalScroll?e:0),this.directionX=i>0?-1:0>i?1:0,this.directionY=e>0?-1:0>e?1:0,o>0?o=0:o<this.maxScrollX&&(o=this.maxScrollX),n>0?n=0:n<this.maxScrollY&&(n=this.maxScrollY),this.scrollTo(o,n,0)}},_initSnap:function(){this.currentPage={},"string"==typeof this.options.snap&&(this.options.snap=this.scroller.querySelectorAll(this.options.snap)),this.on("refresh",function(){var t,i,e,o,n,r,h=0,a=0,l=0,c=this.options.snapStepX||this.wrapperWidth,p=this.options.snapStepY||this.wrapperHeight;if(this.pages=[],this.wrapperWidth&&this.wrapperHeight&&this.scrollerWidth&&this.scrollerHeight){if(this.options.snap===!0)for(e=s.round(c/2),o=s.round(p/2);l>-this.scrollerWidth;){for(this.pages[h]=[],t=0,n=0;n>-this.scrollerHeight;)this.pages[h][t]={x:s.max(l,this.maxScrollX),y:s.max(n,this.maxScrollY),width:c,height:p,cx:l-e,cy:n-o},n-=p,t++;l-=c,h++}else for(r=this.options.snap,t=r.length,i=-1;t>h;h++)(0===h||r[h].offsetLeft<=r[h-1].offsetLeft)&&(a=0,i++),this.pages[a]||(this.pages[a]=[]),l=s.max(-r[h].offsetLeft,this.maxScrollX),n=s.max(-r[h].offsetTop,this.maxScrollY),e=l-s.round(r[h].offsetWidth/2),o=n-s.round(r[h].offsetHeight/2),this.pages[a][i]={x:l,y:n,width:r[h].offsetWidth,height:r[h].offsetHeight,cx:e,cy:o},l>this.maxScrollX&&a++;this.goToPage(this.currentPage.pageX||0,this.currentPage.pageY||0,0),this.options.snapThreshold%1===0?(this.snapThresholdX=this.options.snapThreshold,this.snapThresholdY=this.options.snapThreshold):(this.snapThresholdX=s.round(this.pages[this.currentPage.pageX][this.currentPage.pageY].width*this.options.snapThreshold),this.snapThresholdY=s.round(this.pages[this.currentPage.pageX][this.currentPage.pageY].height*this.options.snapThreshold))}}),this.on("flick",function(){var t=this.options.snapSpeed||s.max(s.max(s.min(s.abs(this.x-this.startX),1e3),s.min(s.abs(this.y-this.startY),1e3)),300);this.goToPage(this.currentPage.pageX+this.directionX,this.currentPage.pageY+this.directionY,t)})},_nearestSnap:function(t,i){if(!this.pages.length)return{x:0,y:0,pageX:0,pageY:0};var e=0,o=this.pages.length,n=0;if(s.abs(t-this.absStartX)<this.snapThresholdX&&s.abs(i-this.absStartY)<this.snapThresholdY)return this.currentPage;for(t>0?t=0:t<this.maxScrollX&&(t=this.maxScrollX),i>0?i=0:i<this.maxScrollY&&(i=this.maxScrollY);o>e;e++)if(t>=this.pages[e][0].cx){t=this.pages[e][0].x;break}for(o=this.pages[e].length;o>n;n++)if(i>=this.pages[0][n].cy){i=this.pages[0][n].y;break}return e==this.currentPage.pageX&&(e+=this.directionX,0>e?e=0:e>=this.pages.length&&(e=this.pages.length-1),t=this.pages[e][0].x),n==this.currentPage.pageY&&(n+=this.directionY,0>n?n=0:n>=this.pages[0].length&&(n=this.pages[0].length-1),i=this.pages[0][n].y),{x:t,y:i,pageX:e,pageY:n}},goToPage:function(t,i,e,o){o=o||this.options.bounceEasing,t>=this.pages.length?t=this.pages.length-1:0>t&&(t=0),i>=this.pages[t].length?i=this.pages[t].length-1:0>i&&(i=0);var n=this.pages[t][i].x,r=this.pages[t][i].y;e=void 0===e?this.options.snapSpeed||s.max(s.max(s.min(s.abs(n-this.x),1e3),s.min(s.abs(r-this.y),1e3)),300):e,this.currentPage={x:n,y:r,pageX:t,pageY:i},this.scrollTo(n,r,e,o)},next:function(t,i){var s=this.currentPage.pageX,e=this.currentPage.pageY;s++,s>=this.pages.length&&this.hasVerticalScroll&&(s=0,e++),this.goToPage(s,e,t,i)},prev:function(t,i){var s=this.currentPage.pageX,e=this.currentPage.pageY;s--,0>s&&this.hasVerticalScroll&&(s=0,e--),this.goToPage(s,e,t,i)},_initKeys:function(i){var s,e={pageUp:33,pageDown:34,end:35,home:36,left:37,up:38,right:39,down:40};if("object"==typeof this.options.keyBindings)for(s in this.options.keyBindings)"string"==typeof this.options.keyBindings[s]&&(this.options.keyBindings[s]=this.options.keyBindings[s].toUpperCase().charCodeAt(0));else this.options.keyBindings={};for(s in e)this.options.keyBindings[s]=this.options.keyBindings[s]||e[s];h.addEvent(t,"keydown",this),this.on("destroy",function(){h.removeEvent(t,"keydown",this)})},_key:function(t){if(this.enabled){var i,e=this.options.snap,o=e?this.currentPage.pageX:this.x,n=e?this.currentPage.pageY:this.y,r=h.getTime(),a=this.keyTime||0,l=.25;switch(this.options.useTransition&&this.isInTransition&&(i=this.getComputedPosition(),this._translate(s.round(i.x),s.round(i.y)),this.isInTransition=!1),this.keyAcceleration=200>r-a?s.min(this.keyAcceleration+l,50):0,t.keyCode){case this.options.keyBindings.pageUp:this.hasHorizontalScroll&&!this.hasVerticalScroll?o+=e?1:this.wrapperWidth:n+=e?1:this.wrapperHeight;break;case this.options.keyBindings.pageDown:this.hasHorizontalScroll&&!this.hasVerticalScroll?o-=e?1:this.wrapperWidth:n-=e?1:this.wrapperHeight;break;case this.options.keyBindings.end:o=e?this.pages.length-1:this.maxScrollX,n=e?this.pages[0].length-1:this.maxScrollY;break;case this.options.keyBindings.home:o=0,n=0;break;case this.options.keyBindings.left:o+=e?-1:5+this.keyAcceleration>>0;break;case this.options.keyBindings.up:n+=e?1:5+this.keyAcceleration>>0;break;case this.options.keyBindings.right:o-=e?-1:5+this.keyAcceleration>>0;break;case this.options.keyBindings.down:n-=e?1:5+this.keyAcceleration>>0;break;default:return}if(e)return void this.goToPage(o,n);o>0?(o=0,this.keyAcceleration=0):o<this.maxScrollX&&(o=this.maxScrollX,this.keyAcceleration=0),n>0?(n=0,this.keyAcceleration=0):n<this.maxScrollY&&(n=this.maxScrollY,this.keyAcceleration=0),this.scrollTo(o,n,0),this.keyTime=r}},_animate:function(t,i,s,e){function o(){var d,u,m,f=h.getTime();return f>=p?(n.isAnimating=!1,n._translate(t,i),void(n.resetPosition(n.options.bounceTime)||n._execEvent("scrollEnd"))):(f=(f-c)/s,m=e(f),d=(t-a)*m+a,u=(i-l)*m+l,n._translate(d,u),void(n.isAnimating&&r(o)))}var n=this,a=this.x,l=this.y,c=h.getTime(),p=c+s;this.isAnimating=!0,o()},handleEvent:function(t){switch(t.type){case"touchstart":case"pointerdown":case"MSPointerDown":case"mousedown":this._start(t);break;case"touchmove":case"pointermove":case"MSPointerMove":case"mousemove":this._move(t);break;case"touchend":case"pointerup":case"MSPointerUp":case"mouseup":case"touchcancel":case"pointercancel":case"MSPointerCancel":case"mousecancel":this._end(t);break;case"orientationchange":case"resize":this._resize();break;case"transitionend":case"webkitTransitionEnd":case"oTransitionEnd":case"MSTransitionEnd":this._transitionEnd(t);break;case"wheel":case"DOMMouseScroll":case"mousewheel":this._wheel(t);break;case"keydown":this._key(t);break;case"click":this.enabled&&!t._constructed&&(t.preventDefault(),t.stopPropagation())}}},n.prototype={handleEvent:function(t){switch(t.type){case"touchstart":case"pointerdown":case"MSPointerDown":case"mousedown":this._start(t);break;case"touchmove":case"pointermove":case"MSPointerMove":case"mousemove":this._move(t);break;case"touchend":case"pointerup":case"MSPointerUp":case"mouseup":case"touchcancel":case"pointercancel":case"MSPointerCancel":case"mousecancel":this._end(t)}},destroy:function(){this.options.fadeScrollbars&&(clearTimeout(this.fadeTimeout),this.fadeTimeout=null),this.options.interactive&&(h.removeEvent(this.indicator,"touchstart",this),h.removeEvent(this.indicator,h.prefixPointerEvent("pointerdown"),this),h.removeEvent(this.indicator,"mousedown",this),h.removeEvent(t,"touchmove",this),h.removeEvent(t,h.prefixPointerEvent("pointermove"),this),h.removeEvent(t,"mousemove",this),h.removeEvent(t,"touchend",this),h.removeEvent(t,h.prefixPointerEvent("pointerup"),this),h.removeEvent(t,"mouseup",this)),this.options.defaultScrollbars&&this.wrapper.parentNode.removeChild(this.wrapper)},_start:function(i){var s=i.touches?i.touches[0]:i;i.preventDefault(),i.stopPropagation(),this.transitionTime(),this.initiated=!0,this.moved=!1,this.lastPointX=s.pageX,this.lastPointY=s.pageY,this.startTime=h.getTime(),this.options.disableTouch||h.addEvent(t,"touchmove",this),this.options.disablePointer||h.addEvent(t,h.prefixPointerEvent("pointermove"),this),this.options.disableMouse||h.addEvent(t,"mousemove",this),this.scroller._execEvent("beforeScrollStart")},_move:function(t){var i,s,e,o,n=t.touches?t.touches[0]:t;h.getTime();this.moved||this.scroller._execEvent("scrollStart"),this.moved=!0,i=n.pageX-this.lastPointX,this.lastPointX=n.pageX,s=n.pageY-this.lastPointY,this.lastPointY=n.pageY,e=this.x+i,o=this.y+s,this._pos(e,o),t.preventDefault(),t.stopPropagation()},_end:function(i){if(this.initiated){if(this.initiated=!1,i.preventDefault(),i.stopPropagation(),h.removeEvent(t,"touchmove",this),h.removeEvent(t,h.prefixPointerEvent("pointermove"),this),h.removeEvent(t,"mousemove",this),this.scroller.options.snap){var e=this.scroller._nearestSnap(this.scroller.x,this.scroller.y),o=this.options.snapSpeed||s.max(s.max(s.min(s.abs(this.scroller.x-e.x),1e3),s.min(s.abs(this.scroller.y-e.y),1e3)),300);this.scroller.x==e.x&&this.scroller.y==e.y||(this.scroller.directionX=0,this.scroller.directionY=0,this.scroller.currentPage=e,this.scroller.scrollTo(e.x,e.y,o,this.scroller.options.bounceEasing))}this.moved&&this.scroller._execEvent("scrollEnd")}},transitionTime:function(t){t=t||0;var i=h.style.transitionDuration;if(this.indicatorStyle[i]=t+"ms",!t&&h.isBadAndroid){this.indicatorStyle[i]="0.0001ms";var s=this;r(function(){"0.0001ms"===s.indicatorStyle[i]&&(s.indicatorStyle[i]="0s")})}},transitionTimingFunction:function(t){this.indicatorStyle[h.style.transitionTimingFunction]=t},refresh:function(){this.transitionTime(),this.options.listenX&&!this.options.listenY?this.indicatorStyle.display=this.scroller.hasHorizontalScroll?"block":"none":this.options.listenY&&!this.options.listenX?this.indicatorStyle.display=this.scroller.hasVerticalScroll?"block":"none":this.indicatorStyle.display=this.scroller.hasHorizontalScroll||this.scroller.hasVerticalScroll?"block":"none",this.scroller.hasHorizontalScroll&&this.scroller.hasVerticalScroll?(h.addClass(this.wrapper,"iScrollBothScrollbars"),h.removeClass(this.wrapper,"iScrollLoneScrollbar"),this.options.defaultScrollbars&&this.options.customStyle&&(this.options.listenX?this.wrapper.style.right="8px":this.wrapper.style.bottom="8px")):(h.removeClass(this.wrapper,"iScrollBothScrollbars"),h.addClass(this.wrapper,"iScrollLoneScrollbar"),this.options.defaultScrollbars&&this.options.customStyle&&(this.options.listenX?this.wrapper.style.right="2px":this.wrapper.style.bottom="2px"));this.wrapper.offsetHeight;this.options.listenX&&(this.wrapperWidth=this.wrapper.clientWidth,this.options.resize?(this.indicatorWidth=s.max(s.round(this.wrapperWidth*this.wrapperWidth/(this.scroller.scrollerWidth||this.wrapperWidth||1)),8),this.indicatorStyle.width=this.indicatorWidth+"px"):this.indicatorWidth=this.indicator.clientWidth,this.maxPosX=this.wrapperWidth-this.indicatorWidth,"clip"==this.options.shrink?(this.minBoundaryX=-this.indicatorWidth+8,this.maxBoundaryX=this.wrapperWidth-8):(this.minBoundaryX=0,this.maxBoundaryX=this.maxPosX),this.sizeRatioX=this.options.speedRatioX||this.scroller.maxScrollX&&this.maxPosX/this.scroller.maxScrollX),this.options.listenY&&(this.wrapperHeight=this.wrapper.clientHeight,this.options.resize?(this.indicatorHeight=s.max(s.round(this.wrapperHeight*this.wrapperHeight/(this.scroller.scrollerHeight||this.wrapperHeight||1)),8),this.indicatorStyle.height=this.indicatorHeight+"px"):this.indicatorHeight=this.indicator.clientHeight,this.maxPosY=this.wrapperHeight-this.indicatorHeight,"clip"==this.options.shrink?(this.minBoundaryY=-this.indicatorHeight+8,this.maxBoundaryY=this.wrapperHeight-8):(this.minBoundaryY=0,this.maxBoundaryY=this.maxPosY),this.maxPosY=this.wrapperHeight-this.indicatorHeight,this.sizeRatioY=this.options.speedRatioY||this.scroller.maxScrollY&&this.maxPosY/this.scroller.maxScrollY),this.updatePosition()},updatePosition:function(){var t=this.options.listenX&&s.round(this.sizeRatioX*this.scroller.x)||0,i=this.options.listenY&&s.round(this.sizeRatioY*this.scroller.y)||0;this.options.ignoreBoundaries||(t<this.minBoundaryX?("scale"==this.options.shrink&&(this.width=s.max(this.indicatorWidth+t,8),this.indicatorStyle.width=this.width+"px"),t=this.minBoundaryX):t>this.maxBoundaryX?"scale"==this.options.shrink?(this.width=s.max(this.indicatorWidth-(t-this.maxPosX),8),this.indicatorStyle.width=this.width+"px",t=this.maxPosX+this.indicatorWidth-this.width):t=this.maxBoundaryX:"scale"==this.options.shrink&&this.width!=this.indicatorWidth&&(this.width=this.indicatorWidth,this.indicatorStyle.width=this.width+"px"),i<this.minBoundaryY?("scale"==this.options.shrink&&(this.height=s.max(this.indicatorHeight+3*i,8),this.indicatorStyle.height=this.height+"px"),i=this.minBoundaryY):i>this.maxBoundaryY?"scale"==this.options.shrink?(this.height=s.max(this.indicatorHeight-3*(i-this.maxPosY),8),this.indicatorStyle.height=this.height+"px",i=this.maxPosY+this.indicatorHeight-this.height):i=this.maxBoundaryY:"scale"==this.options.shrink&&this.height!=this.indicatorHeight&&(this.height=this.indicatorHeight,this.indicatorStyle.height=this.height+"px")),
-        this.x=t,this.y=i,this.scroller.options.useTransform?this.indicatorStyle[h.style.transform]="translate("+t+"px,"+i+"px)"+this.scroller.translateZ:(this.indicatorStyle.left=t+"px",this.indicatorStyle.top=i+"px")},_pos:function(t,i){0>t?t=0:t>this.maxPosX&&(t=this.maxPosX),0>i?i=0:i>this.maxPosY&&(i=this.maxPosY),t=this.options.listenX?s.round(t/this.sizeRatioX):this.scroller.x,i=this.options.listenY?s.round(i/this.sizeRatioY):this.scroller.y,this.scroller.scrollTo(t,i)},fade:function(t,i){if(!i||this.visible){clearTimeout(this.fadeTimeout),this.fadeTimeout=null;var s=t?250:500,e=t?0:300;t=t?"1":"0",this.wrapperStyle[h.style.transitionDuration]=s+"ms",this.fadeTimeout=setTimeout(function(t){this.wrapperStyle.opacity=t,this.visible=+t}.bind(this,t),e)}}},e.utils=h,"undefined"!=typeof module&&module.exports?module.exports=e:"function"==typeof define&&define.amd?define(function(){return e}):t.IScroll=e}(window,document,Math);
+        !function(t,i,s){function e(s,e){this.wrapper="string"==typeof s?i.querySelector(s):s,this.scroller=this.wrapper.children[0],this.scrollerStyle=this.scroller.style,this.options={resizeScrollbars:!0,mouseWheelSpeed:20,snapThreshold:.334,disablePointer:!h.hasPointer,disableTouch:h.hasPointer||!h.hasTouch,disableMouse:h.hasPointer||h.hasTouch,startX:0,startY:0,scrollY:!0,directionLockThreshold:5,momentum:!0,bounce:!0,bounceTime:600,bounceEasing:"",preventDefault:!0,preventDefaultException:{tagName:/^(INPUT|TEXTAREA|BUTTON|SELECT)$/},HWCompositing:!0,useTransition:!0,useTransform:!0,bindToWrapper:"undefined"==typeof t.onmousedown};for(var o in e)this.options[o]=e[o];this.translateZ=this.options.HWCompositing&&h.hasPerspective?" translateZ(0)":"",this.options.useTransition=h.hasTransition&&this.options.useTransition,this.options.useTransform=h.hasTransform&&this.options.useTransform,this.options.eventPassthrough=this.options.eventPassthrough===!0?"vertical":this.options.eventPassthrough,this.options.preventDefault=!this.options.eventPassthrough&&this.options.preventDefault,this.options.scrollY="vertical"!=this.options.eventPassthrough&&this.options.scrollY,this.options.scrollX="horizontal"!=this.options.eventPassthrough&&this.options.scrollX,this.options.freeScroll=this.options.freeScroll&&!this.options.eventPassthrough,this.options.directionLockThreshold=this.options.eventPassthrough?0:this.options.directionLockThreshold,this.options.bounceEasing="string"==typeof this.options.bounceEasing?h.ease[this.options.bounceEasing]||h.ease.circular:this.options.bounceEasing,this.options.resizePolling=void 0===this.options.resizePolling?60:this.options.resizePolling,this.options.tap===!0&&(this.options.tap="tap"),"scale"==this.options.shrinkScrollbars&&(this.options.useTransition=!1),this.options.invertWheelDirection=this.options.invertWheelDirection?-1:1,this.x=0,this.y=0,this.directionX=0,this.directionY=0,this._events={},this._init(),this.refresh(),this.scrollTo(this.options.startX,this.options.startY),this.enable()}function o(t,s,e){var o=i.createElement("div"),n=i.createElement("div");return e===!0&&(o.style.cssText="position:absolute;z-index:9999",n.style.cssText="-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.9);border-radius:3px"),n.className="iScrollIndicator","h"==t?(e===!0&&(o.style.cssText+=";height:7px;left:2px;right:2px;bottom:0",n.style.height="100%"),o.className="iScrollHorizontalScrollbar"):(e===!0&&(o.style.cssText+=";width:7px;bottom:2px;top:2px;right:1px",n.style.width="100%"),o.className="iScrollVerticalScrollbar"),o.style.cssText+=";overflow:hidden",s||(o.style.pointerEvents="none"),o.appendChild(n),o}function n(s,e){this.wrapper="string"==typeof e.el?i.querySelector(e.el):e.el,this.wrapperStyle=this.wrapper.style,this.indicator=this.wrapper.children[0],this.indicatorStyle=this.indicator.style,this.scroller=s,this.options={listenX:!0,listenY:!0,interactive:!1,resize:!0,defaultScrollbars:!1,shrink:!1,fade:!1,speedRatioX:0,speedRatioY:0};for(var o in e)this.options[o]=e[o];if(this.sizeRatioX=1,this.sizeRatioY=1,this.maxPosX=0,this.maxPosY=0,this.options.interactive&&(this.options.disableTouch||(h.addEvent(this.indicator,"touchstart",this),h.addEvent(t,"touchend",this)),this.options.disablePointer||(h.addEvent(this.indicator,h.prefixPointerEvent("pointerdown"),this),h.addEvent(t,h.prefixPointerEvent("pointerup"),this)),this.options.disableMouse||(h.addEvent(this.indicator,"mousedown",this),h.addEvent(t,"mouseup",this))),this.options.fade){this.wrapperStyle[h.style.transform]=this.scroller.translateZ;var n=h.style.transitionDuration;this.wrapperStyle[n]=h.isBadAndroid?"0.0001ms":"0ms";var a=this;h.isBadAndroid&&r(function(){"0.0001ms"===a.wrapperStyle[n]&&(a.wrapperStyle[n]="0s")}),this.wrapperStyle.opacity="0"}}var r=t.requestAnimationFrame||t.webkitRequestAnimationFrame||t.mozRequestAnimationFrame||t.oRequestAnimationFrame||t.msRequestAnimationFrame||function(i){t.setTimeout(i,1e3/60)},h=function(){function e(t){return r!==!1&&(""===r?t:r+t.charAt(0).toUpperCase()+t.substr(1))}var o={},n=i.createElement("div").style,r=function(){for(var t,i=["t","webkitT","MozT","msT","OT"],s=0,e=i.length;s<e;s++)if(t=i[s]+"ransform",t in n)return i[s].substr(0,i[s].length-1);return!1}();o.getTime=Date.now||function(){return(new Date).getTime()},o.extend=function(t,i){for(var s in i)t[s]=i[s]},o.addEvent=function(t,i,s,e){t.addEventListener(i,s,!!e)},o.removeEvent=function(t,i,s,e){t.removeEventListener(i,s,!!e)},o.prefixPointerEvent=function(i){return t.MSPointerEvent?"MSPointer"+i.charAt(7).toUpperCase()+i.substr(8):i},o.momentum=function(t,i,e,o,n,r){var h,a,l=t-i,c=s.abs(l)/e;return r=void 0===r?6e-4:r,h=t+c*c/(2*r)*(l<0?-1:1),a=c/r,h<o?(h=n?o-n/2.5*(c/8):o,l=s.abs(h-t),a=l/c):h>0&&(h=n?n/2.5*(c/8):0,l=s.abs(t)+h,a=l/c),{destination:s.round(h),duration:a}};var h=e("transform");return o.extend(o,{hasTransform:h!==!1,hasPerspective:e("perspective")in n,hasTouch:"ontouchstart"in t,hasPointer:!(!t.PointerEvent&&!t.MSPointerEvent),hasTransition:e("transition")in n}),o.isBadAndroid=function(){var i=t.navigator.appVersion;if(/Android/.test(i)&&!/Chrome\/\d/.test(i)){var s=i.match(/Safari\/(\d+.\d)/);return!(s&&"object"==typeof s&&s.length>=2)||parseFloat(s[1])<535.19}return!1}(),o.extend(o.style={},{transform:h,transitionTimingFunction:e("transitionTimingFunction"),transitionDuration:e("transitionDuration"),transitionDelay:e("transitionDelay"),transformOrigin:e("transformOrigin")}),o.hasClass=function(t,i){var s=new RegExp("(^|\\s)"+i+"(\\s|$)");return s.test(t.className)},o.addClass=function(t,i){if(!o.hasClass(t,i)){var s=t.className.split(" ");s.push(i),t.className=s.join(" ")}},o.removeClass=function(t,i){if(o.hasClass(t,i)){var s=new RegExp("(^|\\s)"+i+"(\\s|$)","g");t.className=t.className.replace(s," ")}},o.offset=function(t){for(var i=-t.offsetLeft,s=-t.offsetTop;t=t.offsetParent;)i-=t.offsetLeft,s-=t.offsetTop;return{left:i,top:s}},o.preventDefaultException=function(t,i){for(var s in i)if(i[s].test(t[s]))return!0;return!1},o.extend(o.eventType={},{touchstart:1,touchmove:1,touchend:1,mousedown:2,mousemove:2,mouseup:2,pointerdown:3,pointermove:3,pointerup:3,MSPointerDown:3,MSPointerMove:3,MSPointerUp:3}),o.extend(o.ease={},{quadratic:{style:"cubic-bezier(0.25, 0.46, 0.45, 0.94)",fn:function(t){return t*(2-t)}},circular:{style:"cubic-bezier(0.1, 0.57, 0.1, 1)",fn:function(t){return s.sqrt(1- --t*t)}},back:{style:"cubic-bezier(0.175, 0.885, 0.32, 1.275)",fn:function(t){var i=4;return(t-=1)*t*((i+1)*t+i)+1}},bounce:{style:"",fn:function(t){return(t/=1)<1/2.75?7.5625*t*t:t<2/2.75?7.5625*(t-=1.5/2.75)*t+.75:t<2.5/2.75?7.5625*(t-=2.25/2.75)*t+.9375:7.5625*(t-=2.625/2.75)*t+.984375}},elastic:{style:"",fn:function(t){var i=.22,e=.4;return 0===t?0:1==t?1:e*s.pow(2,-10*t)*s.sin((t-i/4)*(2*s.PI)/i)+1}}}),o.tap=function(t,s){var e=i.createEvent("Event");e.initEvent(s,!0,!0),e.pageX=t.pageX,e.pageY=t.pageY,t.target.dispatchEvent(e)},o.click=function(t){var s,e=t.target;/(SELECT|INPUT|TEXTAREA)/i.test(e.tagName)||(s=i.createEvent("MouseEvents"),s.initMouseEvent("click",!0,!0,t.view,1,e.screenX,e.screenY,e.clientX,e.clientY,t.ctrlKey,t.altKey,t.shiftKey,t.metaKey,0,null),s._constructed=!0,e.dispatchEvent(s))},o}();e.prototype={version:"5.2.0",_init:function(){this._initEvents(),(this.options.scrollbars||this.options.indicators)&&this._initIndicators(),this.options.mouseWheel&&this._initWheel(),this.options.snap&&this._initSnap(),this.options.keyBindings&&this._initKeys()},destroy:function(){this._initEvents(!0),clearTimeout(this.resizeTimeout),this.resizeTimeout=null,this._execEvent("destroy")},_transitionEnd:function(t){t.target==this.scroller&&this.isInTransition&&(this._transitionTime(),this.resetPosition(this.options.bounceTime)||(this.isInTransition=!1,this._execEvent("scrollEnd")))},_start:function(t){if(1!=h.eventType[t.type]){var i;if(i=t.which?t.button:t.button<2?0:4==t.button?1:2,0!==i)return}if(this.enabled&&(!this.initiated||h.eventType[t.type]===this.initiated)){!this.options.preventDefault||h.isBadAndroid||h.preventDefaultException(t.target,this.options.preventDefaultException)||t.preventDefault();var e,o=t.touches?t.touches[0]:t;this.initiated=h.eventType[t.type],this.moved=!1,this.distX=0,this.distY=0,this.directionX=0,this.directionY=0,this.directionLocked=0,this.startTime=h.getTime(),this.options.useTransition&&this.isInTransition?(this._transitionTime(),this.isInTransition=!1,e=this.getComputedPosition(),this._translate(s.round(e.x),s.round(e.y)),this._execEvent("scrollEnd")):!this.options.useTransition&&this.isAnimating&&(this.isAnimating=!1,this._execEvent("scrollEnd")),this.startX=this.x,this.startY=this.y,this.absStartX=this.x,this.absStartY=this.y,this.pointX=o.pageX,this.pointY=o.pageY,this._execEvent("beforeScrollStart")}},_move:function(t){if(this.enabled&&h.eventType[t.type]===this.initiated){this.options.preventDefault&&t.preventDefault();var i,e,o,n,r=t.touches?t.touches[0]:t,a=r.pageX-this.pointX,l=r.pageY-this.pointY,c=h.getTime();if(this.pointX=r.pageX,this.pointY=r.pageY,this.distX+=a,this.distY+=l,o=s.abs(this.distX),n=s.abs(this.distY),!(c-this.endTime>300&&o<10&&n<10)){if(this.directionLocked||this.options.freeScroll||(o>n+this.options.directionLockThreshold?this.directionLocked="h":n>=o+this.options.directionLockThreshold?this.directionLocked="v":this.directionLocked="n"),"h"==this.directionLocked){if("vertical"==this.options.eventPassthrough)t.preventDefault();else if("horizontal"==this.options.eventPassthrough)return void(this.initiated=!1);l=0}else if("v"==this.directionLocked){if("horizontal"==this.options.eventPassthrough)t.preventDefault();else if("vertical"==this.options.eventPassthrough)return void(this.initiated=!1);a=0}a=this.hasHorizontalScroll?a:0,l=this.hasVerticalScroll?l:0,i=this.x+a,e=this.y+l,(i>0||i<this.maxScrollX)&&(i=this.options.bounce?this.x+a/3:i>0?0:this.maxScrollX),(e>0||e<this.maxScrollY)&&(e=this.options.bounce?this.y+l/3:e>0?0:this.maxScrollY),this.directionX=a>0?-1:a<0?1:0,this.directionY=l>0?-1:l<0?1:0,this.moved||this._execEvent("scrollStart"),this.moved=!0,this._translate(i,e),c-this.startTime>300&&(this.startTime=c,this.startX=this.x,this.startY=this.y)}}},_end:function(t){if(this.enabled&&h.eventType[t.type]===this.initiated){this.options.preventDefault&&!h.preventDefaultException(t.target,this.options.preventDefaultException)&&t.preventDefault();var i,e,o=(t.changedTouches?t.changedTouches[0]:t,h.getTime()-this.startTime),n=s.round(this.x),r=s.round(this.y),a=s.abs(n-this.startX),l=s.abs(r-this.startY),c=0,p="";if(this.isInTransition=0,this.initiated=0,this.endTime=h.getTime(),!this.resetPosition(this.options.bounceTime)){if(this.scrollTo(n,r),!this.moved)return this.options.tap&&h.tap(t,this.options.tap),this.options.click&&h.click(t),void this._execEvent("scrollCancel");if(this._events.flick&&o<200&&a<100&&l<100)return void this._execEvent("flick");if(this.options.momentum&&o<300&&(i=this.hasHorizontalScroll?h.momentum(this.x,this.startX,o,this.maxScrollX,this.options.bounce?this.wrapperWidth:0,this.options.deceleration):{destination:n,duration:0},e=this.hasVerticalScroll?h.momentum(this.y,this.startY,o,this.maxScrollY,this.options.bounce?this.wrapperHeight:0,this.options.deceleration):{destination:r,duration:0},n=i.destination,r=e.destination,c=s.max(i.duration,e.duration),this.isInTransition=1),this.options.snap){var d=this._nearestSnap(n,r);this.currentPage=d,c=this.options.snapSpeed||s.max(s.max(s.min(s.abs(n-d.x),1e3),s.min(s.abs(r-d.y),1e3)),300),n=d.x,r=d.y,this.directionX=0,this.directionY=0,p=this.options.bounceEasing}return n!=this.x||r!=this.y?((n>0||n<this.maxScrollX||r>0||r<this.maxScrollY)&&(p=h.ease.quadratic),void this.scrollTo(n,r,c,p)):void this._execEvent("scrollEnd")}}},_resize:function(){var t=this;clearTimeout(this.resizeTimeout),this.resizeTimeout=setTimeout(function(){t.refresh()},this.options.resizePolling)},resetPosition:function(t){var i=this.x,s=this.y;return t=t||0,!this.hasHorizontalScroll||this.x>0?i=0:this.x<this.maxScrollX&&(i=this.maxScrollX),!this.hasVerticalScroll||this.y>0?s=0:this.y<this.maxScrollY&&(s=this.maxScrollY),(i!=this.x||s!=this.y)&&(this.scrollTo(i,s,t,this.options.bounceEasing),!0)},disable:function(){this.enabled=!1},enable:function(){this.enabled=!0},refresh:function(){this.wrapper.offsetHeight;this.wrapperWidth=this.wrapper.clientWidth,this.wrapperHeight=this.wrapper.clientHeight,this.scrollerWidth=this.scroller.offsetWidth,this.scrollerHeight=this.scroller.offsetHeight,this.maxScrollX=this.wrapperWidth-this.scrollerWidth,this.maxScrollY=this.wrapperHeight-this.scrollerHeight,this.hasHorizontalScroll=this.options.scrollX&&this.maxScrollX<0,this.hasVerticalScroll=this.options.scrollY&&this.maxScrollY<0,this.hasHorizontalScroll||(this.maxScrollX=0,this.scrollerWidth=this.wrapperWidth),this.hasVerticalScroll||(this.maxScrollY=0,this.scrollerHeight=this.wrapperHeight),this.endTime=0,this.directionX=0,this.directionY=0,this.wrapperOffset=h.offset(this.wrapper),this._execEvent("refresh"),this.resetPosition()},on:function(t,i){this._events[t]||(this._events[t]=[]),this._events[t].push(i)},off:function(t,i){if(this._events[t]){var s=this._events[t].indexOf(i);s>-1&&this._events[t].splice(s,1)}},_execEvent:function(t){if(this._events[t]){var i=0,s=this._events[t].length;if(s)for(;i<s;i++)this._events[t][i].apply(this,[].slice.call(arguments,1))}},scrollBy:function(t,i,s,e){t=this.x+t,i=this.y+i,s=s||0,this.scrollTo(t,i,s,e)},scrollTo:function(t,i,s,e){e=e||h.ease.circular,this.isInTransition=this.options.useTransition&&s>0;var o=this.options.useTransition&&e.style;!s||o?(o&&(this._transitionTimingFunction(e.style),this._transitionTime(s)),this._translate(t,i)):this._animate(t,i,s,e.fn)},scrollToElement:function(t,i,e,o,n){if(t=t.nodeType?t:this.scroller.querySelector(t)){var r=h.offset(t);r.left-=this.wrapperOffset.left,r.top-=this.wrapperOffset.top,e===!0&&(e=s.round(t.offsetWidth/2-this.wrapper.offsetWidth/2)),o===!0&&(o=s.round(t.offsetHeight/2-this.wrapper.offsetHeight/2)),r.left-=e||0,r.top-=o||0,r.left=r.left>0?0:r.left<this.maxScrollX?this.maxScrollX:r.left,r.top=r.top>0?0:r.top<this.maxScrollY?this.maxScrollY:r.top,i=void 0===i||null===i||"auto"===i?s.max(s.abs(this.x-r.left),s.abs(this.y-r.top)):i,this.scrollTo(r.left,r.top,i,n)}},_transitionTime:function(t){t=t||0;var i=h.style.transitionDuration;if(this.scrollerStyle[i]=t+"ms",!t&&h.isBadAndroid){this.scrollerStyle[i]="0.0001ms";var s=this;r(function(){"0.0001ms"===s.scrollerStyle[i]&&(s.scrollerStyle[i]="0s")})}if(this.indicators)for(var e=this.indicators.length;e--;)this.indicators[e].transitionTime(t)},_transitionTimingFunction:function(t){if(this.scrollerStyle[h.style.transitionTimingFunction]=t,this.indicators)for(var i=this.indicators.length;i--;)this.indicators[i].transitionTimingFunction(t)},_translate:function(t,i){if(this.options.useTransform?this.scrollerStyle[h.style.transform]="translate("+t+"px,"+i+"px)"+this.translateZ:(t=s.round(t),i=s.round(i),this.scrollerStyle.left=t+"px",this.scrollerStyle.top=i+"px"),this.x=t,this.y=i,this.indicators)for(var e=this.indicators.length;e--;)this.indicators[e].updatePosition()},_initEvents:function(i){var s=i?h.removeEvent:h.addEvent,e=this.options.bindToWrapper?this.wrapper:t;s(t,"orientationchange",this),s(t,"resize",this),this.options.click&&s(this.wrapper,"click",this,!0),this.options.disableMouse||(s(this.wrapper,"mousedown",this),s(e,"mousemove",this),s(e,"mousecancel",this),s(e,"mouseup",this)),h.hasPointer&&!this.options.disablePointer&&(s(this.wrapper,h.prefixPointerEvent("pointerdown"),this),s(e,h.prefixPointerEvent("pointermove"),this),s(e,h.prefixPointerEvent("pointercancel"),this),s(e,h.prefixPointerEvent("pointerup"),this)),h.hasTouch&&!this.options.disableTouch&&(s(this.wrapper,"touchstart",this),s(e,"touchmove",this),s(e,"touchcancel",this),s(e,"touchend",this)),s(this.scroller,"transitionend",this),s(this.scroller,"webkitTransitionEnd",this),s(this.scroller,"oTransitionEnd",this),s(this.scroller,"MSTransitionEnd",this)},getComputedPosition:function(){var i,s,e=t.getComputedStyle(this.scroller,null);return this.options.useTransform?(e=e[h.style.transform].split(")")[0].split(", "),i=+(e[12]||e[4]),s=+(e[13]||e[5])):(i=+e.left.replace(/[^-\d.]/g,""),s=+e.top.replace(/[^-\d.]/g,"")),{x:i,y:s}},_initIndicators:function(){function t(t){if(h.indicators)for(var i=h.indicators.length;i--;)t.call(h.indicators[i])}var i,s=this.options.interactiveScrollbars,e="string"!=typeof this.options.scrollbars,r=[],h=this;this.indicators=[],this.options.scrollbars&&(this.options.scrollY&&(i={el:o("v",s,this.options.scrollbars),interactive:s,defaultScrollbars:!0,customStyle:e,resize:this.options.resizeScrollbars,shrink:this.options.shrinkScrollbars,fade:this.options.fadeScrollbars,listenX:!1},this.wrapper.appendChild(i.el),r.push(i)),this.options.scrollX&&(i={el:o("h",s,this.options.scrollbars),interactive:s,defaultScrollbars:!0,customStyle:e,resize:this.options.resizeScrollbars,shrink:this.options.shrinkScrollbars,fade:this.options.fadeScrollbars,listenY:!1},this.wrapper.appendChild(i.el),r.push(i))),this.options.indicators&&(r=r.concat(this.options.indicators));for(var a=r.length;a--;)this.indicators.push(new n(this,r[a]));this.options.fadeScrollbars&&(this.on("scrollEnd",function(){t(function(){this.fade()})}),this.on("scrollCancel",function(){t(function(){this.fade()})}),this.on("scrollStart",function(){t(function(){this.fade(1)})}),this.on("beforeScrollStart",function(){t(function(){this.fade(1,!0)})})),this.on("refresh",function(){t(function(){this.refresh()})}),this.on("destroy",function(){t(function(){this.destroy()}),delete this.indicators})},_initWheel:function(){h.addEvent(this.wrapper,"wheel",this),h.addEvent(this.wrapper,"mousewheel",this),h.addEvent(this.wrapper,"DOMMouseScroll",this),this.on("destroy",function(){clearTimeout(this.wheelTimeout),this.wheelTimeout=null,h.removeEvent(this.wrapper,"wheel",this),h.removeEvent(this.wrapper,"mousewheel",this),h.removeEvent(this.wrapper,"DOMMouseScroll",this)})},_wheel:function(t){if(this.enabled){t.preventDefault();var i,e,o,n,r=this;if(void 0===this.wheelTimeout&&r._execEvent("scrollStart"),clearTimeout(this.wheelTimeout),this.wheelTimeout=setTimeout(function(){r.options.snap||r._execEvent("scrollEnd"),r.wheelTimeout=void 0},400),"deltaX"in t)1===t.deltaMode?(i=-t.deltaX*this.options.mouseWheelSpeed,e=-t.deltaY*this.options.mouseWheelSpeed):(i=-t.deltaX,e=-t.deltaY);else if("wheelDeltaX"in t)i=t.wheelDeltaX/120*this.options.mouseWheelSpeed,e=t.wheelDeltaY/120*this.options.mouseWheelSpeed;else if("wheelDelta"in t)i=e=t.wheelDelta/120*this.options.mouseWheelSpeed;else{if(!("detail"in t))return;i=e=-t.detail/3*this.options.mouseWheelSpeed}if(i*=this.options.invertWheelDirection,e*=this.options.invertWheelDirection,this.hasVerticalScroll||(i=e,e=0),this.options.snap)return o=this.currentPage.pageX,n=this.currentPage.pageY,i>0?o--:i<0&&o++,e>0?n--:e<0&&n++,void this.goToPage(o,n);o=this.x+s.round(this.hasHorizontalScroll?i:0),n=this.y+s.round(this.hasVerticalScroll?e:0),this.directionX=i>0?-1:i<0?1:0,this.directionY=e>0?-1:e<0?1:0,o>0?o=0:o<this.maxScrollX&&(o=this.maxScrollX),n>0?n=0:n<this.maxScrollY&&(n=this.maxScrollY),this.scrollTo(o,n,0)}},_initSnap:function(){this.currentPage={},"string"==typeof this.options.snap&&(this.options.snap=this.scroller.querySelectorAll(this.options.snap)),this.on("refresh",function(){var t,i,e,o,n,r,h=0,a=0,l=0,c=this.options.snapStepX||this.wrapperWidth,p=this.options.snapStepY||this.wrapperHeight;if(this.pages=[],this.wrapperWidth&&this.wrapperHeight&&this.scrollerWidth&&this.scrollerHeight){if(this.options.snap===!0)for(e=s.round(c/2),o=s.round(p/2);l>-this.scrollerWidth;){for(this.pages[h]=[],t=0,n=0;n>-this.scrollerHeight;)this.pages[h][t]={x:s.max(l,this.maxScrollX),y:s.max(n,this.maxScrollY),width:c,height:p,cx:l-e,cy:n-o},n-=p,t++;l-=c,h++}else for(r=this.options.snap,t=r.length,i=-1;h<t;h++)(0===h||r[h].offsetLeft<=r[h-1].offsetLeft)&&(a=0,i++),this.pages[a]||(this.pages[a]=[]),l=s.max(-r[h].offsetLeft,this.maxScrollX),n=s.max(-r[h].offsetTop,this.maxScrollY),e=l-s.round(r[h].offsetWidth/2),o=n-s.round(r[h].offsetHeight/2),this.pages[a][i]={x:l,y:n,width:r[h].offsetWidth,height:r[h].offsetHeight,cx:e,cy:o},l>this.maxScrollX&&a++;this.goToPage(this.currentPage.pageX||0,this.currentPage.pageY||0,0),this.options.snapThreshold%1===0?(this.snapThresholdX=this.options.snapThreshold,this.snapThresholdY=this.options.snapThreshold):(this.snapThresholdX=s.round(this.pages[this.currentPage.pageX][this.currentPage.pageY].width*this.options.snapThreshold),this.snapThresholdY=s.round(this.pages[this.currentPage.pageX][this.currentPage.pageY].height*this.options.snapThreshold))}}),this.on("flick",function(){var t=this.options.snapSpeed||s.max(s.max(s.min(s.abs(this.x-this.startX),1e3),s.min(s.abs(this.y-this.startY),1e3)),300);this.goToPage(this.currentPage.pageX+this.directionX,this.currentPage.pageY+this.directionY,t)})},_nearestSnap:function(t,i){if(!this.pages.length)return{x:0,y:0,pageX:0,pageY:0};var e=0,o=this.pages.length,n=0;if(s.abs(t-this.absStartX)<this.snapThresholdX&&s.abs(i-this.absStartY)<this.snapThresholdY)return this.currentPage;for(t>0?t=0:t<this.maxScrollX&&(t=this.maxScrollX),i>0?i=0:i<this.maxScrollY&&(i=this.maxScrollY);e<o;e++)if(t>=this.pages[e][0].cx){t=this.pages[e][0].x;break}for(o=this.pages[e].length;n<o;n++)if(i>=this.pages[0][n].cy){i=this.pages[0][n].y;break}return e==this.currentPage.pageX&&(e+=this.directionX,e<0?e=0:e>=this.pages.length&&(e=this.pages.length-1),t=this.pages[e][0].x),n==this.currentPage.pageY&&(n+=this.directionY,n<0?n=0:n>=this.pages[0].length&&(n=this.pages[0].length-1),i=this.pages[0][n].y),{x:t,y:i,pageX:e,pageY:n}},goToPage:function(t,i,e,o){o=o||this.options.bounceEasing,t>=this.pages.length?t=this.pages.length-1:t<0&&(t=0),i>=this.pages[t].length?i=this.pages[t].length-1:i<0&&(i=0);var n=this.pages[t][i].x,r=this.pages[t][i].y;e=void 0===e?this.options.snapSpeed||s.max(s.max(s.min(s.abs(n-this.x),1e3),s.min(s.abs(r-this.y),1e3)),300):e,this.currentPage={x:n,y:r,pageX:t,pageY:i},this.scrollTo(n,r,e,o)},next:function(t,i){var s=this.currentPage.pageX,e=this.currentPage.pageY;s++,s>=this.pages.length&&this.hasVerticalScroll&&(s=0,e++),this.goToPage(s,e,t,i)},prev:function(t,i){var s=this.currentPage.pageX,e=this.currentPage.pageY;s--,s<0&&this.hasVerticalScroll&&(s=0,e--),this.goToPage(s,e,t,i)},_initKeys:function(i){var s,e={pageUp:33,pageDown:34,end:35,home:36,left:37,up:38,right:39,down:40};if("object"==typeof this.options.keyBindings)for(s in this.options.keyBindings)"string"==typeof this.options.keyBindings[s]&&(this.options.keyBindings[s]=this.options.keyBindings[s].toUpperCase().charCodeAt(0));else this.options.keyBindings={};for(s in e)this.options.keyBindings[s]=this.options.keyBindings[s]||e[s];h.addEvent(t,"keydown",this),this.on("destroy",function(){h.removeEvent(t,"keydown",this)})},_key:function(t){if(this.enabled){var i,e=this.options.snap,o=e?this.currentPage.pageX:this.x,n=e?this.currentPage.pageY:this.y,r=h.getTime(),a=this.keyTime||0,l=.25;switch(this.options.useTransition&&this.isInTransition&&(i=this.getComputedPosition(),this._translate(s.round(i.x),s.round(i.y)),this.isInTransition=!1),this.keyAcceleration=r-a<200?s.min(this.keyAcceleration+l,50):0,t.keyCode){case this.options.keyBindings.pageUp:this.hasHorizontalScroll&&!this.hasVerticalScroll?o+=e?1:this.wrapperWidth:n+=e?1:this.wrapperHeight;break;case this.options.keyBindings.pageDown:this.hasHorizontalScroll&&!this.hasVerticalScroll?o-=e?1:this.wrapperWidth:n-=e?1:this.wrapperHeight;break;case this.options.keyBindings.end:o=e?this.pages.length-1:this.maxScrollX,n=e?this.pages[0].length-1:this.maxScrollY;break;case this.options.keyBindings.home:o=0,n=0;break;case this.options.keyBindings.left:o+=e?-1:5+this.keyAcceleration>>0;break;case this.options.keyBindings.up:n+=e?1:5+this.keyAcceleration>>0;break;case this.options.keyBindings.right:o-=e?-1:5+this.keyAcceleration>>0;break;case this.options.keyBindings.down:n-=e?1:5+this.keyAcceleration>>0;break;default:return}if(e)return void this.goToPage(o,n);o>0?(o=0,this.keyAcceleration=0):o<this.maxScrollX&&(o=this.maxScrollX,this.keyAcceleration=0),n>0?(n=0,this.keyAcceleration=0):n<this.maxScrollY&&(n=this.maxScrollY,this.keyAcceleration=0),this.scrollTo(o,n,0),this.keyTime=r}},_animate:function(t,i,s,e){function o(){var d,u,m,f=h.getTime();return f>=p?(n.isAnimating=!1,n._translate(t,i),void(n.resetPosition(n.options.bounceTime)||n._execEvent("scrollEnd"))):(f=(f-c)/s,m=e(f),d=(t-a)*m+a,u=(i-l)*m+l,n._translate(d,u),void(n.isAnimating&&r(o)))}var n=this,a=this.x,l=this.y,c=h.getTime(),p=c+s;this.isAnimating=!0,o()},handleEvent:function(t){switch(t.type){case"touchstart":case"pointerdown":case"MSPointerDown":case"mousedown":this._start(t);break;case"touchmove":case"pointermove":case"MSPointerMove":case"mousemove":this._move(t);break;case"touchend":case"pointerup":case"MSPointerUp":case"mouseup":case"touchcancel":case"pointercancel":case"MSPointerCancel":case"mousecancel":this._end(t);break;case"orientationchange":case"resize":this._resize();break;case"transitionend":case"webkitTransitionEnd":case"oTransitionEnd":case"MSTransitionEnd":this._transitionEnd(t);break;case"wheel":case"DOMMouseScroll":case"mousewheel":this._wheel(t);break;case"keydown":this._key(t);break;case"click":this.enabled&&!t._constructed&&(t.preventDefault(),t.stopPropagation())}}},n.prototype={handleEvent:function(t){switch(t.type){case"touchstart":case"pointerdown":case"MSPointerDown":case"mousedown":this._start(t);break;case"touchmove":case"pointermove":case"MSPointerMove":case"mousemove":this._move(t);break;case"touchend":case"pointerup":case"MSPointerUp":case"mouseup":case"touchcancel":case"pointercancel":case"MSPointerCancel":case"mousecancel":this._end(t)}},destroy:function(){this.options.fadeScrollbars&&(clearTimeout(this.fadeTimeout),this.fadeTimeout=null),this.options.interactive&&(h.removeEvent(this.indicator,"touchstart",this),h.removeEvent(this.indicator,h.prefixPointerEvent("pointerdown"),this),h.removeEvent(this.indicator,"mousedown",this),h.removeEvent(t,"touchmove",this),h.removeEvent(t,h.prefixPointerEvent("pointermove"),this),h.removeEvent(t,"mousemove",this),h.removeEvent(t,"touchend",this),h.removeEvent(t,h.prefixPointerEvent("pointerup"),this),h.removeEvent(t,"mouseup",this)),this.options.defaultScrollbars&&this.wrapper.parentNode.removeChild(this.wrapper)},_start:function(i){var s=i.touches?i.touches[0]:i;i.preventDefault(),i.stopPropagation(),this.transitionTime(),this.initiated=!0,this.moved=!1,this.lastPointX=s.pageX,this.lastPointY=s.pageY,this.startTime=h.getTime(),this.options.disableTouch||h.addEvent(t,"touchmove",this),this.options.disablePointer||h.addEvent(t,h.prefixPointerEvent("pointermove"),this),this.options.disableMouse||h.addEvent(t,"mousemove",this),this.scroller._execEvent("beforeScrollStart")},_move:function(t){var i,s,e,o,n=t.touches?t.touches[0]:t;h.getTime();this.moved||this.scroller._execEvent("scrollStart"),this.moved=!0,i=n.pageX-this.lastPointX,this.lastPointX=n.pageX,s=n.pageY-this.lastPointY,this.lastPointY=n.pageY,e=this.x+i,o=this.y+s,this._pos(e,o),t.preventDefault(),t.stopPropagation()},_end:function(i){if(this.initiated){if(this.initiated=!1,i.preventDefault(),i.stopPropagation(),h.removeEvent(t,"touchmove",this),h.removeEvent(t,h.prefixPointerEvent("pointermove"),this),h.removeEvent(t,"mousemove",this),this.scroller.options.snap){var e=this.scroller._nearestSnap(this.scroller.x,this.scroller.y),o=this.options.snapSpeed||s.max(s.max(s.min(s.abs(this.scroller.x-e.x),1e3),s.min(s.abs(this.scroller.y-e.y),1e3)),300);this.scroller.x==e.x&&this.scroller.y==e.y||(this.scroller.directionX=0,this.scroller.directionY=0,this.scroller.currentPage=e,this.scroller.scrollTo(e.x,e.y,o,this.scroller.options.bounceEasing))}this.moved&&this.scroller._execEvent("scrollEnd")}},transitionTime:function(t){t=t||0;var i=h.style.transitionDuration;if(this.indicatorStyle[i]=t+"ms",!t&&h.isBadAndroid){this.indicatorStyle[i]="0.0001ms";var s=this;r(function(){"0.0001ms"===s.indicatorStyle[i]&&(s.indicatorStyle[i]="0s")})}},transitionTimingFunction:function(t){this.indicatorStyle[h.style.transitionTimingFunction]=t},refresh:function(){this.transitionTime(),this.options.listenX&&!this.options.listenY?this.indicatorStyle.display=this.scroller.hasHorizontalScroll?"block":"none":this.options.listenY&&!this.options.listenX?this.indicatorStyle.display=this.scroller.hasVerticalScroll?"block":"none":this.indicatorStyle.display=this.scroller.hasHorizontalScroll||this.scroller.hasVerticalScroll?"block":"none",this.scroller.hasHorizontalScroll&&this.scroller.hasVerticalScroll?(h.addClass(this.wrapper,"iScrollBothScrollbars"),h.removeClass(this.wrapper,"iScrollLoneScrollbar"),this.options.defaultScrollbars&&this.options.customStyle&&(this.options.listenX?this.wrapper.style.right="8px":this.wrapper.style.bottom="8px")):(h.removeClass(this.wrapper,"iScrollBothScrollbars"),h.addClass(this.wrapper,"iScrollLoneScrollbar"),this.options.defaultScrollbars&&this.options.customStyle&&(this.options.listenX?this.wrapper.style.right="2px":this.wrapper.style.bottom="2px"));this.wrapper.offsetHeight;this.options.listenX&&(this.wrapperWidth=this.wrapper.clientWidth,this.options.resize?(this.indicatorWidth=s.max(s.round(this.wrapperWidth*this.wrapperWidth/(this.scroller.scrollerWidth||this.wrapperWidth||1)),8),this.indicatorStyle.width=this.indicatorWidth+"px"):this.indicatorWidth=this.indicator.clientWidth,this.maxPosX=this.wrapperWidth-this.indicatorWidth,"clip"==this.options.shrink?(this.minBoundaryX=-this.indicatorWidth+8,this.maxBoundaryX=this.wrapperWidth-8):(this.minBoundaryX=0,this.maxBoundaryX=this.maxPosX),this.sizeRatioX=this.options.speedRatioX||this.scroller.maxScrollX&&this.maxPosX/this.scroller.maxScrollX),this.options.listenY&&(this.wrapperHeight=this.wrapper.clientHeight,this.options.resize?(this.indicatorHeight=s.max(s.round(this.wrapperHeight*this.wrapperHeight/(this.scroller.scrollerHeight||this.wrapperHeight||1)),8),this.indicatorStyle.height=this.indicatorHeight+"px"):this.indicatorHeight=this.indicator.clientHeight,this.maxPosY=this.wrapperHeight-this.indicatorHeight,"clip"==this.options.shrink?(this.minBoundaryY=-this.indicatorHeight+8,this.maxBoundaryY=this.wrapperHeight-8):(this.minBoundaryY=0,this.maxBoundaryY=this.maxPosY),this.maxPosY=this.wrapperHeight-this.indicatorHeight,this.sizeRatioY=this.options.speedRatioY||this.scroller.maxScrollY&&this.maxPosY/this.scroller.maxScrollY),this.updatePosition()},updatePosition:function(){var t=this.options.listenX&&s.round(this.sizeRatioX*this.scroller.x)||0,i=this.options.listenY&&s.round(this.sizeRatioY*this.scroller.y)||0;this.options.ignoreBoundaries||(t<this.minBoundaryX?("scale"==this.options.shrink&&(this.width=s.max(this.indicatorWidth+t,8),this.indicatorStyle.width=this.width+"px"),t=this.minBoundaryX):t>this.maxBoundaryX?"scale"==this.options.shrink?(this.width=s.max(this.indicatorWidth-(t-this.maxPosX),8),this.indicatorStyle.width=this.width+"px",t=this.maxPosX+this.indicatorWidth-this.width):t=this.maxBoundaryX:"scale"==this.options.shrink&&this.width!=this.indicatorWidth&&(this.width=this.indicatorWidth,this.indicatorStyle.width=this.width+"px"),i<this.minBoundaryY?("scale"==this.options.shrink&&(this.height=s.max(this.indicatorHeight+3*i,8),this.indicatorStyle.height=this.height+"px"),i=this.minBoundaryY):i>this.maxBoundaryY?"scale"==this.options.shrink?(this.height=s.max(this.indicatorHeight-3*(i-this.maxPosY),8),this.indicatorStyle.height=this.height+"px",i=this.maxPosY+this.indicatorHeight-this.height):i=this.maxBoundaryY:"scale"==this.options.shrink&&this.height!=this.indicatorHeight&&(this.height=this.indicatorHeight,this.indicatorStyle.height=this.height+"px")),
+        this.x=t,this.y=i,this.scroller.options.useTransform?this.indicatorStyle[h.style.transform]="translate("+t+"px,"+i+"px)"+this.scroller.translateZ:(this.indicatorStyle.left=t+"px",this.indicatorStyle.top=i+"px")},_pos:function(t,i){t<0?t=0:t>this.maxPosX&&(t=this.maxPosX),i<0?i=0:i>this.maxPosY&&(i=this.maxPosY),t=this.options.listenX?s.round(t/this.sizeRatioX):this.scroller.x,i=this.options.listenY?s.round(i/this.sizeRatioY):this.scroller.y,this.scroller.scrollTo(t,i)},fade:function(t,i){if(!i||this.visible){clearTimeout(this.fadeTimeout),this.fadeTimeout=null;var s=t?250:500,e=t?0:300;t=t?"1":"0",this.wrapperStyle[h.style.transitionDuration]=s+"ms",this.fadeTimeout=setTimeout(function(t){this.wrapperStyle.opacity=t,this.visible=+t}.bind(this,t),e)}}},e.utils=h,"undefined"!=typeof module&&module.exports?module.exports=e:"function"==typeof define&&define.amd?define(function(){return e}):t.IScroll=e}(window,document,Math);
         /*! tinycolorpicker - v0.9.4 - 2015-11-20
          * http://www.baijs.com/tinycolorpicker
          *
          * Copyright (c) 2015 Maarten Baijs <wieringen@gmail.com>;
          * Licensed under the MIT license */
         
-        !function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a(require("jquery")):a(jQuery)}(function(a){function b(b,e){function f(){return s?(m=a("<canvas></canvas>"),k.append(m),q=m[0].getContext("2d"),g()):a.each(j.options.colors,function(a,b){var c=p.clone();c.css("backgroundColor",b),c.attr("data-color",b),o.append(c)}),h(),j}function g(){var b=new Image,c=k.css("background-image").replace(/"/g,"").replace(/url\(|\)$/gi,"");b.crossOrigin="Anonymous",k.css("background-image","none"),a(b).load(function(){m.attr("width",this.width),m.attr("height",this.height),q.drawImage(b,0,0,this.width,this.height)}),b.src=j.options.backgroundUrl||c}function h(){var b=t?"touchstart":"mousedown";s?(l.bind(b,function(b){b.preventDefault(),b.stopPropagation(),k.toggle(),a(document).bind("mousedown.colorpicker",function(){a(document).unbind(".colorpicker"),j.close()})}),t?(m.bind("touchstart",function(a){return r=!0,i(a.originalEvent.touches[0]),!1}),m.bind("touchmove",function(a){return i(a.originalEvent.touches[0]),!1}),m.bind("touchend",function(){return j.close(),!1})):(m.mousedown(function(b){return r=!0,i(b),a(document).bind("mouseup.colorpicker",function(){return a(document).unbind(".colorpicker"),j.close(),!1}),!1}),m.mousemove(i))):(l.bind("mousedown",function(a){a.preventDefault(),a.stopPropagation(),o.toggle()}),o.delegate("li","mousedown",function(b){b.preventDefault(),b.stopImmediatePropagation();var c=a(this).attr("data-color");j.setColor(c),o.hide()}))}function i(c){if(r){var d=a(c.target),e=d.offset(),f=q.getImageData(c.pageX-e.left,c.pageY-e.top,1,1).data;j.setColor("rgb("+f[0]+","+f[1]+","+f[2]+")"),b.trigger("change",[j.colorHex,j.colorRGB])}}this.options=a.extend({},d,e),this._defaults=d,this._name=c;var j=this,k=b.find(".track"),l=b.find(".color"),m=null,n=b.find(".colorInput"),o=b.find(".dropdown"),p=o.find("li").remove(),q=null,r=!1,s=!!document.createElement("canvas").getContext,t="ontouchstart"in document.documentElement;return this.colorHex="",this.colorRGB="",this.setColor=function(a){a.indexOf("#")>=0?(j.colorHex=a,j.colorRGB=j.hexToRgb(j.colorHex)):(j.colorRGB=a,j.colorHex=j.rgbToHex(j.colorRGB)),l.find(".colorInner").css("backgroundColor",j.colorHex),n.val(j.colorHex)},this.close=function(){r=!1,k.hide()},this.hexToRgb=function(a){var b=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(a);return"rgb("+parseInt(b[1],16)+","+parseInt(b[2],16)+","+parseInt(b[3],16)+")"},this.rgbToHex=function(a){function b(a){var b=new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F");return isNaN(a)?"00":b[(a-a%16)/16]+b[a%16]}var c=a.match(/\d+/g);return"#"+b(c[0])+b(c[1])+b(c[2])},f()}var c="tinycolorpicker",d={colors:["#ffffff","#A7194B","#FE2712","#FB9902","#FABC02","#FEFE33","#D0EA2B","#66B032","#0391CE","#0247FE","#3D01A5","#8601AF"],backgroundUrl:null};a.fn[c]=function(d){return this.each(function(){a.data(this,"plugin_"+c)||a.data(this,"plugin_"+c,new b(a(this),d))})}});
+        !function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a(require("jquery")):a(jQuery)}(function(a){function b(b,e){function f(){return s?(m=a("<canvas></canvas>"),k.append(m),q=m[0].getContext("2d"),g()):a.each(j.options.colors,function(a,b){var c=p.clone();c.css("backgroundColor",b),c.attr("data-color",b),o.append(c)}),h(),j}function g(){var b=new Image,c=k.css("background-image").replace(/"/g,"").replace(/url\(|\)$/gi,"");b.crossOrigin="Anonymous",k.css("background-image","none"),a(b).on("load",function(){m.attr("width",this.width),m.attr("height",this.height),q.drawImage(b,0,0,this.width,this.height)}),b.src=j.options.backgroundUrl||c}function h(){var b=t?"touchstart":"mousedown";s?(l.bind(b,function(b){b.preventDefault(),b.stopPropagation(),k.toggle(),a(document).bind("mousedown.colorpicker",function(b){a(document).unbind(".colorpicker"),j.close()})}),t?(m.bind("touchstart",function(a){return r=!0,i(a.originalEvent.touches[0]),!1}),m.bind("touchmove",function(a){return i(a.originalEvent.touches[0]),!1}),m.bind("touchend",function(a){return j.close(),!1})):(m.mousedown(function(b){return r=!0,i(b),a(document).bind("mouseup.colorpicker",function(b){return a(document).unbind(".colorpicker"),j.close(),!1}),!1}),m.mousemove(i))):(l.bind("mousedown",function(a){a.preventDefault(),a.stopPropagation(),o.toggle()}),o.delegate("li","mousedown",function(b){b.preventDefault(),b.stopImmediatePropagation();var c=a(this).attr("data-color");j.setColor(c),o.hide()}))}function i(c){if(r){var d=a(c.target),e=d.offset(),f=q.getImageData(c.pageX-e.left,c.pageY-e.top,1,1).data;j.setColor("rgb("+f[0]+","+f[1]+","+f[2]+")"),b.trigger("change",[j.colorHex,j.colorRGB])}}this.options=a.extend({},d,e),this._defaults=d,this._name=c;var j=this,k=b.find(".track"),l=b.find(".color"),m=null,n=b.find(".colorInput"),o=b.find(".dropdown"),p=o.find("li").remove(),q=null,r=!1,s=!!document.createElement("canvas").getContext,t="ontouchstart"in document.documentElement;return this.colorHex="",this.colorRGB="",this.setColor=function(a){a.indexOf("#")>=0?(j.colorHex=a,j.colorRGB=j.hexToRgb(j.colorHex)):(j.colorRGB=a,j.colorHex=j.rgbToHex(j.colorRGB)),l.find(".colorInner").css("backgroundColor",j.colorHex),n.val(j.colorHex)},this.close=function(){r=!1,k.hide()},this.hexToRgb=function(a){var b=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(a);return"rgb("+parseInt(b[1],16)+","+parseInt(b[2],16)+","+parseInt(b[3],16)+")"},this.rgbToHex=function(a){function b(a){var b=new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F");return isNaN(a)?"00":b[(a-a%16)/16]+b[a%16]}var c=a.match(/\d+/g);return"#"+b(c[0])+b(c[1])+b(c[2])},f()}var c="tinycolorpicker",d={colors:["#ffffff","#A7194B","#FE2712","#FB9902","#FABC02","#FEFE33","#D0EA2B","#66B032","#0391CE","#0247FE","#3D01A5","#8601AF"],backgroundUrl:null};a.fn[c]=function(d){return this.each(function(){a.data(this,"plugin_"+c)||a.data(this,"plugin_"+c,new b(a(this),d))})}});
         ;
         
         // source: plugin/touchui/js/touchui.bundled.js
@@ -7788,6 +6367,7 @@
         	settings: {
         		id: "touch",
         		version: 0,
+        		requiredBootloaderVersion: 1,
         
         		isFullscreen: ko.observable(false),
         		isTouchscreen: ko.observable(false),
@@ -7799,8 +6379,10 @@
         		hasLocalStorage: ('localStorage' in window),
         		hasTouch: ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0),
         
-        		canLoadAutomatically: ($("#loadsomethingsomethingdarkside").length > 0),
-        		touchuiModal: $('#touchui_settings_dialog'),
+        		canBoot: {
+        			resolution: $("#touchui_auto_load_resolution").length > 0,
+        			touch: $("#touchui_auto_load_touch").length > 0
+        		},
         
         		whatsNew: ko.observable(false)
         	},
@@ -7821,12 +6403,12 @@
         
         		defaults: {
         			iScroll: {
+        				eventPassthrough: 'horizontal',
         				scrollbars: true,
         				mouseWheel: true,
         				interactiveScrollbars: true,
         				shrinkScrollbars: "scale",
-        				fadeScrollbars: true,
-        				disablePointer: true
+        				fadeScrollbars: true
         			}
         		},
         
@@ -7993,46 +6575,6 @@
         			self.DOM.storage.set("fullscreen", self.settings.isFullscreen());
         		});
         
-        	},
-        	ask: function() {
-        		var self = this;
-        
-        		if(self.settings.hasFullscreen()) {
-        
-        			new PNotify({
-        				title: 'Fullscreen',
-        				text: 'Would you like to go fullscreen?',
-        				icon: 'glyphicon glyphicon-question-sign',
-        				type: 'info',
-        				hide: false,
-        				addclass: 'askFullscreen',
-        				confirm: {
-        					confirm: true,
-        					buttons: [{
-        						text: 'Yes',
-        						addClass: 'btn-primary',
-        						click: function(notice) {
-        							notice.remove();
-        							$(document).fullScreen(true);
-        						}
-        					}, {
-        						text: 'No',
-        						click: function(notice) {
-        							notice.remove();
-        							$(document).trigger("fullscreenchange");
-        						}
-        					}]
-        				},
-        				buttons: {
-        					closer: false,
-        					sticker: false
-        				},
-        				history: {
-        					history: false
-        				}
-        			});
-        		}
-        
         	}
         }
         
@@ -8044,8 +6586,8 @@
         		default: {
         
         			display: {
-        				'accept' :  "Save",
-        				'bksp'   :  " ",
+        				'accept' :  'Save',
+        				'bksp'   :  ' ',
         				'default': 'ABC',
         				'meta1'  : '.?123',
         				'meta2'  : '#+='
@@ -8082,7 +6624,7 @@
         		},
         		terminal: {
         			display: {
-        				'bksp'   :  " ",
+        				'bksp'   :  ' ',
         				'accept' : 'Save',
         				'default': 'ABC',
         				'meta1'  : '.?123',
@@ -8114,9 +6656,9 @@
         		},
         		number: {
         			display: {
-        				'bksp'   :  " ",
-        				'a'      :  "Save",
-        				'c'      :  "Cancel"
+        				'bksp'   :  ' ',
+        				'a'      :  'Save',
+        				'c'      :  'Cancel'
         			},
         
         			layout: 'custom',
@@ -8181,6 +6723,14 @@
         	},
         
         	onShow: function(event, keyboard, el) {
+        		// Set the input cursor to the end of the input field
+        		setTimeout(function() {
+        			var prev = keyboard.$preview.get(0);
+        			if (prev) {
+        				prev.selectionStart = prev.selectionEnd = prev.value.length;
+        			}
+        		}, 10);
+        		
         		keyboard.$keyboard.find("button").on("mousedown", function(e) {
         			$(e.target).addClass("touch-focus");
         
@@ -8313,7 +6863,7 @@
         				}, 60);
         
         				$element.on("change", function(e) {
-        					valueAccessor().value($element.val());
+        					valueAccessor().value(parseFloat($element.val()));
         				}).attr({
         					max: valueAccessor().max,
         					min: valueAccessor().min,
@@ -8322,7 +6872,7 @@
         
         			},
         			update: function (element, valueAccessor) {
-        				$(element).val(valueAccessor().value());
+        				$(element).val(parseFloat(valueAccessor().value()));
         			}
         		};
         
@@ -8388,6 +6938,13 @@
         
         	init: function () {
         		$("html").addClass("isTouchscreenUI");
+        		
+        		if (this.settings.isEpiphanyOrKweb) {
+        			this.settings.hasTouch = false;
+        			this.scroll.defaults.iScroll.disableTouch = true;
+        			this.scroll.defaults.iScroll.disableMouse = false;
+        		}
+        		
         		this.settings.isTouchscreen(true);
         
         		if (this.settings.isEpiphanyOrKweb || this.settings.isChromiumArm) {
@@ -8395,6 +6952,7 @@
         		}
         		
         		$('.modal.fade').removeClass('fade');
+        		$('#gcode_link').remove();
         
         		// Improve performace
         		this.scroll.defaults.iScroll.scrollbars = false;
@@ -8402,6 +6960,15 @@
         		this.scroll.defaults.iScroll.useTransition = false;
         		// this.scroll.defaults.iScroll.useTransform = false;
         		// this.scroll.defaults.iScroll.HWCompositing = false;
+        
+        		// Remove any links opening in a new tab
+        		$('[target="_blank"]').each(function(ind, elm) {
+        			$(elm)
+        				.attr("target", "")
+        				.on("click", function(e) {
+        					return confirm("Do you want to navigate away from TouchUI?");
+        				});
+        		});
         	},
         
         	isLoading: function (viewModels) {
@@ -8414,11 +6981,11 @@
         
         			// Disable GCodeViewer in touchscreen mode
         			if (viewModels.gcodeViewModel) {
-        				console.info("TouchUI: Disabling GCodeViewer in touchscreen mode...");
+        				console.info("TouchUI: GCodeViewer is disabled while TouchUI is active and in touchscreen mode.");
         				viewModels.gcodeViewModel.enabled = false;
         				viewModels.gcodeViewModel.initialize = _.noop;
+        				viewModels.gcodeViewModel.clear = _.noop;
         				viewModels.gcodeViewModel._processData = _.noop;
-        				$("#gcode_link2").hide();
         			}
         		}
         
@@ -8437,10 +7004,6 @@
         		// Send Touchscreen loading status
         		if (window.top.postMessage) {
         			window.top.postMessage("loading", "*");
-        			
-        			$(window).on("error.touchui", function(event) {
-        				window.top.postMessage([event.originalEvent.message, event.originalEvent.filename], "*");
-        			});
         		}
         
         		// Attach id for TouchUI styling
@@ -8458,7 +7021,7 @@
         
         		// Create keyboard cookie if not existing
         		if (this.DOM.storage.get("keyboardActive") === undefined) {
-        			if (!this.settings.hasTouch) {
+        			if (!this.settings.hasTouch || this.settings.isChromiumArm) {
         				this.DOM.storage.set("keyboardActive", true);
         			} else {
         				this.DOM.storage.set("keyboardActive", false);
@@ -8471,26 +7034,28 @@
         		}
         
         		// Treat KWEB3 as a special Touchscreen mode or enabled by cookie
-        		if ((this.settings.isEpiphanyOrKweb || this.settings.isChromiumArm && this.DOM.storage.get("touchscreenActive") === undefined) || this.DOM.storage.get("touchscreenActive")) {
+        		if (
+        			(
+        				this.settings.isEpiphanyOrKweb || 
+        				this.settings.isChromiumArm && 
+        				this.DOM.storage.get("touchscreenActive") === undefined
+        			) || 
+        			this.DOM.storage.get("touchscreenActive")
+        		) {
         			this.components.touchscreen.init.call(this);
         		}
         
-        		// Create fullscreen cookie if not existing and trigger pNotification
-        		if (this.DOM.storage.get("fullscreen") === undefined) {
-        			this.DOM.storage.set("fullscreen", false);
-        			this.components.fullscreen.ask.call(this);
-        		} else {
-        			//Cookie say user wants fullscreen, ask it!
-        			if(this.DOM.storage.get("fullscreen")) {
-        				this.components.fullscreen.ask.call(this);
-        			}
+        		// If TouchUI has been started through bootloader then initialize the process during reloads
+        		if (this.settings.isChromiumArm && window.top.postMessage) {
+        			window.onbeforeunload = function(event) {
+        				window.top.postMessage("reset", "*");
+        			};
         		}
         
         		// Get state of cookies and store them in KO
         		this.components.keyboard.isActive(this.DOM.storage.get("keyboardActive"));
         		this.animate.isHidebarActive(this.DOM.storage.get("hideNavbarActive"));
-        		this.settings.isFullscreen(this.DOM.storage.get("fullscreen"));
-        
+        		this.settings.isFullscreen($(document).fullScreen() !== false);
         	}
         
         }
@@ -8501,21 +7066,21 @@
         	if(
         		document.location.hash === "#touch" ||
         		document.location.href.indexOf("?touch") > 0 ||
-        		this.DOM.storage.get("active")
+        		this.DOM.storage.get("active") ||
+        		this.settings.isChromiumArm
         	) {
         
         		return true;
         
         	} else if(
-        		this.settings.canLoadAutomatically &&
         		this.DOM.storage.get("active") !== false
         	) {
         
-        		if($(window).width() < 980) {
+        		if($(window).width() < 980 && this.settings.canBoot.resolution) {
         			return true;
         		}
         
-        		if(this.settings.hasTouch) {
+        		if(this.settings.hasTouch && this.settings.canBoot.touch) {
         			return true;
         		}
         
@@ -8553,13 +7118,28 @@
         			if (self.isActive()) {
         				self.scroll.beforeLoad.call(self);
         				self.DOM.init.call(self);
+        
+        				if (moment && moment.locale) {
+        					// Overwrite the 'moment.locale' fuction and call original:
+        					// The purpose is that we want to remove data before
+        					// registering it to OctoPrint. Moment.locale is called
+        					// just before this happens.
+        					var old = moment.locale;
+        					moment.locale = function() {
+        						self.plugins.tempsGraph.call(self);
+        						self.plugins.webcamTab.call(self);
+        						self.plugins.autoBedLevel.call(self);
+        						self.plugins.themify.call(self);
+        						old.apply(moment, arguments);
+        					};
+        				}
         			}
         		},
         
         		domReady: function() {
         			if (self.isActive()) {
         
-        				if(_.some(self.core.bridge.OCTOPRINT_VIEWMODELS, function(v) { return v[2] === "#gcode"; })) {
+        				if($("#gcode").length > 0) {
         					self.core.bridge.TOUCHUI_REQUIRED_VIEWMODELS = self.core.bridge.TOUCHUI_REQUIRED_VIEWMODELS.concat(["gcodeViewModel"]);
         				}
         
@@ -8588,18 +7168,18 @@
         
         	options: {
         		template: {
-        			importUrl:	"/plugin/touchui/static/less/touchui.bundled.less",
+        			importUrl:	"./plugin/touchui/static/less/touchui.bundled.less?t=" + new Date().getTime(),
         			import:		'@import "{importUrl}"; \n',
         			variables:	"@main-color: {mainColor}; \n" +
         						"@terminal-color: {termColor}; \n" +
         						"@text-color: {textColor}; \n" +
+        						"@main-font-size: {fontSize}px; \n" +
         						"@main-background: {bgColor}; \n\n"
         		},
-        		API: "/plugin/touchui/css"
+        		API: "./plugin/touchui/css"
         	},
         
         	save: function() {
-        		var variables = "";
         		var options = this.core.less.options;
         		var self = this;
         
@@ -8624,6 +7204,7 @@
         						.replace("{termColor}", self.settings.colors.termColor())
         						.replace("{textColor}", self.settings.colors.textColor())
         						.replace("{bgColor}", self.settings.colors.bgColor())
+        						.replace("{fontSize}", self.settings.colors.fontSize())
         				);
         
         			}
@@ -8635,18 +7216,19 @@
         		var callback = function(error, result) {
         
         				if (error) {
-        					self.core.less.error.call(self, error);
+        					self.core.less.error.call(self, { responseText: 'Less parser: ' + error.message, status: 0 });
+        					console.error(error);
         				} else {
+        					result.css = result.css.replace(/mixin\:placeholder\;/g, '');
         
         					$.post(self.core.less.options.API, {
         							css: result.css
         						})
         						.done(function() {
-        							if (self.settings.requireNewCSS()) {
-        								self.settings.refreshCSS("fast");
-        							}
+        							self.settings.refreshCSS(true);
+        							$(window).trigger('resize');
         						})
-        						.error(function(error) {
+        						.fail(function(error) {
         							self.core.less.error.call(self, error);
         						});
         
@@ -8698,7 +7280,7 @@
         
         			softwareUpdateViewModel.versions.items.subscribe(function(changes) {
         
-        				touchui = softwareUpdateViewModel.versions.getItem(function(elm) {
+        				var touchui = softwareUpdateViewModel.versions.getItem(function(elm) {
         					return (elm.key === "touchui");
         				}, true) || false;
         
@@ -8733,10 +7315,16 @@
         	// Create a new persistent dropdown
         	this.DOM.create.dropdown.init.call( this.DOM.create.dropdown );
         
+        	// Add a webcam tab if it's defined
+        	if ($("#webcam_container").length > 0) {
+        		this.DOM.create.webcam.init(this.DOM.create.tabbar);
+        	}
+        
         	// Move all other items from tabbar into dropdown
-        	this.DOM.move.tabbar.init.call(this);
+        	this.DOM.move.sidebar.init.call(this);
         	this.DOM.move.navbar.init.call(this);
-        	this.DOM.move.afterTabAndNav.call(this );
+        	this.DOM.move.tabbar.init.call(this);
+        	this.DOM.move.afterTabAndNav.call(this);
         	this.DOM.move.overlays.init.call(this);
         	this.DOM.move.terminal.init.call(this);
         
@@ -8747,13 +7335,9 @@
         	this.DOM.move.controls.init();
         
         	// Disable these bootstrap/jquery plugins
-        	this.DOM.overwrite.tabdrop.call(self);
-        	this.DOM.overwrite.modal.call(self);
-        
-        	// Add a webcam tab if it's defined
-        	if ($("#webcam_container").length > 0) {
-        		this.DOM.create.webcam.init(this.DOM.create.tabbar);
-        	}
+        	this.DOM.overwrite.tabdrop.call(this);
+        	this.DOM.overwrite.modal.call(this);
+        	this.DOM.overwrite.pnotify.call(this);
         
         	// Add class with how many tab-items
         	$("#tabs, #navbar").addClass("items-" + $("#tabs li:not(.hidden_touch)").length);
@@ -8763,6 +7347,12 @@
         		$("#all_touchui_settings").removeClass("item_active");
         	});
         
+        	// If touch emulator is enabled, then disable dragging of a menu item for scrolling
+        	if(!this.settings.hasTouch) {
+        		$("#navbar ul.nav > li a").on("dragstart drop", function(e) {
+        			return false;
+        		});
+        	}
         }
         
         TouchUI.prototype.DOM.cookies = {
@@ -8891,13 +7481,6 @@
         
         } : _.noop;
         
-        // Auto-Login with localStorage
-        if (localStorage) {
-        	if (localStorage["remember_token"] && !TouchUI.prototype.DOM.cookies.get("remember_token", true)) {
-        		TouchUI.prototype.DOM.cookies.set("remember_token", localStorage["remember_token"], true)
-        	}
-        }
-        
         TouchUI.prototype.knockout.bindings = function() {
         	var self = this;
         
@@ -8936,7 +7519,7 @@
         		},
         
         		show: function() {
-        			self.settings.touchuiModal.modal("show");
+        			$('#touchui_settings_dialog').modal("show").trigger('click');
         		}
         
         	}
@@ -8949,8 +7532,17 @@
         	if(self.isActive()) {
         		self.components.touchscreen.isLoading.call(self, viewModels);
         
+        		// Reload dimensions of webcam with onload event
+        		// Legacy code from 1.3.3
+        		// Fixes bug #78
+        		if(viewModels.controlViewModel && viewModels.controlViewModel.updateRotatorWidth) {
+        			$("#webcam_image").on("load", function() {
+        				viewModels.controlViewModel.updateRotatorWidth();
+        			});
+        		}
+        
         		// Prevent user from double clicking in a short period on buttons
-        		$(document).on("click", "button:not(.box, .distance, .dropdown-toggle)", function(e) {
+        		$(document).on("click", "button:not(#login_button, .box, .distance, .dropdown-toggle, .btn-input-inc, .btn-input-dec, .temperature_target .btn-group button)", function(e) {
         			var printer = $(e.target);
         			printer.prop('disabled', true);
         
@@ -8977,6 +7569,7 @@
         			} else {
         				printLink.removeClass("offline").addClass("online");
         				$("#conn_link2").removeClass("offline").addClass("online");
+        				$('#connection_dialog').modal('hide');
         			}
         		});
         	}
@@ -9019,9 +7612,12 @@
         		});
         
         		// Remove drag files into website feature
+        		$(document).off("drag");
         		$(document).off("dragover");
-        		if(viewModels.gcodeFilesViewModel._enableDragNDrop) {
+        		if(viewModels.gcodeFilesViewModel && viewModels.gcodeFilesViewModel._enableDragNDrop) {
+        			viewModels.gcodeFilesViewModel._enableDragNDrop(false);
         			viewModels.gcodeFilesViewModel._enableDragNDrop = function() {};
+        			viewModels.gcodeFilesViewModel._forceEndDragNDrop = function() {};
         		}
         
         		// Hide the dropdown after login
@@ -9061,25 +7657,7 @@
         				ko.applyBindings(viewModels.navigationViewModel, $("#navbar_login")[0]);
         			} catch(err) {}
         
-        			// Force the dropdown to appear open when logedIn
-        			viewModels.navigationViewModel.loginState.loggedIn.subscribe(function(loggedIn) {
-        				if( loggedIn ) {
-        					$('#navbar_login a.dropdown-toggle').addClass("hidden_touch");
-        					$('#login_dropdown_loggedin').removeClass('hide dropdown open').addClass('visible_touch');
-        					
-        					if (self.DOM.cookies.get("remember_token", true)) {
-        						localStorage["remember_token"] = self.DOM.cookies.get("remember_token", true);
-        					}
-        					
-        				} else {
-        					$('#navbar_login a.dropdown-toggle').removeClass("hidden_touch");
-        					$('#login_dropdown_loggedin').removeClass('visible_touch');
-        					
-        					if (localStorage["remember_token"]) {
-        						delete localStorage["remember_token"];
-        					}
-        				}
-        
+        			viewModels.navigationViewModel.loginState.loggedIn.subscribe(function() {
         				// Refresh scroll view when login state changed
         				if( !self.settings.hasTouch ) {
         					setTimeout(function() {
@@ -9104,7 +7682,7 @@
         
         		// Reuse for code below
         		var refreshUrl = function(href) {
-        			return href.split("?")[0] + "?ts=" + new Date().getMilliseconds();
+        			return href.split("?")[0] + "?ts=" + new Date().getTime();
         		}
         
         		// Reload CSS if needed
@@ -9134,37 +7712,48 @@
         				$css.attr("href", refreshUrl(href));
         			}
         		});
-        	}
         
-        	// Check if we need to update an old LESS file with a new LESS one
-        	var requireNewCSS = ko.computed(function() {
-        		return self.settings.requireNewCSS() && viewModels.loginStateViewModel.isAdmin();
-        	});
-        	requireNewCSS.subscribe(function(requireNewCSS) {
-        		if(requireNewCSS) {
-        			setTimeout(function() {
-        				self.core.less.save.call(self, self);
-        			}, 100);
-        		}
-        	});
-        	
-        	if (window.top.postMessage) {
-        		// Tell bootloader we're ready with giving him the expected version for the bootloader
-        		// if version is lower on the bootloader, then the bootloader will throw an update msg
-        		window.top.postMessage(1, "*");
+        		// Check if we need to update an old LESS file with a new LESS one
+        		var requireNewCSS = ko.computed(function() {
+        			return self.settings.requireNewCSS() && viewModels.loginStateViewModel.isAdmin();
+        		});
+        		requireNewCSS.subscribe(function(requireNewCSS) {
+        			if(requireNewCSS) {
+        				setTimeout(function() {
+        					self.core.less.save.call(self, self);
+        				}, 100);
+        			}
+        		});
         		
-        		// Sync customization with bootloader
-        		window.top.postMessage([true, $("#navbar").css("background-color"), $("body").css("background-color")], "*");
+        		// Evuluate computed subscriber defined above:
+        		// In OctoPrint >1.3.5 the settings will be defined upfront
+        		requireNewCSS.notifySubscribers(self.settings.requireNewCSS() && viewModels.loginStateViewModel.isAdmin());
         		
-        		// Stop watching for errors
-        		$(window).off("error.touchui");
+        		//TODO: move this
+        		$("li.dropdown#navbar_login > a.dropdown-toggle").off("click").on("click", function(e) {
+        			e.stopImmediatePropagation();
+        			e.preventDefault();
+        
+        			$(this).parent().toggleClass("open");
+        		});
         		
-        		// Trigger wake-up for iScroll
-        		if(window.dispatchEvent) {
-        			window.dispatchEvent(new Event('resize'));
+        		if (window.top.postMessage) {
+        			// Tell bootloader we're ready with giving him the expected version for the bootloader
+        			// if version is lower on the bootloader, then the bootloader will throw an update msg
+        			window.top.postMessage(self.settings.requiredBootloaderVersion, "*");
+        			
+        			// Sync customization with bootloader
+        			window.top.postMessage([true, $("#navbar").css("background-color"), $("body").css("background-color")], "*");
+        			
+        			// Stop watching for errors
+        			$(window).off("error.touchui");
+        			
+        			// Trigger wake-up for iScroll
+        			if(window.dispatchEvent) {
+        				window.dispatchEvent(new Event('resize'));
+        			}
         		}
         	}
-        
         }
         
         TouchUI.prototype.knockout.viewModel = function() {
@@ -9201,28 +7790,38 @@
         			}
         		}
         	}
-        	
-        	// Auto-Login with localStorage
-        	self.onBrowserTabVisibilityChange = function() {
-        		if (localStorage) {
-        			if (localStorage["remember_token"] && !self.DOM.cookies.get("remember_token", true)) {
-        				self.DOM.cookies.set("remember_token", localStorage["remember_token"], true)
-        			}
-        		}
-        	}
-        
         }
         
         TouchUI.prototype.plugins.init = function (viewModels) {
         	this.plugins.screenSquish(viewModels.pluginManagerViewModel);
         }
         
-        TouchUI.prototype.plugins.navbarTemp = function() {
+        TouchUI.prototype.plugins.autoBedLevel = function() {
+        
+        	_.remove(OCTOPRINT_VIEWMODELS, function(obj) {
+        		if (obj && obj.construct && obj.construct.name && obj.construct.name === "AblExpertViewModel") {
+        			console.info("TouchUI: AblExpert is disabled while TouchUI is active.");
+        
+        			$('#settings_plugin_ABL_Expert').hide();
+        			$('#settings_plugin_ABL_Expert_link').hide();
+        			$('#processing_dialog_plugin_ABL_Expert').hide();
+        			$('#results_dialog_plugin_ABL_Expert').hide();
+        
+        			return true;
+        		}
+        		
+        		return false;
+        	});
+        }
+        
+        TouchUI.prototype.plugins.navbarTemp = function() {}
+        
+        TouchUI.prototype.plugins.psuControl = function() {
         
         	// Manually move navbar temp (hard move)
-        	if( $("#navbar_plugin_navbartemp").length > 0 ) {
-        		var navBarTmp = $("#navbar_plugin_navbartemp").appendTo(this.DOM.create.dropdown.container);
-        		$('<li class="divider"></li>').insertBefore(navBarTmp);
+        	if( $("#navbar_plugin_psucontrol a").length > 0 ) {
+        		$("#navbar_plugin_psucontrol a")
+        			.text('PSU Control');
         	}
         
         }
@@ -9263,6 +7862,46 @@
         	});
         
         };
+        
+        TouchUI.prototype.plugins.tempsGraph = function() {
+        
+        	_.remove(OCTOPRINT_VIEWMODELS, function(obj) {
+        		if (obj[0] && obj[0].name === "TempsgraphViewModel") {
+        			console.info("TouchUI: TempsGraph is disabled while TouchUI is active.");
+        			return true;
+        		}
+        		
+        		return false;
+        	});
+        
+        }
+        
+        TouchUI.prototype.plugins.themify = function() {
+        
+        	_.remove(OCTOPRINT_VIEWMODELS, function(obj) {
+        		if (obj[2] && obj[2].indexOf("#settings_plugin_themeify") !== -1) {
+        			console.info("TouchUI: Themeify is disabled while TouchUI is active.");
+        			return true;
+        		}
+        		
+        		return false;
+        	});
+        
+        }
+        
+        TouchUI.prototype.plugins.webcamTab = function() {
+        
+        	_.remove(OCTOPRINT_VIEWMODELS, function(obj) {
+        		if (obj && obj.construct && obj.construct.name && obj.construct.name === "WebcamTabViewModel") {
+        			console.info("TouchUI: WebcamTab is disabled while TouchUI is active.");
+        			$('#tab_plugin_webcamtab_link, #tab_plugin_webcamtab').remove();
+        			return true;
+        		}
+        		
+        		return false;
+        	});
+        
+        }
         
         TouchUI.prototype.scroll.beforeLoad = function() {
         
@@ -9486,7 +8125,7 @@
         
         		self.scroll.iScrolls.overlay = [];
         
-        		$items = $(this.scroll.overlay.mainItems);
+        		var $items = $(this.scroll.overlay.mainItems);
         		$items.each(function(ind, elm) {
         			var child = $(elm).children("#" + $(elm).attr("id") + "_wrapper");
         			var div = $('<div></div>').prependTo(elm);
@@ -9609,7 +8248,7 @@
         		this.menuItem.menu = $('' +
         			'<li id="all_touchui_settings" class="dropdown">' +
         				'<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
-        					$('navbar_show_settings').text() +
+        					$('navbar_show_settings').text() || $('navbar_show_settings').attr("title") +
         				'</a>' +
         			'</li>').prependTo(this.menuItem.cloneTo);
         
@@ -9640,6 +8279,19 @@
         		// Move the contents of the hidden accordions to the new print status and files tab
         		this.move.$state.appendTo(this.container.$elm.find(".row-fluid"));
         		this.move.$files.insertAfter(this.container.$elm.find(".row-fluid #state_wrapper"));
+        
+        		// Create an upload button in the header
+        		$('<div class="upload-trigger accordion-heading-button btn-group" data-bind="enable: $root.loginState.isUser(), css: {disabled: !$root.loginState.isUser()}">' +
+        			'<a href="#" title="' + $('.upload-buttons .fileinput-button:first-child > span').text()  +'">' +
+        				'<i class="fa fa-upload"></i>' +
+        			'</a>' +
+        		'</div>')
+        			.appendTo('#files_wrapper .accordion-heading')
+        			.find('a[href="#"]')
+        			.on('click', function(e) {
+        				e.preventDefault();
+        				$('#gcode_upload').click();
+        			});
         	}
         
         }
@@ -9657,12 +8309,12 @@
         
         	menu: {
         		webcam: {
-        			cloneTo: "#term_link"
+        			cloneTo: "#tabs #control_link"
         		}
         	},
         
         	container: {
-        		cloneTo: ".tab-content",
+        		cloneTo: "#tabs + .tab-content",
         
         		webcam: {
         			$container: $("#webcam_container"),
@@ -9671,10 +8323,8 @@
         	},
         
         	init: function( tabbar ) {
-        		var self = this;
-        
         		this.container.$elm = $('<div id="webcam" class="tab-pane"></div>').appendTo(this.container.cloneTo);
-        		this.menu.webcam.$elm = tabbar.createItem("webcam_link", "webcam", "tab").insertBefore(this.menu.webcam.cloneTo);
+        		this.menu.webcam.$elm = tabbar.createItem("webcam_link", "webcam", "tab").insertAfter(this.menu.webcam.cloneTo).find('a').text('Webcam');
         
         		this.container.webcam.$container.next().appendTo(this.container.webcam.cloneTo);
         		this.container.webcam.$container.prependTo(this.container.webcam.cloneTo);
@@ -9683,7 +8333,9 @@
         		$('<!-- /ko -->').insertAfter(this.container.$elm);
         
         		$("#webcam_container").attr("data-bind", $("#webcam_container").attr("data-bind").replace("keydown: onKeyDown, ", ""));
-        
+        		$("#webcam_image").on("mousedown", function(e) {
+        			e.preventDefault();
+        		});
         	}
         
         }
@@ -9700,6 +8352,9 @@
         	$('<li class="divider"></li>').insertBefore("#navbar_settings");
         	$('<li class="divider" id="divider_systemmenu" style="display: none;"></li>').insertBefore("#navbar_systemmenu").attr("data-bind", $("#navbar_systemmenu").attr("data-bind"));
         
+        	if ($("#touchui_text_nonlink_container").length > 0) {
+        		$('<li class="divider"></li>').insertBefore($("#touchui_text_nonlink_container").parent());
+        	}
         }
         
         TouchUI.prototype.DOM.move.connection = {
@@ -9765,26 +8420,66 @@
         }
         
         TouchUI.prototype.DOM.move.navbar = {
-        	mainItems: ['#all_touchui_settings', '#navbar_plugin_navbartemp', '#navbar_login', /*'#navbar_systemmenu',*/ '.hidden_touch'],
+        	mainItems: ['#all_touchui_settings', '#navbar_login', '.hidden_touch', '#touchui_auto_load_touch', '#touchui_auto_load_resolution'],
         	init: function() {
         
-        		$items = $("#navbar ul.nav > li:not("+this.DOM.move.navbar.mainItems+")");
-        		$items.each(function(ind, elm) {
+        		var $items = $("#navbar ul.nav > li:not("+this.DOM.move.navbar.mainItems+")");
+        		var hasTextLinks = false;
+        		$($items.get().reverse()).each(function(ind, elm) {
         			var $elm = $(elm);
-        			$elm.appendTo(this.DOM.create.dropdown.container);
-        			$elm.find('a').text($elm.text().trim());
+        
+        			if($elm.children('a').length > 0) {
+        				var elme = $elm.children('a')[0];
+        
+        				$elm.prependTo(this.DOM.create.dropdown.container);
+        
+        				$.each(elme.childNodes, function(key, node) {
+        					if(node.nodeName === "#text") {
+        						node.nodeValue = node.nodeValue.trim();
+        					}
+        				});
+        
+        				if(!$(elme).text()) {
+        					if(!$(elme).text()) {
+        						$(elme).text($(elme).attr('title'));
+        					}
+        				}
+        			} else {
+        				if(!hasTextLinks) {
+        					hasTextLinks = true;
+        					$('<li><ul id="touchui_text_nonlink_container"></ul></li>').appendTo(this.DOM.create.dropdown.container);
+        				}
+        
+        				$elm.appendTo("#touchui_text_nonlink_container");
+        			}
         		}.bind(this));
+        
+        		$(document).on('click', function(elm) {
+        			if($(elm.target).parents('#tabs').length > 0) {
+        				$('#tabs .itemActive').removeClass('itemActive');
+        				$(elm.target).addClass('itemActive');
+        			}
+        		});
+        
+        		$('[href="'+document.location.hash+'"]').addClass('itemActive');
         
         		// Move TouchUI to main dropdown
         		$("#navbar_plugin_touchui").insertAfter("#navbar_settings");
         
         		// Create and Move login form to main dropdown
         		$('<li><ul id="youcanhazlogin"></ul></li>').insertAfter("#navbar_plugin_touchui");
-        		$('#navbar_login').appendTo('#youcanhazlogin').find('a.dropdown-toggle').text($('#youcanhazlogin').find('a.dropdown-toggle').text().trim());
+        		
+        		$('#navbar_login')
+        			.appendTo('#youcanhazlogin')
+        			.find('a.dropdown-toggle')
+        			.text($('#youcanhazlogin').find('a.dropdown-toggle').text().trim())
+        			.attr("data-bind", "visible: !loginState.loggedIn()");
         
+        		// Create a fake dropdown link that will be overlapped by settings icon
+        		$('<li id="touchui_dropdown_link"><a href="#"></a></li>').appendTo("#tabs");
+        		
         		// Move the navbar temp plugin
-        		this.plugins.navbarTemp.call(this);
-        
+        		this.plugins.psuControl.call(this);
         	}
         
         }
@@ -9803,29 +8498,100 @@
         
         }
         
-        TouchUI.prototype.DOM.move.tabbar = {
-        	mainItems: ['#print_link', '#temp_link', '#control_link', '#webcam_link', '#term_link', '.hidden_touch'],
-        	init: function() {
+        TouchUI.prototype.DOM.move.sidebar = {
         
-        		$items = $("#tabs > li:not("+this.DOM.move.tabbar.mainItems+")");
-        		$items.each(function(ind, elm) {
+        	items: ".octoprint-container > .row > .accordion > div",
+        
+        	menu: {
+        		cloneTo: "#tabs"
+        	},
+        
+        	container: {
+        		cloneTo: "#temp"
+        	},
+        
+        	doNotMove: [
+        		'#sidebar_plugin_printer_safety_check_wrapper',
+        		'#connection_wrapper'
+        	],
+        
+        	init: function() {
+        		var tabbar = this.DOM.create.tabbar;
+        		$(this.DOM.move.sidebar.items + ':not(' + this.DOM.move.sidebar.doNotMove + ')').each(function(ind, elm) {
+        			var id = $(elm).attr('id');
+        			
+        			tabbar.createItem(id + "_link", id, "tab")
+        				.appendTo(this.menu.cloneTo)
+        				.find('[data-toggle="tab"]')
+        				.text($(elm).find('.accordion-toggle').text().trim());
+        
+        			$('<div id="' + id + '" class="tab-pane touchui touchui-accordion"><div class="row-fluid"></div></div>')
+        				.insertBefore(this.container.cloneTo)
+        				.children().get(0)
+        				.prepend(elm);
+        
+        		}.bind(this.DOM.move.sidebar));
+        
+        	}
+        
+        }
+        
+        TouchUI.prototype.DOM.move.tabbar = {
+        	init: function() {
+        		//var howManyToSplice = ($("#webcam_container").length > 0) ? 3 : 4;
+        
+        		var $items = $("#tabs > li:not(#print_link, #touchui_dropdown_link, .hidden_touch)");
+        		$($items).each(function(ind, elm) {
         			var $elm = $(elm);
         
         			// Clone the items into the dropdown, and make it click the orginal link
-        			$elm.clone().attr("id", $elm.attr("id")+"2").appendTo("#all_touchui_settings .dropdown-menu").find('a').off("click").on("click", function(e) {
-        				$elm.find('a').click();
-        				$("#all_touchui_settings").addClass("item_active");
-        				e.preventDefault();
-        				return false;
-        			});
-        			$elm.addClass("hidden_touch");
+        			$elm
+        				.clone()
+        				.attr("id", $elm.attr("id")+"2")
+        				.prependTo("#all_touchui_settings > .dropdown-menu")
+        				.find("a")
+        				.off("click")
+        				.on("click", function(e) {
+        					$elm.find('a').click();
+        					$("#all_touchui_settings").addClass("item_active");
+        					e.preventDefault();
+        					return false;
+        				});
         
+        			$elm.addClass("hidden_touch");
         		}.bind(this));
         
         		$items = $("#tabs > li > a");
         		$items.each(function(ind, elm) {
         			$(elm).text("");
         		}.bind(this));
+        		
+        		var resize = function() {
+        			var width = $('#print_link').width();
+        			var winWidth = $(window).width();
+        			var items = $('#tabs > li:not("#touchui_dropdown_link")');
+        			var itemsFit = Math.floor(winWidth / width) - 2;
+        
+        			if (winWidth > (width * 2)) {
+        				items.each(function(key, elm) {
+        					if (key > itemsFit) {
+        						$(elm).addClass('hidden_touch');
+        						$('#' + $(elm).attr('id') + '2').removeClass('hidden_touch');
+        					} else {
+        						$(elm).removeClass('hidden_touch');
+        						$('#' + $(elm).attr('id') + '2').addClass('hidden_touch');
+        					}
+        				});
+        			}
+        
+        			// Sync width of dropdown link
+        			$('#all_touchui_settings').width(width);
+        		}
+        
+        		$(window).on('resize.touchui.tabbar', resize);
+        		$(window).on('resize.touchui.tabbar', _.debounce(resize, 200));
+        		$(window).on('resize.touchui.tabbar', _.debounce(resize, 600));
+        		resize();
         
         	}
         }
@@ -9868,39 +8634,54 @@
         
         }
         
+        TouchUI.prototype.DOM.overwrite.pnotify = function() {
+        
+        	if(!this.settings.hasTouch) {
+        		var tmp = PNotify.prototype.options.stack;
+        		tmp.context = $('#scroll .page-container');
+        		PNotify.prototype.options.stack = tmp;
+        	}
+        
+        }
+        
         TouchUI.prototype.DOM.overwrite.tabbar = function() {
         
         	// Force the webcam tab to load the webcam feed that original is located on the controls tab
         	$('#tabs [data-toggle=tab]').each(function(ind, elm) {
         
-        		// Get the currently attached events to the toggle
-        		var events = $.extend([], jQuery._data(elm, "events").show),
-        			$elm = $(elm);
+        		var data_event = jQuery._data(elm, "events");
+        		if (data_event && data_event.show) {
         
-        		// Remove all previous set events and call them after manipulating a few things
-        		$elm.off("show").on("show", function(e) {
-        			var scope = this,
-        				current = e.target.hash,
-        				previous = e.relatedTarget.hash;
+        			// Get the currently attached events to the toggle
+        			var events = $.extend([], data_event.show),
+        				$elm = $(elm);
         
-        			current = (current === "#control") ? "#control_without_webcam" : current;
-        			current = (current === "#webcam") ? "#control" : current;
+        			// Remove all previous set events and call them after manipulating a few things
+        			$elm.off("show").on("show", function(e) {
+        				var scope = this,
+        					current = e.target.hash,
+        					previous = e.relatedTarget.hash;
         
-        			previous = (previous === "#control") ? "#control_without_webcam" : previous;
-        			previous = (previous === "#webcam") ? "#control" : previous;
+        				current = (current === "#control") ? "#control_without_webcam" : current;
+        				current = (current === "#webcam") ? "#control" : current;
         
-        			// Call previous unset functions (e.g. let's trigger the event onTabChange in all the viewModels)
-        			$.each(events, function(key, event) {
-        				event.handler.call(scope, {
-        					target: {
-        						hash: current
-        					},
-        					relatedTarget: {
-        						hash: previous
-        					}
+        				previous = (previous === "#control") ? "#control_without_webcam" : previous;
+        				previous = (previous === "#webcam") ? "#control" : previous;
+        
+        				// Call previous unset functions (e.g. let's trigger the event onTabChange in all the viewModels)
+        				$.each(events, function(key, event) {
+        					event.handler.call(scope, {
+        						target: {
+        							hash: current
+        						},
+        						relatedTarget: {
+        							hash: previous
+        						}
+        					});
         				});
         			});
-        		})
+        		}
+        
         	});
         
         }
@@ -9914,7 +8695,7 @@
         ;
         
         // source: plugin/touchui/js/touchui.bootstrap.js
-        !function(){var E=new TouchUI;E.domLoading(),$(function(){E.domReady(),OCTOPRINT_VIEWMODELS.push([E.koStartup,E.TOUCHUI_REQUIRED_VIEWMODELS,E.TOUCHUI_ELEMENTS,E.TOUCHUI_REQUIRED_VIEWMODELS])})}();
+        !function(){if(TouchUI.prototype.settings.isChromiumArm&&window.log&&window.log.error){var o=window.log.error;window.log.error=function(n,r){window.top.postMessage([r,""],"*"),o.apply(window.log,arguments)}}var n=new TouchUI;n.domLoading(),$(function(){n.domReady(),OCTOPRINT_VIEWMODELS.push([n.koStartup,n.TOUCHUI_REQUIRED_VIEWMODELS,n.TOUCHUI_ELEMENTS,n.TOUCHUI_REQUIRED_VIEWMODELS])})}();
         ;
         
     } catch (error) {

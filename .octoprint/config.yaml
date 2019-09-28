@@ -49,9 +49,9 @@ plugins:
       _octopi:
         read_until: 1549966200
       _plugins:
-        read_until: 1560211200
+        read_until: 1569196800
       _releases:
-        read_until: 1557824400
+        read_until: 1569243600
   cost:
     cost_per_hour: '0'
     cost_per_meter: '0.5'
@@ -65,13 +65,16 @@ plugins:
   softwareupdate:
     _config_version: 6
     check_providers:
+      DisplayLayerProgress: DisplayLayerProgress
       active_filters: active_filters
       bqappcompanion: bqappcompanion
       cost: cost
       customcontrol: customControl
+      dashboard: dashboard
       portlister: portlister
       requestspinner: requestspinner
       systemcommandeditor: systemcommandeditor
+      themeify: themeify
       touchui: touchui
       yamlpatcher: yamlpatcher
     checks:
@@ -79,6 +82,11 @@ plugins:
         checkout_folder: /home/rhradec/tmp/
         method: update_script
         type: git_commit
+  themeify:
+    enableCustomization: true
+    tabs:
+      enableIcons: true
+    theme: nighttime
   touchui:
     hasCustom: false
     refreshCSS: false

@@ -5,10 +5,150 @@
     <description>The official OctoPrint Plugin Repository</description>
     <link>http://plugins.octoprint.org/</link>
     <atom:link href="https://plugins.octoprint.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Aug 2019 15:07:35 +0000</pubDate>
-    <lastBuildDate>Thu, 01 Aug 2019 15:07:35 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Sep 2019 10:11:18 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Sep 2019 10:11:18 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
+    
+      <item>
+        <title>AutostartPrint</title>
+        <description>
+          <![CDATA[
+            Autostart a print job after conneting.
+            <p><img src="https://github.com/OllisGit/Octoprint-AutostartPrint/raw/master/screenshots/plugin-settings.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Mon, 23 Sep 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/AutostartPrint/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/AutostartPrint/</guid>
+        
+        <category>printer</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-OctoVox</title>
+        <description>
+          <![CDATA[
+            OctoPrint plugin for OctoVox Amazon Alexa Integration
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/octovox/alexa_response.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Wed, 11 Sep 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/octovox/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/octovox/</guid>
+        
+        <category>octovox</category>
+        
+        <category>Amazon Echo</category>
+        
+        <category>Alexa</category>
+        
+        <category>Printer Status</category>
+        
+        <category>Printer Temperature</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-Dashboard</title>
+        <description>
+          <![CDATA[
+            A dashboard tab for Octoprint
+            <p><img src="https://github.com/StefanCohen/OctoPrint-Dashboard/raw/master/screenshot.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Tue, 10 Sep 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/dashboard/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/dashboard/</guid>
+        
+        <category>dashboard</category>
+        
+        <category>status</category>
+        
+        <category>overview</category>
+        
+        <category>progress</category>
+        
+      </item>
+    
+      <item>
+        <title>GcodeSuperLaserController</title>
+        <description>
+          <![CDATA[
+            A plugin for Laser engraving add
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
+          ]]>
+        </description>
+        <pubDate>
+Thu, 05 Sep 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/gslc/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/gslc/</guid>
+        
+        <category>gcode</category>
+        
+        <category>laser</category>
+        
+        <category>engraver</category>
+        
+        <category>marlin</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-Webcamsb</title>
+        <description>
+          <![CDATA[
+            Sidebar webcam viewer
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/webcamSB/featured.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Wed, 04 Sep 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/webcamSB/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/webcamSB/</guid>
+        
+        <category>webcam</category>
+        
+        <category>sidebar</category>
+        
+        <category>stream</category>
+        
+      </item>
+    
+      <item>
+        <title>Prusa (M73 response) ETA Override</title>
+        <description>
+          <![CDATA[
+            Plugin that overrides OctoPrint ETA to values from last M73 gcode response received from printer
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
+          ]]>
+        </description>
+        <pubDate>
+Sun, 25 Aug 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/prusaetaoverride/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/prusaetaoverride/</guid>
+        
+        <category>progress</category>
+        
+        <category>eta</category>
+        
+        <category>estimation</category>
+        
+        <category>m73</category>
+        
+      </item>
     
       <item>
         <title>PauseForUser Event</title>
@@ -101,152 +241,6 @@ Mon, 03 Jun 2019 00:00:00 +0000
         <category>ui</category>
         
         <category>tweak</category>
-        
-      </item>
-    
-      <item>
-        <title>Change_Filament</title>
-        <description>
-          <![CDATA[
-            Facilitates changing filament (backs out old, loads new)
-            <p><img src="https://plugins.octoprint.org/assets/img/plugins/Change_Filament/cf_buttons.png"></p>
-          ]]>
-        </description>
-        <pubDate>
-Wed, 29 May 2019 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/Change_Filament/?utm_source=rss&amp;utm_medium=feed</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/Change_Filament/</guid>
-        
-        <category>filament</category>
-        
-      </item>
-    
-      <item>
-        <title>Upload Anything</title>
-        <description>
-          <![CDATA[
-            Allows custom file types to be uploaded via the web interface
-            <p><img src="https://plugins.octoprint.org/assets/img/plugins/uploadanything/settings.png"></p>
-          ]]>
-        </description>
-        <pubDate>
-Tue, 28 May 2019 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/uploadanything/?utm_source=rss&amp;utm_medium=feed</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/uploadanything/</guid>
-        
-        <category>file upload</category>
-        
-        <category>upload</category>
-        
-      </item>
-    
-      <item>
-        <title>OctoPrint-OctoPod</title>
-        <description>
-          <![CDATA[
-            OctoPrint plugin for OctoPod
-            <p><img src="https://plugins.octoprint.org/assets/img/plugins/octopod/print_finished.jpg"></p>
-          ]]>
-        </description>
-        <pubDate>
-Tue, 28 May 2019 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/octopod/?utm_source=rss&amp;utm_medium=feed</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/octopod/</guid>
-        
-        <category>octopod</category>
-        
-        <category>bed temperature</category>
-        
-        <category>print finished</category>
-        
-        <category>iOS</category>
-        
-        <category>notifications</category>
-        
-        <category>mmu</category>
-        
-      </item>
-    
-      <item>
-        <title>OctoPrint-PrePrintService</title>
-        <description>
-          <![CDATA[
-            This service supports your 3D printing workflow by providing auto-rotation and slicing functionality.
-            <p><img src="https://plugins.octoprint.org/assets/img/plugins/preprintservice/workflow.png"></p>
-          ]]>
-        </description>
-        <pubDate>
-Sun, 12 May 2019 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/preprintservice/?utm_source=rss&amp;utm_medium=feed</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/preprintservice/</guid>
-        
-        <category>slic3r</category>
-        
-        <category>gcode</category>
-        
-        <category>stl</category>
-        
-        <category>tweak</category>
-        
-        <category>auto-rotate</category>
-        
-      </item>
-    
-      <item>
-        <title>PCA9685 LED Strip Control</title>
-        <description>
-          <![CDATA[
-            OctoPrint plugin for controling RGB LED Strips via PCA9685 over I2C
-            <p><img src="https://plugins.octoprint.org/assets/img/plugins/PCA9685LEDStripControl/PCA9685_dev_board.jpg"></p>
-          ]]>
-        </description>
-        <pubDate>
-Tue, 07 May 2019 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/PCA9685LEDStripControl/?utm_source=rss&amp;utm_medium=feed</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/PCA9685LEDStripControl/</guid>
-        
-        <category>pca9685</category>
-        
-        <category>i2c</category>
-        
-        <category>hardware pwm</category>
-        
-        <category>pwm</category>
-        
-        <category>raspberry pi</category>
-        
-        <category>led</category>
-        
-        <category>rgb</category>
-        
-        <category>gcode</category>
-        
-      </item>
-    
-      <item>
-        <title>OctoPrint-Complicated</title>
-        <description>
-          <![CDATA[
-            Display Print Progress on your Apple Watch using the Complicated iOS App
-            <p><img src="https://plugins.octoprint.org/assets/img/plugins/octoprint_complicated/demo.png"></p>
-          ]]>
-        </description>
-        <pubDate>
-Tue, 23 Apr 2019 00:00:00 +0000
-</pubDate>
-        <link>http://plugins.octoprint.org/plugins/octoprint_complicated/?utm_source=rss&amp;utm_medium=feed</link>
-        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/octoprint_complicated/</guid>
-        
-        <category>apple watch</category>
-        
-        <category>ios</category>
-        
-        <category>progress</category>
         
       </item>
     
