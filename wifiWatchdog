@@ -1,2 +1,2 @@
 [ "$(ifconfig wlan0 | grep inet )" == "" ] && ( netctl stop wlan0-OsLindoes2.4Ghz ; netctl start wlan0-OsLindoes2.4Ghz )
-[ "$(ping -c 1 -w 1  $(route -n | grep UG | awk '{print $2}') | grep '100%' )" != "" ] && ( netctl stop wlan0-OsLindoes2.4Ghz ; netctl start wlan0-OsLindoes2.4Ghz )
+[ "$(ping -c 1  192.168.10.1 | grep ' 0%')" == "" ] && ( rm -rf /run/network/wpa_supplicant_wlan0.conf && netctl stop wlan0-OsLindoes2.4Ghz ; netctl start wlan0-OsLindoes2.4Ghz )

@@ -1,12 +1,68 @@
+accessControl:
+  autologinAs: rhradec
+  autologinLocal: true
+  localNetworks:
+  - 127.0.0.0/8
+  - 192.168.10.0/24
+  - 10.0.10.0/24
+  salt: aP1cEQcMNr6zxupwUl5u2LN29oSE4MIJ
 api:
-  key: 57A18EB11E094880BECDFCED9DE00BA5
+  key: 8F792359E425458FAFFB7710DA1C415C
+appearance: {}
+controls:
+- command: M106 S%(speed)s
+  input:
+  - default: 80
+    name: Speed (0-255)
+    parameter: speed
+    slider: false
+  name: Enable Cool Fan
+  type: parametric_command
+- command: M42 P6 S%(speed)s
+  input:
+  - default: 128
+    name: Speed (0-255)
+    parameter: speed
+    slider: false
+  name: Enable Board Fan
+  type: parametric_command
+- command: G29
+  name: G29
+  type: command
+- command: M303 E0 S230 C8
+  name: Auto Tune Extruder PID
+  type: command
+feature: {}
+gcodeViewer: {}
 plugins:
+  ScreenSquish:
+    octoprint_max_version: ''
+  _disabled:
+  - cura
+  - ScreenSquish
   announcements:
     _config_version: 1
+    channels:
+      _blog:
+        read_until: 1563963300
+      _important:
+        read_until: 1521111600
+      _octopi:
+        read_until: 1549966200
+      _plugins:
+        read_until: 1569196800
+      _releases:
+        read_until: 1569243600
+  cost:
+    cost_per_hour: '0'
+    cost_per_meter: '0.5'
+    currency: CAD
   discovery:
-    upnpUuid: ed0699e3-ed91-4023-b58a-c61bd934861e
+    upnpUuid: 80e0f0c7-62b9-4057-ac1e-933173a07e16
   errortracking:
-    unique_id: 23d6dcc6-5477-4dbc-9898-33b9c372c905
+    unique_id: d5c1cfa1-1704-4422-920a-cdef77cfe0a8
+  pluginmanager:
+    pip: sudo /bin/pip2
   softwareupdate:
     _config_version: 6
     check_providers:
@@ -27,18 +83,97 @@ plugins:
         method: update_script
         type: git_commit
   themeify:
-    enableCustomization: true
     tabs:
       enableIcons: true
-    theme: nighttime
   touchui:
     hasCustom: false
     refreshCSS: false
     requireNewCSS: false
     whatsNew: false
   tracking:
-    unique_id: 87955ef9-94e3-4ad1-9c44-747b55aaff56
+    enabled: false
+    unique_id: e086ce3a-84ad-4610-98d6-6262365a38cf
+printerParameters: {}
 printerProfiles:
-  default: _default
+  default: hbot
+  defaultProfile: {}
+serial:
+  autoconnect: true
+  baudrate: 115200
+  maxCommunicationTimeouts: {}
+  timeout: {}
 server:
-  secretKey: 60J8szSq4Mu6i5boKYeWHbVyTiSb6FXb
+  commands:
+    systemRestartCommand: /home/rhradec/reboot
+    systemShutdownCommand: /home/rhradec/halt
+  firstRun: false
+  onlineCheck:
+    enabled: false
+  pluginBlacklist:
+    enabled: true
+  secretKey: TqvOHtTtA8ySBpXYdOaJNregUk5wHJNg
+  seenWizards:
+    corewizard: 3
+    tracking: null
+system:
+  actions:
+  - action: divider
+  - action: restartOctoprint
+    command: /home/rhradec/restartOctoprint
+    confirm: ''
+    name: Restart Octoprint
+temperature:
+  cutoff: 10
+  profiles:
+  - bed: 100
+    chamber: null
+    extruder: 210
+    name: '210'
+  - bed: 60
+    chamber: null
+    extruder: 180
+    name: '180'
+  - bed: 60
+    chamber: null
+    extruder: 190
+    name: '190'
+  - bed: 60
+    chamber: null
+    extruder: 200
+    name: '200'
+  - bed: 60
+    chamber: null
+    extruder: 220
+    name: '220'
+  - bed: 60
+    chamber: null
+    extruder: 230
+    name: '230'
+  - bed: 60
+    chamber: null
+    extruder: 240
+    name: '240'
+terminalFilters:
+- name: Suppress M105 requests/responses
+  regex: '(Send: M105)|(Recv: ok (B|T\d*):)'
+- name: Suppress M27 requests/responses
+  regex: '(Send: M27)|(Recv: SD printing byte)'
+- name: Suppress G1
+  regex: '(Send: N.*G1.*)'
+timelapse:
+  options:
+    fps: 25
+    interval: 2
+    postRoll: 0
+  type: zchange
+webcam:
+  ffmpeg: /usr/bin/ffmpeg
+  ffmpegThreads: 2
+  snapshot: http://hbot.local:5001/?action=snapshot
+  stream: http://hbot.local:5001/?action=stream
+  timelapse:
+    fps: 30
+    options:
+      interval: 5
+    postRoll: 0
+    type: timed
