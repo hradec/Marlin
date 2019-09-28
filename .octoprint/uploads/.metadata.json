@@ -1,1 +1,31 @@
+<<<<<<< HEAD
 {}
+=======
+{
+    "HeadBand1.gcode": {
+        "analysis": {
+            "estimatedPrintTime": 1668.452031869076,
+            "printingArea": {
+                "maxZ": 4.0,
+                "maxX": 176.305,
+                "maxY": 267.637,
+                "minX": 23.695,
+                "minY": 132.363,
+                "minZ": 0.2
+            },
+            "dimensions": {
+                "width": 152.61,
+                "depth": 135.274,
+                "height": 3.8
+            },
+            "filament": {
+                "tool0": {
+                    "volume": 3.6462812985168496,
+                    "length": 552.0320499999918
+                }
+            }
+        }
+    },
+    "HeadBand1-toothed.gcode": {}
+}
+>>>>>>> dc7e9688278c55921ad2a65611c83aa3d0c3a17d
