@@ -4,3 +4,5 @@ applet/
 *.orig
 *.rej
 *.bak
+.octoprint/generated/.webassets-cache
+*/logs
