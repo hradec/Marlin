@@ -6,4 +6,5 @@ MAILTO=root
 
 */5 * * * * sudo sync
 *   * * * * [ "$(pidof restartd)" == "" ] && sudo restartd | sudo tee /tmp/restartd.log 2>&1
+
 *   * * * * sudo /root/wifiWatchdog
