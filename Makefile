@@ -17,3 +17,4 @@ install:
 	sudo systemctl stop cronie
 	sudo systemctl start cronie
 	sudo cp ~/Marlin/mjpg_streamer /bin/
+	sudo cp ~/Marlin/wifiWatchdog /root/
