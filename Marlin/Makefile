@@ -57,7 +57,7 @@
 #
 
 # This defined the board you are compiling for (see Configuration.h for the options)
-HARDWARE_MOTHERBOARD ?= 33
+#HARDWARE_MOTHERBOARD ?= 33
 
 # Arduino source install directory, and version number
 #ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino_arch_linux
@@ -65,11 +65,14 @@ ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino-1.8.12
 ARDUINO_VERSION      ?= 180
 #ARDUINO_VERSION      ?= 200
 
+#PATH := ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/:$PATH
+
+
 # The installed Libraries are in the User folder
 ARDUINO_USER_DIR ?= /home/pi/marlin.hradec/arduino_libraries
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
-AVR_TOOLS_PATH ?=
+AVR_TOOLS_PATH ?= ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/
 
 #Programmer configuration
 UPLOAD_RATE        ?= 115200
