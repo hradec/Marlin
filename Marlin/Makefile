@@ -60,12 +60,13 @@
 HARDWARE_MOTHERBOARD ?= 33
 
 # Arduino source install directory, and version number
-ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino_arch_linux
-ARDUINO_VERSION      ?= 101
-ARDUINO_VERSION      ?= 106
+#ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino_arch_linux
+ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino-1.8.12
+ARDUINO_VERSION      ?= 180
+#ARDUINO_VERSION      ?= 200
 
 # The installed Libraries are in the User folder
-ARDUINO_USER_DIR ?= ${HOME}/Arduino
+ARDUINO_USER_DIR ?= /home/pi/marlin.hradec/arduino_libraries
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
 AVR_TOOLS_PATH ?=
@@ -87,7 +88,7 @@ LIQUID_TWI2        ?= 0
 WIRE               ?= 0
 
 # this defines if U8GLIB is needed (may require RELOC_WORKAROUND)
-U8GLIB             ?= 1
+U8GLIB             ?= 0
 
 # this defines whether to include the Trinamic TMCStepper library
 TMC                ?= 1
