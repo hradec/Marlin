@@ -61,7 +61,7 @@
 
 # Arduino source install directory, and version number
 #ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino_arch_linux
-ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino-1.8.12
+ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino-1.8.12-$(uname -m)
 ARDUINO_VERSION      ?= 180
 #ARDUINO_VERSION      ?= 200
 
