@@ -1,7 +1,12 @@
 
 
 
-install:
+all: help
+
+help:
+	@echo -e "\n\nrun 'make pi_install' to setup the raspberry pi to be a hbot board.\n\n"
+
+pi_install:
 	rm -rf ~/.octoprint 
 	ln -s ~/Marlin/.octoprint ~/
 	for n in $(ls ~/Marlin/home/*) ; do rm -f ~/$n ; ln -s ~/Marlin/home/$n ~/ ; done
