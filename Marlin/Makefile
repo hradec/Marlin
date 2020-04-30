@@ -56,12 +56,21 @@
 # Or, try disconnecting USB to power down and then reconnecting before running avrdude.
 #
 
+# use this if you have a raspberry pi connected to the printer, but want to build
+# marlin on your normal computer. Calling 'make send' will copy over the completed build to the pi
+# and calling "make remote_upload" will copy over the built firmware and upload to the printer,
+# essentially running "make upload" on the pi, over an ssh connection
+# this functionality relies on "ssh" and "rsync"
+REMOTE_3DPRINTER_COMPUTER ?= pi@hbot.local
+REMOTE_3DPRINTER_COMPUTER_PATH ?= ~/marlin.hradec/
+
+
 # This defined the board you are compiling for (see Configuration.h for the options)
 #HARDWARE_MOTHERBOARD ?= 33
 
 # Arduino source install directory, and version number
 #ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino_arch_linux
-ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino-1.8.12-$(uname -m)
+ARDUINO_INSTALL_DIR  ?= $(shell pwd)/../arduino-1.8.12-$(shell uname -m)
 ARDUINO_VERSION      ?= 180
 #ARDUINO_VERSION      ?= 200
 
@@ -69,7 +78,7 @@ ARDUINO_VERSION      ?= 180
 
 
 # The installed Libraries are in the User folder
-ARDUINO_USER_DIR ?= /home/pi/marlin.hradec/arduino_libraries
+ARDUINO_USER_DIR ?= $(shell pwd)/../arduino_libraries/
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
 AVR_TOOLS_PATH ?= ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/
@@ -567,14 +576,14 @@ ifeq ($(NEOPIXEL), 1)
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/Adafruit_NeoPixel
 endif
 ifeq ($(U8GLIB), 1)
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/csrc
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/cppsrc
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/fntsrc
+VPATH += $(ARDUINO_USER_DIR)/libraries/U8glib
+VPATH += $(ARDUINO_USER_DIR)/libraries/U8glib/csrc
+VPATH += $(ARDUINO_USER_DIR)/libraries/U8glib/cppsrc
+VPATH += $(ARDUINO_USER_DIR)/libraries/U8glib/fntsrc
 endif
 ifeq ($(TMC), 1)
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/TMCStepper/src
-VPATH += $(ARDUINO_INSTALL_DIR)/libraries/TMCStepper/src/source
+VPATH += $(ARDUINO_USER_DIR)/libraries/TMCStepper/src
+VPATH += $(ARDUINO_USER_DIR)/libraries/TMCStepper/src/source
 endif
 
 ifeq ($(HARDWARE_VARIANT), arduino)
@@ -895,6 +904,17 @@ $(BUILD_DIR)/arduino/%.o: %.S $(MAKEFILE)
 clean:
 	$(Pecho) "  RMDIR $(BUILD_DIR)/"
 	$P rm -rf $(BUILD_DIR)
+
+
+send_rpi: elf
+	rsync -avpP applet/ $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/applet/
+
+send: send_rpi
+	@echo -e "\n\n upload build files to the computer connected to the 3d printer...\n\n"
+
+remote_upload: send
+	@echo -e "\n\n upload the firmware to the 3d printer remotely, using ssh to run 'make upload' on the computer connected to the 3d printer...\n\n"
+	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make upload"
 
 
 .PHONY: all build elf hex eep lss sym program coff extcoff clean depend sizebefore sizeafter
