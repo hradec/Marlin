@@ -919,10 +919,9 @@ send_rpi: elf
 send: send_rpi
 	@echo -e "\n\n upload build files to the computer connected to the 3d printer...\n\n"
 
-remote_upload: send
+remote_upload: send $(BUILD_DIR)/$(TARGET).hex
 	@echo -e "\n\n upload the firmware to the 3d printer remotely, using ssh to run 'make upload' on the computer connected to the 3d printer...\n\n"
-	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make upload"
-
+	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && $(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH)"
 
 .PHONY: all build elf hex eep lss sym program coff extcoff clean depend sizebefore sizeafter
 

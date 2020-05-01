@@ -32,88 +32,88 @@ applet/
 #
 # Misc
 #
-*~
-*.orig
-*.rej
-*.bak
-*.idea
-*.s
-*.i
-*.ii
-*.swp
+Marlin/*~
+Marlin/*.orig
+Marlin/*.rej
+Marlin/*.bak
+Marlin/*.idea
+Marlin/*.s
+Marlin/*.i
+Marlin/*.ii
+Marlin/*.swp
 tags
 
 #
 # C++
 #
 # Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-*.ino.cpp
+Marlin/*.slo
+Marlin/*.lo
+Marlin/*.o
+Marlin/*.obj
+Marlin/*.ino.cpp
 
 # Precompiled Headers
-*.gch
-*.pch
+Marlin/*.gch
+Marlin/*.pch
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+Marlin/*.so
+Marlin/*.dylib
+Marlin/*.dll
 
 # Fortran module files
-*.mod
-*.smod
+Marlin/*.mod
+Marlin/*.smod
 
 # Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+Marlin/*.lai
+Marlin/*.la
+Marlin/*.a
+Marlin/*.lib
 
 # Executables
-*.exe
-*.out
-*.app
+Marlin/*.exe
+Marlin/*.out
+Marlin/*.app
 
 
 #
 # C
 #
 # Object files
-*.o
-*.ko
-*.obj
-*.elf
+Marlin/*.o
+Marlin/*.ko
+Marlin/*.obj
+Marlin/*.elf
 
 # Precompiled Headers
-*.gch
-*.pch
+Marlin/*.gch
+Marlin/*.pch
 
 # Libraries
-*.lib
-*.a
-*.la
-*.lo
+Marlin/*.lib
+Marlin/*.a
+Marlin/*.la
+Marlin/*.lo
 
 # Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+Marlin/*.dll
+Marlin/*.so
+Marlin/*.so.*
+Marlin/*.dylib
 
 # Executables
-*.exe
-*.out
+Marlin/*.exe
+Marlin/*.out
 *.app
 *.i*86
 *.x86_64
 *.hex
 
 # Debug files
-*.dSYM/
-*.su
+Marlin/*.dSYM/
+Marlin/*.su
 
 # PlatformIO files/dirs
 .pio*
@@ -121,7 +121,7 @@ tags
 .piolibdeps
 .clang_complete
 .gcc-flags.json
-/lib/
+Marlin/lib/
 
 # Workaround for Deviot+platformio quirks
 Marlin/lib
