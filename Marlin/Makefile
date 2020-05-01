@@ -560,7 +560,10 @@ ifeq ($(IS_MCU),1)
   VPATH += $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/libraries/SPI
   VPATH += $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/libraries/SPI/src
   VPATH += $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/libraries/SoftwareSerial/src
+  # VPATH += $(ARDUINO_USER_DIR)/libraries/SoftwareSerial/src
 endif
+
+
 
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/LiquidCrystal/src
 ifeq ($(LIQUID_TWI2), 1)
@@ -648,7 +651,11 @@ ifeq ($(U8GLIB), 1)
 endif
 
 ifeq ($(TMC), 1)
-  LIB_CXXSRC += TMCStepper.cpp COOLCONF.cpp DRV_STATUS.cpp IHOLD_IRUN.cpp CHOPCONF.cpp GCONF.cpp PWMCONF.cpp DRV_CONF.cpp DRVCONF.cpp DRVCTRL.cpp DRVSTATUS.cpp ENCMODE.cpp RAMP_STAT.cpp SGCSCONF.cpp SHORT_CONF.cpp SMARTEN.cpp SW_MODE.cpp SW_SPI.cpp TMC2130Stepper.cpp TMC2208Stepper.cpp TMC2209Stepper.cpp TMC2660Stepper.cpp TMC5130Stepper.cpp TMC5160Stepper.cpp
+  LIB_CXXSRC += CHOPCONF.cpp COOLCONF.cpp DRV_CONF.cpp DRVCONF.cpp DRVCTRL.cpp DRV_STATUS.cpp DRVSTATUS.cpp ENCMODE.cpp GCONF.cpp \
+  				IHOLD_IRUN.cpp PWMCONF.cpp RAMP_STAT.cpp SERIAL_SWITCH.cpp SGCSCONF.cpp SHORT_CONF.cpp SMARTEN.cpp SW_MODE.cpp \
+				SW_SPI.cpp TMC2130Stepper.cpp TMC2160Stepper.cpp TMC2208Stepper.cpp TMC2209Stepper.cpp TMC2660Stepper.cpp \
+				TMC5130Stepper.cpp TMC5160Stepper.cpp TMCStepper.cpp
+  LIB_CXXSRC += SoftwareSerial.cpp new.cpp
 endif
 
 ifeq ($(RELOC_WORKAROUND), 1)
@@ -757,8 +764,8 @@ AVRDUDE_FLAGS = -D -C$(AVRDUDE_CONF) \
 # Since Marlin 2.0, the source files may be distributed into several
 # different directories, so it is necessary to find them recursively
 
-SRC    = $(shell find src -name '*.c'   -type f)
-CXXSRC = $(shell find src -name '*.cpp' -type f)
+SRC    = $(shell find src -name '*.c'   -type f | grep -v STM)
+CXXSRC = $(shell find src -name '*.cpp' -type f | grep -v STM)
 
 # Define all object files.
 OBJ  = ${patsubst %.c,   $(BUILD_DIR)/arduino/%.o, ${LIB_SRC}}
