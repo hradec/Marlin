@@ -1,0 +1,9 @@
+G1 F50 E-4 ;reverse extruder
+G92 Z0 
+G1 Z10 F5000
+;disable all heaters
+{% snippet 'disable_hotends' %}
+{% snippet 'disable_bed' %}
+;disable fan
+M106 S0
+;M106 S80

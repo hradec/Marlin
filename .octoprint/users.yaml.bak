@@ -1,0 +1,16 @@
+h:
+  active: true
+  apikey: null
+  password: 43d0d7407814160cab87554d9cff18a15f4e3b88c9b762d253d6a7a62d56a9d941786ae687514b856abdaf58a11ed1a658e680b1aa392d599deb746335821021
+  roles:
+  - user
+  - admin
+  settings: {}
+rhradec:
+  active: true
+  apikey: null
+  password: abe57f9f4d8daa34f0aa12e6aefa6fc4f89249ffe42a26ef060331a8ddd7057df43d7b1a687e4c1b3ae29d66c3ea1fba38ee84ebd2bd8a5b58d8ac9eb4541afb
+  roles:
+  - user
+  - admin
+  settings: {}
