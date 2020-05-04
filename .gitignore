@@ -191,3 +191,4 @@ __pycache__
 .octoprint/logs/
 .octoprint/timelapse/
 .octoprint/uploads/
+.octoprint/data/octolapse/snapshots/
