@@ -56,29 +56,25 @@
 # Or, try disconnecting USB to power down and then reconnecting before running avrdude.
 #
 
-# use this if you have a raspberry pi connected to the printer, but want to build
-# marlin on your normal computer. Calling 'make send' will copy over the completed build to the pi
-# and calling "make remote_upload" will copy over the built firmware and upload to the printer,
-# essentially running "make upload" on the pi, over an ssh connection
+# use this if you have a remote computer (like a raspberry pi) connected to the printer.
+# 'make send' will copy over the modified source code using rsync.
+# 'make remote' will copy over the modified source, build the firmware and upload to the printer,
 # this functionality relies on "ssh" and "rsync"
 REMOTE_3DPRINTER_COMPUTER ?= pi@hbot.local
 REMOTE_3DPRINTER_COMPUTER_PATH ?= ~/marlin.hradec/
-
+REMOTE_3DPRINTER_COMPUTER_BUILD_EXTRA ?= "-j 4 upload"
 
 # This defined the board you are compiling for (see Configuration.h for the options)
-#HARDWARE_MOTHERBOARD ?= 33
+# now we retrieve the motherboard straight from the Configuration.h file, and convert
+# its name to the number found in src/core/boards.h
+HARDWARE_MOTHERBOARD ?= $(grep $(grep '\#define.*MOTHERBOARD' ./Configuration.h | awk '{print $(NF)}') ./src/core/boards.h | awk '{print $3}')
 
-# Arduino source install directory, and version number
-#ARDUINO_INSTALL_DIR  ?= /home/pi/marlin.hradec/arduino_arch_linux
-ARDUINO_INSTALL_DIR  ?= $(shell pwd)/../arduino-1.8.12-$(shell uname -m)
+# Arduino source install directory, and version number (updated to 1.8)
+ARDUINO_INSTALL_DIR  ?= /usr/share/arduino
 ARDUINO_VERSION      ?= 180
-#ARDUINO_VERSION      ?= 200
-
-#PATH := ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/:$PATH
-
 
 # The installed Libraries are in the User folder
-ARDUINO_USER_DIR ?= $(shell pwd)/../arduino_libraries/
+ARDUINO_USER_DIR ?= ${HOME}/Arduino
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
 AVR_TOOLS_PATH ?= ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/
@@ -108,7 +104,52 @@ TMC                ?= 1
 # this defines whether to include the AdaFruit NeoPixel library
 NEOPIXEL           ?= 0
 
-############
+
+############################################################################
+# Here we try to autodetec the main main folders and upload port, by
+# examining the filesystem in some pre-determinated places.
+# as an example, it will pick up an arduino installation folder in the
+# root of the git depot, if named as "arduino-1.8.12-x86_64" when running
+# on a PC or "arduino-1.8.12-armv7l" when running on a raspberry pi 3, and use it
+# instead of the system one.
+# the same for the libraries folder. If an arduino_libraries folder exists in the
+# root of the git depot, it will use it to find all needed libraries.
+# This way you can have your own fork of marlin, and keep everything you need
+# to build it for your printer there, ready to build!
+
+# Autodetecting arduino install dir
+ARDUINO_LOCAL_INSTALL = $(shell pwd)/../arduino-1.8.12-$(shell uname -m)
+ifeq ($(shell ls -l $(ARDUINO_LOCAL_INSTALL) 2>/dev/null 1>&2 && echo 1),1)
+  $(warning  "We found an arduino installation at $(ARDUINO_LOCAL_INSTALL). Usint it instead of $(ARDUINO_INSTALL_DIR).")
+  ARDUINO_INSTALL_DIR = $(ARDUINO_LOCAL_INSTALL)
+  AVR_TOOLS_PATH = ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/
+endif
+
+# Autodetecting arduino user folder
+ARDUINO_LOCAL_USER_DIR = $(shell pwd)/../arduino_libraries/
+ifeq ($(shell ls -l $(ARDUINO_LOCAL_USER_DIR) 2>/dev/null 1>&2  && echo 1),1)
+  $(warning "We found an arduino library folder at $(ARDUINO_LOCAL_USER_DIR). Usint it instead of $(ARDUINO_USER_DIR).")
+  ARDUINO_USER_DIR = $(ARDUINO_LOCAL_USER_DIR)
+endif
+
+# Autodetecting upload port
+ifeq ($(shell ls -l $(UPLOAD_PORT) 2>/dev/null 1>&2  && echo 1),1)
+  $(warning "We autodetected $(UPLOAD_PORT) susccesfully. Using it.")
+else ifeq ($(shell ls -l /dev/ttyACM1 2>/dev/null 1>&2  && echo 1),1)
+  $(warning "We autodetect a /dev/ttyACM1 instead of $(UPLOAD_PORT). Using it.")
+  UPLOAD_PORT = /dev/ttyACM1
+else ifeq ($(shell ls -l /dev/ttyACM2 2>/dev/null 1>&2  && echo 1),1)
+  $(warning "We autodetect a /dev/ttyACM2 instead of $(UPLOAD_PORT). Using it.")
+  UPLOAD_PORT = /dev/ttyACM2
+else ifeq ($(shell ls -l /dev/ttyUSB0 2>/dev/null 1>&2  && echo 1),1)
+  $(warning "We autodetect a /dev/ttyUSB0 instead of $(UPLOAD_PORT). Using it.")
+  UPLOAD_PORT = /dev/ttyUSB0
+else
+  $(warning "We couldn't find an UPLOAD_PORT. Please specify by defining UPLOAD_PORT in the Makefile or in the command line when calling make.")
+endif
+
+
+############################################################################
 # Try to automatically determine whether RELOC_WORKAROUND is needed based
 # on GCC versions:
 #   http://www.avrfreaks.net/comment/1789106#comment-1789106
@@ -117,8 +158,8 @@ CC_MAJ:=$(shell $(CC) -dM -E - < /dev/null | grep __GNUC__ | cut -f3 -d\ )
 CC_MIN:=$(shell $(CC) -dM -E - < /dev/null | grep __GNUC_MINOR__ | cut -f3 -d\ )
 CC_PATCHLEVEL:=$(shell $(CC) -dM -E - < /dev/null | grep __GNUC_PATCHLEVEL__ | cut -f3 -d\ )
 CC_VER:=$(shell echo $$(( $(CC_MAJ) * 10000 + $(CC_MIN) * 100 + $(CC_PATCHLEVEL) )))
-ifeq ($(shell test $(CC_VER) -lt 40901 && echo 1),1)
-  @echo This version of GCC is likely broken. Enabling relocation workaround.
+ifeq ($(shell test $(CC_VER) -lt 40901 2>/dev/null 1>&2 && echo 1),1)
+  $(info "This version of GCC is likely broken. Enabling relocation workaround.")
   RELOC_WORKAROUND = 1
 endif
 
@@ -652,7 +693,7 @@ endif
 
 ifeq ($(TMC), 1)
   LIB_CXXSRC += CHOPCONF.cpp COOLCONF.cpp DRV_CONF.cpp DRVCONF.cpp DRVCTRL.cpp DRV_STATUS.cpp DRVSTATUS.cpp ENCMODE.cpp GCONF.cpp \
-  				IHOLD_IRUN.cpp PWMCONF.cpp RAMP_STAT.cpp SERIAL_SWITCH.cpp SGCSCONF.cpp SHORT_CONF.cpp SMARTEN.cpp SW_MODE.cpp \
+				IHOLD_IRUN.cpp PWMCONF.cpp RAMP_STAT.cpp SERIAL_SWITCH.cpp SGCSCONF.cpp SHORT_CONF.cpp SMARTEN.cpp SW_MODE.cpp \
 				SW_SPI.cpp TMC2130Stepper.cpp TMC2160Stepper.cpp TMC2208Stepper.cpp TMC2209Stepper.cpp TMC2660Stepper.cpp \
 				TMC5130Stepper.cpp TMC5160Stepper.cpp TMCStepper.cpp
   LIB_CXXSRC += SoftwareSerial.cpp new.cpp
@@ -711,7 +752,7 @@ else ifeq ($(HARDWARE_VARIANT), archim)
   LIB_SRC    += cortex_handlers.c iar_calls_sam3.c syscalls_sam3.c dtostrf.c itoa.c
 
   ifeq ($(U8GLIB), 1)
-    LIB_SRC += u8g_com_api.c u8g_pb32h1.c
+	LIB_SRC += u8g_com_api.c u8g_pb32h1.c
   endif
 endif
 
@@ -729,7 +770,7 @@ CDEBUG = -g$(DEBUG)
 CWARN   = -Wall -Wstrict-prototypes -Wno-packed-bitfield-compat -Wno-pragmas -Wunused-parameter
 CXXWARN = -Wall                     -Wno-packed-bitfield-compat -Wno-pragmas -Wunused-parameter
 CTUNING = -fsigned-char -funsigned-bitfields -fno-exceptions \
-          -fshort-enums -ffunction-sections -fdata-sections
+		  -fshort-enums -ffunction-sections -fdata-sections
 ifneq ($(HARDWARE_MOTHERBOARD),)
   CTUNING += -DMOTHERBOARD=${HARDWARE_MOTHERBOARD}
 endif
@@ -828,7 +869,7 @@ endif
 # Display size of file.
 HEXSIZE = $(SIZE) --target=$(FORMAT) $(BUILD_DIR)/$(TARGET).hex
 ELFSIZE = $(SIZE)  $(SIZE_FLAGS) $(BUILD_DIR)/$(TARGET).elf; \
-          $(SIZE)  $(BUILD_DIR)/$(TARGET).elf
+		  $(SIZE)  $(BUILD_DIR)/$(TARGET).elf
 sizebefore:
 	$P if [ -f $(BUILD_DIR)/$(TARGET).elf ]; then echo; echo $(MSG_SIZE_BEFORE); $(HEXSIZE); echo; fi
 
@@ -865,7 +906,7 @@ extcoff: $(TARGET).elf
 
 .elf.eep:
 	-$(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" \
-    --change-section-lma .eeprom=0 -O $(FORMAT) $< $@
+	--change-section-lma .eeprom=0 -O $(FORMAT) $< $@
 
 # Create extended listing file from ELF output file.
 .elf.lss:
@@ -912,16 +953,15 @@ clean:
 	$(Pecho) "  RMDIR $(BUILD_DIR)/"
 	$P rm -rf $(BUILD_DIR)
 
+# Target: send source to a remote computer connected to the 3dprinter,
+#		  build and upload. Need rsync installed on booth.
+send:
+	@echo -e "Upload modified source to the computer connected to the 3d printer..."
+	rsync -avpP --exclude applet . $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/
 
-send_rpi: elf
-	rsync -avpP applet/ $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/applet/
-
-send: send_rpi
-	@echo -e "\n\n upload build files to the computer connected to the 3d printer...\n\n"
-
-remote_upload: send $(BUILD_DIR)/$(TARGET).hex
-	@echo -e "\n\n upload the firmware to the 3d printer remotely, using ssh to run 'make upload' on the computer connected to the 3d printer...\n\n"
-	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && $(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH)"
+remote: send
+	@echo -e "Building on the computer connected to the 3d printer..."
+	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make $(REMOTE_3DPRINTER_COMPUTER_BUILD_EXTRA)"
 
 .PHONY: all build elf hex eep lss sym program coff extcoff clean depend sizebefore sizeafter
 
