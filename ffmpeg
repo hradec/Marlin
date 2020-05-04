@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+echo "$@" >> /tmp/ffmpeg.log
+echo /usr/bin/ffmpeg $(echo "$@" | awk -F'-vf' '{print $1}') -preset ultrafast $(echo "$@" | awk '{print $(NF)}') >> /tmp/ffmpeg.log
+/usr/bin/ffmpeg $(echo "$@" | awk -F'-vf' '{print $1}') -preset ultrafast $(echo "$@" | awk '{print $(NF)}') >> /tmp/ffmpeg.log
