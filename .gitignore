@@ -184,3 +184,10 @@ cmake-build-*
 
 #Python
 __pycache__
+
+
+# octoprint backup
+.octoprint/generated/
+.octoprint/logs/
+.octoprint/timelapse/
+.octoprint/uploads/
