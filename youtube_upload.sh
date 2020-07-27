@@ -7,6 +7,6 @@ mov=$(echo "$@" | awk '{print $(NF)}')
 
 if [ "$(echo $mov | grep fail)" == "" ] ; then
 	echo /usr/local/bin/youtube-upload "$@" >> ~/youtube.log 2>&1
-	/usr/local/bin/youtube-upload "$@" >> ~/youtube.log 2>&1 && rm -rf "$movie" >> ~/youtube.log
+	/usr/local/bin/youtube-upload "$@" >> ~/youtube.log 2>&1 && rm -rvf "$movie" >> ~/youtube.log
 
 fi
