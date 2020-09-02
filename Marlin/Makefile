@@ -63,6 +63,7 @@
 REMOTE_3DPRINTER_COMPUTER ?= pi@hbot.local
 REMOTE_3DPRINTER_COMPUTER_PATH ?= ~/marlin.hradec/
 REMOTE_3DPRINTER_COMPUTER_BUILD_EXTRA ?= "-j 4 upload"
+REMOTE_3DPRINTER_COMPUTER_UPLOAD_EXTRA ?= "-j 4 upload"
 
 # This defined the board you are compiling for (see Configuration.h for the options)
 # now we retrieve the motherboard straight from the Configuration.h file, and convert
@@ -964,13 +965,19 @@ clean:
 
 # Target: send source to a remote computer connected to the 3dprinter,
 #		  build and upload. Need rsync installed on booth.
-send:
+send: all
 	@echo -e "Upload modified source to the computer connected to the 3d printer..."
-	rsync -avpP --exclude applet . $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/
+	# rsync -avpP --exclude applet . $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/
+	rsync -avpP ./ $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/
 
 remote: send
 	@echo -e "Building on the computer connected to the 3d printer..."
 	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make $(REMOTE_3DPRINTER_COMPUTER_BUILD_EXTRA)"
+
+remote-upload: send
+	@echo -e "Uploading firmware on the computer connected to the 3d printer..."
+	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make $(REMOTE_3DPRINTER_COMPUTER_UPLOAD_EXTRA)"
+
 
 .PHONY: all build elf hex eep lss sym program coff extcoff clean depend sizebefore sizeafter
 
