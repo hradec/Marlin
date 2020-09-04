@@ -122,8 +122,8 @@ NEOPIXEL           ?= 0
 ARDUINO_LOCAL_INSTALL = $(shell pwd)/../arduino-1.8.12-$(shell uname -m)
 ifeq ($(shell ls -l $(ARDUINO_LOCAL_INSTALL) 2>/dev/null 1>&2 && echo 1),1)
   $(warning  "We found an arduino installation at $(ARDUINO_LOCAL_INSTALL). Usint it instead of $(ARDUINO_INSTALL_DIR).")
-  ARDUINO_INSTALL_DIR = $(ARDUINO_LOCAL_INSTALL)
-  AVR_TOOLS_PATH = ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/
+  ARDUINO_INSTALL_DIR := $(ARDUINO_LOCAL_INSTALL)
+  AVR_TOOLS_PATH ?= ${ARDUINO_INSTALL_DIR}/hardware/tools/avr/bin/
 endif
 
 # Autodetecting arduino user folder
@@ -974,9 +974,21 @@ remote: send
 	@echo -e "Building on the computer connected to the 3d printer..."
 	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make $(REMOTE_3DPRINTER_COMPUTER_BUILD_EXTRA)"
 
-remote-upload: send
+upload2:
+ifeq (${AVRDUDE_PROGRAMMER}, arduino)
+	stty hup < $(UPLOAD_PORT); true
+endif
+	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH)
+ifeq (${AVRDUDE_PROGRAMMER}, arduino)
+	stty -hup < $(UPLOAD_PORT); true
+endif
+
+remote-upload: $(BUILD_DIR)/$(TARGET).hex
 	@echo -e "Uploading firmware on the computer connected to the 3d printer..."
-	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make $(REMOTE_3DPRINTER_COMPUTER_UPLOAD_EXTRA)"
+	rsync -avpP ./$(BUILD_DIR)/$(TARGET).hex $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/$(BUILD_DIR)/$(TARGET).hex
+	rsync -avpP ./Makefile $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/
+	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make upload2"
+	# ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && [ '${AVRDUDE_PROGRAMMER}' == 'arduino' ] && stty hup < $(UPLOAD_PORT); true ; $(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) ; [ '$(AVRDUDE_PROGRAMMER)' == 'arduino' ] && stty hup < $(UPLOAD_PORT); true"
 
 
 .PHONY: all build elf hex eep lss sym program coff extcoff clean depend sizebefore sizeafter
