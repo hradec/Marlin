@@ -87,6 +87,7 @@
 #ifndef X_STOP_PIN
   #ifndef X_MIN_PIN
     #define X_MIN_PIN                          3
+    // #define X_MIN_PIN                          16 // AUX4 - first pin from top to bottom
   #endif
   #ifndef X_MAX_PIN
     #define X_MAX_PIN                          2
@@ -95,6 +96,7 @@
 #ifndef Y_STOP_PIN
   #ifndef Y_MIN_PIN
     #define Y_MIN_PIN                         14
+    // #define Y_MIN_PIN                         17 // AUX4 - second pin from top to bottom
   #endif
   #ifndef Y_MAX_PIN
     #define Y_MAX_PIN                         15
@@ -103,6 +105,7 @@
 #ifndef Z_STOP_PIN
   #ifndef Z_MIN_PIN
     #define Z_MIN_PIN                         18
+    // #define Z_MIN_PIN                         23 // AUX4 - third pin from top to bottom
   #endif
   #ifndef Z_MAX_PIN
     #define Z_MAX_PIN                         19

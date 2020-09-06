@@ -985,7 +985,7 @@ endif
 
 remote-upload: $(BUILD_DIR)/$(TARGET).hex
 	@echo -e "Uploading firmware on the computer connected to the 3d printer..."
-	rsync -avpP ./$(BUILD_DIR)/$(TARGET).hex $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/$(BUILD_DIR)/$(TARGET).hex
+	rsync -avpP ./$(BUILD_DIR)/ $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/$(BUILD_DIR)/
 	rsync -avpP ./Makefile $(REMOTE_3DPRINTER_COMPUTER):$(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/
 	ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && make upload2"
 	# ssh $(REMOTE_3DPRINTER_COMPUTER) "cd $(REMOTE_3DPRINTER_COMPUTER_PATH)/Marlin/ && [ '${AVRDUDE_PROGRAMMER}' == 'arduino' ] && stty hup < $(UPLOAD_PORT); true ; $(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) ; [ '$(AVRDUDE_PROGRAMMER)' == 'arduino' ] && stty hup < $(UPLOAD_PORT); true"
