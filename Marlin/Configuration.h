@@ -775,6 +775,17 @@
 //                                 M92 X54.23 Y54.23 Z54.23 E82.00
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 54.23, 54.23, 54.23, 82 }
 
+// to calculate steps per mm for a spool with fishing line, do:
+// (steps_for_full_rotation)*(microsteps) / (2*PI*( (spool_diameter/2) + fishing_line_diameter ))
+// ex:
+//      steps_for_full_rotation = 200 (most nema17 are 200 steps)
+//      microsteps = 16 (usual microsteps)
+//      spool_diameter = 18 (kossel spool)
+//      fishing_line_diameter = 0.4 (braided 80lb PE fishing line)
+//
+//      (200*16) / (2 * PI * ((18/2) + 0.4) ) = 54.18 steps per mm!
+//
+
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
